@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.notifications.NotificationsFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_notifications"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        tools:itemCount="5"
+        tools:listitem="@layout/fragment_notifications_list_row"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/layout_switches"
+        />
+
+
+
+        <LinearLayout
+            android:id="@+id/layout_switches"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:gravity="end"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/text_notifications"
+            >
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_record"
+                style="@style/SwitchCompatRecordStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:switchMinWidth="50dp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_bot"
+                style="@style/SwitchCompatSunnyStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:switchMinWidth="50dp"
+                tools:checked="true" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/button_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:fabSize="auto"
+                app:srcCompat="@drawable/ic_notifications_black_24dp" />
+
+        </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/text_notifications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="뀨뀨" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

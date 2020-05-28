@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image_forum"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_forum_name"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:gravity="center_vertical"
+        android:lines="1"
+        android:textSize="20sp"
+        android:maxLength="20"
+        app:layout_constraintEnd_toStartOf="@id/text_forum_last_modified"
+        app:layout_constraintStart_toEndOf="@id/image_forum"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="지낭 패기 수다방" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_forum_last_conversation"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:gravity="center_vertical"
+        android:textSize="13sp"
+        android:maxLines="2"
+        android:maxLength="20"
+        app:layout_constraintEnd_toStartOf="@id/text_forum_count_non_read"
+        app:layout_constraintStart_toEndOf="@id/image_forum"
+        app:layout_constraintTop_toBottomOf="@id/text_forum_name"
+        tools:text="뀨뀨\n꺄꺄" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_forum_last_modified"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:lines="1"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="오후 4:13" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_forum_count_non_read"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:lines="1"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="5" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

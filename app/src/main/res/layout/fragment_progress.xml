@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#A0000000"
+    android:clickable="true"
+    android:focusable="true">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_progress_top_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="다운로드 중"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="20dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_progress_top_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="4/14"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="20dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_progress_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#7986CB"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/text_progress_above"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_progress_top_end"
+        tools:text="Units" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_progress_above"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="40.5%"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/progress"
+        android:textSize="30sp"
+        />
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:max="100"
+            android:indeterminate="true"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_progress_below"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="3551252121/535315311631"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/progress"
+            android:layout_margin="5dp"
+            />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/button_quit_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:tint="#EF5350"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_progress_below"
+        app:srcCompat="@drawable/ic_close_black_36dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

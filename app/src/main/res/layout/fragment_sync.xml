@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#90000000">
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:flexDirection="column"
+        app:flexWrap="wrap">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_overview_sync"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="약 123kb의 데이터를 다운로드 합니다."
+        android:textColor="#FFFFFF"
+        />
+
+        <ProgressBar
+            android:id="@+id/progress_sync"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:progress="66" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_details_sync"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="units (333/518)"
+            android:textColor="#FFFFFF"
+            />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_start_sync"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="시작"
+            android:background="#E000CC55"
+            android:textColor="#FFFFFF"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_quit_sync"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="취소"
+            android:background="#E0CC1010"
+            android:textColor="#FFFFFF"
+            />
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+</FrameLayout>

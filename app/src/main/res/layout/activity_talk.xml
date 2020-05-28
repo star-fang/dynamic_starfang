@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_talks"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="2dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@id/layout_bottom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:itemCount="1"
+        tools:listitem="@layout/activity_talk_list_row" />
+
+    <RelativeLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/layout_tool_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/border_rounded_edge"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/button_upload_picture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center"
+                app:srcCompat="@drawable/ic_photo_black_24dp" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/button_upload_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center"
+                app:srcCompat="@drawable/ic_photo_camera_black_24dp" />
+
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/layout_insert_talk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_toStartOf="@id/button_send_talk"
+            android:layout_toEndOf="@id/layout_tool_box"
+            android:background="@drawable/border_rounded_edge"
+            android:backgroundTint="#30000000"
+            android:gravity="center_vertical"
+            tools:targetApi="lollipop">
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/text_conversation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/button_clear_talk"
+                android:hint="" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/button_clear_talk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="2dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_cancel_black_24dp" />
+
+
+        </RelativeLayout>
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/button_send_talk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:rotation="-50"
+                android:visibility="invisible"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                app:fabSize="mini"
+                app:srcCompat="@drawable/ic_send_black_24dp"
+                tools:visibility="invisible" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/button_voice_to_talk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="2dp"
+                android:background="@drawable/border_rounded_edge"
+                app:srcCompat="@drawable/ic_keyboard_voice_black_24dp" />
+
+
+    </RelativeLayout>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_to_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:visibility="gone"
+        app:backgroundTint="@android:color/background_light"
+        app:borderWidth="0dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@id/layout_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_arrow_drop_down_circle_black_24dp"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

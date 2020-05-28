@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#1222" />
+        </shape>
+    </item>
+    <item
+        android:bottom="2dp"
+        android:left="1dp"
+        android:right="1dp"
+        android:top="1dp">
+        <shape android:shape="oval">
+            <solid android:color="#eee" />
+        </shape>
+    </item>
+    <item
+        android:tint="@color/switch_color_record"
+        android:drawable="@drawable/ic_keyboard_voice_black_12dp" />
+</layer-list>

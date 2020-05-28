@@ -1,0 +1,90 @@
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        applicationId "com.starfang"
+        minSdkVersion 23
+        targetSdkVersion 29
+        multiDexEnabled true
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+    }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'com.google.android:flexbox:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
+    implementation 'androidx.navigation:navigation-fragment:2.2.2'
+    implementation 'androidx.navigation:navigation-ui:2.2.2'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.security:security-crypto:1.0.0-rc02'
+
+    implementation 'org.apache.commons:commons-lang3:3.10'
+    //implementation 'com.android.volley:volley:1.1.1'
+    implementation 'dev.dworks.libs:volleyplus:+'
+    implementation 'io.realm:android-adapters:2.1.1'
+    implementation group: 'org.mozilla', name: 'rhino', version: '1.7.12'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'org.jetbrains:annotations:15.0'
+
+    // Facebook Api
+    implementation 'com.facebook.android:facebook-android-sdk:4.42.0'
+
+    // Google Api
+    implementation 'com.google.android.gms:play-services-auth:18.0.0'
+    implementation 'com.google.apis:google-api-services-sheets:v4-rev9-1.22.0'
+    implementation 'com.google.api-client:google-api-client-android:1.30.9'
+
+    // Firebase
+    implementation platform('com.google.firebase:firebase-bom:25.3.0')
+    implementation 'com.google.firebase:firebase-database:19.3.0'
+    implementation 'com.google.firebase:firebase-storage:19.1.1'
+    implementation 'com.google.firebase:firebase-auth:19.3.1'
+    implementation 'com.google.firebase:firebase-analytics:17.4.2'
+
+    // Firebase UI
+    implementation 'com.firebaseui:firebase-ui-database:6.2.1'
+
+    // Test
+    testImplementation 'junit:junit:4.13'
+    testImplementation 'org.json:json:20200518'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //implementation 'org.apache.hadoop:hadoop-mapreduce-client-core:3.2.1'
+    //implementation 'org.apache.hadoop:hadoop-common:3.2.1'
+}

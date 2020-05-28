@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "779737171713",
+    "firebase_url": "https://dynamic-starfang.firebaseio.com",
+    "project_id": "dynamic-starfang",
+    "storage_bucket": "dynamic-starfang.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779737171713:android:867300b77464c13de8bd00",
+        "android_client_info": {
+          "package_name": "com.starfang"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "779737171713-4hi93oh4mja4krup0lmedo6jfeevc4rn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.starfang",
+            "certificate_hash": "1a4c5d711e8a26765cf46ca7c5a1a9d5a1aa941f"
+          }
+        },
+        {
+          "client_id": "779737171713-asae52k4d3dp7vgtjm4ue4ld08iu5e28.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWNnXUIwexE1a5JVVmm5Ct_noJrGG8tM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "779737171713-asae52k4d3dp7vgtjm4ue4ld08iu5e28.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
