@@ -17,16 +17,29 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.RequestFuture;
 import com.android.volley.toolbox.Volley;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.reflect.TypeToken;
 import com.starfang.R;
 import com.starfang.StarfangConstants;
 import com.starfang.realm.ProgressRequest;
 import com.starfang.realm.TableList;
 import com.starfang.realm.Transaction;
+import com.starfang.realm.primitive.RealmInteger;
+import com.starfang.realm.primitive.RealmString;
 import com.starfang.ui.progress.ProgressFragment;
 import com.starfang.ui.progress.ProgressViewModel;
 import com.starfang.utilities.ArithmeticUtils;
 import com.starfang.utilities.CipherUtils;
 
+import org.apache.commons.lang3.math.NumberUtils;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +47,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.security.GeneralSecurityException;
 import java.text.MessageFormat;
@@ -45,6 +59,8 @@ import java.util.concurrent.TimeoutException;
 
 import io.realm.Case;
 import io.realm.Realm;
+import io.realm.RealmList;
+import io.realm.RealmObject;
 
 /*
 MySQL <1> PHP <2> App <3> User
@@ -130,7 +146,7 @@ public class DownloadJsonTask extends Transaction<String, Bundle, String> {
                     byteSizeMap.put(args.getInt(ProgressArgs.TASK_INDEX, 0), totalByte);
 
                     float percentage = (downloadedByte / ((float) totalByte)) * 100;
-                    progressViewModel.setProgress((int)percentage);
+                    progressViewModel.setProgress((int) percentage);
                     //progressViewModel.setAboveTextText(MessageFormat.format("{0}%", percentage));
                     //progressViewModel.setBelowText(MessageFormat.format("{0} / {1}", downloadedByte, totalByte));
 
@@ -158,6 +174,28 @@ public class DownloadJsonTask extends Transaction<String, Bundle, String> {
 
     @Override
     protected String doInBackground(@NotNull String... tableNames) {
+
+        final GsonBuilder gsonBuilder = new GsonBuilder()
+                .setExclusionStrategies(new ExclusionStrategy() {
+                    @Override
+                    public boolean shouldSkipField(FieldAttributes f) {
+                        return f.getDeclaringClass().equals(RealmObject.class);
+                    }
+
+                    @Override
+                    public boolean shouldSkipClass(Class<?> clazz) {
+                        return false;
+                    }
+                });
+
+        gsonBuilder.registerTypeAdapter(new TypeToken<RealmList<RealmString>>() {
+        }.getType(), new RealmStringDeserializer());
+
+        gsonBuilder.registerTypeAdapter(new TypeToken<RealmList<RealmInteger>>() {
+        }.getType(), new RealmIntegerDeserializer());
+
+        final Gson gson = gsonBuilder.create();
+
 
         StringBuilder stringBuilder = new StringBuilder();
         final Context context = contextWeakReference.get();
@@ -207,20 +245,75 @@ public class DownloadJsonTask extends Transaction<String, Bundle, String> {
                             , context.getString(R.string.url_sync_default) + context.getString(R.string.php_transaction));
 
                     if (echo != null) {
+
+                        //Log.d(TAG, "echo: " + echo);
+                        //Log.d(TAG, "str length: " + echo.toString().length() );
                         try {
-                            Log.d(TAG, "echo: " + echo);
-                            //Log.d(TAG, "str length: " + echo.toString().length() );
-                            String newIv = echo.getString(Echo.NEW_IV);
-                            if (sharedPreferences.edit().putString(StarfangConstants.PREF_IV_KEY, newIv).commit()) {
-                                String status = echo.getString(Echo.STATUS);
-                                String message = echo.getString(Echo.MESSAGE);
-                                JSONArray tuples = echo.getJSONArray(Echo.TUPLES);
-                                Bundle doneArgs = new Bundle();
-                                doneArgs.putInt(ProgressArgs.PROGRESS_CODE, ProgressCode.DONE);
-                                publishProgress(doneArgs);
-                                success = true;
-                                executedCount++;
+                            String message = echo.getString(Echo.MESSAGE);
+                            Log.d(TAG, "message: " + message);
+                        } catch (JSONException e) {
+                            Log.e(TAG, Log.getStackTraceString(e));
+                        }
+
+
+                        try {
+
+                            String status = echo.getString(Echo.STATUS);
+                            switch (status) {
+                                case Status.SUCCESS:
+                                    String newIv = echo.getString(Echo.NEW_IV);
+                                    if (sharedPreferences.edit().putString(StarfangConstants.PREF_IV_KEY, newIv).commit()) {
+
+                                        String modelName = tableName.substring(0, 1).toUpperCase() + tableName.substring(1);
+                                        Log.d(TAG,"model: " + modelName);
+                                        try {
+                                            Class<? extends RealmObject> realmObjectClass = Class.forName(StarfangConstants.REALM_MODEL_SOURCE + modelName)
+                                                    .asSubclass(RealmObject.class);
+
+                                            JSONArray tuples = echo.getJSONArray(Echo.TUPLES);
+                                            long lastModified = echo.getLong(Echo.LAST_MODIFIED);
+
+                                            try (Realm realm = Realm.getDefaultInstance()) {
+                                                realm.beginTransaction();
+
+
+                                                for( int j = 0; j < tuples.length(); j++ ) {
+                                                    JSONObject tuple = tuples.getJSONObject(j);
+                                                    RealmObject updateObj = gson.fromJson(tuple.toString(), realmObjectClass);
+                                                    realm.copyToRealmOrUpdate(updateObj);
+                                                    //if( j < 2) {
+                                                     //   Log.d(TAG,"update: " + updateObj);
+                                                    //}
+                                                }
+
+                                                TableList tableInfo = realm.where(TableList.class).equalTo(TableList.FIELD_TABLE, tableName).findFirst();
+                                                if (tableInfo == null) {
+                                                    tableInfo = realm.createObject(TableList.class, tableName);
+                                                }
+                                                tableInfo.setLastModified(lastModified);
+                                                Log.d( TAG, tuples.length() + "record(s) updated");
+                                                realm.commitTransaction();
+
+
+
+
+                                                Bundle doneArgs = new Bundle();
+                                                doneArgs.putInt(ProgressArgs.PROGRESS_CODE, ProgressCode.DONE);
+                                                publishProgress(doneArgs);
+                                                success = true;
+                                                executedCount++;
+                                            } catch (RuntimeException e) {
+                                                Log.e(TAG, Log.getStackTraceString(e));
+                                            }
+                                        } catch (ClassNotFoundException e) {
+                                            Log.e(TAG, Log.getStackTraceString(e));
+                                        }
+                                    }
+                                    break;
+                                case Status.FAIL:
+
                             }
+
                         } catch (JSONException e) {
                             Log.e(TAG, Log.getStackTraceString(e));
                         }
@@ -266,7 +359,7 @@ public class DownloadJsonTask extends Transaction<String, Bundle, String> {
 
         RequestFuture<JSONObject> requestFuture = RequestFuture.newFuture();
 
-        Log.d(TAG, "url:" + url);
+        //Log.d(TAG, "url:" + url);
 
         Map<String, String> params = new HashMap<>();
         params.put(Params.ID, id);
@@ -288,7 +381,7 @@ public class DownloadJsonTask extends Transaction<String, Bundle, String> {
 
         });
 
-        Log.d(TAG, "request:" + new String(request.getBody()));
+        //Log.d(TAG, "request:" + new String(request.getBody()));
 
         requestQueue.add(request);
         return requestFuture.get(20, TimeUnit.SECONDS);
@@ -312,4 +405,111 @@ public class DownloadJsonTask extends Transaction<String, Bundle, String> {
     }
 
 
+    public static class RealmStringDeserializer implements
+            JsonDeserializer<RealmList<RealmString>> {
+
+        @Override
+        public RealmList<RealmString> deserialize(JsonElement json, Type typeOfT,
+                                                  JsonDeserializationContext context) throws JsonParseException {
+
+            RealmList<RealmString> realmStrings = new RealmList<>();
+            JsonArray stringList = json.getAsJsonArray();
+
+            for (JsonElement stringElement : stringList) {
+                realmStrings.add(new RealmString(getNullAsEmptyString(stringElement)));
+            }
+
+            return realmStrings;
+        }
+
+        private String getNullAsEmptyString(JsonElement jsonElement) {
+            return jsonElement.isJsonNull() ? "" : jsonElement.getAsString();
+        }
+    }
+
+
+    public static class RealmIntegerDeserializer implements
+            JsonDeserializer<RealmList<RealmInteger>> {
+
+        @Override
+        public RealmList<RealmInteger> deserialize(JsonElement json, Type typeOfT,
+                                                   JsonDeserializationContext context) throws JsonParseException {
+
+            RealmList<RealmInteger> realmIntegers = new RealmList<>();
+            JsonArray stringList = json.getAsJsonArray();
+
+            for (JsonElement integerElement : stringList) {
+                realmIntegers.add(new RealmInteger(getNullAsZeroInt(integerElement)));
+            }
+
+            return realmIntegers;
+        }
+
+        private int getNullAsZeroInt(JsonElement jsonElement) {
+            String valueStr = jsonElement.isJsonNull() ? "" : jsonElement.getAsString();
+            return NumberUtils.toInt(valueStr, 0);
+        }
+    }
+
 }
+
+
+/*
+ DynamicRealm dynamicRealm = DynamicRealm.getInstance(realm.getConfiguration());
+                                                dynamicRealm.beginTransaction();
+                                                RealmSchema schema = dynamicRealm.getSchema();
+                                                if (!schema.contains(modelName)) {
+                                                    schema.createWithPrimaryKeyField(modelName, "id", int.class);
+                                                }
+
+                                                for (int j = 0; j < tuples.length(); j++) {
+                                                    JSONObject tuple = tuples.getJSONObject(j);
+                                                    Iterator<String> keyIt = tuple.keys();
+                                                    int tupleId = tuple.getInt("id");
+                                                    DynamicRealmObject dynamicObj = dynamicRealm.where(modelName).equalTo("id", tupleId).findFirst();
+                                                    if (dynamicObj == null) {
+                                                        dynamicObj = dynamicRealm.createObject(modelName, tupleId);
+                                                    }
+                                                    while (keyIt.hasNext()) {
+                                                        try {
+                                                            String key = keyIt.next();
+                                                            if (!key.equals("id")) {
+                                                                Object value = tuple.get(key);
+                                                                if( value instanceof Integer ) {
+                                                                    dynamicObj.setInt(key, (Integer) value);
+
+                                                                } else if( value instanceof JSONArray ) {
+                                                                    RealmList<RealmInteger> list = new RealmList<>();
+                                                                    for( int k = 0 ; k < ((JSONArray) value).length(); k++ ) {
+                                                                        Object element = ((JSONArray) value).get(k);
+                                                                        if( element instanceof Integer ) {
+                                                                            list.add(new RealmInteger((Integer)element));
+                                                                        } else {
+                                                                            if (j == 0)
+                                                                                Log.d(TAG, "unknown array key: " + key + ", value: " + value );
+                                                                        }
+                                                                    }
+                                                                    if( list.size() > 0 ) {
+                                                                        dynamicObj.setList(key, list);
+                                                                    }
+
+                                                                } else if (value instanceof String) {
+                                                                    dynamicObj.setString(key, String.valueOf(value));
+                                                                } else {
+                                                                    if (j == 0)
+                                                                        Log.d(TAG, "? key: " + key + ", value: " + value );
+                                                                }
+
+
+
+                                                            }
+                                                        } catch (JSONException ignore) {
+
+                                                        }
+                                                    }
+
+                                                }
+
+                                                dynamicRealm.commitTransaction();
+
+ */

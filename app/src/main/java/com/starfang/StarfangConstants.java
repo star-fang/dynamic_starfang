@@ -6,6 +6,7 @@ public class StarfangConstants {
     public static final String PACKAGE_DISCORD = "com.discord";
     public static final String PACKAGE_STARFANG = "com.starfang";
     public static final String PACKAGE_LEGACY_STARFANG = "com.fang.starfang";
+    public static final String REALM_MODEL_SOURCE = "com.starfang.realm.source.";
 
     public static final String REPLY_KEY_LOCAL = "key_local_reply";
 
@@ -22,8 +23,6 @@ public class StarfangConstants {
     public static final String EXTRA_INFORMATION = "information";
 
     public static final String INTENT_KEY_FORUM_ID = "forum_id";
-
-    public static final String FIELD_ID = "id";
 
     public static final String SECURE_PREFERENCE_NAME = "secureFang";
     public static final String SECURE_PREF_SECRET_KEY = "secret";

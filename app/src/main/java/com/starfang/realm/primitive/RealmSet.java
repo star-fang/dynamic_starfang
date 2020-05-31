@@ -1,23 +1,30 @@
 package com.starfang.realm.primitive;
 
+import java.text.MessageFormat;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class RealmPair extends RealmObject {
+public class RealmSet extends RealmObject {
 
     public static final String FIELD_KEY = "key";
     public static final String FIELD_VALUE = "value";
 
     @PrimaryKey
-    private int key;
+    private String key;
     private int value;
 
-    public int getKey() {
+    public String getKey() {
         return key;
     }
 
     public int getValue() {
         return value;
+    }
+
+    @Override
+    public String toString() {
+        return MessageFormat.format("({0}: {1})", key, value);
     }
 
 }

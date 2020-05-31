@@ -1,13 +1,12 @@
 package com.starfang.realm.source;
 
+import com.starfang.realm.Source;
+
 import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
-public class Tiles extends RealmObject {
-
-    public static final String FIELD_NAME = "name";
-    public static final String FIELD_NAME2 = "name2";
+public class Tiles extends RealmObject implements Source {
 
     @PrimaryKey
     private int id;
@@ -16,11 +15,30 @@ public class Tiles extends RealmObject {
     @Index
     private String name2;
 
-    public String getName() {
-        return name;
+    @Override
+    public int getId() {
+        return id;
     }
 
-    public String getName2() {
-        return name2;
+    @Override
+    public String getString(String field) {
+        switch ( field ) {
+            case FIELD_ID:
+                return String.valueOf(id);
+            case FIELD_NAME:
+                return name;
+            case FIELD_NAME2:
+                return name2;
+            default:
+                return null;
+        }
+    }
+
+    @Override
+    public int getInt(String field) {
+        if( field.equals( FIELD_ID) ) {
+            return id;
+        }
+        return -1;
     }
 }

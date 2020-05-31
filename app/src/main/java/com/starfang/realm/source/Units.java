@@ -1,5 +1,8 @@
 package com.starfang.realm.source;
 
+import android.text.TextUtils;
+
+import com.starfang.realm.Source;
 import com.starfang.realm.primitive.RealmInteger;
 
 import io.realm.RealmList;
@@ -7,11 +10,12 @@ import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
-public class Units extends RealmObject {
+public class Units extends RealmObject implements Source {
 
-    private static final int[] plusCost = {0,3,5,8,10};
-    public static final String FIELD_NAME = "name";
+    private static final int[] plusCost = {0, 3, 5, 8, 10};
     public static final String FIELD_TYPE_ID = "unitTypeId";
+    public static final String FIELD_FACE = "face";
+    public static final String FIELD_GENDER = "gender";
     public static final String FIELD_BANNER_ID = "bannerId";
     public static final String FIELD_COST = "cost";
     public static final String FIELD_STR = "str";
@@ -19,6 +23,15 @@ public class Units extends RealmObject {
     public static final String FIELD_CMD = "cmd";
     public static final String FIELD_DEX = "dex";
     public static final String FIELD_LCK = "lck";
+    public static final String FIELD_PASV_LIST_IDS = "passiveListIds";
+    public static final String FIELD_PREFECT_ID = "prefectId";
+    public static final String FIELD_WARLORD_ID = "warlordId";
+    public static final String FIELD_HP = "hp";
+    public static final String FIELD_MP = "mp";
+    public static final String FIELD_EP = "ep";
+    public static final String FIELD_GOLD = "gold";
+    public static final String FIELD_PERSONALITY_ID = "personalityId";
+
     public static final String FIELD_PASSIVE_LISTS = "passiveLists";
     public static final String FIELD_FRIENDSHIP_LIST = "friendshipList";
     public static final String FIELD_BANNER = "banner";
@@ -72,99 +85,25 @@ public class Units extends RealmObject {
     /*
     methods
      */
-    public String getName() {
-        return name;
-    }
-
-    public int getUnitTypeId() {
-        return unitTypeId;
-    }
-
-    public String getFace() {
-        return face;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public int getBannerId() {
-        return bannerId;
-    }
-
-    public int getCost() {
-        return cost;
-    }
-
-    public int getStr() {
-        return str;
-    }
-
-    public int getIntel() {
-        return intel;
-    }
-
-    public int getCmd() {
-        return cmd;
-    }
-
-    public int getDex() {
-        return dex;
-    }
-
-    public int getLck() {
-        return lck;
-    }
 
     public RealmList<RealmInteger> getPassiveListIds() {
         return passiveListIds;
     }
 
-    public int getPrefectId() {
-        return prefectId;
-    }
-
-    public int getWarlordId() {
-        return warlordId;
-    }
-
-    public String getName2() {
-        return name2;
-    }
-
-    public int getHp() {
-        return hp;
-    }
-
-    public int getMp() {
-        return mp;
-    }
-
-    public int getEp() {
-        return ep;
-    }
-
-    public int getGold() {
-        return gold;
-    }
-
-    public int getPersonalityId() {
-        return personalityId;
-    }
 
     /*
     grade: 1 ~ 5
      */
-    public int getIntCostByGrade( int grade) throws IndexOutOfBoundsException {
+    public int getIntCostByGrade(int grade) throws IndexOutOfBoundsException {
         int gradeIndex = grade - 1;
-        if( gradeIndex < 0 || gradeIndex >= plusCost.length )
+        if (gradeIndex < 0 || gradeIndex >= plusCost.length)
             throw new IndexOutOfBoundsException("grade index error");
         return cost + plusCost[gradeIndex];
     }
 
     public String[] getCosts() {
         String[] costs = new String[plusCost.length];
-        for( int i = 0; i < plusCost.length; i++ ) {
+        for (int i = 0; i < plusCost.length; i++) {
             costs[i] = String.valueOf(cost + plusCost[i]);
         }
         return costs;
@@ -235,5 +174,99 @@ public class Units extends RealmObject {
 
     public void setType(UnitTypes type) {
         this.type = type;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String getString(String field) {
+        switch (field) {
+            case FIELD_ID:
+                return String.valueOf(id);
+            case FIELD_NAME:
+                return name;
+            case FIELD_NAME2:
+                return name2;
+            case FIELD_TYPE_ID:
+                return String.valueOf(unitTypeId);
+            case FIELD_FACE:
+                return face;
+            case FIELD_GENDER:
+                return gender;
+            case FIELD_BANNER_ID:
+                return String.valueOf(bannerId);
+            case FIELD_COST:
+                return String.valueOf(cost);
+            case FIELD_STR:
+                return String.valueOf(str);
+            case FIELD_INTEL:
+                return String.valueOf(intel);
+            case FIELD_CMD:
+                return String.valueOf(cmd);
+            case FIELD_DEX:
+                return String.valueOf(dex);
+            case FIELD_LCK:
+                return String.valueOf(lck);
+            case FIELD_PASV_LIST_IDS:
+                return passiveListIds == null ? null : TextUtils.join(", ", passiveListIds);
+            case FIELD_PREFECT_ID:
+                return String.valueOf(prefectId);
+            case FIELD_WARLORD_ID:
+                return String.valueOf(warlordId);
+            case FIELD_HP:
+                return String.valueOf(hp);
+            case FIELD_MP:
+                return String.valueOf(mp);
+            case FIELD_EP:
+                return String.valueOf(ep);
+            case FIELD_GOLD:
+                return String.valueOf(gold);
+            case FIELD_PERSONALITY_ID:
+                return String.valueOf(personalityId);
+        }
+        return null;
+    }
+
+    @Override
+    public int getInt(String field) {
+        switch( field ) {
+            case FIELD_ID:
+                return id;
+            case FIELD_TYPE_ID:
+                return unitTypeId;
+            case FIELD_BANNER_ID:
+                return bannerId;
+            case FIELD_COST:
+                return cost;
+            case FIELD_STR:
+                return str;
+            case FIELD_INTEL:
+                return intel;
+            case FIELD_CMD:
+                return cmd;
+            case FIELD_DEX:
+                return dex;
+            case FIELD_LCK:
+                return lck;
+            case FIELD_PREFECT_ID:
+                return prefectId;
+            case FIELD_WARLORD_ID:
+                return warlordId;
+            case FIELD_HP:
+                return hp;
+            case FIELD_MP:
+                return mp;
+            case FIELD_EP:
+                return ep;
+            case FIELD_GOLD:
+                return gold;
+            case FIELD_PERSONALITY_ID:
+                return personalityId;
+            default:
+                return -1;
+        }
     }
 }

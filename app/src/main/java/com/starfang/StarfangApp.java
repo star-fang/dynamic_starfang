@@ -41,6 +41,11 @@ public class StarfangApp extends Application {
         } catch (RealmMigrationNeededException e) {
             Log.e("FANG_APP", Log.getStackTraceString(e));
         }
+
+        //Stetho.initializeWithDefaults(this);
+
+        //new OkHttpClient.Builder().addNetworkInterceptor(new StethoInterceptor()).build();
+
     }
 
     @Override

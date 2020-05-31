@@ -1,18 +1,27 @@
 package com.starfang.realm.source;
 
-import com.starfang.realm.Source;
+import android.text.TextUtils;
 
+import com.starfang.realm.Source;
+import com.starfang.realm.primitive.RealmIntegerPair;
+
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
-public class Personality extends RealmObject implements Source {
+public class TargetArea extends RealmObject implements Source {
+
+    public static final String FIELD_POINTS = "points";
+    public static final String FIELD_VALUE = "value";
 
     @PrimaryKey
     private int id;
+
     @Index
     private String name;
-
+    private RealmList<RealmIntegerPair> points;
+    private String value;
 
     @Override
     public int getId() {
@@ -21,11 +30,13 @@ public class Personality extends RealmObject implements Source {
 
     @Override
     public String getString(String field) {
-        switch( field ) {
-            case FIELD_ID:
-                return String.valueOf(id);
+        switch (field) {
             case FIELD_NAME:
                 return name;
+            case FIELD_POINTS:
+                return points == null ? null : TextUtils.join(", ", points);
+            case FIELD_VALUE:
+                return value;
             default:
                 return null;
         }
@@ -33,7 +44,7 @@ public class Personality extends RealmObject implements Source {
 
     @Override
     public int getInt(String field) {
-        if( field.equals( FIELD_ID) ) {
+        if (FIELD_ID.equals(field)) {
             return id;
         }
         return -1;

@@ -1,17 +1,23 @@
 package com.starfang.realm.source;
 
-import com.starfang.realm.primitive.RealmPair;
+import android.text.TextUtils;
+
+import com.starfang.realm.Source;
+import com.starfang.realm.primitive.RealmSet;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
-public class Passives extends RealmObject {
+public class Passives extends RealmObject implements Source {
 
-    public static final String FIELD_NAME = "name";
-    public static final String FIELD_NAME2 = "name2";
-    public static final String FIELD_NAME_WITHOUT_BLANK = "nameWithoutBlank";
+    public static final String FIELD_ACCUMULATE = "accumulate";
+    public static final String FIELD_TRIGGER_TILE_ID = "triggerTileValue";
+    public static final String FIELD_TRIGGER_TYPE = "triggerType";
+    public static final String FIELD_PARENT_ID = "parentId";
+    public static final String FIELD_ICON = "icon";
+    public static final String FIELD_TILE_ADVS = "tileAdvs";
 
     /*
     Primitive fields
@@ -29,7 +35,7 @@ public class Passives extends RealmObject {
     private int triggerType;
     private int parentId;
     private String icon;
-    private RealmList<RealmPair> tileAdvs;
+    private RealmList<RealmSet> tileAdvs;
 
     /*
     Runtime fields
@@ -41,43 +47,8 @@ public class Passives extends RealmObject {
     /*
     methods
      */
-    public String getName() {
-        return name;
-    }
 
-    public String getDesc() {
-        return desc;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public String getName2() {
-        return name2;
-    }
-
-    public int getAccumulate() {
-        return accumulate;
-    }
-
-    public int getTriggerTileValue() {
-        return triggerTileValue;
-    }
-
-    public int getTriggerType() {
-        return triggerType;
-    }
-
-    public int getParentId() {
-        return parentId;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public RealmList<RealmPair> getTileAdvs() {
+    public RealmList<RealmSet> getTileAdvs() {
         return tileAdvs;
     }
 
@@ -97,7 +68,58 @@ public class Passives extends RealmObject {
         this.triggerTile = triggerTile;
     }
 
+    @Override
     public int getId() {
         return id;
+    }
+
+    @Override
+    public String getString(String field) {
+        switch (field) {
+            case FIELD_ID:
+                return String.valueOf(id);
+            case FIELD_NAME:
+                return name;
+            case FIELD_NAME2:
+                return name2;
+            case FIELD_DESCRIPTION:
+                return desc;
+            case FIELD_REMARK:
+                return remark;
+            case FIELD_NAME_WITHOUT_BLANK:
+                return nameWithoutBlank;
+            case FIELD_ACCUMULATE:
+                return String.valueOf(accumulate != 0);
+            case FIELD_TRIGGER_TILE_ID:
+                return String.valueOf(triggerTileValue);
+            case FIELD_TRIGGER_TYPE:
+                return String.valueOf(triggerType);
+            case FIELD_PARENT_ID:
+                return String.valueOf(parentId);
+            case FIELD_ICON:
+                return icon;
+            case FIELD_TILE_ADVS:
+                return tileAdvs == null ? null : TextUtils.join(", ", tileAdvs);
+            default:
+                return null;
+        }
+    }
+
+    @Override
+    public int getInt(String field) {
+        switch (field) {
+            case FIELD_ID:
+                return id;
+            case FIELD_ACCUMULATE:
+                return accumulate;
+            case FIELD_TRIGGER_TILE_ID:
+                return triggerTileValue;
+            case FIELD_TRIGGER_TYPE:
+                return triggerType;
+            case FIELD_PARENT_ID:
+                return parentId;
+            default:
+                return -1;
+        }
     }
 }

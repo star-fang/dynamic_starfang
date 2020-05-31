@@ -2,6 +2,7 @@ package com.starfang.nlp;
 
 import android.text.TextUtils;
 
+import com.starfang.realm.Source;
 import com.starfang.realm.source.Banners;
 import com.starfang.realm.source.Friendships;
 import com.starfang.realm.source.PassiveList;
@@ -330,33 +331,33 @@ public class SearchUnits {
             if (unit != null) {
                 StringBuilder builder = new StringBuilder();
 
-                builder.append(unit.getBanner().getName()).append(" ")
-                        .append(unit.getName()).append("\r\n")
+                builder.append(unit.getBanner().getString(Source.FIELD_NAME)).append(" ")
+                        .append(unit.getString(Source.FIELD_NAME)).append("\r\n")
                         .append(COST_ENG).append(": ")
                         .append(TextUtils.join("→", unit.getCosts())).append("\r\n")
-                        .append("계보: ").append(unit.getBanner().getName()).append("\r\n");
+                        .append("계보: ").append(unit.getBanner().getString(Source.FIELD_NAME)).append("\r\n");
                 RealmList<Friendships> friendships = unit.getFriendshipList();
                 if (friendships != null) {
                     if (friendships.size() > 1) {
                         for (int i = 0; i < friendships.size(); i++) {
                             Friendships friendship = friendships.get(i);
                             if (friendship != null)
-                                builder.append("인연").append(i + 1).append(friendship.getName()).append("\r\n");
+                                builder.append("인연").append(i + 1).append(friendship.getString(Source.FIELD_NAME)).append("\r\n");
                         }
                     } else {
                         Friendships friendship = friendships.first();
                         if (friendship != null)
-                            builder.append("인연: ").append(friendship.getName()).append("\r\n");
+                            builder.append("인연: ").append(friendship.getString(Source.FIELD_NAME)).append("\r\n");
                     }
                 }
                 builder.append(TextUtils.join(" "
                         , new String[]{
-                                STR_SIMPLE + unit.getStr(),
-                                INTEL_SIMPLE + unit.getIntel(),
-                                CMD_SIMPLE + unit.getCmd(),
-                                DEX_SIMPLE + unit.getDex(),
-                                LCK_SIMPLE + unit.getLck()
-                        })).append(" (+").append(5 * (unit.getCost() + 16)).append(")\r\n");
+                                STR_SIMPLE + unit.getString(Units.FIELD_STR),
+                                INTEL_SIMPLE + unit.getString(Units.FIELD_INTEL),
+                                CMD_SIMPLE + unit.getString(Units.FIELD_CMD),
+                                DEX_SIMPLE + unit.getString(Units.FIELD_DEX),
+                                LCK_SIMPLE + unit.getString(Units.FIELD_LCK)
+                        })).append(" (+").append(5 * (unit.getInt(Units.FIELD_COST) + 16)).append(")\r\n");
 
                 RealmList<PassiveList> passiveLists = unit.getPassiveLists();
                 if (passiveLists != null) {
@@ -364,8 +365,8 @@ public class SearchUnits {
                         PassiveList passiveList = passiveLists.get(i);
                         if (passiveList != null) {
                             Passives passive = passiveList.getPassive();
-                            String passiveName = passive.getName();
-                            int val = passiveList.getVal();
+                            String passiveName = passive.getString(Source.FIELD_NAME);
+                            int val = passiveList.getInt(PassiveList.FIELD_VAL);
                             String value;
                             if (val > 0) {
                                 if (StringUtils.right(passiveName, 1).equals("%")) {
@@ -376,7 +377,7 @@ public class SearchUnits {
                                 }
                             }
 
-                            builder.append("Lv").append(passiveList.getUnitLevel())
+                            builder.append("Lv").append(passiveList.getInt(PassiveList.FIELD_UNIT_LEVEL))
                                     .append(": ").append(passiveName)
                                     .append(" ").append(val).append("\r\n");
                         }
@@ -384,13 +385,13 @@ public class SearchUnits {
                 }
                 PrefectSkills prefectSkill = unit.getPrefectSkill();
                 if (prefectSkill != null)
-                    builder.append("태수: ").append(prefectSkill.getName()).append("\r\n");
+                    builder.append("태수: ").append(prefectSkill.getString(Source.FIELD_NAME)).append("\r\n");
                 WarlordSkills warlordSkill = unit.getWarlordSkill();
                 if( warlordSkill != null)
-                    builder.append("군주: ").append(warlordSkill.getName()).append("\r\n");
+                    builder.append("군주: ").append(warlordSkill.getString(Source.FIELD_NAME)).append("\r\n");
                 Personality personality = unit.getPersonality();
                 if( personality != null )
-                    builder.append("성격: ").append(personality.getName());
+                    builder.append("성격: ").append(personality.getString(Source.FIELD_NAME));
                 message.add(builder.toString());
             }
         } else {

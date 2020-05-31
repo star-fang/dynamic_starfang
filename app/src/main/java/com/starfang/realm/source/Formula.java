@@ -1,14 +1,12 @@
 package com.starfang.realm.source;
 
+import com.starfang.realm.Source;
+
 import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
-public class Formula extends RealmObject {
-
-    public static final String FIELD_NAME = "name";
-    public static final String FIELD_NAME2 = "name2";
-    public static final String FIELD_NAME_WITHOUT_BLANK = "nameWithoutBlank";
+public class Formula extends RealmObject implements Source {
 
     @PrimaryKey
     private int id;
@@ -29,23 +27,40 @@ public class Formula extends RealmObject {
     /*
     methods
      */
-    public String getName() {
-        return name;
-    }
-
-    public String getName2() {
-        return name2;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public String getNameWithoutBlank() {
-        return nameWithoutBlank;
-    }
 
     public void setNameWithoutBlank(String nameWithoutBlank) {
         this.nameWithoutBlank = nameWithoutBlank;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String getString(String field) {
+        switch( field ) {
+            case FIELD_ID:
+                return String.valueOf(id);
+            case FIELD_NAME:
+                return name;
+            case FIELD_NAME2:
+                return name2;
+            case FIELD_NAME_WITHOUT_BLANK:
+                return nameWithoutBlank;
+            case FIELD_DESCRIPTION:
+                return desc;
+            default:
+                return null;
+        }
+    }
+
+    @Override
+    public int getInt(String field) {
+        if( field.equals(FIELD_ID) ) {
+            return id;
+        } else {
+            return -1;
+        }
     }
 }

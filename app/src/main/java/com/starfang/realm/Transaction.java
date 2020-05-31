@@ -12,6 +12,7 @@ public abstract class Transaction<PARAMS, PROGRESS, RESULT> extends AsyncTask<PA
         String TABLE_NAME = "table";
         String TUPLES_COUNT = "count";
         String TUPLES_SIZE = "size";
+        String LAST_MODIFIED = "lastModified";
     }
 
     protected interface Params {

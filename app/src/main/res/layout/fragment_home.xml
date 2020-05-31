@@ -31,6 +31,15 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="데이터베이스"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_sync"
+        />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_profile"
         android:layout_width="wrap_content"

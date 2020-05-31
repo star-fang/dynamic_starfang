@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.starfang.R;
 import com.starfang.SignInActivity;
 import com.starfang.realm.transaction.SyncTask;
+import com.starfang.ui.dynamic.DynamicSpreadSheetFragment;
 
 public class HomeFragment extends Fragment {
 
@@ -72,6 +73,11 @@ public class HomeFragment extends Fragment {
         final AppCompatButton button_sync = root.findViewById(R.id.button_sync);
         button_sync.setOnClickListener(v -> {
             new SyncTask(mContext).execute();
+        });
+
+        final AppCompatButton button_show = root.findViewById(R.id.button_show);
+        button_show.setOnClickListener(v -> {
+            DynamicSpreadSheetFragment.newInstance().show(getParentFragmentManager(),"show");
         });
         return root;
     }

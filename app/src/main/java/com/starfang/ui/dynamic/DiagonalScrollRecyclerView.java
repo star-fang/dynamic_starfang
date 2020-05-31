@@ -1,4 +1,4 @@
-package com.starfang.ui.custom;
+package com.starfang.ui.dynamic;
 
 import android.content.Context;
 import android.graphics.Rect;
