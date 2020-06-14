@@ -2,10 +2,11 @@ package com.starfang.realm.source;
 
 import android.text.TextUtils;
 
-import com.starfang.realm.Source;
 import com.starfang.realm.primitive.RealmInteger;
 import com.starfang.realm.primitive.RealmPairSet;
 import com.starfang.realm.primitive.RealmSet;
+
+import java.util.List;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
@@ -62,6 +63,19 @@ public class UnitTypes extends RealmObject implements Source {
     private RealmList<PassiveList> unitPassiveLists;
     private RealmList<Passives> typePassiveList;
     private RealmList<UnitGrades> gradeList;
+
+
+    public RealmList<RealmInteger> getTypePassiveIds() {
+        return typePassiveIds;
+    }
+
+    public RealmList<RealmInteger> getGradeIds() {
+        return gradeIds;
+    }
+
+    public RealmList<RealmInteger> getUnitPassiveListIds() {
+        return unitPassiveListIds;
+    }
 
     @Override
     public int getId() {
@@ -152,6 +166,11 @@ public class UnitTypes extends RealmObject implements Source {
         this.unitPassiveLists = unitPassiveLists;
     }
 
+    public void setUnitPassiveLists(List<PassiveList> unitPassivesList) {
+        this.unitPassiveLists = new RealmList<>();
+        this.unitPassiveLists.addAll(unitPassivesList);
+    }
+
     public RealmList<Passives> getTypePassiveList() {
         return typePassiveList;
     }
@@ -160,11 +179,21 @@ public class UnitTypes extends RealmObject implements Source {
         this.typePassiveList = typePassiveList;
     }
 
+    public void setTypePassiveList(List<Passives> typePassivesList) {
+        this.typePassiveList = new RealmList<>();
+        this.typePassiveList.addAll(typePassivesList);
+    }
+
     public RealmList<UnitGrades> getGradeList() {
         return gradeList;
     }
 
     public void setGradeList(RealmList<UnitGrades> gradeList) {
         this.gradeList = gradeList;
+    }
+
+    public void setGradeList(List<UnitGrades> gradesList) {
+        this.gradeList = new RealmList<>();
+        this.gradeList.addAll(gradesList);
     }
 }

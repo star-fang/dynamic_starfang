@@ -2,7 +2,6 @@ package com.starfang.realm.source;
 
 import android.text.TextUtils;
 
-import com.starfang.realm.Source;
 import com.starfang.realm.primitive.RealmInteger;
 
 import io.realm.RealmList;

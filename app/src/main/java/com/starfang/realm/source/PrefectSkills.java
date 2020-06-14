@@ -2,7 +2,6 @@ package com.starfang.realm.source;
 
 import android.text.TextUtils;
 
-import com.starfang.realm.Source;
 import com.starfang.realm.primitive.RealmInteger;
 
 import io.realm.RealmList;
@@ -10,7 +9,7 @@ import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
-public class PrefectSkills extends RealmObject implements Source {
+public class PrefectSkills extends RealmObject implements Source, SearchNameWithoutBlank {
 
     public static final String FIELD_VALS = "vals";
 
@@ -67,5 +66,12 @@ public class PrefectSkills extends RealmObject implements Source {
             return id;
         }
         return -1;
+    }
+
+    @Override
+    public void setNameWithoutBlank() {
+        if( name != null ) {
+            this.nameWithoutBlank = name.replaceAll("\\s+", "");
+        }
     }
 }

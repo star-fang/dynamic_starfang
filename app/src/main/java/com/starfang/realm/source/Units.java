@@ -2,8 +2,11 @@ package com.starfang.realm.source;
 
 import android.text.TextUtils;
 
-import com.starfang.realm.Source;
 import com.starfang.realm.primitive.RealmInteger;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
@@ -12,7 +15,8 @@ import io.realm.annotations.PrimaryKey;
 
 public class Units extends RealmObject implements Source {
 
-    private static final int[] plusCost = {0, 3, 5, 8, 10};
+    private static final int[] PASSIVE_LEVELS = {30, 50, 70, 90};
+    private static final int[] PLUS_COSTS = {0, 3, 5, 8, 10};
     public static final String FIELD_TYPE_ID = "unitTypeId";
     public static final String FIELD_FACE = "face";
     public static final String FIELD_GENDER = "gender";
@@ -86,25 +90,48 @@ public class Units extends RealmObject implements Source {
     methods
      */
 
+    public int getUnitTypeId() {
+        return unitTypeId;
+    }
+
+    public int getBannerId() {
+        return bannerId;
+    }
+
+    public int getPersonalityId() {
+        return personalityId;
+    }
+
+    public int getPrefectId() {
+        return prefectId;
+    }
+
+    public int getWarlordId() {
+        return warlordId;
+    }
+
     public RealmList<RealmInteger> getPassiveListIds() {
         return passiveListIds;
     }
-
 
     /*
     grade: 1 ~ 5
      */
     public int getIntCostByGrade(int grade) throws IndexOutOfBoundsException {
         int gradeIndex = grade - 1;
-        if (gradeIndex < 0 || gradeIndex >= plusCost.length)
+        if (gradeIndex < 0 ) {
             throw new IndexOutOfBoundsException("grade index error");
-        return cost + plusCost[gradeIndex];
+        }
+        if( gradeIndex >= PLUS_COSTS.length) {
+            gradeIndex = PLUS_COSTS.length - 1;
+        }
+        return cost + PLUS_COSTS[gradeIndex];
     }
 
     public String[] getCosts() {
-        String[] costs = new String[plusCost.length];
-        for (int i = 0; i < plusCost.length; i++) {
-            costs[i] = String.valueOf(cost + plusCost[i]);
+        String[] costs = new String[PLUS_COSTS.length];
+        for (int i = 0; i < PLUS_COSTS.length; i++) {
+            costs[i] = String.valueOf(cost + PLUS_COSTS[i]);
         }
         return costs;
     }
@@ -112,6 +139,21 @@ public class Units extends RealmObject implements Source {
     /*
     runtime field's methods
      */
+
+    public int getPassiveLevel(int passiveListId) {
+        if (passiveListIds != null) {
+            for (int i = 0; i < passiveListIds.size(); i++) {
+                RealmInteger realmInteger = passiveListIds.get(i);
+                if (realmInteger != null
+                        && realmInteger.getValue() == passiveListId
+                        && i < PASSIVE_LEVELS.length) {
+                    return PASSIVE_LEVELS[i];
+                }
+            }
+        }
+        return 0;
+    }
+
     public int getStatSum() {
         return statSum;
     }
@@ -128,12 +170,26 @@ public class Units extends RealmObject implements Source {
         this.friendshipList = friendshipList;
     }
 
+    public void setFriendshipList(List<Friendships> friendshipArrayList) {
+        if (friendshipArrayList != null) {
+            this.friendshipList = new RealmList<>();
+            this.friendshipList.addAll(friendshipArrayList);
+        }
+    }
+
     public RealmList<PassiveList> getPassiveLists() {
         return passiveLists;
     }
 
     public void setPassiveLists(RealmList<PassiveList> passiveLists) {
         this.passiveLists = passiveLists;
+    }
+
+    public void setPassiveLists(List<PassiveList> passiveListArrayList) {
+        if (passiveListArrayList != null) {
+            this.passiveLists = new RealmList<>();
+            this.passiveLists.addAll(passiveListArrayList);
+        }
     }
 
     public WarlordSkills getWarlordSkill() {
@@ -232,7 +288,7 @@ public class Units extends RealmObject implements Source {
 
     @Override
     public int getInt(String field) {
-        switch( field ) {
+        switch (field) {
             case FIELD_ID:
                 return id;
             case FIELD_TYPE_ID:

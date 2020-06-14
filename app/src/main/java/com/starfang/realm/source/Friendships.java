@@ -2,15 +2,17 @@ package com.starfang.realm.source;
 
 import android.text.TextUtils;
 
-import com.starfang.realm.Source;
 import com.starfang.realm.primitive.RealmInteger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
-public class Friendships extends RealmObject implements Source {
+public class Friendships extends RealmObject implements Source, SearchNameWithoutBlank {
 
     public static final String FIELD_UNIT_IDS = "unitIds";
     public static final String FIELD_PASV_IDS = "passiveIds";
@@ -28,9 +30,9 @@ public class Friendships extends RealmObject implements Source {
     @Index
     private String name;
     private RealmList<RealmInteger> unitIds;
-    private RealmList<RealmInteger> passiveIds;
+    private RealmList<RealmInteger> passiveIds; // passiveList ids
     private RealmList<RealmInteger> passiveUnitCount;
-    private RealmList<RealmInteger> passiveType; // 0 : 0명이상 동반 출진, 1:? 2:?
+    private RealmList<RealmInteger> passiveType; // 0 : 0명이상 출진, 1:퇴각시 2: 인접시
     private int needString;
     private RealmList<RealmInteger> statType;
     private RealmList<RealmInteger> statVal;
@@ -41,7 +43,7 @@ public class Friendships extends RealmObject implements Source {
     @Index
     private String nameWithoutBlank;
     private RealmList<Units> unitList;
-    private RealmList<Passives> passiveList;
+    private RealmList<PassiveList> passiveLists;
 
     public RealmList<RealmInteger> getUnitIds() {
         return unitIds;
@@ -71,20 +73,27 @@ public class Friendships extends RealmObject implements Source {
         return unitList;
     }
 
-    public RealmList<Passives> getPassiveList() {
-        return passiveList;
-    }
-
-    public void setNameWithoutBlank(String nameWithoutBlank) {
-        this.nameWithoutBlank = nameWithoutBlank;
+    public RealmList<PassiveList> getPassiveLists() {
+        return passiveLists;
     }
 
     public void setUnitList(RealmList<Units> unitList) {
         this.unitList = unitList;
     }
 
-    public void setPassiveList(RealmList<Passives> passiveList) {
-        this.passiveList = passiveList;
+    public void setUnitList(List<Units> unitArrayList) {
+        if (unitArrayList != null) {
+            this.unitList = new RealmList<>();
+            this.unitList.addAll(unitArrayList);
+        }
+    }
+
+
+    public void setPassiveList(List<PassiveList> passiveArrayList) {
+        if (passiveArrayList != null) {
+            this.passiveLists = new RealmList<>();
+            this.passiveLists.addAll(passiveArrayList);
+        }
     }
 
     @Override
@@ -130,5 +139,37 @@ public class Friendships extends RealmObject implements Source {
             default:
                 return -1;
         }
+    }
+
+    @Override
+    public void setNameWithoutBlank() {
+        if (name != null) {
+            this.nameWithoutBlank = name.replaceAll("\\s+", "");
+        }
+    }
+
+    public List<PassiveList> checkActive(List<Integer> idList) {
+        List<PassiveList> list = new ArrayList<>();
+        for (int i = 0; i < passiveLists.size(); i++) {
+            PassiveList passive = passiveLists.get(i);
+            RealmInteger unitCountRealmInt = passiveUnitCount.get(i);
+            RealmInteger passiveTypeRealmInt = passiveType.get(i);
+            if (unitCountRealmInt != null && passiveTypeRealmInt != null) {
+                if (passiveTypeRealmInt.getValue() == 0) {
+                    int matchCount = 0;
+                    for (RealmInteger idRealmInt : unitIds) {
+                        if (idRealmInt != null && idList.contains(idRealmInt.getValue())) {
+                            matchCount++;
+                        }
+                    }
+                    int unitCount = unitCountRealmInt.getValue();
+                    if ((unitCount == 0 && matchCount == unitIds.size())
+                            || (unitCount > 0 && unitCount <= matchCount)) {
+                        list.add(passive);
+                    }
+                }
+            }
+        }
+        return list;
     }
 }

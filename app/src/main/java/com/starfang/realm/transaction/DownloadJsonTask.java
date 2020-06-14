@@ -2,6 +2,7 @@ package com.starfang.realm.transaction;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -34,6 +35,8 @@ import com.starfang.realm.TableList;
 import com.starfang.realm.Transaction;
 import com.starfang.realm.primitive.RealmInteger;
 import com.starfang.realm.primitive.RealmString;
+import com.starfang.realm.source.SearchNameWithoutBlank;
+import com.starfang.realm.source.Source;
 import com.starfang.ui.progress.ProgressFragment;
 import com.starfang.ui.progress.ProgressViewModel;
 import com.starfang.utilities.ArithmeticUtils;
@@ -51,7 +54,11 @@ import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.security.GeneralSecurityException;
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -69,8 +76,30 @@ MySQL <1> PHP <2> App <3> User
  <3> : User can watch view by realm-adaptors
  */
 
-public class DownloadJsonTask extends Transaction<String, Bundle, String> {
+public class DownloadJsonTask extends Transaction<String, Bundle, Bundle> {
     private static final String TAG = "FANG_DOWNLOAD";
+
+    protected interface ProgressCode {
+        int START = 0;
+        int DONE = 1;
+        int PROGRESS = 2;
+        int ERROR = 3;
+    }
+
+    protected interface ProgressArgs {
+        String PROGRESS_CODE = "progressCode";
+        String TASK_COUNT = "count";
+        String TASK_INDEX = "index";
+        String TITLE = "title";
+        String BYTE_DONE = "byte_done";
+        String BYTE_TOTAL = "byte_total";
+    }
+
+    protected interface ResultArgs {
+        String RESULT_SUMMARY = "summary";
+        String RESULT_MODELS = "models";
+    }
+
 
     private WeakReference<Context> contextWeakReference;
 
@@ -110,13 +139,32 @@ public class DownloadJsonTask extends Transaction<String, Bundle, String> {
     }
 
     @Override
-    protected void onPostExecute(String summary) {
+    protected void onPostExecute(Bundle result) {
         //25 actionable tasks: 5 executed, 20 up-to-date
-        Log.d(TAG, summary);
-
         ProgressViewModel progressViewModel = viewModelWeakRef.get();
-        progressViewModel.setQuitVisibility(View.VISIBLE);
-        progressViewModel.setTitleText(summary);
+        if (result != null) {
+            Iterator<String> iterator = result.keySet().iterator();
+            Bundle[] bundles = new Bundle[result.size() - 1];
+            for (int i = 0; iterator.hasNext(); ) {
+                String key = iterator.next();
+                if (key.equals(ResultArgs.RESULT_SUMMARY)) {
+                    String summary = result.getString(key);
+                    progressViewModel.setTitleText(summary);
+                } else {
+                    ArrayList<Integer> ids = result.getIntegerArrayList(key);
+                    bundles[i] = new Bundle();
+                    bundles[i].putString(Linking.modelName, key);
+                    bundles[i].putIntegerArrayList(Linking.idList, ids);
+                    i++;
+                }
+            }
+
+            AsyncTask<Bundle, String, String> linking = new LinkingTask(progressViewModel);
+            linking.execute(bundles);
+
+        } else {
+            progressViewModel.setQuitVisibility(View.VISIBLE);
+        }
 
         long totalByteSize = 0L;
         for (Long bytes : byteSizeMap.values()) {
@@ -173,7 +221,7 @@ public class DownloadJsonTask extends Transaction<String, Bundle, String> {
     }
 
     @Override
-    protected String doInBackground(@NotNull String... tableNames) {
+    protected Bundle doInBackground(@NotNull String... tableNames) {
 
         final GsonBuilder gsonBuilder = new GsonBuilder()
                 .setExclusionStrategies(new ExclusionStrategy() {
@@ -214,12 +262,13 @@ public class DownloadJsonTask extends Transaction<String, Bundle, String> {
         }
 
         if (uid == null || id == null || stringKey == null) {
-            return "에러댜옹";
+            return null;
         }
 
         int count = tableNames.length;
         stringBuilder.append(count).append("actionable tasks: ");
         int executedCount = 0;
+        Bundle resultArgs = new Bundle();
         for (int i = 0; i < count; i++) {
             if (isCancelled()) {
                 break;
@@ -265,24 +314,31 @@ public class DownloadJsonTask extends Transaction<String, Bundle, String> {
                                     if (sharedPreferences.edit().putString(StarfangConstants.PREF_IV_KEY, newIv).commit()) {
 
                                         String modelName = tableName.substring(0, 1).toUpperCase() + tableName.substring(1);
-                                        Log.d(TAG,"model: " + modelName);
+                                        Log.d(TAG, "model: " + modelName);
                                         try {
                                             Class<? extends RealmObject> realmObjectClass = Class.forName(StarfangConstants.REALM_MODEL_SOURCE + modelName)
                                                     .asSubclass(RealmObject.class);
-
                                             JSONArray tuples = echo.getJSONArray(Echo.TUPLES);
-                                            long lastModified = echo.getLong(Echo.LAST_MODIFIED);
+                                            long lastModified = echo.getInt(Echo.LAST_MODIFIED) * 1000L;
+                                            Log.d(TAG, "timestamp in millis: " + lastModified);
 
                                             try (Realm realm = Realm.getDefaultInstance()) {
                                                 realm.beginTransaction();
 
-
-                                                for( int j = 0; j < tuples.length(); j++ ) {
+                                                // todo: make progress ui for each tuple
+                                                ArrayList<Integer> ids = new ArrayList<>();
+                                                for (int j = 0; j < tuples.length(); j++) {
                                                     JSONObject tuple = tuples.getJSONObject(j);
                                                     RealmObject updateObj = gson.fromJson(tuple.toString(), realmObjectClass);
                                                     realm.copyToRealmOrUpdate(updateObj);
-                                                    //if( j < 2) {
-                                                     //   Log.d(TAG,"update: " + updateObj);
+
+                                                    if (updateObj instanceof Source) {
+                                                        ids.add(((Source) updateObj).getId());
+                                                    }
+
+                                                    //if (updateObj instanceof SearchNameWithoutBlank) {
+                                                    //    Log.d(TAG, "nwb complete");
+                                                   //     ((SearchNameWithoutBlank) updateObj).setNameWithoutBlank();
                                                     //}
                                                 }
 
@@ -291,10 +347,11 @@ public class DownloadJsonTask extends Transaction<String, Bundle, String> {
                                                     tableInfo = realm.createObject(TableList.class, tableName);
                                                 }
                                                 tableInfo.setLastModified(lastModified);
-                                                Log.d( TAG, tuples.length() + "record(s) updated");
+                                                Log.d(TAG, tuples.length() + "record(s) updated");
+                                                Calendar calendar = Calendar.getInstance();
+                                                calendar.setTimeInMillis(lastModified);
+                                                Log.d(TAG, "record(s) updated" + calendar.getTime());
                                                 realm.commitTransaction();
-
-
 
 
                                                 Bundle doneArgs = new Bundle();
@@ -302,6 +359,7 @@ public class DownloadJsonTask extends Transaction<String, Bundle, String> {
                                                 publishProgress(doneArgs);
                                                 success = true;
                                                 executedCount++;
+                                                resultArgs.putIntegerArrayList(modelName, ids);
                                             } catch (RuntimeException e) {
                                                 Log.e(TAG, Log.getStackTraceString(e));
                                             }
@@ -342,7 +400,9 @@ public class DownloadJsonTask extends Transaction<String, Bundle, String> {
         stringBuilder.append(executedCount).append(" executed, ")
                 .append(count - executedCount).append(" error occurred");
 
-        return stringBuilder.toString();
+
+        resultArgs.putString(ResultArgs.RESULT_SUMMARY, stringBuilder.toString());
+        return resultArgs;
     }
 
 

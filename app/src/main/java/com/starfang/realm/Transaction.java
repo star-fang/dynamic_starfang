@@ -30,28 +30,14 @@ public abstract class Transaction<PARAMS, PROGRESS, RESULT> extends AsyncTask<PA
         String FAIL = "fail";
     }
 
-    protected interface ResultCode {
-        int SUCCESS = 0;
-        int RE_SIGN_IN = 1;
-        int NULL_KEY = 3;
-        int ERROR = 4;
+    protected interface Linking {
+        String modelName = "model";
+        String idList = "idList";
     }
 
-    protected interface ProgressCode {
-        int START = 0;
-        int DONE = 1;
-        int PROGRESS = 2;
-        int ERROR = 3;
-    }
 
-    protected interface ProgressArgs {
-        String PROGRESS_CODE = "progressCode";
-        String TASK_COUNT = "count";
-        String TASK_INDEX = "index";
-        String TITLE = "title";
-        String BYTE_DONE = "byte_done";
-        String BYTE_TOTAL = "byte_total";
-    }
+
+
 
 
 }

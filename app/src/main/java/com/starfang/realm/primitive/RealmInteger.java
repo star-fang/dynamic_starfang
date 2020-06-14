@@ -23,6 +23,6 @@ public class RealmInteger extends RealmObject {
     @NonNull
     @Override
     public String toString() {
-        return value + "";
+        return String.valueOf(value);
     }
 }

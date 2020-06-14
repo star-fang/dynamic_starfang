@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container_spread_sheet"
@@ -9,79 +8,96 @@
 
     <com.starfang.ui.dynamic.DiagonalScrollRecyclerView
         android:id="@+id/diagonal_fixed"
-
         android:layout_width="40dp"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/layout_bottom"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/nav_table_list"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-        <LinearLayout
-            android:id="@+id/column_fixed"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginTop="1dp"
-            android:orientation="horizontal">
-        </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_fixed"
-            android:background="#30000000"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:fadeScrollbars="false"
-            android:scrollbars="vertical"
-            tools:listitem="@layout/dynamic_row"/>
+            <LinearLayout
+                android:id="@+id/column_fixed"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="1dp"
+                android:orientation="horizontal"></LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_fixed"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fadeScrollbars="false"
+                android:scrollbars="vertical"
+                tools:listitem="@layout/dynamic_row" />
         </LinearLayout>
     </com.starfang.ui.dynamic.DiagonalScrollRecyclerView>
 
     <com.starfang.ui.dynamic.DiagonalScrollRecyclerView
         android:id="@+id/diagonal_float"
-        android:background="#77000000"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/layout_bottom"
         app:layout_constraintStart_toEndOf="@id/diagonal_fixed"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/nav_table_list"
-        android:orientation="vertical">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-        <LinearLayout
-            android:id="@+id/column_float"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginTop="1dp"
-            android:orientation="horizontal">
-        </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_float"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:fadeScrollbars="false"
-            android:scrollbars="vertical"
-            tools:listitem="@layout/dynamic_row"/>
+            <LinearLayout
+                android:id="@+id/column_float"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="1dp"
+                android:orientation="horizontal"></LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_float"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fadeScrollbars="false"
+                android:scrollbars="vertical"
+                tools:listitem="@layout/dynamic_row" />
         </LinearLayout>
 
 
     </com.starfang.ui.dynamic.DiagonalScrollRecyclerView>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_table_list"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:menu="@menu/bottom_nav_menu" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center_vertical"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="table list : " />
+
+        <HorizontalScrollView
+            android:id="@+id/scroll_table_list"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <RadioGroup
+                android:id="@+id/radio_group_table_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="?android:attr/windowBackground"
+                android:orientation="horizontal"
+                android:padding="5dp" />
+        </HorizontalScrollView>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

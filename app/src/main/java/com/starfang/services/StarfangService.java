@@ -19,6 +19,7 @@ import androidx.annotation.RequiresApi;
 
 import com.starfang.R;
 import com.starfang.StarfangConstants;
+import com.starfang.nlp.NlpSplitter;
 import com.starfang.realm.notifications.Conversations;
 import com.starfang.realm.notifications.Forums;
 import com.starfang.realm.notifications.Notifications;
@@ -260,12 +261,12 @@ public class StarfangService extends NotificationListenerService {
 
             if (replyAction != null) {
 
-                String botName = sharedPref.getString(
-                        StarfangConstants.BOT_NAME_KEY,
-                        getResources().getString(R.string.bot_name_default)
-                );
+                //String botName = sharedPref.getString(
+                //        StarfangConstants.BOT_NAME_KEY,
+                //        getResources().getString(R.string.bot_name_default)
+                //);
 
-
+                new NlpSplitter(this, replyAction).execute(replyAction.getContentText());
                 //new FangcatHandler(this, from, room, sbn, isLocalRequest, botName, record).execute(text);
                 //Log.d(TAG, sbn.getPackageName() + ">> from: " + from + ", text: " + text + ", room: " + room);
 

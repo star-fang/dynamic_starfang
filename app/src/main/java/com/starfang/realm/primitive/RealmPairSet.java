@@ -1,5 +1,7 @@
 package com.starfang.realm.primitive;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.text.MessageFormat;
 
 import io.realm.RealmObject;
@@ -22,8 +24,9 @@ public class RealmPairSet extends RealmObject {
         return values;
     }
 
+    @NotNull
     @Override
     public String toString() {
-        return MessageFormat.format("[{0}: {1}]", key, values.toString());
+        return MessageFormat.format("[{0}: {1}]", key, values);
     }
 }

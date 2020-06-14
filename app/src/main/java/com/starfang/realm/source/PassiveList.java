@@ -1,7 +1,5 @@
 package com.starfang.realm.source;
 
-import com.starfang.realm.Source;
-
 import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
@@ -46,6 +44,10 @@ public class PassiveList extends RealmObject implements Source {
         return passive;
     }
 
+    public int getPassiveId() {
+        return passiveId;
+    }
+
     @Override
     public int getId() {
         return id;
@@ -74,6 +76,8 @@ public class PassiveList extends RealmObject implements Source {
                 return passiveId;
             case FIELD_VAL:
                 return val;
+            case FIELD_UNIT_LEVEL:
+                return unitLevel;
             default:
                 return -1;
         }

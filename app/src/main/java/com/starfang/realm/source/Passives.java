@@ -2,7 +2,6 @@ package com.starfang.realm.source;
 
 import android.text.TextUtils;
 
-import com.starfang.realm.Source;
 import com.starfang.realm.primitive.RealmSet;
 
 import io.realm.RealmList;
@@ -10,7 +9,7 @@ import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
-public class Passives extends RealmObject implements Source {
+public class Passives extends RealmObject implements Source, SearchNameWithoutBlank {
 
     public static final String FIELD_ACCUMULATE = "accumulate";
     public static final String FIELD_TRIGGER_TILE_ID = "triggerTileValue";
@@ -62,6 +61,10 @@ public class Passives extends RealmObject implements Source {
 
     public void setNameWithoutBlank(String nameWithoutBlank) {
         this.nameWithoutBlank = nameWithoutBlank;
+    }
+
+    public int getTriggerTileValue() {
+        return triggerTileValue;
     }
 
     public void setTriggerTile(Tiles triggerTile) {
@@ -120,6 +123,13 @@ public class Passives extends RealmObject implements Source {
                 return parentId;
             default:
                 return -1;
+        }
+    }
+
+    @Override
+    public void setNameWithoutBlank() {
+        if( name != null ) {
+            this.nameWithoutBlank = name.replaceAll("\\s+", "");
         }
     }
 }

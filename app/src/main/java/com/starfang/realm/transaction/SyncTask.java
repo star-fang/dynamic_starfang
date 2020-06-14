@@ -45,7 +45,12 @@ public class SyncTask extends Transaction<Void, Void, Pair<Integer, JSONArray>> 
 
     private static final String TAG = "FANG_SYNC";
 
-
+    protected interface ResultCode {
+        int SUCCESS = 0;
+        int RE_SIGN_IN = 1;
+        int NULL_KEY = 3;
+        int ERROR = 4;
+    }
 
     //private String url_check_table;
     private WeakReference<Context> contextWeakReference;
@@ -89,6 +94,9 @@ public class SyncTask extends Transaction<Void, Void, Pair<Integer, JSONArray>> 
                                     .setPositiveButton(R.string.start, (dialog, which) -> {
                                         new DownloadJsonTask(contextWeakReference.get()).execute(tables);
                                     });
+                        } else {
+                            builder.setTitle("알림")
+                                    .setMessage("모든 데이터가 최신 버전 입니다..");
                         }
 
                         break;
@@ -174,7 +182,12 @@ public class SyncTask extends Transaction<Void, Void, Pair<Integer, JSONArray>> 
                             if (newIv != null
                                     && CipherUtils.checkIv(cipherInstance, Base64.decode(newIv, Base64.DEFAULT))
                                     && sharedPreferences.edit().putString(StarfangConstants.PREF_IV_KEY, newIv).commit()) {
-                                JSONArray tableList = echo.getJSONArray(Echo.TABLES);
+                                JSONArray tableList;
+                                try {
+                                    tableList = echo.getJSONArray(Echo.TABLES);
+                                } catch (JSONException e) {
+                                    tableList = null;
+                                }
                                 pair = new Pair<>(ResultCode.SUCCESS, tableList);
                             } else {
                                 pair = new Pair<>(ResultCode.RE_SIGN_IN, null);
@@ -192,6 +205,7 @@ public class SyncTask extends Transaction<Void, Void, Pair<Integer, JSONArray>> 
 
                 }
             } catch (GeneralSecurityException | IOException | JSONException | InterruptedException | ExecutionException | TimeoutException e) {
+                Log.e(TAG, Log.getStackTraceString(e));
                 pair = new Pair<>(ResultCode.ERROR, null);
             }
 
@@ -206,8 +220,17 @@ public class SyncTask extends Transaction<Void, Void, Pair<Integer, JSONArray>> 
             InterruptedException, ExecutionException, TimeoutException {
 
         Realm realm = Realm.getDefaultInstance();
-        RealmResults<TableList> tableList = realm.where(TableList.class).findAll();
-        JSONArray tableListJson = new JSONArray(tableList);
+        RealmResults<TableList> tableLists = realm.where(TableList.class).findAll();
+        JSONArray tableListJson = new JSONArray();
+        for (TableList tableList : tableLists) {
+            try {
+                tableListJson.put(tableList.toJson());
+            } catch (JSONException e) {
+                Log.d(TAG, Log.getStackTraceString(e));
+            }
+        }
+
+        Log.d(TAG, "tableListJson: " + tableListJson.toString());
 
         RequestQueue requestQueue = Volley.newRequestQueue(contextWeakReference.get());
         RequestFuture<JSONObject> requestFuture = RequestFuture.newFuture();

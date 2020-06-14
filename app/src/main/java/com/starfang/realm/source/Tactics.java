@@ -1,11 +1,9 @@
 package com.starfang.realm.source;
 
-import com.starfang.realm.Source;
-
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Tactics extends RealmObject implements Source {
+public class Tactics extends RealmObject implements Source, SearchNameWithoutBlank {
 
     public static final String FIELD_MP = "mp";
     public static final String FIELD_EP = "ep";
@@ -116,6 +114,13 @@ public class Tactics extends RealmObject implements Source {
                 return obstructiveSkill;
             default:
                 return -1;
+        }
+    }
+
+    @Override
+    public void setNameWithoutBlank() {
+        if( name != null ) {
+            this.nameWithoutBlank = name.replaceAll("\\s+", "");
         }
     }
 }

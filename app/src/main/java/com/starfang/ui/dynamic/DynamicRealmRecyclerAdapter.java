@@ -1,7 +1,9 @@
 package com.starfang.ui.dynamic;
 
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.starfang.R;
-import com.starfang.realm.Source;
+import com.starfang.realm.source.Source;
 
 import org.json.JSONObject;
 
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -28,14 +31,15 @@ import io.realm.RealmObject;
 import io.realm.RealmRecyclerViewAdapter;
 
 public class DynamicRealmRecyclerAdapter<T extends RealmObject>
-        extends RealmRecyclerViewAdapter<T, DynamicRealmRecyclerAdapter.DynamicViewHolder> implements Filterable {
+        extends RealmRecyclerViewAdapter<T, DynamicRealmRecyclerAdapter<T>.DynamicViewHolder> implements Filterable {
 
     private static final String TAG = "FANG_DYNAMIC_ADAPTER";
     private Set<String> fieldNames;
     private Filter filter;
     private OrderedRealmCollection<T> entireCollection;
+    private WeakReference<DisplayMetrics> metricsWeakReference;
 
-    DynamicRealmRecyclerAdapter(OrderedRealmCollection<T> collection, Set<String> fieldNames, boolean autoUpdate, boolean updateOnModification) {
+    DynamicRealmRecyclerAdapter(OrderedRealmCollection<T> collection, Set<String> fieldNames, boolean autoUpdate, boolean updateOnModification, DisplayMetrics displayMetrics) {
         super(collection, autoUpdate, updateOnModification);
 
         Log.d(TAG, getItemCount() + "record(s) added");
@@ -43,6 +47,7 @@ public class DynamicRealmRecyclerAdapter<T extends RealmObject>
         this.entireCollection = collection;
         this.fieldNames = fieldNames;
         this.filter = new DynamicFilter();
+        this.metricsWeakReference = new WeakReference<>(displayMetrics);
     }
 
 
@@ -103,6 +108,11 @@ public class DynamicRealmRecyclerAdapter<T extends RealmObject>
             textViews = new HashMap<>();
             for (String field : fieldNames) {
                 AppCompatTextView textView = new AppCompatTextView(itemView.getContext());
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
+                float widthInPixel = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,40, metricsWeakReference.get());
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams((int) widthInPixel,LinearLayout.LayoutParams.WRAP_CONTENT);
+                layoutParams.setMargins(5,2,5,2);
+                textView.setLayoutParams(layoutParams);
 
                 if (itemView instanceof LinearLayout) {
                     ((LinearLayout) itemView).addView(textView);

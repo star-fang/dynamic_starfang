@@ -11,23 +11,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        tools:itemCount="7"
-        tools:listitem="@layout/fragment_forums_list_row"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/text_forums"
-        />
+        tools:itemCount="7"
+        tools:listitem="@layout/fragment_forums_list_row" />
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/button_add_forum"
+            android:id="@+id/button_chat_bot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/text_forums"
             app:fabSize="auto"
-            app:srcCompat="@drawable/ic_wb_sunny_black_12dp" />
+            app:srcCompat="@drawable/ic_chat_bubble_black_24dp" />
 
 
 

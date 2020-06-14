@@ -1,12 +1,10 @@
 package com.starfang.realm.source;
 
-import com.starfang.realm.Source;
-
 import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
-public class Conditions extends RealmObject implements Source {
+public class Conditions extends RealmObject implements Source, SearchNameWithoutBlank {
 
     @PrimaryKey
     private int id;
@@ -60,6 +58,13 @@ public class Conditions extends RealmObject implements Source {
             return id;
         } else {
             return -1;
+        }
+    }
+
+    @Override
+    public void setNameWithoutBlank() {
+        if( name != null ) {
+            this.nameWithoutBlank = name.replaceAll("\\s+", "");
         }
     }
 }
