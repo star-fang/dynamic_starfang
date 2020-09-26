@@ -90,6 +90,10 @@ public class Units extends RealmObject implements Source {
     methods
      */
 
+    public int getCost() {
+        return cost;
+    }
+
     public int getUnitTypeId() {
         return unitTypeId;
     }

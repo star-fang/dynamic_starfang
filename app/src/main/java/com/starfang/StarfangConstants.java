@@ -7,6 +7,7 @@ public class StarfangConstants {
     public static final String PACKAGE_STARFANG = "com.starfang";
     public static final String PACKAGE_LEGACY_STARFANG = "com.fang.starfang";
     public static final String REALM_MODEL_SOURCE = "com.starfang.realm.source.";
+    public static final String REALM_MODEL_SOURCE_ROK = "com.starfang.realm.source.rok.";
 
     public static final String REPLY_KEY_LOCAL = "key_local_reply";
 

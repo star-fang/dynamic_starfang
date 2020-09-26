@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">Dynamic Starfang</string>
+    <string name="unit_sim_tab_1">레벨 &amp; 교본</string>
+    <string name="unit_sim_tab_2">효과</string>
+    <string name="unit_sim_tab_3">아이템</string>
+    <string name="unit_sim_tab_4">보패</string>
+
+    <string name="app_name">RokStarfang</string>
     <string name="title_home">홈</string>
     <string name="title_conversation">대화</string>
     <string name="title_notifications">알림</string>
@@ -31,4 +36,14 @@
 
     <string name="start">시작</string>
     <string name="cancel">취소</string>
+
+    <string name="str">무력</string>
+    <string name="intel">지력</string>
+    <string name="cmd">통솔</string>
+    <string name="dex">민첩</string>
+    <string name="lck">행운</string>
+
+    <string name="level">레벨</string>
+    <string name="reinforcement">강화</string>
+    <string name="grade">단계</string>
 </resources>

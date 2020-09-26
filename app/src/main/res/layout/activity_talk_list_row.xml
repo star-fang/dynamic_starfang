@@ -7,7 +7,6 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="20dp"
     card_view:reverseLayout="true"
-
     tools:layoutDirection="rtl"
     tools:targetApi="jelly_bean_mr1"
     >

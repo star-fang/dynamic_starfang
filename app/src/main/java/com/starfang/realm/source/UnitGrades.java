@@ -75,4 +75,8 @@ public class UnitGrades extends RealmObject implements Source {
                 return -1;
         }
     }
+
+    public int getGrade() {
+        return grade;
+    }
 }

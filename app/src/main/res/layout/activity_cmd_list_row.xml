@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    card_view:reverseLayout="true"
+    tools:layoutDirection="rtl"
+    tools:targetApi="jelly_bean_mr1"
+    android:layout_margin="5dp"
+    >
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_talk_sendCat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:maxLines="1"
+        android:textAlignment="gravity"
+        android:textSize="18sp"
+        android:textColor="#FFF"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent"
+        tools:text="@tools:sample/lorem"
+        />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_talk"
+        android:layout_marginTop="3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        card_view:cardBackgroundColor="#99FFFFFF"
+        card_view:cardCornerRadius="5dp"
+        card_view:cardElevation="0dp"
+        card_view:contentPadding="7dp"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toBottomOf="@id/text_talk_sendCat"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_talk_content"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:singleLine="false"
+            android:textIsSelectable="true"
+            tools:text="@tools:sample/lorem"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_talk_timestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="#FFF"
+        android:layout_margin="3dp"
+        tools:text="@tools:sample/date/mmddyy"
+        android:maxLines="1"
+        card_view:layout_constraintStart_toEndOf="@id/card_talk"
+        card_view:layout_constraintBottom_toBottomOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

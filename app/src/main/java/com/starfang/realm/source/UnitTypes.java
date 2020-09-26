@@ -184,6 +184,13 @@ public class UnitTypes extends RealmObject implements Source {
         this.typePassiveList.addAll(typePassivesList);
     }
 
+    public UnitGrades getGrade( int grade ) {
+        if( gradeList != null ) {
+            return gradeList.where().equalTo(UnitGrades.FIELD_GRADE, grade).findFirst();
+        }
+        return null;
+    }
+
     public RealmList<UnitGrades> getGradeList() {
         return gradeList;
     }

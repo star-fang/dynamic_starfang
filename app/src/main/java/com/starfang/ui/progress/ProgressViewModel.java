@@ -108,7 +108,7 @@ public class ProgressViewModel extends ViewModel {
     }
 
     public void setTopStartText(String string) {
-        this.getTopStartText().setValue(string);
+        this.mTopStartText.setValue(string);
     }
 
     public void setTopEndText(String string) {

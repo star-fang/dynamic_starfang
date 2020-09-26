@@ -30,6 +30,7 @@ import com.starfang.R;
 import com.starfang.StarfangConstants;
 import com.starfang.realm.notifications.Notifications;
 import com.starfang.services.StarfangService;
+import com.starfang.utilities.ServiceUtils;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -161,7 +162,7 @@ public class NotificationsFragment extends Fragment {
         switch_bot.setChecked(false);
         switch_bot.setOnCheckedChangeListener((v, isChecked) -> {
             if (isChecked) {
-                if (!isServiceExist(mContext, StarfangService.class, false)) {
+                if (!ServiceUtils.isServiceExist(mContext, StarfangService.class, false)) {
                     //Snackbar.make(root, "알림 읽기 권한 설정 하세요", Snackbar.LENGTH_SHORT).show();
                     switch_bot.setChecked(false);
                 } else {
@@ -205,7 +206,7 @@ public class NotificationsFragment extends Fragment {
         Log.d(TAG, "sharedPref botStatus : " + botStatus);
 
         if (botStatus == StarfangConstants.BOT_STATUS_START) {
-            if (isServiceExist(mContext, StarfangService.class, false)) {
+            if (ServiceUtils.isServiceExist(mContext, StarfangService.class, false)) {
                 Log.d(TAG, "service already bound: start service");
                 switch_bot.setChecked(true);
             } else {
@@ -311,21 +312,5 @@ public class NotificationsFragment extends Fragment {
 
     }
 
-    private static boolean isServiceExist(Context context, Class<?> serviceClass, boolean checkForeground) {
-        ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        if (manager != null) {
-            for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-                if (serviceClass.getName().equals(service.service.getClassName())) {
-                    if (checkForeground) {
-                        if (service.foreground) {
-                            return true;
-                        }
-                    } else {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
+
 }

@@ -41,6 +41,7 @@ import com.starfang.ui.progress.ProgressFragment;
 import com.starfang.ui.progress.ProgressViewModel;
 import com.starfang.utilities.ArithmeticUtils;
 import com.starfang.utilities.CipherUtils;
+import com.starfang.utilities.RealmSyncUtils;
 
 import org.apache.commons.lang3.math.NumberUtils;
 import org.jetbrains.annotations.NotNull;
@@ -237,10 +238,10 @@ public class DownloadJsonTask extends Transaction<String, Bundle, Bundle> {
                 });
 
         gsonBuilder.registerTypeAdapter(new TypeToken<RealmList<RealmString>>() {
-        }.getType(), new RealmStringDeserializer());
+        }.getType(), new RealmSyncUtils.RealmStringDeserializer());
 
         gsonBuilder.registerTypeAdapter(new TypeToken<RealmList<RealmInteger>>() {
-        }.getType(), new RealmIntegerDeserializer());
+        }.getType(), new RealmSyncUtils.RealmIntegerDeserializer());
 
         final Gson gson = gsonBuilder.create();
 
@@ -465,51 +466,7 @@ public class DownloadJsonTask extends Transaction<String, Bundle, Bundle> {
     }
 
 
-    public static class RealmStringDeserializer implements
-            JsonDeserializer<RealmList<RealmString>> {
 
-        @Override
-        public RealmList<RealmString> deserialize(JsonElement json, Type typeOfT,
-                                                  JsonDeserializationContext context) throws JsonParseException {
-
-            RealmList<RealmString> realmStrings = new RealmList<>();
-            JsonArray stringList = json.getAsJsonArray();
-
-            for (JsonElement stringElement : stringList) {
-                realmStrings.add(new RealmString(getNullAsEmptyString(stringElement)));
-            }
-
-            return realmStrings;
-        }
-
-        private String getNullAsEmptyString(JsonElement jsonElement) {
-            return jsonElement.isJsonNull() ? "" : jsonElement.getAsString();
-        }
-    }
-
-
-    public static class RealmIntegerDeserializer implements
-            JsonDeserializer<RealmList<RealmInteger>> {
-
-        @Override
-        public RealmList<RealmInteger> deserialize(JsonElement json, Type typeOfT,
-                                                   JsonDeserializationContext context) throws JsonParseException {
-
-            RealmList<RealmInteger> realmIntegers = new RealmList<>();
-            JsonArray stringList = json.getAsJsonArray();
-
-            for (JsonElement integerElement : stringList) {
-                realmIntegers.add(new RealmInteger(getNullAsZeroInt(integerElement)));
-            }
-
-            return realmIntegers;
-        }
-
-        private int getNullAsZeroInt(JsonElement jsonElement) {
-            String valueStr = jsonElement.isJsonNull() ? "" : jsonElement.getAsString();
-            return NumberUtils.toInt(valueStr, 0);
-        }
-    }
 
 }
 

@@ -17,9 +17,8 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
-import com.starfang.R;
 import com.starfang.StarfangConstants;
-import com.starfang.nlp.NlpSplitter;
+import com.starfang.nlp.FangcatNlp;
 import com.starfang.realm.notifications.Conversations;
 import com.starfang.realm.notifications.Forums;
 import com.starfang.realm.notifications.Notifications;
@@ -266,9 +265,9 @@ public class StarfangService extends NotificationListenerService {
                 //        getResources().getString(R.string.bot_name_default)
                 //);
 
-                new NlpSplitter(this, replyAction).execute(replyAction.getContentText());
+                new FangcatNlp(this, replyAction).execute(replyAction.getContentText());
                 //new FangcatHandler(this, from, room, sbn, isLocalRequest, botName, record).execute(text);
-                //Log.d(TAG, sbn.getPackageName() + ">> from: " + from + ", text: " + text + ", room: " + room);
+
 
 
             } // if isAvailablePackage
@@ -276,7 +275,7 @@ public class StarfangService extends NotificationListenerService {
             Runnable runnable = () -> {
                 int botRecord = sharedPref.getInt(
                         StarfangConstants.BOT_RECORD_KEY,
-                        StarfangConstants.BOT_STATUS_STOP); // default : stop record
+                        StarfangConstants.BOT_STATUS_START); // default : start record
 
                 if (botRecord == StarfangConstants.BOT_STATUS_START) {
 
@@ -303,6 +302,7 @@ public class StarfangService extends NotificationListenerService {
                                 Forums forum;
                                 final boolean isGroupChat = forumName != null;
                                 final String refinedForumName = isGroupChat ? forumName : sendCat;
+                                Log.d(TAG, sbn.getPackageName() + ">> from: " + sendCat + ", forum: " + refinedForumName);
                                 switch (forums.size()) {
                                     case 0:
                                         forum = new Forums(sbnTag);

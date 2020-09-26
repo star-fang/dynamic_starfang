@@ -182,7 +182,7 @@ public class LinkingTask extends Transaction<Bundle, String, String> {
     }
 
 
-    private static Integer[] toIntArray(RealmList<RealmInteger> realmIntegers) {
+    public static Integer[] toIntArray(RealmList<RealmInteger> realmIntegers) {
         int size = realmIntegers.size();
         Integer[] array = new Integer[size];
         for( int i = 0; i < size; i++ ) {

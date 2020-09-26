@@ -10,12 +10,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.facebook.login.LoginManager;
@@ -23,8 +22,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.starfang.R;
 import com.starfang.SignInActivity;
+import com.starfang.realm.simulator.UnitSim;
+import com.starfang.realm.source.Units;
 import com.starfang.realm.transaction.SyncTask;
-import com.starfang.ui.dynamic.DynamicSpreadSheetFragment;
+import com.starfang.ui.dynamic.DynamicSourcesDialog;
+import com.starfang.ui.dynamic.unitsim.UnitSimManagementDialog;
+
+import org.apache.http.util.TextUtils;
+
+import io.realm.Realm;
 
 public class HomeFragment extends Fragment {
 
@@ -52,7 +58,7 @@ public class HomeFragment extends Fragment {
         final AppCompatImageView image_profile = root.findViewById(R.id.image_profile);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if(user != null) {
+        if (user != null) {
             text_name.setText(user.getDisplayName());
             text_mail.setText(user.getEmail());
             text_uid.setText(user.getUid());
@@ -64,7 +70,7 @@ public class HomeFragment extends Fragment {
             FirebaseAuth.getInstance().signOut();
             LoginManager.getInstance().logOut();
             Activity activity = getActivity();
-            if( activity != null ) {
+            if (activity != null) {
                 startActivity(new Intent(activity, SignInActivity.class));
                 activity.finish();
             }
@@ -77,8 +83,28 @@ public class HomeFragment extends Fragment {
 
         final AppCompatButton button_show = root.findViewById(R.id.button_show);
         button_show.setOnClickListener(v -> {
-            DynamicSpreadSheetFragment.newInstance().show(getParentFragmentManager(),"show");
+            DynamicSourcesDialog.newInstance().show(getParentFragmentManager(), "show");
         });
+
+        final AppCompatEditText text_search_unit = root.findViewById(R.id.text_search_unit);
+        final AppCompatButton button_search = root.findViewById(R.id.button_search);
+        button_search.setOnClickListener(v -> {
+            if (!TextUtils.isEmpty(text_search_unit.getText())) {
+                String name = text_search_unit.getText().toString();
+                try (Realm realm = Realm.getDefaultInstance()) {
+                    Units unit = realm.where(Units.class).equalTo(Units.FIELD_NAME, name).or().contains(Units.FIELD_NAME2, name).findFirst();
+                    if (unit != null) {
+                        UnitSim unitSim = new UnitSim(unit);
+                        realm.beginTransaction();
+                        realm.copyToRealm(unitSim);
+                        realm.commitTransaction();
+                        UnitSimManagementDialog dialog = UnitSimManagementDialog.newInstance(unitSim.getId());
+                        dialog.show(getParentFragmentManager(), "sim");
+                    }
+                }
+            }
+        });
+
         return root;
     }
 }

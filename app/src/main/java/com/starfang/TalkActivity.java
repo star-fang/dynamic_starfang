@@ -240,7 +240,7 @@ public class TalkActivity extends AppCompatActivity {
     }
 
 
-    private static class TalkAdapter extends RealmRecyclerViewAdapter<Conversations, RecyclerView.ViewHolder> {
+    static class TalkAdapter extends RealmRecyclerViewAdapter<Conversations, RecyclerView.ViewHolder> {
 
         private WeakReference<Context> contextWeakReference;
 
@@ -263,7 +263,7 @@ public class TalkActivity extends AppCompatActivity {
             viewHolder.bind(talk);
         }
 
-        private class TalkViewHolder extends RecyclerView.ViewHolder {
+        class TalkViewHolder extends RecyclerView.ViewHolder {
 
             private AppCompatImageView image_profile;
             private AppCompatTextView text_talk_sendCat;
