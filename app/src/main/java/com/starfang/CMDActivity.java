@@ -81,6 +81,12 @@ public class CMDActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void scrollToBottom() {
+        if( mRecyclerView != null && mAdapter != null ) {
+            mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
+        }
+    }
+
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -105,7 +111,7 @@ public class CMDActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.recycler_cmd);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
-
+        scrollToBottom();
         final AppCompatEditText text_conversation = findViewById(R.id.text_conversation);
         final AppCompatImageButton button_clear_talk = findViewById(R.id.button_clear_talk);
         final FloatingActionButton button_send_talk = findViewById(R.id.button_send_talk);
@@ -171,7 +177,10 @@ public class CMDActivity extends AppCompatActivity {
                     talk.setText(content);
                     bgRealm.copyToRealm(talk);
                     //forum.addConversation(conversation);
-                }, () -> mAdapter.notifyDataSetChanged());
+                }, () -> {
+                    mAdapter.notifyDataSetChanged();
+                    scrollToBottom();
+                });
 
                 CmdProcessor processor = new CmdProcessor(this );
                 processor.execute(content);

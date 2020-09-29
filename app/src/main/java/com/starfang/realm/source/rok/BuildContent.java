@@ -8,27 +8,25 @@ import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class TechContent extends RealmObject implements Source, SearchNameWithoutBlank {
+public class BuildContent extends RealmObject implements Source, SearchNameWithoutBlank {
 
     public static final String FIELD_CATEGORY = "category";
     public static final String FIELD_CATEGORY_KOR = "categoryKor";
     public static final String FIELD_NAME_ENG = "nameEng";
     public static final String FIELD_NAME = "name";
-    public static final String FIELD_TIER = "tier";
     public static final String FIELD_FACTS = "facts";
 
     @PrimaryKey
     private int id;
 
-    private String category; // economic or military
+    private String category; // economic or military or other
     private String nameEng;
     private String name;
-    private int tier;
     private RealmList<RealmString> facts;
 
     // runtime fields
     private String nameWithoutBlank;
-    private String categoryKor; // 경제, 군사
+    private String categoryKor; // 경제, 군사, 기타
 
     public RealmList<RealmString> getFacts() {
         return facts;
@@ -65,13 +63,9 @@ public class TechContent extends RealmObject implements Source, SearchNameWithou
 
     @Override
     public int getInt(String field) {
-        switch (field) {
-            case FIELD_ID:
-                return id;
-            case FIELD_TIER:
-                return tier;
-            default:
-                return 0;
+        if (FIELD_ID.equals(field)) {
+            return id;
         }
+        return 0;
     }
 }

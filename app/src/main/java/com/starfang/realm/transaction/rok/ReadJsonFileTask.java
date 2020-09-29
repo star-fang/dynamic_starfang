@@ -101,7 +101,8 @@ public class ReadJsonFileTask extends AsyncTask<String, Bundle, Bundle> {
                         for (int j = 0; j < tuples.length(); j++) {
                             JSONObject tuple = tuples.getJSONObject(j);
                             realm.beginTransaction();
-                            String tupleStr = tuple.toString().replace("\"[","[").replace("]\"","]");
+                            String tupleStr = tuple.toString();
+                                    //.replace("\"[","[").replace("]\"","]");
                             //Log.d(TAG,tupleStr);
                             try {
                                 RealmObject realmObject = gson.fromJson(tupleStr, realmObjectClass);
@@ -123,6 +124,8 @@ public class ReadJsonFileTask extends AsyncTask<String, Bundle, Bundle> {
             }
         } catch (IOException | JSONException | ClassNotFoundException e) {
             e.printStackTrace();
+        } catch( RuntimeException e ) {
+            Log.e(TAG, Log.getStackTraceString(e));
         }
         return null;
     }

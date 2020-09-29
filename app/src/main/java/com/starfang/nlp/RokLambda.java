@@ -3,11 +3,15 @@ package com.starfang.nlp;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.starfang.realm.primitive.RealmString;
 import com.starfang.realm.source.Source;
 import com.starfang.realm.source.rok.Civilizations;
 import com.starfang.realm.source.rok.Commanders;
 import com.starfang.realm.source.rok.Skills;
+import com.starfang.realm.source.rok.TechContent;
+import com.starfang.realm.source.rok.Technology;
 
+import org.apache.commons.lang3.math.NumberUtils;
 import org.mozilla.javascript.Scriptable;
 
 import java.util.ArrayList;
@@ -15,16 +19,18 @@ import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmList;
+import io.realm.RealmQuery;
 import io.realm.RealmResults;
+import io.realm.Sort;
 
 
 class RokLambda {
 
     private static final String TAG = "FANG_MOD_CAT";
 
-    private enum CMD_CERTAIN_ENUM {CMD_DESC, CMD_COMMANDER, CMD_SKILL, CMD_SPEC, CMD_CIVIL, CMD_ITEM, CMD_CALC, CMD_WIKI, CMD_DEFAULT}
+    private enum CMD_CERTAIN_ENUM {CMD_DESC, CMD_COMMANDER, CMD_SKILL, CMD_SPEC, CMD_CIVIL, CMD_ITEM, CMD_CALC, CMD_WIKI, CMD_TECH, CMD_RESEARCH, CMD_DEFAULT}
 
-    private static final String[] CMD_CERTAIN = {"설명", "사령관", "스킬", "특성", "문명", "아이템", "계산", "위키", "냥"};
+    private static final String[] CMD_CERTAIN = {"설명", "사령관", "스킬", "특성", "문명", "아이템", "계산", "위키", "기술", "연구", "냥"};
 
     private static final String ROK_WIKI = "http://rok.wiki/";
     private static final String ROK_WIKI_HERO_DIR = "bbs/board.php?bo_table=hero&wr_id=";
@@ -84,6 +90,165 @@ class RokLambda {
                 l.add("몰랑");
             }
         };
+
+        PlayWithCat techByName = ((l, q) -> {
+            if (q == null) {
+                return;
+            }
+
+            int level = NumberUtils.toInt(q.replaceAll("[^0-9]", ""), 0);
+            q = q.replaceAll("[0-9]", "");
+            q = q.trim();
+
+            RealmResults<TechContent> contents = realm.where(TechContent.class).equalTo(
+                    Source.FIELD_NAME, q).or().contains(TechContent.FIELD_NAME_WITHOUT_BLANK, q).findAll();
+
+
+            for (TechContent content : contents) {
+                StringBuilder contentBuilder = new StringBuilder();
+                contentBuilder.append("[").append(content.getString(TechContent.FIELD_CATEGORY_KOR))
+                        .append(" 기술] ").append(content.getString(Source.FIELD_NAME));
+
+                RealmQuery<Technology> techQuery = realm.where(Technology.class).equalTo(Technology.FIELD_CONTENT_ID, content.getId());
+                if (level > 0) {
+                    techQuery.and().equalTo(Technology.FIELD_LEVEL_VAL, level);
+                }
+                RealmResults<Technology> technologies = techQuery.findAll().sort(Technology.FIELD_LEVEL_VAL, Sort.ASCENDING);
+
+                if (technologies.size() == 1) {
+                    Technology tech = technologies.first();
+                    if (tech != null) {
+
+                        if (level > 0) {
+                            contentBuilder.append(" level").append(level);
+                        }
+
+                        RealmList<RealmString> facts = content.getFacts();
+                        RealmList<RealmString> figures = tech.getFigures();
+                        for( int i = 0; i < facts.size(); i++ ) {
+                            RealmString fact = facts.get(i);
+                            if( fact != null ) {
+                                contentBuilder.append("\r\n - ").append(fact);
+                                RealmString figure = figures.get(i);
+                                if( figure != null ) {
+                                    contentBuilder.append(" ").append(figure);
+                                }
+                            }
+                        }
+
+                        int seconds = tech.getInt(Technology.FIELD_SECONDS);
+                        contentBuilder.append("\r\n - 연구 시간: ").append(Technology.secondsToString(seconds))
+                                .append(" (").append(seconds).append("초)");
+
+                        RealmList<Technology> reqTechs = tech.getPreTechList();
+                        int reqTechsSize = reqTechs.size();
+                        if (reqTechsSize > 0) {
+                            for (int i = 0; i < reqTechsSize; i++) {
+                                Technology reqTech = reqTechs.get(i);
+                                if (reqTech != null) {
+                                    contentBuilder.append("\r\n").append(" - 요구 기술");
+                                    if (reqTechsSize > 1) {
+                                        contentBuilder.append((i + 1));
+                                    }
+                                    contentBuilder.append(": ")
+                                            .append(reqTech.getContent().getString(Source.FIELD_NAME))
+                                            .append(" level").append(reqTech.getInt(Technology.FIELD_LEVEL_VAL));
+                                }
+                            }
+                        }
+                        RealmList<RealmString> reqBuilds = tech.getRequirements();
+                        int reqBuildSize = reqBuilds.size();
+                        if (reqBuildSize > 0) {
+                            for (int i = 0; i < reqBuildSize; i++) {
+                                RealmString reqBuild = reqBuilds.get(i);
+                                if (reqBuild != null) {
+                                    contentBuilder.append("\r\n").append(" - 요구 건물");
+                                    if (reqBuildSize > 1) {
+                                        contentBuilder.append((i + 1));
+                                    }
+                                    contentBuilder.append(": ").append(reqBuild.toString());
+                                }
+                            }
+                        }
+
+                        int foodCost = tech.getInt(Technology.FIELD_COST_FOOD);
+                        if (foodCost > 0)
+                            contentBuilder.append("\r\n").append(" - 식량: ").append(Technology.quantityToString(foodCost));
+                        int woodCost = tech.getInt(Technology.FIELD_COST_FOOD);
+                        if (woodCost > 0)
+                            contentBuilder.append("\r\n").append(" - 목재: ").append(Technology.quantityToString(woodCost));
+                        int stoneCost = tech.getInt(Technology.FIELD_COST_STONE);
+                        if (stoneCost > 0)
+                            contentBuilder.append("\r\n").append(" - 석재: ").append(Technology.quantityToString(stoneCost));
+                        int goldCost = tech.getInt(Technology.FIELD_COST_GOLD);
+                        if (goldCost > 0)
+                            contentBuilder.append("\r\n").append(" - 금화: ").append(Technology.quantityToString(goldCost));
+
+                    }
+                } else {
+                    contentBuilder.append("\r\n - ").append(content.getString(TechContent.FIELD_DESCRIPTION));
+                    for (Technology technology : technologies) {
+                        int seconds = technology.getInt(Technology.FIELD_SECONDS);
+                        contentBuilder.append("\r\n").append(" - level").append(technology.getInt(Technology.FIELD_LEVEL_VAL)).append(": ");
+                        RealmList<RealmString> figures = technology.getFigures();
+                        if (figures != null) {
+                            contentBuilder.append(TextUtils.join(", ", figures)).append(", ");
+                        }
+                        contentBuilder.append(Technology.secondsToString(seconds));
+                                //.append(" (").append(seconds).append("초)\r\n");
+                    }
+                }
+                l.add(contentBuilder.toString());
+            }
+        });
+
+        SearchWithCMD searchTech = ((l, q, w) -> {
+            if (q == null) {
+                l.add("기술 연구\r\n-----------------\r\nex1) 경제 기술냥\r\nex2) 군사 기술냥");
+            } else {
+                q = q.trim();
+                StringBuilder lambdaResult = new StringBuilder();
+                if (q.equals("경제") || q.equals("군사")) {
+                    lambdaResult.append(q).append(" 기술 ");
+                    RealmResults<TechContent> contents = realm.where(TechContent.class).equalTo(TechContent.FIELD_CATEGORY_KOR, q).findAll().sort(TechContent.FIELD_ID, Sort.DESCENDING).sort(TechContent.FIELD_TIER, Sort.DESCENDING);
+                    StringBuilder techBuilder = new StringBuilder();
+                    int techNum = 0;
+                    int techTimeInSec = 0;
+                    int totalFood = 0, totalWood = 0, totalStone = 0, totalGold = 0;
+                    int curTier = -1;
+                    for (TechContent content : contents) {
+                        int tier = content.getInt(TechContent.FIELD_TIER);
+                        if (tier != curTier) {
+                            techBuilder.append("\r\n").append("티어 ").append(tier);
+                            curTier = tier;
+                        }
+                        techBuilder.append("\r\n").append(" - ").append(content.getString(Source.FIELD_NAME));
+                        RealmResults<Technology> technologies = realm.where(Technology.class).equalTo(Technology.FIELD_CONTENT_ID, content.getId()).findAll().sort(Technology.FIELD_LEVEL_VAL, Sort.DESCENDING);
+                        techNum += technologies.size();
+                        for (Technology tech : technologies) {
+                            totalFood += tech.getInt(Technology.FIELD_COST_FOOD);
+                            totalWood += tech.getInt(Technology.FIELD_COST_WOOD);
+                            totalStone += tech.getInt(Technology.FIELD_COST_STONE);
+                            totalGold += tech.getInt(Technology.FIELD_COST_GOLD);
+                            techTimeInSec += tech.getInt(Technology.FIELD_SECONDS);
+                        }
+
+                        if (technologies.size() > 1) {
+                            techBuilder.append(" level 1 ~ ").append(technologies.size());
+                        }
+
+                    }
+                    lambdaResult.append(contents.size()).append("개 (연구 ").append(techNum).append("개)\r\n");
+                    lambdaResult.append("총 연구 시간: ").append(Technology.secondsToString(techTimeInSec)).append("\r\n");
+                    lambdaResult.append("식량: ").append(Technology.quantityToString(totalFood)).append("\r\n");
+                    lambdaResult.append("목재: ").append(Technology.quantityToString(totalWood)).append("\r\n");
+                    lambdaResult.append("석재: ").append(Technology.quantityToString(totalStone)).append("\r\n");
+                    lambdaResult.append("금화: ").append(Technology.quantityToString(totalGold)).append("\r\n").append("-----------------");
+                    lambdaResult.append(techBuilder.toString());
+                    l.add(lambdaResult.toString());
+                }
+            }
+        });
 
         SearchWithCMD searchSkill = ((l, q, w) -> {
             if (q == null) {
@@ -166,7 +331,7 @@ class RokLambda {
                     return;
                 }
 
-                for( Commanders commander : commanders ) {
+                for (Commanders commander : commanders) {
                     String url = ROK_WIKI + ROK_WIKI_HERO_DIR + commander.getId();
                     l.add(commander.getString(Source.FIELD_NAME) + ": " + url);
                 }
@@ -357,6 +522,10 @@ class RokLambda {
             case CMD_COMMANDER:
                 searchCommanders.search(result, req, true);
                 break;
+            case CMD_RESEARCH:
+            case CMD_TECH:
+                searchTech.search(result, req, true);
+                break;
             case CMD_CALC:
                 calc.play(result, req);
                 break;
@@ -364,7 +533,7 @@ class RokLambda {
                 commanderByName.play(result, req);
                 civilByName.play(result, req);
                 skillByName.play(result, req);
-
+                techByName.play(result, req);
         }
 
         return result;
