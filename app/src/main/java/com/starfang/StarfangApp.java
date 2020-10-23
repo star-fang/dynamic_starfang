@@ -2,13 +2,11 @@ package com.starfang;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.multidex.MultiDex;
 
 import com.starfang.realm.DynamicMigrations;
-import com.starfang.realm.notifications.Forums;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;

@@ -27,8 +27,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.starfang.realm.notifications.Conversations;
-import com.starfang.realm.notifications.Forums;
+import com.starfang.realm.notifications.Conversation;
+import com.starfang.realm.notifications.Forum;
 import com.starfang.realm.notifications.Notifications;
 import com.starfang.services.StarfangService;
 import com.starfang.utilities.VersionUtils;
@@ -103,11 +103,11 @@ public class TalkActivity extends AppCompatActivity {
         Intent intent = getIntent();
         this.realm = Realm.getDefaultInstance();
         forumId = intent.getLongExtra(StarfangConstants.INTENT_KEY_FORUM_ID, 0L);
-        final Forums forum = realm.where(Forums.class).equalTo(Forums.FIELD_ID, forumId).findFirst();
+        final Forum forum = realm.where(Forum.class).equalTo(Forum.FIELD_ID, forumId).findFirst();
 
         if (forum != null) {
-            OrderedRealmCollection<Conversations> collection =
-                    forum.getConversationList().sort(Conversations.FIELD_WHEN, Sort.ASCENDING);
+            OrderedRealmCollection<Conversation> collection =
+                    forum.getConversationList().sort(Conversation.FIELD_WHEN, Sort.ASCENDING);
             mAdapter = new TalkAdapter(collection, false, this.getBaseContext());
             mLayoutManager = new LinearLayoutManager(this);
             mRecyclerView = findViewById(R.id.recycler_talks);
@@ -171,9 +171,9 @@ public class TalkActivity extends AppCompatActivity {
                     text_conversation.setText(null);
                     final String content = editable.toString();
 
-                    OrderedRealmCollection<Conversations> talks = mAdapter.getData();
+                    OrderedRealmCollection<Conversation> talks = mAdapter.getData();
                     if( talks != null ) {
-                        for (Conversations talk : talks.where().isNotNull(Conversations.FIELD_NOTIFICATION).findAll()) {
+                        for (Conversation talk : talks.where().isNotNull(Conversation.FIELD_NOTIFICATION).findAll()) {
                             Notifications log = talk.getNotification();
                             if( log != null ) {
                                 Integer replyId = log.getSbnId();
@@ -191,13 +191,13 @@ public class TalkActivity extends AppCompatActivity {
 
 
                     realm.executeTransactionAsync(bgRealm -> {
-                        Conversations conversation = new Conversations();
+                        Conversation conversation = new Conversation();
                         conversation.itIsMe();
                         conversation.setSendCat("냥냥이");
                         conversation.setWhen(System.currentTimeMillis());
                         conversation.setContent(content);
                         conversation = bgRealm.copyToRealm(conversation);
-                        Forums bgForum = bgRealm.where(Forums.class).equalTo(Forums.FIELD_ID, forumId).findFirst();
+                        Forum bgForum = bgRealm.where(Forum.class).equalTo(Forum.FIELD_ID, forumId).findFirst();
                         if (bgForum != null) {
                             bgForum.addConversation(conversation);
                         }
@@ -240,11 +240,11 @@ public class TalkActivity extends AppCompatActivity {
     }
 
 
-    static class TalkAdapter extends RealmRecyclerViewAdapter<Conversations, RecyclerView.ViewHolder> {
+    static class TalkAdapter extends RealmRecyclerViewAdapter<Conversation, RecyclerView.ViewHolder> {
 
         private WeakReference<Context> contextWeakReference;
 
-        TalkAdapter(@Nullable OrderedRealmCollection<Conversations> data, boolean autoUpdate, Context context) {
+        TalkAdapter(@Nullable OrderedRealmCollection<Conversation> data, boolean autoUpdate, Context context) {
             super(data, autoUpdate);
             contextWeakReference = new WeakReference<>(context);
         }
@@ -258,7 +258,7 @@ public class TalkActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-            Conversations talk = getItem(position);
+            Conversation talk = getItem(position);
             TalkViewHolder viewHolder = (TalkViewHolder) holder;
             viewHolder.bind(talk);
         }
@@ -278,7 +278,7 @@ public class TalkActivity extends AppCompatActivity {
                 text_talk_timestamp = itemView.findViewById(R.id.text_talk_timestamp);
             }
 
-            void bind(final Conversations talk) {
+            void bind(final Conversation talk) {
                 if (talk != null) {
 
                     if (VersionUtils.isJellyBeanMR1()) {

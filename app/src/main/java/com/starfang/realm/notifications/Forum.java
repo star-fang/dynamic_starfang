@@ -10,7 +10,7 @@ import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 import io.realm.exceptions.RealmPrimaryKeyConstraintException;
 
-public class Forums extends RealmObject {
+public class Forum extends RealmObject {
 
     public static final String FIELD_ID = "id";
     public static final String FIELD_TAG = "tag";
@@ -33,20 +33,20 @@ public class Forums extends RealmObject {
 
     private String packageName;
 
-    private RealmList<Conversations> conversationList;
+    private RealmList<Conversation> conversationList;
 
     private int nonReadCount;
 
     private String lastSimpleConversation;
 
-    public Forums() throws RealmPrimaryKeyConstraintException {
+    public Forum() throws RealmPrimaryKeyConstraintException {
         this.id = UUID.randomUUID().getMostSignificantBits();
         this.conversationList = new RealmList<>();
         this.nonReadCount = 0;
         this.lastSimpleConversation = null;
     }
 
-    public Forums(String tag) throws RealmPrimaryKeyConstraintException {
+    public Forum(String tag) throws RealmPrimaryKeyConstraintException {
         this.id = UUID.randomUUID().getMostSignificantBits();
         this.tag = tag;
         this.conversationList = new RealmList<>();
@@ -110,7 +110,7 @@ public class Forums extends RealmObject {
         return name;
     }
 
-    public void addConversation(Conversations conversation) {
+    public void addConversation(Conversation conversation) {
         this.conversationList.add(conversation);
         if (conversation != null) {
             String content = conversation.getContent();
@@ -122,12 +122,12 @@ public class Forums extends RealmObject {
         }
     }
 
-    public RealmList<Conversations> getConversationList() {
+    public RealmList<Conversation> getConversationList() {
         return conversationList;
     }
 
     public void deleteConversation(long conversationId) {
-        for (Conversations conversation : conversationList) {
+        for (Conversation conversation : conversationList) {
             if (conversation.getId() == conversationId) {
                 conversationList.remove(conversation);
             }

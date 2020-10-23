@@ -6,7 +6,7 @@ import com.starfang.realm.source.Source;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Specifications extends RealmObject implements Source, SearchNameWithoutBlank {
+public class Specification extends RealmObject implements Source, SearchNameWithoutBlank {
 
     public static final String FIELD_POSITION = "position";
 
@@ -14,6 +14,7 @@ public class Specifications extends RealmObject implements Source, SearchNameWit
     private int id;
     private String name;
     private int position;
+    private String nameEng;
 
     private String nameWithoutBlank;
 
@@ -34,6 +35,8 @@ public class Specifications extends RealmObject implements Source, SearchNameWit
                 return String.valueOf(id);
             case FIELD_NAME:
                 return name;
+            case FIELD_NAME_ENG:
+                return nameEng;
             case FIELD_NAME_WITHOUT_BLANK:
                 return nameWithoutBlank;
             default:

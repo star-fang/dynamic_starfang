@@ -6,7 +6,7 @@ import com.starfang.realm.source.Source;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Skills extends RealmObject implements Source, SearchNameWithoutBlank {
+public class Skill extends RealmObject implements Source, SearchNameWithoutBlank {
 
     public static final String FIELD_DESCRIPTION = "description";
     public static final String FIELD_PROPERTY = "property";
@@ -15,6 +15,7 @@ public class Skills extends RealmObject implements Source, SearchNameWithoutBlan
     private int id;
 
     private String name;
+    private String nameEng;
 
     private String property;
 
@@ -40,6 +41,8 @@ public class Skills extends RealmObject implements Source, SearchNameWithoutBlan
                 return String.valueOf(id);
             case FIELD_NAME:
                 return name;
+            case FIELD_NAME_ENG:
+                return nameEng;
             case FIELD_NAME_WITHOUT_BLANK:
                 return nameWithoutBlank;
             case FIELD_PROPERTY:

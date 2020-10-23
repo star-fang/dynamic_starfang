@@ -4,25 +4,25 @@ import androidx.annotation.NonNull;
 
 import io.realm.RealmObject;
 
-public class RealmString extends RealmObject {
-
+public class RealmDouble extends RealmObject {
     public static final String VALUE = "value";
-    private String value;
+    private double value;
 
-    public RealmString(){}
+    public RealmDouble(){}
 
-    public RealmString(String value){
+    public RealmDouble(double value){
         this.value =  value;
     }
 
-    public void setValue( String value ) {
+    public double getValue() { return value; }
+
+    public void setValue(double value) {
         this.value = value;
     }
 
     @NonNull
     @Override
     public String toString() {
-        return value;
+        return String.valueOf(value);
     }
-
 }

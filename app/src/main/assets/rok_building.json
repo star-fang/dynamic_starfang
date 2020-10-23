@@ -11,7 +11,9 @@
           "4,000",
           "0.01"
         ],
-        "requirements": ["City Hall Lv.1"],
+        "requirements": [
+          "City Hall Level 1"
+        ],
         "cost": [
           "wood100"
         ],
@@ -27,7 +29,9 @@
           "4,300",
           "0.28"
         ],
-        "requirements": ["City Hall Lv.2"],
+        "requirements": [
+          "City Hall Level 2"
+        ],
         "cost": [
           "wood200"
         ],
@@ -43,7 +47,9 @@
           "4,700",
           "0.31"
         ],
-        "requirements": ["City Hall Lv.2"],
+        "requirements": [
+          "City Hall Level 2"
+        ],
         "cost": [
           "wood300"
         ],
@@ -59,7 +65,9 @@
           "5,200",
           "0.42"
         ],
-        "requirements": ["City Hall Lv.2"],
+        "requirements": [
+          "City Hall Level 2"
+        ],
         "cost": [
           "wood500"
         ],
@@ -75,7 +83,9 @@
           "5,800",
           "0.69"
         ],
-        "requirements": ["City Hall Lv.5"],
+        "requirements": [
+          "City Hall Level 5"
+        ],
         "cost": [
           "wood1.0K"
         ],
@@ -91,7 +101,9 @@
           "6,500",
           "1.9"
         ],
-        "requirements": ["City Hall Lv.6"],
+        "requirements": [
+          "City Hall Level 6"
+        ],
         "cost": [
           "wood1.8K",
           "stone1.0K"
@@ -108,7 +120,9 @@
           "7,300",
           "2.5"
         ],
-        "requirements": ["City Hall Lv.7"],
+        "requirements": [
+          "City Hall Level 7"
+        ],
         "cost": [
           "wood2.7K",
           "stone1.6K"
@@ -125,7 +139,9 @@
           "8,300",
           "3.1"
         ],
-        "requirements": ["City Hall Lv.8"],
+        "requirements": [
+          "City Hall Level 8"
+        ],
         "cost": [
           "wood4.0K",
           "stone2.6K"
@@ -142,7 +158,9 @@
           "9,500",
           "4.0"
         ],
-        "requirements": ["City Hall Lv.9"],
+        "requirements": [
+          "City Hall Level 9"
+        ],
         "cost": [
           "wood6.0K",
           "stone4.2K"
@@ -159,7 +177,9 @@
           "11,000",
           "4.9"
         ],
-        "requirements": ["City Hall Lv.10"],
+        "requirements": [
+          "City Hall Level 10"
+        ],
         "cost": [
           "wood9.0K",
           "stone6.6K"
@@ -176,7 +196,9 @@
           "13,000",
           "5.9"
         ],
-        "requirements": ["City Hall Lv.11"],
+        "requirements": [
+          "City Hall Level 11"
+        ],
         "cost": [
           "wood15.0K",
           "stone10.0K"
@@ -193,7 +215,9 @@
           "15,500",
           "7.1"
         ],
-        "requirements": ["City Hall Lv.12"],
+        "requirements": [
+          "City Hall Level 12"
+        ],
         "cost": [
           "wood22.5K",
           "stone15.0K"
@@ -210,7 +234,9 @@
           "18,500",
           "9.0"
         ],
-        "requirements": ["City Hall Lv.13"],
+        "requirements": [
+          "City Hall Level 13"
+        ],
         "cost": [
           "wood35.0K",
           "stone22.5K"
@@ -227,7 +253,9 @@
           "22,000",
           "11.8"
         ],
-        "requirements": ["City Hall Lv.14"],
+        "requirements": [
+          "City Hall Level 14"
+        ],
         "cost": [
           "wood52.5K",
           "stone35.0K"
@@ -244,7 +272,9 @@
           "27,000",
           "12.5"
         ],
-        "requirements": ["City Hall Lv.15"],
+        "requirements": [
+          "City Hall Level 15"
+        ],
         "cost": [
           "wood80.0K",
           "stone52.5K"
@@ -261,7 +291,9 @@
           "32,000",
           "18.9"
         ],
-        "requirements": ["City Hall Lv.16"],
+        "requirements": [
+          "City Hall Level 16"
+        ],
         "cost": [
           "wood120.0K",
           "stone80.0K"
@@ -278,7 +310,9 @@
           "37,000",
           "28.3"
         ],
-        "requirements": ["City Hall Lv.17"],
+        "requirements": [
+          "City Hall Level 17"
+        ],
         "cost": [
           "wood180.0K",
           "stone120.0K"
@@ -295,7 +329,9 @@
           "43,000",
           "37.6"
         ],
-        "requirements": ["City Hall Lv.18"],
+        "requirements": [
+          "City Hall Level 18"
+        ],
         "cost": [
           "wood275.0K",
           "stone200.0K"
@@ -312,7 +348,9 @@
           "50,000",
           "49.1"
         ],
-        "requirements": ["City Hall Lv.19"],
+        "requirements": [
+          "City Hall Level 19"
+        ],
         "cost": [
           "wood425.0K",
           "stone300.0K"
@@ -329,7 +367,9 @@
           "58,000",
           "65.1"
         ],
-        "requirements": ["City Hall Lv.20"],
+        "requirements": [
+          "City Hall Level 20"
+        ],
         "cost": [
           "wood650.0K",
           "stone450.0K"
@@ -346,7 +386,9 @@
           "67,000",
           "86.8"
         ],
-        "requirements": ["City Hall Lv.21"],
+        "requirements": [
+          "City Hall Level 21"
+        ],
         "cost": [
           "wood975.0K",
           "stone675.0K"
@@ -363,7 +405,9 @@
           "78,000",
           "107.3"
         ],
-        "requirements": ["City Hall Lv.22"],
+        "requirements": [
+          "City Hall Level 22"
+        ],
         "cost": [
           "wood1.5M",
           "stone1.0M"
@@ -380,7 +424,9 @@
           "90,000",
           "150.5"
         ],
-        "requirements": ["City Hall Lv.23"],
+        "requirements": [
+          "City Hall Level 23"
+        ],
         "cost": [
           "wood2.2M",
           "stone1.6M"
@@ -397,7 +443,9 @@
           "104,000",
           "203.4"
         ],
-        "requirements": ["City Hall Lv.24"],
+        "requirements": [
+          "City Hall Level 24"
+        ],
         "cost": [
           "wood3.5M",
           "stone2.5M"
@@ -412,9 +460,11 @@
         "figures": [
           "20,800",
           "208,000",
-          "?"
+          null
         ],
-        "requirements": ["City Hall Lv.25"],
+        "requirements": [
+          "City Hall Level 25"
+        ],
         "cost": [
           "wood5.2M",
           "stone3.8M",
@@ -432,7 +482,9 @@
           "4,000",
           "0.01"
         ],
-        "requirements": ["City Hall Lv.1"],
+        "requirements": [
+          "City Hall Level 1"
+        ],
         "cost": [
           "food100"
         ],
@@ -448,7 +500,9 @@
           "4,300",
           "0.3"
         ],
-        "requirements": ["City Hall Lv.2"],
+        "requirements": [
+          "City Hall Level 2"
+        ],
         "cost": [
           "food200"
         ],
@@ -464,7 +518,9 @@
           "4,700",
           "0.3"
         ],
-        "requirements": ["City Hall Lv.2"],
+        "requirements": [
+          "City Hall Level 2"
+        ],
         "cost": [
           "food300"
         ],
@@ -480,7 +536,9 @@
           "5,200",
           "0.4"
         ],
-        "requirements": ["City Hall Lv.2"],
+        "requirements": [
+          "City Hall Level 2"
+        ],
         "cost": [
           "food500"
         ],
@@ -496,7 +554,9 @@
           "5,800",
           "0.7"
         ],
-        "requirements": ["City Hall Lv.5"],
+        "requirements": [
+          "City Hall Level 5"
+        ],
         "cost": [
           "food1.0K"
         ],
@@ -512,7 +572,9 @@
           "6,500",
           "1.9"
         ],
-        "requirements": ["City Hall Lv.6"],
+        "requirements": [
+          "City Hall Level 6"
+        ],
         "cost": [
           "food1.8K",
           "stone1.0K"
@@ -529,7 +591,9 @@
           "7,300",
           "2.5"
         ],
-        "requirements": ["City Hall Lv.7"],
+        "requirements": [
+          "City Hall Level 7"
+        ],
         "cost": [
           "food2.7K",
           "stone1.6K"
@@ -546,7 +610,9 @@
           "8,300",
           "3.1"
         ],
-        "requirements": ["City Hall Lv.8"],
+        "requirements": [
+          "City Hall Level 8"
+        ],
         "cost": [
           "food4.0K",
           "stone2.6K"
@@ -563,7 +629,9 @@
           "9,500",
           "4.0"
         ],
-        "requirements": ["City Hall Lv.9"],
+        "requirements": [
+          "City Hall Level 9"
+        ],
         "cost": [
           "food6.0K",
           "stone4.2K"
@@ -580,7 +648,9 @@
           "11,000",
           "4.9"
         ],
-        "requirements": ["City Hall Lv.10"],
+        "requirements": [
+          "City Hall Level 10"
+        ],
         "cost": [
           "food9.0K",
           "stone6.6K"
@@ -597,7 +667,9 @@
           "13,000",
           "5.9"
         ],
-        "requirements": ["City Hall Lv.11"],
+        "requirements": [
+          "City Hall Level 11"
+        ],
         "cost": [
           "food15.0K",
           "stone10.0K"
@@ -614,7 +686,9 @@
           "15,500",
           "7.1"
         ],
-        "requirements": ["City Hall Lv.12"],
+        "requirements": [
+          "City Hall Level 12"
+        ],
         "cost": [
           "food22.5K",
           "stone15.0K"
@@ -631,7 +705,9 @@
           "18,500",
           "9.0"
         ],
-        "requirements": ["City Hall Lv.13"],
+        "requirements": [
+          "City Hall Level 13"
+        ],
         "cost": [
           "food35.0K",
           "stone22.5K"
@@ -648,7 +724,9 @@
           "22,000",
           "11.8"
         ],
-        "requirements": ["City Hall Lv.14"],
+        "requirements": [
+          "City Hall Level 14"
+        ],
         "cost": [
           "food52.5K",
           "stone35.0K"
@@ -665,7 +743,9 @@
           "27,000",
           "12.5"
         ],
-        "requirements": ["City Hall Lv.15"],
+        "requirements": [
+          "City Hall Level 15"
+        ],
         "cost": [
           "food80.0K",
           "stone52.5K"
@@ -682,7 +762,9 @@
           "32,000",
           "18.9"
         ],
-        "requirements": ["City Hall Lv.16"],
+        "requirements": [
+          "City Hall Level 16"
+        ],
         "cost": [
           "food120.0K",
           "stone80.0K"
@@ -699,7 +781,9 @@
           "37,000",
           "28.3"
         ],
-        "requirements": ["City Hall Lv.17"],
+        "requirements": [
+          "City Hall Level 17"
+        ],
         "cost": [
           "food180.0K",
           "stone120.0K"
@@ -716,7 +800,9 @@
           "43,000",
           "37.6"
         ],
-        "requirements": ["City Hall Lv.18"],
+        "requirements": [
+          "City Hall Level 18"
+        ],
         "cost": [
           "food275.0K",
           "stone200.0K"
@@ -733,7 +819,9 @@
           "50,000",
           "49.1"
         ],
-        "requirements": ["City Hall Lv.19"],
+        "requirements": [
+          "City Hall Level 19"
+        ],
         "cost": [
           "food425.0K",
           "stone300.0K"
@@ -750,7 +838,9 @@
           "58,000",
           "65.1"
         ],
-        "requirements": ["City Hall Lv.20"],
+        "requirements": [
+          "City Hall Level 20"
+        ],
         "cost": [
           "food650.0K",
           "stone450.0K"
@@ -767,7 +857,9 @@
           "67,000",
           "86.8"
         ],
-        "requirements": ["City Hall Lv.21"],
+        "requirements": [
+          "City Hall Level 21"
+        ],
         "cost": [
           "food975.0K",
           "stone675.0K"
@@ -784,7 +876,9 @@
           "78,000",
           "107"
         ],
-        "requirements": ["City Hall Lv.22"],
+        "requirements": [
+          "City Hall Level 22"
+        ],
         "cost": [
           "food1.5M",
           "stone1.0M"
@@ -801,7 +895,9 @@
           "90,000",
           "151"
         ],
-        "requirements": ["City Hall Lv.23"],
+        "requirements": [
+          "City Hall Level 23"
+        ],
         "cost": [
           "food2.2M",
           "stone1.6M"
@@ -818,7 +914,9 @@
           "104,000",
           "203"
         ],
-        "requirements": ["City Hall Lv.24"],
+        "requirements": [
+          "City Hall Level 24"
+        ],
         "cost": [
           "food3.5M",
           "stone2.5M"
@@ -833,9 +931,11 @@
         "figures": [
           "20,800",
           "208,000",
-          "?"
+          null
         ],
-        "requirements": ["City Hall Lv.25"],
+        "requirements": [
+          "City Hall Level 25"
+        ],
         "cost": [
           "food5.2M",
           "stone3.8M",
@@ -853,7 +953,9 @@
           "3000",
           "0.03"
         ],
-        "requirements": ["City Hall Lv.4"],
+        "requirements": [
+          "City Hall Level 4"
+        ],
         "cost": [
           "food100",
           "wood100"
@@ -870,7 +972,9 @@
           "3200",
           "1.3"
         ],
-        "requirements": ["City Hall Lv.4"],
+        "requirements": [
+          "City Hall Level 4"
+        ],
         "cost": [
           "food300",
           "wood300"
@@ -887,7 +991,9 @@
           "3500",
           "1.4"
         ],
-        "requirements": ["City Hall Lv.4"],
+        "requirements": [
+          "City Hall Level 4"
+        ],
         "cost": [
           "food500",
           "wood500"
@@ -904,7 +1010,9 @@
           "3900",
           "2.1"
         ],
-        "requirements": ["City Hall Lv.4"],
+        "requirements": [
+          "City Hall Level 4"
+        ],
         "cost": [
           "food1.0K",
           "wood1.0K"
@@ -921,7 +1029,9 @@
           "4350",
           "3.7"
         ],
-        "requirements": ["City Hall Lv.5"],
+        "requirements": [
+          "City Hall Level 5"
+        ],
         "cost": [
           "food2.0K",
           "wood2.0K"
@@ -938,7 +1048,9 @@
           "4900",
           "5.3"
         ],
-        "requirements": ["City HallLv.6"],
+        "requirements": [
+          "City Hall Level 6"
+        ],
         "cost": [
           "food3.5K",
           "wood3.5K"
@@ -955,7 +1067,9 @@
           "5500",
           "7.4"
         ],
-        "requirements": ["City HallLv.7"],
+        "requirements": [
+          "City Hall Level 7"
+        ],
         "cost": [
           "food5.3K",
           "wood5.3K"
@@ -972,7 +1086,9 @@
           "6200",
           "9.5"
         ],
-        "requirements": ["City HallLv.8"],
+        "requirements": [
+          "City Hall Level 8"
+        ],
         "cost": [
           "food8.0K",
           "wood8.0K"
@@ -989,7 +1105,9 @@
           "7100",
           "11.1"
         ],
-        "requirements": ["City HallLv.9"],
+        "requirements": [
+          "City Hall Level 9"
+        ],
         "cost": [
           "food12.0K",
           "wood12.0K"
@@ -1006,7 +1124,9 @@
           "8250",
           "13.0"
         ],
-        "requirements": ["City HallLv.10"],
+        "requirements": [
+          "City Hall Level 10"
+        ],
         "cost": [
           "food18.0K",
           "wood18.0K"
@@ -1023,7 +1143,9 @@
           "9750",
           "15.3"
         ],
-        "requirements": ["City Hall Lv.11"],
+        "requirements": [
+          "City Hall Level 11"
+        ],
         "cost": [
           "food27.5K",
           "wood27.5K"
@@ -1040,7 +1162,9 @@
           "11 600",
           "19.1"
         ],
-        "requirements": ["City Hall Lv.12"],
+        "requirements": [
+          "City Hall Level 12"
+        ],
         "cost": [
           "food42.5K",
           "wood42.5K"
@@ -1057,7 +1181,9 @@
           "13 900",
           "23.6"
         ],
-        "requirements": ["City Hall Lv.13"],
+        "requirements": [
+          "City Hall Level 13"
+        ],
         "cost": [
           "food65.0K",
           "wood65.0K"
@@ -1074,7 +1200,9 @@
           "16 500",
           "31.3"
         ],
-        "requirements": ["City Hall Lv.14"],
+        "requirements": [
+          "City Hall Level 14"
+        ],
         "cost": [
           "food97.5K",
           "wood97.5K"
@@ -1091,7 +1219,9 @@
           "20 250",
           "32.8"
         ],
-        "requirements": ["City Hall Lv.15"],
+        "requirements": [
+          "City Hall Level 15"
+        ],
         "cost": [
           "food147.5K",
           "wood147.5K"
@@ -1108,7 +1238,9 @@
           "24 000",
           "49.4"
         ],
-        "requirements": ["City Hall Lv.16"],
+        "requirements": [
+          "City Hall Level 16"
+        ],
         "cost": [
           "food222.5K",
           "wood222.5K"
@@ -1125,7 +1257,9 @@
           "27 750",
           "74.4"
         ],
-        "requirements": ["City Hall Lv.17"],
+        "requirements": [
+          "City Hall Level 17"
+        ],
         "cost": [
           "food335.0K",
           "wood335.0K"
@@ -1142,7 +1276,9 @@
           "32 250",
           "97.2"
         ],
-        "requirements": ["City Hall Lv.18"],
+        "requirements": [
+          "City Hall Level 18"
+        ],
         "cost": [
           "food525.0K",
           "wood525.0K"
@@ -1159,7 +1295,9 @@
           "37 500",
           "127"
         ],
-        "requirements": ["City Hall Lv.19"],
+        "requirements": [
+          "City Hall Level 19"
+        ],
         "cost": [
           "food800.0K",
           "wood800.0K"
@@ -1176,7 +1314,9 @@
           "43 500",
           "167"
         ],
-        "requirements": ["City Hall Lv.20"],
+        "requirements": [
+          "City Hall Level 20"
+        ],
         "cost": [
           "food1.2M",
           "wood1.2M"
@@ -1193,7 +1333,9 @@
           "50 250",
           "222"
         ],
-        "requirements": ["City Hall Lv.21"],
+        "requirements": [
+          "City Hall Level 21"
+        ],
         "cost": [
           "food1.8M",
           "wood1.8M"
@@ -1210,7 +1352,9 @@
           "58 500",
           "273"
         ],
-        "requirements": ["City Hall Lv.22"],
+        "requirements": [
+          "City Hall Level 22"
+        ],
         "cost": [
           "food2.7M",
           "wood2.7M"
@@ -1227,7 +1371,9 @@
           "67 500",
           "380"
         ],
-        "requirements": ["City Hall Lv.23"],
+        "requirements": [
+          "City Hall Level 23"
+        ],
         "cost": [
           "food4.1M",
           "wood4.1M"
@@ -1244,7 +1390,9 @@
           "78 000",
           "500"
         ],
-        "requirements": ["City Hall Lv.24"],
+        "requirements": [
+          "City Hall Level 24"
+        ],
         "cost": [
           "food6.3M",
           "wood6.3M"
@@ -1259,9 +1407,11 @@
         "figures": [
           "15 600",
           "156 000",
-          "?"
+          null
         ],
-        "requirements": ["City Hall Lv.25"],
+        "requirements": [
+          "City Hall Level 25"
+        ],
         "cost": [
           "food9.5M",
           "wood9.5M",
@@ -1279,7 +1429,9 @@
           "2,000",
           "0.1"
         ],
-        "requirements": ["City Hall Lv. 10"],
+        "requirements": [
+          "City Hall Level 10"
+        ],
         "cost": [
           "food500",
           "wood500"
@@ -1296,7 +1448,9 @@
           "2,150",
           "2.8"
         ],
-        "requirements": ["City Hall Lv. 10"],
+        "requirements": [
+          "City Hall Level 10"
+        ],
         "cost": [
           "food1.0K",
           "wood1.0K"
@@ -1313,7 +1467,9 @@
           "2,350",
           "4.2"
         ],
-        "requirements": ["City Hall Lv. 10"],
+        "requirements": [
+          "City Hall Level 10"
+        ],
         "cost": [
           "food2.0K",
           "wood2.0K"
@@ -1330,7 +1486,9 @@
           "2,600",
           "9.1"
         ],
-        "requirements": ["City Hall Lv. 10"],
+        "requirements": [
+          "City Hall Level 10"
+        ],
         "cost": [
           "food3.8K",
           "wood3.8K",
@@ -1348,7 +1506,9 @@
           "2,900",
           "14.1"
         ],
-        "requirements": ["City Hall Lv. 10"],
+        "requirements": [
+          "City Hall Level 10"
+        ],
         "cost": [
           "food6.8K",
           "wood6.8K",
@@ -1366,7 +1526,9 @@
           "3,250",
           "23.2"
         ],
-        "requirements": ["City Hall Lv. 10"],
+        "requirements": [
+          "City Hall Level 10"
+        ],
         "cost": [
           "food11.5K",
           "wood11.5K",
@@ -1384,7 +1546,9 @@
           "3,650",
           "31.4"
         ],
-        "requirements": ["City Hall Lv. 10"],
+        "requirements": [
+          "City Hall Level 10"
+        ],
         "cost": [
           "food17.3K",
           "wood17.3K",
@@ -1402,7 +1566,9 @@
           "4,150",
           "38.8"
         ],
-        "requirements": ["City Hall Lv. 10"],
+        "requirements": [
+          "City Hall Level 10"
+        ],
         "cost": [
           "food26.0K",
           "wood26.0K",
@@ -1420,7 +1586,9 @@
           "4,750",
           "50"
         ],
-        "requirements": ["City Hall Lv. 10"],
+        "requirements": [
+          "City Hall Level 10"
+        ],
         "cost": [
           "food39.0K",
           "wood39.0K",
@@ -1438,7 +1606,9 @@
           "5,500",
           "61.6"
         ],
-        "requirements": ["City Hall Lv. 10"],
+        "requirements": [
+          "City Hall Level 10"
+        ],
         "cost": [
           "food58.5K",
           "wood58.5K",
@@ -1456,7 +1626,9 @@
           "6,500",
           "70.8"
         ],
-        "requirements": ["City Hall Lv. 11"],
+        "requirements": [
+          "City Hall Level 11"
+        ],
         "cost": [
           "food90.0K",
           "wood90.0K",
@@ -1474,7 +1646,9 @@
           "7,750",
           "85.0"
         ],
-        "requirements": ["City Hall Lv. 12"],
+        "requirements": [
+          "City Hall Level 12"
+        ],
         "cost": [
           "food135.0K",
           "wood135.0K",
@@ -1492,7 +1666,9 @@
           "9,250",
           "106"
         ],
-        "requirements": ["City Hall Lv. 13"],
+        "requirements": [
+          "City Hall Level 13"
+        ],
         "cost": [
           "food202.5K",
           "wood202.5K",
@@ -1510,7 +1686,9 @@
           "11,000",
           "137"
         ],
-        "requirements": ["City Hall Lv. 14"],
+        "requirements": [
+          "City Hall Level 14"
+        ],
         "cost": [
           "food305.0K",
           "wood305.0K",
@@ -1528,7 +1706,9 @@
           "13,500",
           "144"
         ],
-        "requirements": ["City Hall Lv. 15"],
+        "requirements": [
+          "City Hall Level 15"
+        ],
         "cost": [
           "food457.5K",
           "wood457.5K",
@@ -1546,7 +1726,9 @@
           "16,000",
           "216"
         ],
-        "requirements": ["City Hall Lv. 16"],
+        "requirements": [
+          "City Hall Level 16"
+        ],
         "cost": [
           "food687.5K",
           "wood687.5K",
@@ -1564,7 +1746,9 @@
           "18,500",
           "322"
         ],
-        "requirements": ["City Hall Lv. 17"],
+        "requirements": [
+          "City Hall Level 17"
+        ],
         "cost": [
           "food1.0M",
           "wood1.0M",
@@ -1582,7 +1766,9 @@
           "21,500",
           "417"
         ],
-        "requirements": ["City Hall Lv. 18"],
+        "requirements": [
+          "City Hall Level 18"
+        ],
         "cost": [
           "food1.6M",
           "wood1.6M",
@@ -1600,7 +1786,9 @@
           "25,000",
           "520"
         ],
-        "requirements": ["City Hall Lv. 19"],
+        "requirements": [
+          "City Hall Level 19"
+        ],
         "cost": [
           "food2.3M",
           "wood2.3M",
@@ -1618,7 +1806,9 @@
           "29,000",
           "691"
         ],
-        "requirements": ["City Hall Lv. 20"],
+        "requirements": [
+          "City Hall Level 20"
+        ],
         "cost": [
           "food3.5M",
           "wood3.5M",
@@ -1636,7 +1826,9 @@
           "33,500",
           "929"
         ],
-        "requirements": ["City Hall Lv. 21"],
+        "requirements": [
+          "City Hall Level 21"
+        ],
         "cost": [
           "food5.3M",
           "wood5.3M",
@@ -1654,7 +1846,9 @@
           "39,000",
           "1134"
         ],
-        "requirements": ["City Hall Lv. 22"],
+        "requirements": [
+          "City Hall Level 22"
+        ],
         "cost": [
           "food7.9M",
           "wood7.9M",
@@ -1672,7 +1866,9 @@
           "45,000",
           "1556"
         ],
-        "requirements": ["City Hall Lv. 23"],
+        "requirements": [
+          "City Hall Level 23"
+        ],
         "cost": [
           "food11.8M",
           "wood11.8M",
@@ -1690,7 +1886,9 @@
           "52,000",
           "2012"
         ],
-        "requirements": ["City Hall Lv. 24"],
+        "requirements": [
+          "City Hall Level 24"
+        ],
         "cost": [
           "food17.8M",
           "wood17.8M",
@@ -1706,9 +1904,11 @@
         "figures": [
           "10,400",
           "104,000",
-          "?"
+          null
         ],
-        "requirements": ["City Hall Lv. 25"],
+        "requirements": [
+          "City Hall Level 25"
+        ],
         "cost": [
           "food26.8M",
           "wood26.8M",
@@ -1721,13 +1921,15 @@
         "id": 100099
       },
       {
+        "level": "1",
         "figures": [
-          "1",
           "0.5%",
           null,
           null
         ],
-        "requirements": ["City Hall Lv.4"],
+        "requirements": [
+          "City Hall Level 4"
+        ],
         "cost": [
           "food500",
           "wood800"
@@ -1738,8 +1940,8 @@
         "id": 100125
       },
       {
+        "level": "2",
         "figures": [
-          "2",
           "1.0%",
           "1",
           [
@@ -1748,7 +1950,9 @@
             "Handsaw Level 1"
           ]
         ],
-        "requirements": ["City Hall Lv.4"],
+        "requirements": [
+          "City Hall Level 4"
+        ],
         "cost": [
           "food1.0K",
           "wood1.5K"
@@ -1759,8 +1963,8 @@
         "id": 100126
       },
       {
+        "level": "3",
         "figures": [
-          "3",
           "1.5%",
           "2",
           [
@@ -1768,7 +1972,9 @@
             "Handsaw Level 2"
           ]
         ],
-        "requirements": ["City Hall Lv.4"],
+        "requirements": [
+          "City Hall Level 4"
+        ],
         "cost": [
           "food2.0K",
           "wood2.8K"
@@ -1779,8 +1985,8 @@
         "id": 100127
       },
       {
+        "level": "4",
         "figures": [
-          "4",
           "2.0%",
           "3",
           [
@@ -1788,7 +1994,9 @@
             "Handsaw Level 3"
           ]
         ],
-        "requirements": ["City Hall Lv.4"],
+        "requirements": [
+          "City Hall Level 4"
+        ],
         "cost": [
           "food3.8K",
           "wood5.0K",
@@ -1800,8 +2008,8 @@
         "id": 100128
       },
       {
+        "level": "5",
         "figures": [
-          "5",
           "2.5%",
           "4",
           [
@@ -1809,7 +2017,9 @@
             "Handsaw Level 4"
           ]
         ],
-        "requirements": ["City Hall Lv.5"],
+        "requirements": [
+          "City Hall Level 5"
+        ],
         "cost": [
           "food6.8K",
           "wood9.0K",
@@ -1821,8 +2031,8 @@
         "id": 100129
       },
       {
+        "level": "6",
         "figures": [
-          "6",
           "3.0%",
           "5",
           [
@@ -1833,7 +2043,9 @@
             "Handaxe Level 1"
           ]
         ],
-        "requirements": ["City Hall Lv.6"],
+        "requirements": [
+          "City Hall Level 6"
+        ],
         "cost": [
           "food11.5K",
           "wood15.5K",
@@ -1845,8 +2057,8 @@
         "id": 100130
       },
       {
+        "level": "7",
         "figures": [
-          "7",
           "3.5%",
           "6",
           [
@@ -1855,7 +2067,9 @@
             "Handaxe Level 2"
           ]
         ],
-        "requirements": ["City Hall Lv.7"],
+        "requirements": [
+          "City Hall Level 7"
+        ],
         "cost": [
           "food17.3K",
           "wood23.3K",
@@ -1867,8 +2081,8 @@
         "id": 100131
       },
       {
+        "level": "8",
         "figures": [
-          "8",
           "4.0%",
           "7",
           [
@@ -1877,7 +2091,9 @@
             "Handaxe Level 3"
           ]
         ],
-        "requirements": ["City Hall Lv.8"],
+        "requirements": [
+          "City Hall Level 8"
+        ],
         "cost": [
           "food26.0K",
           "wood35.0K",
@@ -1889,8 +2105,8 @@
         "id": 100132
       },
       {
+        "level": "9",
         "figures": [
-          "9",
           "4.5%",
           "8",
           [
@@ -1899,7 +2115,9 @@
             "Handaxe Level 4"
           ]
         ],
-        "requirements": ["City Hall Lv.9"],
+        "requirements": [
+          "City Hall Level 9"
+        ],
         "cost": [
           "food39.0K",
           "wood52.5K",
@@ -1911,8 +2129,8 @@
         "id": 100133
       },
       {
+        "level": "10",
         "figures": [
-          "10",
           "5.0%",
           "9",
           [
@@ -1921,7 +2139,9 @@
             "Handaxe Level 5"
           ]
         ],
-        "requirements": ["City Hall Lv.10"],
+        "requirements": [
+          "City Hall Level 10"
+        ],
         "cost": [
           "food58.5K",
           "wood78.8K",
@@ -1933,8 +2153,8 @@
         "id": 100134
       },
       {
+        "level": "11",
         "figures": [
-          "11",
           "5.5%",
           "10",
           [
@@ -1944,7 +2164,9 @@
             "Metalworking Level 1-2"
           ]
         ],
-        "requirements": ["City Hall Lv.11"],
+        "requirements": [
+          "City Hall Level 11"
+        ],
         "cost": [
           "food90.0K",
           "wood120.0K",
@@ -1956,8 +2178,8 @@
         "id": 100135
       },
       {
+        "level": "12",
         "figures": [
-          "12",
           "6.0%",
           "11",
           [
@@ -1966,7 +2188,9 @@
             "Metalworking Level 3"
           ]
         ],
-        "requirements": ["City Hall Lv.12"],
+        "requirements": [
+          "City Hall Level 12"
+        ],
         "cost": [
           "food135.0K",
           "wood180.0K",
@@ -1978,8 +2202,8 @@
         "id": 100136
       },
       {
+        "level": "13",
         "figures": [
-          "13",
           "6.5%",
           "12",
           [
@@ -1991,7 +2215,9 @@
             "Placer Mining Level 1-2"
           ]
         ],
-        "requirements": ["City Hall Lv.13"],
+        "requirements": [
+          "City Hall Level 13"
+        ],
         "cost": [
           "food202.5K",
           "wood270.0K",
@@ -2003,8 +2229,8 @@
         "id": 100137
       },
       {
+        "level": "14",
         "figures": [
-          "14",
           "7.0%",
           "13",
           [
@@ -2017,7 +2243,9 @@
             "Wheel Level 1-2"
           ]
         ],
-        "requirements": ["City Hall Lv.14"],
+        "requirements": [
+          "City Hall Level 14"
+        ],
         "cost": [
           "food305.0K",
           "wood405.0K",
@@ -2029,8 +2257,8 @@
         "id": 100138
       },
       {
+        "level": "15",
         "figures": [
-          "15",
           "7.5%",
           "14",
           [
@@ -2041,7 +2269,9 @@
             "Buckler Level 4"
           ]
         ],
-        "requirements": ["City Hall Lv.15"],
+        "requirements": [
+          "City Hall Level 15"
+        ],
         "cost": [
           "food457.5K",
           "wood607.5K",
@@ -2053,8 +2283,8 @@
         "id": 100139
       },
       {
+        "level": "16",
         "figures": [
-          "16",
           "8.0%",
           "15",
           [
@@ -2064,7 +2294,9 @@
             "Wheel Level 5"
           ]
         ],
-        "requirements": ["City Hall Lv.16"],
+        "requirements": [
+          "City Hall Level 16"
+        ],
         "cost": [
           "food687.5K",
           "wood912.5K",
@@ -2076,8 +2308,8 @@
         "id": 100140
       },
       {
+        "level": "17",
         "figures": [
-          "17",
           "8.5%",
           "16",
           [
@@ -2086,7 +2318,9 @@
             "Sawmill Level 1-3"
           ]
         ],
-        "requirements": ["City Hall Lv.17"],
+        "requirements": [
+          "City Hall Level 17"
+        ],
         "cost": [
           "food1.0M",
           "wood1.4M",
@@ -2098,8 +2332,8 @@
         "id": 100141
       },
       {
+        "level": "18",
         "figures": [
-          "18",
           "9.0%",
           "17",
           [
@@ -2110,7 +2344,9 @@
             "Engineering Level 1-4"
           ]
         ],
-        "requirements": ["City Hall Lv.18"],
+        "requirements": [
+          "City Hall Level 18"
+        ],
         "cost": [
           "food1.6M",
           "wood2.1M",
@@ -2122,8 +2358,8 @@
         "id": 100142
       },
       {
+        "level": "19",
         "figures": [
-          "19",
           "9.5%",
           "18",
           [
@@ -2135,7 +2371,9 @@
             "Mathematics Level 1-4"
           ]
         ],
-        "requirements": ["City Hall Lv.19"],
+        "requirements": [
+          "City Hall Level 19"
+        ],
         "cost": [
           "food2.3M",
           "wood3.1M",
@@ -2147,8 +2385,8 @@
         "id": 100143
       },
       {
+        "level": "20",
         "figures": [
-          "20",
           "10.0%",
           "19",
           [
@@ -2159,7 +2397,9 @@
             "Coinage Level 1-4"
           ]
         ],
-        "requirements": ["City Hall Lv.20"],
+        "requirements": [
+          "City Hall Level 20"
+        ],
         "cost": [
           "food3.5M",
           "wood4.7M",
@@ -2171,8 +2411,8 @@
         "id": 100144
       },
       {
+        "level": "21",
         "figures": [
-          "21",
           "12.0%",
           "20",
           [
@@ -2186,7 +2426,9 @@
             "Cutting & Polishing Level 1-2"
           ]
         ],
-        "requirements": ["City Hall Lv.21"],
+        "requirements": [
+          "City Hall Level 21"
+        ],
         "cost": [
           "food5.250.000",
           "wood7.050.000",
@@ -2198,8 +2440,8 @@
         "id": 100145
       },
       {
+        "level": "22",
         "figures": [
-          "22",
           "14.0%",
           "21",
           [
@@ -2209,7 +2451,9 @@
             "Cutting & Polishing Level 3-4"
           ]
         ],
-        "requirements": ["City Hall Lv.22"],
+        "requirements": [
+          "City Hall Level 22"
+        ],
         "cost": [
           "food7.9M",
           "wood10.6M",
@@ -2221,8 +2465,8 @@
         "id": 100146
       },
       {
+        "level": "23",
         "figures": [
-          "23",
           "16.0%",
           "22",
           [
@@ -2233,7 +2477,9 @@
             "Cutting & Polishing Level 5-6"
           ]
         ],
-        "requirements": ["City Hall Lv.23"],
+        "requirements": [
+          "City Hall Level 23"
+        ],
         "cost": [
           "food11.8M",
           "wood15.9M",
@@ -2245,13 +2491,15 @@
         "id": 100147
       },
       {
+        "level": "24",
         "figures": [
-          "24",
           "18.0%",
           "23",
           "Cutting & Polishing Level 7-8"
         ],
-        "requirements": ["City Hall Lv.24"],
+        "requirements": [
+          "City Hall Level 24"
+        ],
         "cost": [
           "food17.8M",
           "wood24.0M",
@@ -2263,8 +2511,8 @@
         "id": 100148
       },
       {
+        "level": "25",
         "figures": [
-          "25",
           "25.0%",
           "24",
           [
@@ -2274,9 +2522,9 @@
           ]
         ],
         "requirements": [
-          "Watchtower Lv.25",
-          "City Hall Lv.25",
-          "Trading Post Lv.25"
+          "Watchtower Level 25",
+          "City Hall Level 25",
+          "Trading Post Level 25"
         ],
         "cost": [
           "food26.8M",
@@ -2284,7 +2532,7 @@
           "stone10.2M",
           "1x Master's Blueprint"
         ],
-        "time": "?",
+        "time": null,
         "power": "783,449",
         "contentId": 200004,
         "id": 100149
@@ -2313,15 +2561,17 @@
             "gold150.0K"
           ]
         ],
-        "cost": "None",
-        "time": "None",
+        "cost": null,
+        "time": null,
         "power": "5",
         "contentId": 200005,
         "id": 100151
       },
       {
         "level": "2",
-        "requirements": ["City Hall Lv.2"],
+        "requirements": [
+          "City Hall Level 2"
+        ],
         "figures": [
           [
             "food320.0K",
@@ -2341,7 +2591,9 @@
       },
       {
         "level": "3",
-        "requirements": ["City Hall Lv.3"],
+        "requirements": [
+          "City Hall Level 3"
+        ],
         "figures": [
           [
             "food350.0K",
@@ -2361,7 +2613,9 @@
       },
       {
         "level": "4",
-        "requirements": ["City Hall Lv.4"],
+        "requirements": [
+          "City Hall Level 4"
+        ],
         "figures": [
           [
             "food380.0K",
@@ -2381,7 +2635,9 @@
       },
       {
         "level": "5",
-        "requirements": ["City Hall Lv.5"],
+        "requirements": [
+          "City Hall Level 5"
+        ],
         "figures": [
           [
             "food410.0K",
@@ -2401,7 +2657,9 @@
       },
       {
         "level": "6",
-        "requirements": ["City Hall Lv.6"],
+        "requirements": [
+          "City Hall Level 6"
+        ],
         "figures": [
           [
             "food440.0K",
@@ -2422,7 +2680,9 @@
       },
       {
         "level": "7",
-        "requirements": ["City Hall Lv.7"],
+        "requirements": [
+          "City Hall Level 7"
+        ],
         "figures": [
           [
             "food470.0K",
@@ -2443,7 +2703,9 @@
       },
       {
         "level": "8",
-        "requirements": ["City Hall Lv.8"],
+        "requirements": [
+          "City Hall Level 8"
+        ],
         "figures": [
           [
             "food500.0K",
@@ -2464,7 +2726,9 @@
       },
       {
         "level": "9",
-        "requirements": ["City Hall Lv.9"],
+        "requirements": [
+          "City Hall Level 9"
+        ],
         "figures": [
           [
             "food525.0K",
@@ -2485,7 +2749,9 @@
       },
       {
         "level": "10",
-        "requirements": ["City Hall Lv.10"],
+        "requirements": [
+          "City Hall Level 10"
+        ],
         "figures": [
           [
             "food550.0K",
@@ -2506,7 +2772,9 @@
       },
       {
         "level": "11",
-        "requirements": ["City Hall Lv.11"],
+        "requirements": [
+          "City Hall Level 11"
+        ],
         "figures": [
           [
             "food600.0K",
@@ -2527,7 +2795,9 @@
       },
       {
         "level": "12",
-        "requirements": ["City Hall Lv. 12"],
+        "requirements": [
+          "City Hall Level 12"
+        ],
         "figures": [
           [
             "food650.0K",
@@ -2548,7 +2818,9 @@
       },
       {
         "level": "13",
-        "requirements": ["City Hall Lv. 13"],
+        "requirements": [
+          "City Hall Level 13"
+        ],
         "figures": [
           [
             "food700.0K",
@@ -2569,7 +2841,9 @@
       },
       {
         "level": "14",
-        "requirements": ["City Hall Lv. 14"],
+        "requirements": [
+          "City Hall Level 14"
+        ],
         "figures": [
           [
             "food750.0K",
@@ -2590,7 +2864,9 @@
       },
       {
         "level": "15",
-        "requirements": ["City Hall Lv. 15"],
+        "requirements": [
+          "City Hall Level 15"
+        ],
         "figures": [
           [
             "food800.0K",
@@ -2611,7 +2887,9 @@
       },
       {
         "level": "16",
-        "requirements": ["City Hall Lv. 16"],
+        "requirements": [
+          "City Hall Level 16"
+        ],
         "figures": [
           [
             "food850.0K",
@@ -2632,7 +2910,9 @@
       },
       {
         "level": "17",
-        "requirements": ["City Hall Lv. 17"],
+        "requirements": [
+          "City Hall Level 17"
+        ],
         "figures": [
           [
             "food900.0K",
@@ -2653,7 +2933,9 @@
       },
       {
         "level": "18",
-        "requirements": ["City Hall Lv. 18"],
+        "requirements": [
+          "City Hall Level 18"
+        ],
         "figures": [
           [
             "food950.0K",
@@ -2674,7 +2956,9 @@
       },
       {
         "level": "19",
-        "requirements": ["City Hall Lv. 19"],
+        "requirements": [
+          "City Hall Level 19"
+        ],
         "figures": [
           [
             "food1.0M",
@@ -2695,7 +2979,9 @@
       },
       {
         "level": "20",
-        "requirements": ["City Hall Lv. 20"],
+        "requirements": [
+          "City Hall Level 20"
+        ],
         "figures": [
           [
             "food1.1M",
@@ -2716,7 +3002,9 @@
       },
       {
         "level": "21",
-        "requirements": ["City Hall Lv. 21"],
+        "requirements": [
+          "City Hall Level 21"
+        ],
         "figures": [
           [
             "food1.2M",
@@ -2737,7 +3025,9 @@
       },
       {
         "level": "22",
-        "requirements": ["City Hall Lv. 22"],
+        "requirements": [
+          "City Hall Level 22"
+        ],
         "figures": [
           [
             "food1.3M",
@@ -2758,7 +3048,9 @@
       },
       {
         "level": "23",
-        "requirements": ["City Hall Lv. 23"],
+        "requirements": [
+          "City Hall Level 23"
+        ],
         "figures": [
           [
             "food1.4M",
@@ -2779,7 +3071,9 @@
       },
       {
         "level": "24",
-        "requirements": ["City Hall Lv. 24"],
+        "requirements": [
+          "City Hall Level 24"
+        ],
         "figures": [
           [
             "food1.5M",
@@ -2800,7 +3094,10 @@
       },
       {
         "level": "25",
-        "requirements": ["City Hall Lv. 25","Hospital 25"],
+        "requirements": [
+          "City Hall Level 25",
+          "Hospital 25"
+        ],
         "figures": [
           [
             "food2.5M",
@@ -2831,7 +3128,9 @@
         "contentId": 200006,
         "id": 100180,
         "level": "1",
-        "requirements": ["City Hall Lv.3"],
+        "requirements": [
+          "City Hall Level 3"
+        ],
         "cost": [
           "food500",
           "wood500"
@@ -2842,8 +3141,8 @@
       {
         "figures": [
           "5-hour Research",
-          "Lv.4 (max 8 helps)",
-          "Lv.2 (1m +30s)",
+          "Level 4 (max 8 helps)",
+          "Level 2 (1m +30s)",
           "3m x8 = 24m",
           "20,000",
           "6"
@@ -2851,7 +3150,9 @@
         "contentId": 200006,
         "id": 100181,
         "level": "2",
-        "requirements": ["City Hall Lv.3"],
+        "requirements": [
+          "City Hall Level 3"
+        ],
         "cost": [
           "food1.0K",
           "wood1.0K"
@@ -2862,8 +3163,8 @@
       {
         "figures": [
           "8-minute Healing",
-          "Lv.8 (max 12 helps)",
-          "Lv.2 (1m +30s)",
+          "Level 8 (max 12 helps)",
+          "Level 2 (1m +30s)",
           "4.8s x12 = 57.6s",
           "30,000",
           "7"
@@ -2871,7 +3172,9 @@
         "contentId": 200006,
         "id": 100182,
         "level": "3",
-        "requirements": ["City Hall Lv.3"],
+        "requirements": [
+          "City Hall Level 3"
+        ],
         "cost": [
           "food2.0K",
           "wood2.0K"
@@ -2882,8 +3185,8 @@
       {
         "figures": [
           "2-day Building",
-          "Lv. 15 (max 19 helps)",
-          "Lv.5 (1m +120s)",
+          "Level 15 (max 19 helps)",
+          "Level 5 (1m +120s)",
           "28.8m x19 = 9h 7.2m",
           "50,000",
           "8"
@@ -2891,7 +3194,9 @@
         "contentId": 200006,
         "id": 100183,
         "level": "4",
-        "requirements": ["City Hall Lv.4"],
+        "requirements": [
+          "City Hall Level 4"
+        ],
         "cost": [
           "food3.8K",
           "wood3.8K"
@@ -2901,7 +3206,9 @@
       },
       {
         "level": "5",
-        "requirements": ["City Hall Lv.5"],
+        "requirements": [
+          "City Hall Level 5"
+        ],
         "figures": [
           "75,000",
           "9"
@@ -2917,7 +3224,9 @@
       },
       {
         "level": "6",
-        "requirements": ["City Hall Lv.6"],
+        "requirements": [
+          "City Hall Level 6"
+        ],
         "figures": [
           "100,000",
           "10"
@@ -2934,7 +3243,9 @@
       },
       {
         "level": "7",
-        "requirements": ["City Hall Lv.7"],
+        "requirements": [
+          "City Hall Level 7"
+        ],
         "figures": [
           "125,000",
           "11"
@@ -2951,7 +3262,9 @@
       },
       {
         "level": "8",
-        "requirements": ["City Hall Lv.8"],
+        "requirements": [
+          "City Hall Level 8"
+        ],
         "figures": [
           "150,000",
           "12"
@@ -2968,7 +3281,9 @@
       },
       {
         "level": "9",
-        "requirements": ["City Hall Lv.9"],
+        "requirements": [
+          "City Hall Level 9"
+        ],
         "figures": [
           "175,000",
           "13"
@@ -2985,7 +3300,9 @@
       },
       {
         "level": "10",
-        "requirements": ["City HallLv.10"],
+        "requirements": [
+          "City Hall Level 10"
+        ],
         "figures": [
           "200,000",
           "14"
@@ -3002,7 +3319,9 @@
       },
       {
         "level": "11",
-        "requirements": ["City HallLv.11"],
+        "requirements": [
+          "City Hall Level 11"
+        ],
         "figures": [
           "237,500",
           "15"
@@ -3019,7 +3338,9 @@
       },
       {
         "level": "12",
-        "requirements": ["City HallLv.12"],
+        "requirements": [
+          "City Hall Level 12"
+        ],
         "figures": [
           "275,000",
           "16"
@@ -3036,7 +3357,9 @@
       },
       {
         "level": "13",
-        "requirements": ["City HallLv.13"],
+        "requirements": [
+          "City Hall Level 13"
+        ],
         "figures": [
           "312,500",
           "17"
@@ -3053,7 +3376,9 @@
       },
       {
         "level": "14",
-        "requirements": ["City HallLv.14"],
+        "requirements": [
+          "City Hall Level 14"
+        ],
         "figures": [
           "350,000",
           "18"
@@ -3070,7 +3395,9 @@
       },
       {
         "level": "15",
-        "requirements": ["City HallLv.15"],
+        "requirements": [
+          "City Hall Level 15"
+        ],
         "figures": [
           "387,500",
           "19"
@@ -3087,7 +3414,9 @@
       },
       {
         "level": "16",
-        "requirements": ["City HallLv.16"],
+        "requirements": [
+          "City Hall Level 16"
+        ],
         "figures": [
           "425,000",
           "20"
@@ -3104,7 +3433,9 @@
       },
       {
         "level": "17",
-        "requirements": ["City HallLv.17"],
+        "requirements": [
+          "City Hall Level 17"
+        ],
         "figures": [
           "462,500",
           "21"
@@ -3121,7 +3452,9 @@
       },
       {
         "level": "18",
-        "requirements": ["City HallLv.18"],
+        "requirements": [
+          "City Hall Level 18"
+        ],
         "figures": [
           "500,000",
           "22"
@@ -3138,7 +3471,9 @@
       },
       {
         "level": "19",
-        "requirements": ["City HallLv.19"],
+        "requirements": [
+          "City Hall Level 19"
+        ],
         "figures": [
           "537,500",
           "23"
@@ -3155,7 +3490,9 @@
       },
       {
         "level": "20",
-        "requirements": ["City HallLv.20"],
+        "requirements": [
+          "City Hall Level 20"
+        ],
         "figures": [
           "575,000",
           "24"
@@ -3172,7 +3509,9 @@
       },
       {
         "level": "21",
-        "requirements": ["City HallLv.21"],
+        "requirements": [
+          "City Hall Level 21"
+        ],
         "figures": [
           "612,500",
           "25"
@@ -3189,7 +3528,9 @@
       },
       {
         "level": "22",
-        "requirements": ["City HallLv.22"],
+        "requirements": [
+          "City Hall Level 22"
+        ],
         "figures": [
           "650,000",
           "26"
@@ -3206,7 +3547,9 @@
       },
       {
         "level": "23",
-        "requirements": ["City HallLv.23"],
+        "requirements": [
+          "City Hall Level 23"
+        ],
         "figures": [
           "687,500",
           "27"
@@ -3223,7 +3566,9 @@
       },
       {
         "level": "24",
-        "requirements": ["City HallLv.24"],
+        "requirements": [
+          "City Hall Level 24"
+        ],
         "figures": [
           "750,000",
           "28"
@@ -3240,7 +3585,9 @@
       },
       {
         "level": "25",
-        "requirements": ["City HallLv.25"],
+        "requirements": [
+          "City Hall Level 25"
+        ],
         "figures": [
           "1,000,000",
           "30"
@@ -3264,13 +3611,15 @@
             "Builder Recruitment use"
           ]
         ],
-        "requirements": ["City Hall Lv.5?"],
+        "requirements": [
+          "City Hall Level 5"
+        ],
         "cost": [
           "food300",
           "wood300"
         ],
         "time": "1m",
-        "power": "None",
+        "power": null,
         "contentId": 200007,
         "id": 100205
       },
@@ -3289,12 +3638,14 @@
           "-50%",
           "30"
         ],
-        "requirements": ["City Hall Lv.5"],
+        "requirements": [
+          "City Hall Level 5"
+        ],
         "cost": [
           "food12,000"
         ],
         "time": "3s",
-        "power": "None",
+        "power": null,
         "contentId": 200008,
         "id": 100253
       },
@@ -3319,7 +3670,7 @@
           "3-Day Speedup ",
           "24-Hour Stone Boost ",
           "Book of Covenant ",
-          "Lv.5 Tome of Knowledge (10,000 xp) ",
+          "Level 5 Tome of Knowledge (10,000 xp) ",
           "VIP 3",
           "-50%",
           "50"
@@ -3710,7 +4061,7 @@
           "Universal Speedup (24h) ",
           "VIP 15",
           "-60%",
-          "?"
+          null
         ],
         "cost": [
           "gem600"
@@ -3736,17 +4087,17 @@
           "Level 4 Material Choice Chest ",
           "VIP 16",
           "-40%",
-          "???"
+          null
         ],
-        "cost": "???",
+        "cost": null,
         "contentId": 200008,
         "id": 100284
       },
       {
         "level": "1",
         "requirements": [
-          "City Hall Lv.10",
-          "Goldmine Lv.1"
+          "City Hall Level 10",
+          "Goldmine Level 1"
         ],
         "figures": [
           "5,000",
@@ -3763,7 +4114,9 @@
       },
       {
         "level": "2",
-        "requirements": ["Goldmine Lv.2"],
+        "requirements": [
+          "Goldmine Level 2"
+        ],
         "figures": [
           "15,000",
           "34%"
@@ -3779,7 +4132,9 @@
       },
       {
         "level": "3",
-        "requirements": ["Goldmine Lv.3"],
+        "requirements": [
+          "Goldmine Level 3"
+        ],
         "figures": [
           "30,000",
           "33%"
@@ -3795,7 +4150,9 @@
       },
       {
         "level": "4",
-        "requirements": ["Goldmine Lv.4"],
+        "requirements": [
+          "Goldmine Level 4"
+        ],
         "figures": [
           "50,000",
           "32%"
@@ -3811,7 +4168,9 @@
       },
       {
         "level": "5",
-        "requirements": ["Goldmine Lv.5"],
+        "requirements": [
+          "Goldmine Level 5"
+        ],
         "figures": [
           "80,000",
           "31%"
@@ -3827,7 +4186,9 @@
       },
       {
         "level": "6",
-        "requirements": ["Goldmine Lv.6"],
+        "requirements": [
+          "Goldmine Level 6"
+        ],
         "figures": [
           "120,000",
           "30%"
@@ -3844,7 +4205,9 @@
       },
       {
         "level": "7",
-        "requirements": ["Goldmine Lv.7"],
+        "requirements": [
+          "Goldmine Level 7"
+        ],
         "figures": [
           "160,000",
           "29%"
@@ -3861,7 +4224,9 @@
       },
       {
         "level": "8",
-        "requirements": ["Goldmine Lv.8"],
+        "requirements": [
+          "Goldmine Level 8"
+        ],
         "figures": [
           "200,000",
           "28%"
@@ -3878,7 +4243,9 @@
       },
       {
         "level": "9",
-        "requirements": ["Goldmine Lv.9"],
+        "requirements": [
+          "Goldmine Level 9"
+        ],
         "figures": [
           "250,000",
           "27%"
@@ -3895,7 +4262,9 @@
       },
       {
         "level": "10",
-        "requirements": ["Goldmine Lv.10"],
+        "requirements": [
+          "Goldmine Level 10"
+        ],
         "figures": [
           "300,000",
           "26%"
@@ -3912,7 +4281,9 @@
       },
       {
         "level": "11",
-        "requirements": ["Goldmine Lv.11"],
+        "requirements": [
+          "Goldmine Level 11"
+        ],
         "figures": [
           "400,000",
           "25%"
@@ -3929,7 +4300,9 @@
       },
       {
         "level": "12",
-        "requirements": ["Goldmine Lv.12"],
+        "requirements": [
+          "Goldmine Level 12"
+        ],
         "figures": [
           "500,000",
           "24%"
@@ -3946,7 +4319,9 @@
       },
       {
         "level": "13",
-        "requirements": ["Goldmine Lv.13"],
+        "requirements": [
+          "Goldmine Level 13"
+        ],
         "figures": [
           "600,000",
           "23%"
@@ -3963,7 +4338,9 @@
       },
       {
         "level": "14",
-        "requirements": ["Goldmine Lv.14"],
+        "requirements": [
+          "Goldmine Level 14"
+        ],
         "figures": [
           "700,000",
           "22%"
@@ -3980,7 +4357,9 @@
       },
       {
         "level": "15",
-        "requirements": ["Goldmine Lv.15"],
+        "requirements": [
+          "Goldmine Level 15"
+        ],
         "figures": [
           "800,000",
           "21%"
@@ -3997,7 +4376,9 @@
       },
       {
         "level": "16",
-        "requirements": ["Goldmine Lv.16"],
+        "requirements": [
+          "Goldmine Level 16"
+        ],
         "figures": [
           "900,000",
           "20%"
@@ -4014,7 +4395,9 @@
       },
       {
         "level": "17",
-        "requirements": ["Goldmine Lv.17"],
+        "requirements": [
+          "Goldmine Level 17"
+        ],
         "figures": [
           "1,000,000",
           "19%"
@@ -4031,7 +4414,9 @@
       },
       {
         "level": "18",
-        "requirements": ["Goldmine Lv.18"],
+        "requirements": [
+          "Goldmine Level 18"
+        ],
         "figures": [
           "1,100,000",
           "18%"
@@ -4048,7 +4433,9 @@
       },
       {
         "level": "19",
-        "requirements": ["Goldmine Lv.19"],
+        "requirements": [
+          "Goldmine Level 19"
+        ],
         "figures": [
           "1,200,000",
           "17%"
@@ -4065,7 +4452,9 @@
       },
       {
         "level": "20",
-        "requirements": ["Goldmine Lv.20"],
+        "requirements": [
+          "Goldmine Level 20"
+        ],
         "figures": [
           "1,300,000",
           "16%"
@@ -4082,7 +4471,9 @@
       },
       {
         "level": "21",
-        "requirements": ["Goldmine Lv.21"],
+        "requirements": [
+          "Goldmine Level 21"
+        ],
         "figures": [
           "1,400,000",
           "15%"
@@ -4099,7 +4490,9 @@
       },
       {
         "level": "22",
-        "requirements": ["Goldmine Lv.22"],
+        "requirements": [
+          "Goldmine Level 22"
+        ],
         "figures": [
           "1,500,000",
           "14%"
@@ -4116,7 +4509,9 @@
       },
       {
         "level": "23",
-        "requirements": ["Goldmine Lv.23"],
+        "requirements": [
+          "Goldmine Level 23"
+        ],
         "figures": [
           "1,750,000",
           "12%"
@@ -4133,7 +4528,9 @@
       },
       {
         "level": "24",
-        "requirements": ["Goldmine Lv.24"],
+        "requirements": [
+          "Goldmine Level 24"
+        ],
         "figures": [
           "2,000,000",
           "10%"
@@ -4150,7 +4547,9 @@
       },
       {
         "level": "25",
-        "requirements": ["Goldmine Lv.25"],
+        "requirements": [
+          "Goldmine Level 25"
+        ],
         "figures": [
           "2,500,000",
           "8%"
@@ -4168,10 +4567,12 @@
       },
       {
         "level": "1",
-        "requirements": ["City Hall Lv.6"],
-        "cost": "Free",
+        "requirements": [
+          "City Hall Level 6"
+        ],
+        "cost": null,
         "time": "3s",
-        "power": "None",
+        "power": null,
         "contentId": 200011,
         "id": 100316,
         "figures": [
@@ -4447,7 +4848,7 @@
       {
         "figures": [
           "1x",
-          "Lv.3 Tome of Knowledge (1K EXP) ",
+          "Level 3 Tome of Knowledge (1K EXP) ",
           "-"
         ],
         "contentId": 200011,
@@ -4456,7 +4857,7 @@
       {
         "figures": [
           "2x",
-          "Lv.3 Tome of Knowledge (1K EXP) ",
+          "Level 3 Tome of Knowledge (1K EXP) ",
           "-"
         ],
         "contentId": 200011,
@@ -4465,7 +4866,7 @@
       {
         "figures": [
           "3x",
-          "Lv.3 Tome of Knowledge (1K EXP) ",
+          "Level 3 Tome of Knowledge (1K EXP) ",
           "-"
         ],
         "contentId": 200011,
@@ -4474,7 +4875,7 @@
       {
         "figures": [
           "1x",
-          "Lv.4 Tome of Knowledge (5K EXP) ",
+          "Level 4 Tome of Knowledge (5K EXP) ",
           "-"
         ],
         "contentId": 200011,
@@ -4528,7 +4929,7 @@
       {
         "level": "1",
         "figures": [
-          "None",
+          null,
           "3d",
           "3"
         ],
@@ -4545,11 +4946,13 @@
       {
         "level": "2",
         "figures": [
-          "None",
+          null,
           "2d23h",
           "3"
         ],
-        "requirements": ["City Hall Lv.2"],
+        "requirements": [
+          "City Hall Level 2"
+        ],
         "cost": [
           "food300",
           "wood300"
@@ -4562,11 +4965,13 @@
       {
         "level": "3",
         "figures": [
-          "None",
+          null,
           "2d22h",
           "3"
         ],
-        "requirements": ["City Hall Lv.3"],
+        "requirements": [
+          "City Hall Level 3"
+        ],
         "cost": [
           "food500",
           "wood500"
@@ -4579,11 +4984,13 @@
       {
         "level": "4",
         "figures": [
-          "None",
+          null,
           "2d21h",
           "3"
         ],
-        "requirements": ["City Hall Lv.4"],
+        "requirements": [
+          "City Hall Level 4"
+        ],
         "cost": [
           "food1.0K",
           "wood1.0K"
@@ -4596,11 +5003,13 @@
       {
         "level": "5",
         "figures": [
-          "Wall Lv.5",
+          "Wall Level 5",
           "2d20h",
           "4"
         ],
-        "requirements": ["Quarry Lv.5"],
+        "requirements": [
+          "Quarry Level 5"
+        ],
         "cost": [
           "food2.0K",
           "wood2.0K"
@@ -4613,11 +5022,13 @@
       {
         "level": "6",
         "figures": [
-          "Wall Lv.6",
+          "Wall Level 6",
           "2d19h",
           "4"
         ],
-        "requirements": ["Quarry Lv.6"],
+        "requirements": [
+          "Quarry Level 6"
+        ],
         "cost": [
           "food2.7K",
           "wood2.7K",
@@ -4631,11 +5042,13 @@
       {
         "level": "7",
         "figures": [
-          "Wall Lv.7",
+          "Wall Level 7",
           "2d18h",
           "4"
         ],
-        "requirements": ["Quarry Lv.7"],
+        "requirements": [
+          "Quarry Level 7"
+        ],
         "cost": [
           "food4.0K",
           "wood4.0K",
@@ -4649,11 +5062,13 @@
       {
         "level": "8",
         "figures": [
-          "Wall Lv.8",
+          "Wall Level 8",
           "2d17h",
           "5"
         ],
-        "requirements": ["Quarry Lv.8"],
+        "requirements": [
+          "Quarry Level 8"
+        ],
         "cost": [
           "food6.0K",
           "wood6.0K",
@@ -4667,11 +5082,13 @@
       {
         "level": "9",
         "figures": [
-          "Wall Lv.9",
+          "Wall Level 9",
           "2d16h",
           "5"
         ],
-        "requirements": ["Quarry Lv.9"],
+        "requirements": [
+          "Quarry Level 9"
+        ],
         "cost": [
           "food9.0K",
           "wood9.0K",
@@ -4685,11 +5102,13 @@
       {
         "level": "10",
         "figures": [
-          "Wall Lv.10",
+          "Wall Level 10",
           "2d15h",
           "5"
         ],
-        "requirements": ["Quarry Lv.10"],
+        "requirements": [
+          "Quarry Level 10"
+        ],
         "cost": [
           "food13.5K",
           "wood13.5K",
@@ -4703,11 +5122,13 @@
       {
         "level": "11",
         "figures": [
-          "Wall Lv.11",
+          "Wall Level 11",
           "2d14h",
           "6"
         ],
-        "requirements": ["Quarry Lv.11"],
+        "requirements": [
+          "Quarry Level 11"
+        ],
         "cost": [
           "food21.0K",
           "wood21.0K",
@@ -4721,11 +5142,13 @@
       {
         "level": "12",
         "figures": [
-          "Wall Lv.12",
+          "Wall Level 12",
           "2d13h",
           "6"
         ],
-        "requirements": ["Quarry Lv.12"],
+        "requirements": [
+          "Quarry Level 12"
+        ],
         "cost": [
           "food32.0K",
           "wood32.0K",
@@ -4739,11 +5162,13 @@
       {
         "level": "13",
         "figures": [
-          "Wall Lv.13",
+          "Wall Level 13",
           "2d12h",
           "6"
         ],
-        "requirements": ["Quarry Lv.13"],
+        "requirements": [
+          "Quarry Level 13"
+        ],
         "cost": [
           "food49.0K",
           "wood49.0K",
@@ -4757,11 +5182,13 @@
       {
         "level": "14",
         "figures": [
-          "Wall Lv.14",
+          "Wall Level 14",
           "2d11h",
           "7"
         ],
-        "requirements": ["Quarry Lv.14"],
+        "requirements": [
+          "Quarry Level 14"
+        ],
         "cost": [
           "food74.0K",
           "wood74.0K",
@@ -4775,11 +5202,13 @@
       {
         "level": "15",
         "figures": [
-          "Wall Lv.15",
+          "Wall Level 15",
           "2d10h",
           "7"
         ],
-        "requirements": ["Quarry Lv.15"],
+        "requirements": [
+          "Quarry Level 15"
+        ],
         "cost": [
           "food111.0K",
           "wood111.0K",
@@ -4793,11 +5222,13 @@
       {
         "level": "16",
         "figures": [
-          "Wall Lv.16",
+          "Wall Level 16",
           "2d9h",
           "7"
         ],
-        "requirements": ["Quarry Lv.16"],
+        "requirements": [
+          "Quarry Level 16"
+        ],
         "cost": [
           "food167.0K",
           "wood167.0K",
@@ -4811,11 +5242,13 @@
       {
         "level": "17",
         "figures": [
-          "Wall Lv.17",
+          "Wall Level 17",
           "2d8h",
           "8"
         ],
-        "requirements": ["Quarry Lv.17"],
+        "requirements": [
+          "Quarry Level 17"
+        ],
         "cost": [
           "food252.0K",
           "wood252.0K",
@@ -4829,11 +5262,13 @@
       {
         "level": "18",
         "figures": [
-          "Wall Lv.18",
+          "Wall Level 18",
           "2d7h",
           "8"
         ],
-        "requirements": ["Quarry Lv.18"],
+        "requirements": [
+          "Quarry Level 18"
+        ],
         "cost": [
           "food394.0K",
           "wood394.0K",
@@ -4847,11 +5282,13 @@
       {
         "level": "19",
         "figures": [
-          "Wall Lv.19",
+          "Wall Level 19",
           "2d6h",
           "8"
         ],
-        "requirements": ["Quarry Lv.19"],
+        "requirements": [
+          "Quarry Level 19"
+        ],
         "cost": [
           "food600.0K",
           "wood600.0K",
@@ -4865,11 +5302,13 @@
       {
         "level": "20",
         "figures": [
-          "Wall Lv.20",
+          "Wall Level 20",
           "2d5h",
           "8"
         ],
-        "requirements": ["Quarry Lv.20"],
+        "requirements": [
+          "Quarry Level 20"
+        ],
         "cost": [
           "food900.0K",
           "wood900.0K",
@@ -4883,11 +5322,13 @@
       {
         "level": "21",
         "figures": [
-          "Wall Lv.21",
+          "Wall Level 21",
           "2d4h",
           "9"
         ],
-        "requirements": ["Quarry Lv.21"],
+        "requirements": [
+          "Quarry Level 21"
+        ],
         "cost": [
           "food1.4M",
           "wood1.4M",
@@ -4901,11 +5342,13 @@
       {
         "level": "22",
         "figures": [
-          "Wall Lv.22",
+          "Wall Level 22",
           "2d3h",
           "9"
         ],
-        "requirements": ["Quarry Lv.22"],
+        "requirements": [
+          "Quarry Level 22"
+        ],
         "cost": [
           "food2.0M",
           "wood2.0M",
@@ -4919,11 +5362,13 @@
       {
         "level": "23",
         "figures": [
-          "Wall Lv.23",
+          "Wall Level 23",
           "2d2h",
           "9"
         ],
-        "requirements": ["Quarry Lv.23"],
+        "requirements": [
+          "Quarry Level 23"
+        ],
         "cost": [
           "food3.0M",
           "wood3.0M",
@@ -4937,11 +5382,13 @@
       {
         "level": "24",
         "figures": [
-          "Wall Lv.24",
+          "Wall Level 24",
           "2d1h",
           "9"
         ],
-        "requirements": ["Quarry Lv.24"],
+        "requirements": [
+          "Quarry Level 24"
+        ],
         "cost": [
           "food4.7M",
           "wood4.7M",
@@ -4955,11 +5402,13 @@
       {
         "level": "25",
         "figures": [
-          "Wall Lv.25",
+          "Wall Level 25",
           "2d",
           "10"
         ],
-        "requirements": ["Quarry Lv.25"],
+        "requirements": [
+          "Quarry Level 25"
+        ],
         "cost": [
           "food7.1M",
           "wood7.1M",
@@ -4973,7 +5422,9 @@
       },
       {
         "level": "1",
-        "requirements": ["City Hall Lv.2"],
+        "requirements": [
+          "City Hall Level 2"
+        ],
         "figures": [
           "5%",
           "5x5",
@@ -4990,7 +5441,9 @@
       },
       {
         "level": "2",
-        "requirements": ["City Hall Lv.2"],
+        "requirements": [
+          "City Hall Level 2"
+        ],
         "figures": [
           "10%",
           "5x5",
@@ -5007,7 +5460,9 @@
       },
       {
         "level": "3",
-        "requirements": ["City Hall Lv.3"],
+        "requirements": [
+          "City Hall Level 3"
+        ],
         "figures": [
           "15%",
           "5x5",
@@ -5024,7 +5479,9 @@
       },
       {
         "level": "4",
-        "requirements": ["City Hall Lv.4"],
+        "requirements": [
+          "City Hall Level 4"
+        ],
         "figures": [
           "20%",
           "6x6",
@@ -5041,7 +5498,9 @@
       },
       {
         "level": "5",
-        "requirements": ["City Hall Lv.5"],
+        "requirements": [
+          "City Hall Level 5"
+        ],
         "figures": [
           "25%",
           "6x6",
@@ -5058,7 +5517,9 @@
       },
       {
         "level": "6",
-        "requirements": ["City Hall Lv.6"],
+        "requirements": [
+          "City Hall Level 6"
+        ],
         "figures": [
           "30%",
           "6x6",
@@ -5075,7 +5536,9 @@
       },
       {
         "level": "7",
-        "requirements": ["City Hall Lv.7"],
+        "requirements": [
+          "City Hall Level 7"
+        ],
         "figures": [
           "35%",
           "7x7",
@@ -5092,7 +5555,9 @@
       },
       {
         "level": "8",
-        "requirements": ["City Hall Lv.8"],
+        "requirements": [
+          "City Hall Level 8"
+        ],
         "figures": [
           "40%",
           "7x7",
@@ -5109,7 +5574,9 @@
       },
       {
         "level": "9",
-        "requirements": ["City Hall Lv.9"],
+        "requirements": [
+          "City Hall Level 9"
+        ],
         "figures": [
           "45%",
           "7x7",
@@ -5126,7 +5593,9 @@
       },
       {
         "level": "10",
-        "requirements": ["City Hall Lv.10"],
+        "requirements": [
+          "City Hall Level 10"
+        ],
         "figures": [
           "50%",
           "8x8",
@@ -5143,7 +5612,9 @@
       },
       {
         "level": "11",
-        "requirements": ["City Hall Lv.11"],
+        "requirements": [
+          "City Hall Level 11"
+        ],
         "figures": [
           "55%",
           "8x8",
@@ -5160,7 +5631,9 @@
       },
       {
         "level": "12",
-        "requirements": ["City Hall Lv.12"],
+        "requirements": [
+          "City Hall Level 12"
+        ],
         "figures": [
           "60%",
           "8x8",
@@ -5177,7 +5650,9 @@
       },
       {
         "level": "13",
-        "requirements": ["City Hall Lv.13"],
+        "requirements": [
+          "City Hall Level 13"
+        ],
         "figures": [
           "65%",
           "9x9",
@@ -5194,7 +5669,9 @@
       },
       {
         "level": "14",
-        "requirements": ["City Hall Lv.14"],
+        "requirements": [
+          "City Hall Level 14"
+        ],
         "figures": [
           "70%",
           "9x9",
@@ -5211,7 +5688,9 @@
       },
       {
         "level": "15",
-        "requirements": ["City Hall Lv.15"],
+        "requirements": [
+          "City Hall Level 15"
+        ],
         "figures": [
           "75%",
           "9x9",
@@ -5228,7 +5707,9 @@
       },
       {
         "level": "16",
-        "requirements": ["City Hall Lv.16"],
+        "requirements": [
+          "City Hall Level 16"
+        ],
         "figures": [
           "80%",
           "10x10",
@@ -5245,7 +5726,9 @@
       },
       {
         "level": "17",
-        "requirements": ["City Hall Lv.17"],
+        "requirements": [
+          "City Hall Level 17"
+        ],
         "figures": [
           "85%",
           "10x10",
@@ -5262,7 +5745,9 @@
       },
       {
         "level": "18",
-        "requirements": ["City Hall Lv.18"],
+        "requirements": [
+          "City Hall Level 18"
+        ],
         "figures": [
           "90%",
           "10x10",
@@ -5279,7 +5764,9 @@
       },
       {
         "level": "19",
-        "requirements": ["City Hall Lv.19"],
+        "requirements": [
+          "City Hall Level 19"
+        ],
         "figures": [
           "95%",
           "11x11",
@@ -5296,7 +5783,9 @@
       },
       {
         "level": "20",
-        "requirements": ["City Hall Lv.20"],
+        "requirements": [
+          "City Hall Level 20"
+        ],
         "figures": [
           "100%",
           "11x11",
@@ -5313,7 +5802,9 @@
       },
       {
         "level": "21",
-        "requirements": ["City Hall Lv.21"],
+        "requirements": [
+          "City Hall Level 21"
+        ],
         "figures": [
           "105%",
           "11x11",
@@ -5330,7 +5821,9 @@
       },
       {
         "level": "22",
-        "requirements": ["City Hall Lv.22"],
+        "requirements": [
+          "City Hall Level 22"
+        ],
         "figures": [
           "110%",
           "12x12",
@@ -5347,7 +5840,9 @@
       },
       {
         "level": "23",
-        "requirements": ["City Hall Lv.23"],
+        "requirements": [
+          "City Hall Level 23"
+        ],
         "figures": [
           "115%",
           "12x12",
@@ -5364,7 +5859,9 @@
       },
       {
         "level": "24",
-        "requirements": ["City Hall Lv.24"],
+        "requirements": [
+          "City Hall Level 24"
+        ],
         "figures": [
           "120%",
           "12x12",
@@ -5381,14 +5878,16 @@
       },
       {
         "level": "25",
-        "requirements": ["City Hall Lv.25"],
+        "requirements": [
+          "City Hall Level 25"
+        ],
         "figures": [
           "125%",
           "15x15",
           "3"
         ],
-        "cost": "?",
-        "time": "?",
+        "cost": null,
+        "time": null,
         "power": "139 023",
         "contentId": 200013,
         "id": 100397
@@ -5396,13 +5895,13 @@
       {
         "level": "1",
         "figures": [
-          "None",
+          null,
           "20",
           "-"
         ],
         "requirements": null,
-        "cost": "None",
-        "time": "None",
+        "cost": null,
+        "time": null,
         "power": "5",
         "contentId": 200014,
         "id": 100398
@@ -5410,11 +5909,13 @@
       {
         "level": "2",
         "figures": [
-          "Siege Workshop Lv.2",
+          "Siege Workshop Level 2",
           "50",
           "-"
         ],
-        "requirements": ["City Hall Lv.2"],
+        "requirements": [
+          "City Hall Level 2"
+        ],
         "cost": [
           "food500",
           "wood800"
@@ -5427,11 +5928,13 @@
       {
         "level": "3",
         "figures": [
-          "Siege Workshop Lv.3",
+          "Siege Workshop Level 3",
           "100",
           "-"
         ],
-        "requirements": ["City Hall Lv.3"],
+        "requirements": [
+          "City Hall Level 3"
+        ],
         "cost": [
           "food1.0K",
           "wood1.5K"
@@ -5444,11 +5947,13 @@
       {
         "level": "4",
         "figures": [
-          "Siege Workshop Lv.4",
+          "Siege Workshop Level 4",
           "150",
           "-"
         ],
-        "requirements": ["City Hall Lv.4"],
+        "requirements": [
+          "City Hall Level 4"
+        ],
         "cost": [
           "food2.0K",
           "wood2.8K"
@@ -5461,11 +5966,13 @@
       {
         "level": "5",
         "figures": [
-          "Siege Workshop Lv.5",
+          "Siege Workshop Level 5",
           "200",
           "-"
         ],
-        "requirements": ["Farm Lv.5"],
+        "requirements": [
+          "Farm Level 5"
+        ],
         "cost": [
           "food3.8K",
           "wood5.0K"
@@ -5478,11 +5985,13 @@
       {
         "level": "6",
         "figures": [
-          "Siege Workshop Lv.6",
+          "Siege Workshop Level 6",
           "250",
           "-"
         ],
-        "requirements": ["Farm Lv.6"],
+        "requirements": [
+          "Farm Level 6"
+        ],
         "cost": [
           "food6.5K",
           "wood8.5K",
@@ -5496,11 +6005,13 @@
       {
         "level": "7",
         "figures": [
-          "Siege Workshop Lv.7",
+          "Siege Workshop Level 7",
           "300",
           "-"
         ],
-        "requirements": ["Farm Lv.7"],
+        "requirements": [
+          "Farm Level 7"
+        ],
         "cost": [
           "food9.8K",
           "wood12.8K",
@@ -5514,11 +6025,13 @@
       {
         "level": "8",
         "figures": [
-          "Siege Workshop Lv.8",
+          "Siege Workshop Level 8",
           "350",
           "-"
         ],
-        "requirements": ["Farm Lv.8"],
+        "requirements": [
+          "Farm Level 8"
+        ],
         "cost": [
           "food14.8K",
           "wood19.3K",
@@ -5532,11 +6045,13 @@
       {
         "level": "9",
         "figures": [
-          "Siege Workshop Lv.9",
+          "Siege Workshop Level 9",
           "400",
           "-"
         ],
-        "requirements": ["Farm Lv.9"],
+        "requirements": [
+          "Farm Level 9"
+        ],
         "cost": [
           "food22.3K",
           "wood29.0K",
@@ -5550,11 +6065,13 @@
       {
         "level": "10",
         "figures": [
-          "Siege Workshop Lv.10",
+          "Siege Workshop Level 10",
           "450",
           "0.5%"
         ],
-        "requirements": ["Farm Lv.10"],
+        "requirements": [
+          "Farm Level 10"
+        ],
         "cost": [
           "food33.5K",
           "wood43.5K",
@@ -5568,11 +6085,13 @@
       {
         "level": "11",
         "figures": [
-          "Siege Workshop Lv.11",
+          "Siege Workshop Level 11",
           "500",
           "0.5%"
         ],
-        "requirements": ["Farm Lv.11"],
+        "requirements": [
+          "Farm Level 11"
+        ],
         "cost": [
           "food52.5K",
           "wood67.5K",
@@ -5586,11 +6105,13 @@
       {
         "level": "12",
         "figures": [
-          "Siege Workshop Lv.12",
+          "Siege Workshop Level 12",
           "550",
           "0.5%"
         ],
-        "requirements": ["Farm Lv.12"],
+        "requirements": [
+          "Farm Level 12"
+        ],
         "cost": [
           "food80.0K",
           "wood102.5K",
@@ -5604,11 +6125,13 @@
       {
         "level": "13",
         "figures": [
-          "Siege Workshop Lv.13",
+          "Siege Workshop Level 13",
           "600",
           "0.5%"
         ],
-        "requirements": ["Farm Lv.13"],
+        "requirements": [
+          "Farm Level 13"
+        ],
         "cost": [
           "food120.0K",
           "wood155.0K",
@@ -5622,11 +6145,13 @@
       {
         "level": "14",
         "figures": [
-          "Siege Workshop Lv.14",
+          "Siege Workshop Level 14",
           "700",
           "0.5%"
         ],
-        "requirements": ["Farm Lv.14"],
+        "requirements": [
+          "Farm Level 14"
+        ],
         "cost": [
           "food180.0K",
           "wood232.5K",
@@ -5640,11 +6165,13 @@
       {
         "level": "15",
         "figures": [
-          "Siege Workshop Lv.15",
+          "Siege Workshop Level 15",
           "800",
           "0.5%"
         ],
-        "requirements": ["Farm Lv.15"],
+        "requirements": [
+          "Farm Level 15"
+        ],
         "cost": [
           "food270.0K",
           "wood350.0K",
@@ -5658,11 +6185,13 @@
       {
         "level": "16",
         "figures": [
-          "Siege Workshop Lv.16",
+          "Siege Workshop Level 16",
           "900",
           "1%"
         ],
-        "requirements": ["Farm Lv.16"],
+        "requirements": [
+          "Farm Level 16"
+        ],
         "cost": [
           "food405.0K",
           "wood525.0K",
@@ -5676,11 +6205,13 @@
       {
         "level": "17",
         "figures": [
-          "Siege Workshop Lv.17",
+          "Siege Workshop Level 17",
           "1,000",
           "1%"
         ],
-        "requirements": ["Farm Lv.17"],
+        "requirements": [
+          "Farm Level 17"
+        ],
         "cost": [
           "food607.5K",
           "wood787.5K",
@@ -5694,11 +6225,13 @@
       {
         "level": "18",
         "figures": [
-          "Siege Workshop Lv.18",
+          "Siege Workshop Level 18",
           "1,100",
           "1%"
         ],
-        "requirements": ["Farm Lv.18"],
+        "requirements": [
+          "Farm Level 18"
+        ],
         "cost": [
           "food925.0K",
           "wood1.2M",
@@ -5712,11 +6245,13 @@
       {
         "level": "19",
         "figures": [
-          "Siege Workshop Lv.19",
+          "Siege Workshop Level 19",
           "1,200",
           "1%"
         ],
-        "requirements": ["Farm Lv.19"],
+        "requirements": [
+          "Farm Level 19"
+        ],
         "cost": [
           "food1.4M",
           "wood1.8M",
@@ -5730,11 +6265,13 @@
       {
         "level": "20",
         "figures": [
-          "Siege Workshop Lv.20",
+          "Siege Workshop Level 20",
           "1,300",
           "1%"
         ],
-        "requirements": ["Farm Lv.20"],
+        "requirements": [
+          "Farm Level 20"
+        ],
         "cost": [
           "food2.1M",
           "wood2.7M",
@@ -5748,11 +6285,13 @@
       {
         "level": "21",
         "figures": [
-          "Siege Workshop Lv.21",
+          "Siege Workshop Level 21",
           "1,400",
           "1.5%"
         ],
-        "requirements": ["Farm Lv.21"],
+        "requirements": [
+          "Farm Level 21"
+        ],
         "cost": [
           "food3.2M",
           "wood4.1M",
@@ -5766,11 +6305,13 @@
       {
         "level": "22",
         "figures": [
-          "Siege Workshop Lv.22",
+          "Siege Workshop Level 22",
           "1,500",
           "1.5%"
         ],
-        "requirements": ["Farm Lv.22"],
+        "requirements": [
+          "Farm Level 22"
+        ],
         "cost": [
           "food4.7M",
           "wood6.1M",
@@ -5784,11 +6325,13 @@
       {
         "level": "23",
         "figures": [
-          "Siege Workshop Lv.23",
+          "Siege Workshop Level 23",
           "1,600",
           "1.5%"
         ],
-        "requirements": ["Farm Lv.23"],
+        "requirements": [
+          "Farm Level 23"
+        ],
         "cost": [
           "food7.1M",
           "wood9.1M",
@@ -5802,11 +6345,13 @@
       {
         "level": "24",
         "figures": [
-          "Siege Workshop Lv.24",
+          "Siege Workshop Level 24",
           "1,700",
           "1.5%"
         ],
-        "requirements": ["Farm Lv.24"],
+        "requirements": [
+          "Farm Level 24"
+        ],
         "cost": [
           "food10.8M",
           "wood13.8M",
@@ -5820,11 +6365,13 @@
       {
         "level": "25",
         "figures": [
-          "Siege Workshop Lv.25",
+          "Siege Workshop Level 25",
           "2,000",
           "2%"
         ],
-        "requirements": ["Farm Lv.25"],
+        "requirements": [
+          "Farm Level 25"
+        ],
         "cost": [
           "food16.2M",
           "wood20.8M",
@@ -5839,11 +6386,13 @@
       {
         "level": "1",
         "figures": [
-          "None",
+          null,
           "20",
           "-"
         ],
-        "requirements": ["City Hall Lv.2"],
+        "requirements": [
+          "City Hall Level 2"
+        ],
         "cost": [
           "food300",
           "wood500"
@@ -5856,11 +6405,13 @@
       {
         "level": "2",
         "figures": [
-          "Siege Workshop Lv.2",
+          "Siege Workshop Level 2",
           "50",
           "-"
         ],
-        "requirements": ["City Hall Lv.2"],
+        "requirements": [
+          "City Hall Level 2"
+        ],
         "cost": [
           "food500",
           "wood800"
@@ -5873,11 +6424,13 @@
       {
         "level": "3",
         "figures": [
-          "Siege Workshop Lv.3",
+          "Siege Workshop Level 3",
           "100",
           "-"
         ],
-        "requirements": ["City Hall Lv.3"],
+        "requirements": [
+          "City Hall Level 3"
+        ],
         "cost": [
           "food1.0K",
           "wood1.5K"
@@ -5890,11 +6443,13 @@
       {
         "level": "4",
         "figures": [
-          "Siege Workshop Lv.4",
+          "Siege Workshop Level 4",
           "150",
           "-"
         ],
-        "requirements": ["City Hall Lv.4"],
+        "requirements": [
+          "City Hall Level 4"
+        ],
         "cost": [
           "food2.0K",
           "wood2.8K"
@@ -5907,11 +6462,13 @@
       {
         "level": "5",
         "figures": [
-          "Siege Workshop Lv.5",
+          "Siege Workshop Level 5",
           "200",
           "-"
         ],
-        "requirements": ["Lumber Mill Lv.5"],
+        "requirements": [
+          "Lumber Mill Level 5"
+        ],
         "cost": [
           "food3.8K",
           "wood5.0K"
@@ -5924,11 +6481,13 @@
       {
         "level": "6",
         "figures": [
-          "Siege Workshop Lv.6",
+          "Siege Workshop Level 6",
           "250",
           "-"
         ],
-        "requirements": ["Lumber Mill Lv.6"],
+        "requirements": [
+          "Lumber Mill Level 6"
+        ],
         "cost": [
           "food6.5K",
           "wood8.5K",
@@ -5942,11 +6501,13 @@
       {
         "level": "7",
         "figures": [
-          "Siege Workshop Lv.7",
+          "Siege Workshop Level 7",
           "300",
           "-"
         ],
-        "requirements": ["Lumber Mill Lv.7"],
+        "requirements": [
+          "Lumber Mill Level 7"
+        ],
         "cost": [
           "food9.8K",
           "wood12.8K",
@@ -5960,11 +6521,13 @@
       {
         "level": "8",
         "figures": [
-          "Siege Workshop Lv.8",
+          "Siege Workshop Level 8",
           "350",
           "-"
         ],
-        "requirements": ["Lumber Mill Lv.8"],
+        "requirements": [
+          "Lumber Mill Level 8"
+        ],
         "cost": [
           "food14.8K",
           "wood19.3K",
@@ -5978,11 +6541,13 @@
       {
         "level": "9",
         "figures": [
-          "Siege Workshop Lv.9",
+          "Siege Workshop Level 9",
           "400",
           "-"
         ],
-        "requirements": ["Lumber Mill Lv.9"],
+        "requirements": [
+          "Lumber Mill Level 9"
+        ],
         "cost": [
           "food22.3K",
           "wood29.0K",
@@ -5996,11 +6561,13 @@
       {
         "level": "10",
         "figures": [
-          "Siege Workshop Lv.10",
+          "Siege Workshop Level 10",
           "450",
           "0.5%"
         ],
-        "requirements": ["Lumber Mill Lv.10"],
+        "requirements": [
+          "Lumber Mill Level 10"
+        ],
         "cost": [
           "food33.5K",
           "wood43.5K",
@@ -6015,13 +6582,15 @@
         "level": "11",
         "figures": [
           [
-            "Siege Workshop Lv.11",
-            "Hospital Lv.11"
+            "Siege Workshop Level 11",
+            "Hospital Level 11"
           ],
           "500",
           "0.5%"
         ],
-        "requirements": ["Lumber Mill Lv.11"],
+        "requirements": [
+          "Lumber Mill Level 11"
+        ],
         "cost": [
           "food52.5K",
           "wood67.5K",
@@ -6035,11 +6604,13 @@
       {
         "level": "12",
         "figures": [
-          "Siege Workshop Lv.12",
+          "Siege Workshop Level 12",
           "550",
           "0.5%"
         ],
-        "requirements": ["Lumber Mill Lv.12"],
+        "requirements": [
+          "Lumber Mill Level 12"
+        ],
         "cost": [
           "food80.0K",
           "wood102.5K",
@@ -6053,11 +6624,13 @@
       {
         "level": "13",
         "figures": [
-          "Siege Workshop Lv.13",
+          "Siege Workshop Level 13",
           "600",
           "0.5%"
         ],
-        "requirements": ["Lumber Mill Lv.13"],
+        "requirements": [
+          "Lumber Mill Level 13"
+        ],
         "cost": [
           "food120.0K",
           "wood155.0K",
@@ -6071,11 +6644,13 @@
       {
         "level": "14",
         "figures": [
-          "Siege Workshop Lv.14",
+          "Siege Workshop Level 14",
           "700",
           "0.5%"
         ],
-        "requirements": ["Lumber Mill Lv.14"],
+        "requirements": [
+          "Lumber Mill Level 14"
+        ],
         "cost": [
           "food180.0K",
           "wood232.5K",
@@ -6089,11 +6664,13 @@
       {
         "level": "15",
         "figures": [
-          "Siege Workshop Lv.15",
+          "Siege Workshop Level 15",
           "800",
           "0.5%"
         ],
-        "requirements": ["Lumber Mill Lv.15"],
+        "requirements": [
+          "Lumber Mill Level 15"
+        ],
         "cost": [
           "food270.0K",
           "wood350.0K",
@@ -6108,13 +6685,15 @@
         "level": "16",
         "figures": [
           [
-            "Siege Workshop Lv.16",
-            "Hospital Lv.16"
+            "Siege Workshop Level 16",
+            "Hospital Level 16"
           ],
           "900",
           "1%"
         ],
-        "requirements": ["Lumber Mill Lv.16"],
+        "requirements": [
+          "Lumber Mill Level 16"
+        ],
         "cost": [
           "food405.0K",
           "wood525.0K",
@@ -6128,11 +6707,13 @@
       {
         "level": "17",
         "figures": [
-          "Siege Workshop Lv.17",
+          "Siege Workshop Level 17",
           "1,000",
           "1%"
         ],
-        "requirements": ["Lumber Mill Lv.17"],
+        "requirements": [
+          "Lumber Mill Level 17"
+        ],
         "cost": [
           "food607.5K",
           "wood787.5K",
@@ -6146,11 +6727,13 @@
       {
         "level": "18",
         "figures": [
-          "Siege Workshop Lv.18",
+          "Siege Workshop Level 18",
           "1,100",
           "1%"
         ],
-        "requirements": ["Lumber Mill Lv.18"],
+        "requirements": [
+          "Lumber Mill Level 18"
+        ],
         "cost": [
           "food925.0K",
           "wood1.2M",
@@ -6164,11 +6747,13 @@
       {
         "level": "19",
         "figures": [
-          "Siege Workshop Lv.19",
+          "Siege Workshop Level 19",
           "1,200",
           "1%"
         ],
-        "requirements": ["Lumber Mill Lv.19"],
+        "requirements": [
+          "Lumber Mill Level 19"
+        ],
         "cost": [
           "food1.4M",
           "wood1.8M",
@@ -6182,11 +6767,13 @@
       {
         "level": "20",
         "figures": [
-          "Siege Workshop Lv.20",
+          "Siege Workshop Level 20",
           "1,300",
           "1%"
         ],
-        "requirements": ["Lumber Mill Lv.20"],
+        "requirements": [
+          "Lumber Mill Level 20"
+        ],
         "cost": [
           "food2.1M",
           "wood2.7M",
@@ -6201,13 +6788,15 @@
         "level": "21",
         "figures": [
           [
-            "Siege Workshop Lv.21",
-            "Hospital Lv.21"
+            "Siege Workshop Level 21",
+            "Hospital Level 21"
           ],
           "1,400",
           "1.5%"
         ],
-        "requirements": ["Lumber Mill Lv.21"],
+        "requirements": [
+          "Lumber Mill Level 21"
+        ],
         "cost": [
           "food3.2M",
           "wood4.1M",
@@ -6221,11 +6810,13 @@
       {
         "level": "22",
         "figures": [
-          "Siege Workshop Lv.22",
+          "Siege Workshop Level 22",
           "1,500",
           "1.5%"
         ],
-        "requirements": ["Lumber Mill Lv.22"],
+        "requirements": [
+          "Lumber Mill Level 22"
+        ],
         "cost": [
           "food4.7M",
           "wood6.1M",
@@ -6239,11 +6830,13 @@
       {
         "level": "23",
         "figures": [
-          "Siege Workshop Lv.23",
+          "Siege Workshop Level 23",
           "1,600",
           "1.5%"
         ],
-        "requirements": ["Lumber Mill Lv.23"],
+        "requirements": [
+          "Lumber Mill Level 23"
+        ],
         "cost": [
           "food7.1M",
           "wood9.1M",
@@ -6257,11 +6850,13 @@
       {
         "level": "24",
         "figures": [
-          "Siege Workshop Lv.24",
+          "Siege Workshop Level 24",
           "1,700",
           "1.5%"
         ],
-        "requirements": ["Lumber Mill Lv.24"],
+        "requirements": [
+          "Lumber Mill Level 24"
+        ],
         "cost": [
           "food10.8M",
           "wood13.8M",
@@ -6275,11 +6870,13 @@
       {
         "level": "25",
         "figures": [
-          "Siege Workshop Lv.25",
+          "Siege Workshop Level 25",
           "2,000",
           "2%"
         ],
-        "requirements": ["Lumber Mill Lv.25"],
+        "requirements": [
+          "Lumber Mill Level 25"
+        ],
         "cost": [
           "food16.2M",
           "wood20.8M",
@@ -6292,9 +6889,11 @@
       },
       {
         "level": "1",
-        "requirements": ["City Hall Lv.4"],
+        "requirements": [
+          "City Hall Level 4"
+        ],
         "figures": [
-          "None",
+          null,
           "20",
           "-"
         ],
@@ -6309,9 +6908,11 @@
       },
       {
         "level": "2",
-        "requirements": ["City Hall Lv.4"],
+        "requirements": [
+          "City Hall Level 4"
+        ],
         "figures": [
-          "Siege Workshop Lv.2",
+          "Siege Workshop Level 2",
           "50",
           "-"
         ],
@@ -6326,9 +6927,11 @@
       },
       {
         "level": "3",
-        "requirements": ["City Hall Lv.4"],
+        "requirements": [
+          "City Hall Level 4"
+        ],
         "figures": [
-          "Siege Workshop Lv.3",
+          "Siege Workshop Level 3",
           "100",
           "-"
         ],
@@ -6343,9 +6946,11 @@
       },
       {
         "level": "4",
-        "requirements": ["City Hall Lv.4"],
+        "requirements": [
+          "City Hall Level 4"
+        ],
         "figures": [
-          "Siege Workshop Lv.4",
+          "Siege Workshop Level 4",
           "150",
           "-"
         ],
@@ -6360,9 +6965,11 @@
       },
       {
         "level": "5",
-        "requirements": ["Quarry Lv.5"],
+        "requirements": [
+          "Quarry Level 5"
+        ],
         "figures": [
-          "Siege Workshop Lv.5",
+          "Siege Workshop Level 5",
           "200",
           "-"
         ],
@@ -6377,9 +6984,11 @@
       },
       {
         "level": "6",
-        "requirements": ["Quarry Lv.6"],
+        "requirements": [
+          "Quarry Level 6"
+        ],
         "figures": [
-          "Siege Workshop Lv.6",
+          "Siege Workshop Level 6",
           "250",
           "-"
         ],
@@ -6395,9 +7004,11 @@
       },
       {
         "level": "7",
-        "requirements": ["Quarry Lv.7"],
+        "requirements": [
+          "Quarry Level 7"
+        ],
         "figures": [
-          "Siege Workshop Lv.7",
+          "Siege Workshop Level 7",
           "300",
           "-"
         ],
@@ -6413,9 +7024,11 @@
       },
       {
         "level": "8",
-        "requirements": ["Quarry Lv.8"],
+        "requirements": [
+          "Quarry Level 8"
+        ],
         "figures": [
-          "Siege Workshop Lv.8",
+          "Siege Workshop Level 8",
           "350",
           "-"
         ],
@@ -6431,9 +7044,11 @@
       },
       {
         "level": "9",
-        "requirements": ["Quarry Lv.9"],
+        "requirements": [
+          "Quarry Level 9"
+        ],
         "figures": [
-          "Siege Workshop Lv.9",
+          "Siege Workshop Level 9",
           "400",
           "0.5%"
         ],
@@ -6449,9 +7064,11 @@
       },
       {
         "level": "10",
-        "requirements": ["Quarry Lv.10"],
+        "requirements": [
+          "Quarry Level 10"
+        ],
         "figures": [
-          "Siege Workshop Lv.10",
+          "Siege Workshop Level 10",
           "450",
           "0.5%"
         ],
@@ -6467,9 +7084,11 @@
       },
       {
         "level": "11",
-        "requirements": ["Quarry Lv.11"],
+        "requirements": [
+          "Quarry Level 11"
+        ],
         "figures": [
-          "Siege Workshop Lv.11",
+          "Siege Workshop Level 11",
           "500",
           "0.5%"
         ],
@@ -6485,9 +7104,11 @@
       },
       {
         "level": "12",
-        "requirements": ["Quarry Lv.12"],
+        "requirements": [
+          "Quarry Level 12"
+        ],
         "figures": [
-          "Siege Workshop Lv.12",
+          "Siege Workshop Level 12",
           "550",
           "0.5%"
         ],
@@ -6503,9 +7124,11 @@
       },
       {
         "level": "13",
-        "requirements": ["Quarry Lv.13"],
+        "requirements": [
+          "Quarry Level 13"
+        ],
         "figures": [
-          "Siege Workshop Lv.13",
+          "Siege Workshop Level 13",
           "600",
           "0.5%"
         ],
@@ -6521,9 +7144,11 @@
       },
       {
         "level": "14",
-        "requirements": ["Quarry Lv.14"],
+        "requirements": [
+          "Quarry Level 14"
+        ],
         "figures": [
-          "Siege Workshop Lv.14",
+          "Siege Workshop Level 14",
           "700",
           "0.5%"
         ],
@@ -6539,9 +7164,11 @@
       },
       {
         "level": "15",
-        "requirements": ["Quarry Lv.15"],
+        "requirements": [
+          "Quarry Level 15"
+        ],
         "figures": [
-          "Siege Workshop Lv.15",
+          "Siege Workshop Level 15",
           "800",
           "0.5%"
         ],
@@ -6557,9 +7184,11 @@
       },
       {
         "level": "16",
-        "requirements": ["Quarry Lv.16"],
+        "requirements": [
+          "Quarry Level 16"
+        ],
         "figures": [
-          "Siege Workshop Lv.16",
+          "Siege Workshop Level 16",
           "900",
           "1%"
         ],
@@ -6575,9 +7204,11 @@
       },
       {
         "level": "17",
-        "requirements": ["Quarry Lv.17"],
+        "requirements": [
+          "Quarry Level 17"
+        ],
         "figures": [
-          "Siege Workshop Lv.17",
+          "Siege Workshop Level 17",
           "1,000",
           "1%"
         ],
@@ -6593,9 +7224,11 @@
       },
       {
         "level": "18",
-        "requirements": ["Quarry Lv.18"],
+        "requirements": [
+          "Quarry Level 18"
+        ],
         "figures": [
-          "Siege Workshop Lv.18",
+          "Siege Workshop Level 18",
           "1,100",
           "1%"
         ],
@@ -6611,9 +7244,11 @@
       },
       {
         "level": "19",
-        "requirements": ["Quarry Lv.19"],
+        "requirements": [
+          "Quarry Level 19"
+        ],
         "figures": [
-          "Siege Workshop Lv.19",
+          "Siege Workshop Level 19",
           "1,200",
           "1%"
         ],
@@ -6629,9 +7264,11 @@
       },
       {
         "level": "20",
-        "requirements": ["Quarry Lv.20"],
+        "requirements": [
+          "Quarry Level 20"
+        ],
         "figures": [
-          "Siege Workshop Lv.20",
+          "Siege Workshop Level 20",
           "1,300",
           "1%"
         ],
@@ -6647,9 +7284,11 @@
       },
       {
         "level": "21",
-        "requirements": ["Quarry Lv.21"],
+        "requirements": [
+          "Quarry Level 21"
+        ],
         "figures": [
-          "Siege Workshop Lv.21",
+          "Siege Workshop Level 21",
           "1,400",
           "1.5%"
         ],
@@ -6665,9 +7304,11 @@
       },
       {
         "level": "22",
-        "requirements": ["Quarry Lv.22"],
+        "requirements": [
+          "Quarry Level 22"
+        ],
         "figures": [
-          "Siege Workshop Lv.22",
+          "Siege Workshop Level 22",
           "1,500",
           "1.5%"
         ],
@@ -6683,9 +7324,11 @@
       },
       {
         "level": "23",
-        "requirements": ["Quarry Lv.23"],
+        "requirements": [
+          "Quarry Level 23"
+        ],
         "figures": [
-          "Siege Workshop Lv.23",
+          "Siege Workshop Level 23",
           "1,600",
           "1.5%"
         ],
@@ -6701,9 +7344,11 @@
       },
       {
         "level": "24",
-        "requirements": ["Quarry Lv.24"],
+        "requirements": [
+          "Quarry Level 24"
+        ],
         "figures": [
-          "Siege Workshop Lv.24",
+          "Siege Workshop Level 24",
           "1,700",
           "1.5%"
         ],
@@ -6719,9 +7364,11 @@
       },
       {
         "level": "25",
-        "requirements": ["Quarry Lv.25"],
+        "requirements": [
+          "Quarry Level 25"
+        ],
         "figures": [
-          "Siege Workshop Lv.25",
+          "Siege Workshop Level 25",
           "2,000",
           "2%"
         ],
@@ -6737,7 +7384,9 @@
       },
       {
         "level": "1",
-        "requirements": ["City Hall Lv.5"],
+        "requirements": [
+          "City Hall Level 5"
+        ],
         "figures": [
           "20"
         ],
@@ -6753,9 +7402,9 @@
       {
         "level": "2",
         "requirements": [
-          "Barracks Lv.2",
-          "Archery Range Lv.2",
-          "Stable Lv.2"
+          "Barracks Level 2",
+          "Archery Range Level 2",
+          "Stable Level 2"
         ],
         "figures": [
           "50"
@@ -6772,9 +7421,9 @@
       {
         "level": "3",
         "requirements": [
-          "Barracks Lv.3",
-          "Archery Range Lv.3",
-          "Stable Lv.3"
+          "Barracks Level 3",
+          "Archery Range Level 3",
+          "Stable Level 3"
         ],
         "figures": [
           "100"
@@ -6791,9 +7440,9 @@
       {
         "level": "4",
         "requirements": [
-          "Barracks Lv.4",
-          "Archery Range Lv.4",
-          "Stable Lv.4"
+          "Barracks Level 4",
+          "Archery Range Level 4",
+          "Stable Level 4"
         ],
         "figures": [
           "150"
@@ -6810,9 +7459,9 @@
       {
         "level": "5",
         "requirements": [
-          "Barracks Lv.5",
-          "Archery Range Lv.5",
-          "Stable Lv.5"
+          "Barracks Level 5",
+          "Archery Range Level 5",
+          "Stable Level 5"
         ],
         "figures": [
           "200"
@@ -6829,9 +7478,9 @@
       {
         "level": "6",
         "requirements": [
-          "Barracks Lv.6",
-          "Archery Range Lv.6",
-          "Stable Lv.6"
+          "Barracks Level 6",
+          "Archery Range Level 6",
+          "Stable Level 6"
         ],
         "figures": [
           "250"
@@ -6849,9 +7498,9 @@
       {
         "level": "7",
         "requirements": [
-          "Barracks Lv.7",
-          "Archery Range Lv.7",
-          "Stable Lv.7"
+          "Barracks Level 7",
+          "Archery Range Level 7",
+          "Stable Level 7"
         ],
         "figures": [
           "300"
@@ -6869,9 +7518,9 @@
       {
         "level": "8",
         "requirements": [
-          "Barracks Lv.8",
-          "Archery Range Lv.8",
-          "Stable Lv.8"
+          "Barracks Level 8",
+          "Archery Range Level 8",
+          "Stable Level 8"
         ],
         "figures": [
           "350"
@@ -6889,9 +7538,9 @@
       {
         "level": "9",
         "requirements": [
-          "Barracks Lv.9",
-          "Archery Range Lv.9",
-          "Stable Lv.9"
+          "Barracks Level 9",
+          "Archery Range Level 9",
+          "Stable Level 9"
         ],
         "figures": [
           "400"
@@ -6909,9 +7558,9 @@
       {
         "level": "10",
         "requirements": [
-          "Barracks Lv.10",
-          "Archery Range Lv.10",
-          "Stable Lv.10"
+          "Barracks Level 10",
+          "Archery Range Level 10",
+          "Stable Level 10"
         ],
         "figures": [
           "450"
@@ -6929,9 +7578,9 @@
       {
         "level": "11",
         "requirements": [
-          "Barracks Lv.11",
-          "Archery Range Lv.11",
-          "Stable Lv.11"
+          "Barracks Level 11",
+          "Archery Range Level 11",
+          "Stable Level 11"
         ],
         "figures": [
           "500"
@@ -6949,9 +7598,9 @@
       {
         "level": "12",
         "requirements": [
-          "Barracks Lv.12",
-          "Archery Range Lv.12",
-          "Stable Lv.12"
+          "Barracks Level 12",
+          "Archery Range Level 12",
+          "Stable Level 12"
         ],
         "figures": [
           "550"
@@ -6969,9 +7618,9 @@
       {
         "level": "13",
         "requirements": [
-          "Barracks Lv.13",
-          "Archery Range Lv.13",
-          "Stable Lv.13"
+          "Barracks Level 13",
+          "Archery Range Level 13",
+          "Stable Level 13"
         ],
         "figures": [
           "600"
@@ -6989,9 +7638,9 @@
       {
         "level": "14",
         "requirements": [
-          "Barracks Lv.14",
-          "Archery Range Lv.14",
-          "Stable Lv.14"
+          "Barracks Level 14",
+          "Archery Range Level 14",
+          "Stable Level 14"
         ],
         "figures": [
           "700"
@@ -7009,9 +7658,9 @@
       {
         "level": "15",
         "requirements": [
-          "Barracks Lv.15",
-          "Archery Range Lv.15",
-          "Stable Lv.15"
+          "Barracks Level 15",
+          "Archery Range Level 15",
+          "Stable Level 15"
         ],
         "figures": [
           "800"
@@ -7029,9 +7678,9 @@
       {
         "level": "16",
         "requirements": [
-          "Barracks Lv.16",
-          "Archery Range Lv.16",
-          "Stable Lv.16"
+          "Barracks Level 16",
+          "Archery Range Level 16",
+          "Stable Level 16"
         ],
         "figures": [
           "900"
@@ -7049,9 +7698,9 @@
       {
         "level": "17",
         "requirements": [
-          "Barracks Lv.17",
-          "Archery Range Lv.17",
-          "Stable Lv.17"
+          "Barracks Level 17",
+          "Archery Range Level 17",
+          "Stable Level 17"
         ],
         "figures": [
           "1,000"
@@ -7069,9 +7718,9 @@
       {
         "level": "18",
         "requirements": [
-          "Barracks Lv.18",
-          "Archery Range Lv.18",
-          "Stable Lv.18"
+          "Barracks Level 18",
+          "Archery Range Level 18",
+          "Stable Level 18"
         ],
         "figures": [
           "1,100"
@@ -7089,9 +7738,9 @@
       {
         "level": "19",
         "requirements": [
-          "Barracks Lv.19",
-          "Archery Range Lv.19",
-          "Stable Lv.19"
+          "Barracks Level 19",
+          "Archery Range Level 19",
+          "Stable Level 19"
         ],
         "figures": [
           "1,200"
@@ -7109,9 +7758,9 @@
       {
         "level": "20",
         "requirements": [
-          "Barracks Lv.20",
-          "Archery Range Lv.20",
-          "Stable Lv.20"
+          "Barracks Level 20",
+          "Archery Range Level 20",
+          "Stable Level 20"
         ],
         "figures": [
           "1,300"
@@ -7129,9 +7778,9 @@
       {
         "level": "21",
         "requirements": [
-          "Barracks Lv.21",
-          "Archery Range Lv.21",
-          "Stable Lv.21"
+          "Barracks Level 21",
+          "Archery Range Level 21",
+          "Stable Level 21"
         ],
         "figures": [
           "1,400"
@@ -7149,9 +7798,9 @@
       {
         "level": "22",
         "requirements": [
-          "Barracks Lv.22",
-          "Archery Range Lv.22",
-          "Stable Lv.22"
+          "Barracks Level 22",
+          "Archery Range Level 22",
+          "Stable Level 22"
         ],
         "figures": [
           "1,500"
@@ -7169,9 +7818,9 @@
       {
         "level": "23",
         "requirements": [
-          "Barracks Lv.23",
-          "Archery Range Lv.23",
-          "Stable Lv.23"
+          "Barracks Level 23",
+          "Archery Range Level 23",
+          "Stable Level 23"
         ],
         "figures": [
           "1,600"
@@ -7189,9 +7838,9 @@
       {
         "level": "24",
         "requirements": [
-          "Barracks Lv.24",
-          "Archery Range Lv.24",
-          "Stable Lv.24"
+          "Barracks Level 24",
+          "Archery Range Level 24",
+          "Stable Level 24"
         ],
         "figures": [
           "1,700"
@@ -7209,14 +7858,14 @@
       {
         "level": "25",
         "requirements": [
-          "Barracks Lv.25",
-          "Archery Range Lv.25",
-          "Stable Lv.25"
+          "Barracks Level 25",
+          "Archery Range Level 25",
+          "Stable Level 25"
         ],
         "figures": [
           "2,000"
         ],
-        "cost": "0",
+        "cost": null,
         "time": "0",
         "power": "716,764",
         "contentId": 200017,
@@ -7228,8 +7877,8 @@
           "3,000"
         ],
         "requirements": null,
-        "cost": "None",
-        "time": "None",
+        "cost": null,
+        "time": null,
         "power": "5",
         "contentId": 200018,
         "id": 100498
@@ -7239,7 +7888,9 @@
         "figures": [
           "4,000"
         ],
-        "requirements": ["City Hall Lv.2"],
+        "requirements": [
+          "City Hall Level 2"
+        ],
         "cost": [
           "food2.0K",
           "wood2.0K"
@@ -7254,7 +7905,9 @@
         "figures": [
           "5,000"
         ],
-        "requirements": ["City Hall Lv.3"],
+        "requirements": [
+          "City Hall Level 3"
+        ],
         "cost": [
           "food3.8K",
           "wood3.8K"
@@ -7269,7 +7922,9 @@
         "figures": [
           "6,000"
         ],
-        "requirements": ["City Hall Lv.4"],
+        "requirements": [
+          "City Hall Level 4"
+        ],
         "cost": [
           "food3.8K",
           "wood3.8K"
@@ -7284,7 +7939,9 @@
         "figures": [
           "7,000"
         ],
-        "requirements": ["City Hall Lv.5"],
+        "requirements": [
+          "City Hall Level 5"
+        ],
         "cost": [
           "food12.3K",
           "wood12.3K"
@@ -7299,7 +7956,9 @@
         "figures": [
           "8,000"
         ],
-        "requirements": ["City Hall Lv.6"],
+        "requirements": [
+          "City Hall Level 6"
+        ],
         "cost": [
           "food21.0K",
           "wood21.0K",
@@ -7315,7 +7974,9 @@
         "figures": [
           "9,000"
         ],
-        "requirements": ["City Hall Lv.7"],
+        "requirements": [
+          "City Hall Level 7"
+        ],
         "cost": [
           "food31.5K",
           "wood31.5K",
@@ -7331,7 +7992,9 @@
         "figures": [
           "10,000"
         ],
-        "requirements": ["City Hall Lv.8"],
+        "requirements": [
+          "City Hall Level 8"
+        ],
         "cost": [
           "food47.3K",
           "wood47.3K",
@@ -7347,7 +8010,9 @@
         "figures": [
           "12,000"
         ],
-        "requirements": ["City Hall Lv.9"],
+        "requirements": [
+          "City Hall Level 9"
+        ],
         "cost": [
           "food71.0K",
           "wood71.0K",
@@ -7363,7 +8028,9 @@
         "figures": [
           "14,000"
         ],
-        "requirements": ["Stable Lv.10"],
+        "requirements": [
+          "Stable Level 10"
+        ],
         "cost": [
           "food106.5K",
           "wood106.5K",
@@ -7379,7 +8046,9 @@
         "figures": [
           "16,000"
         ],
-        "requirements": ["City Hall Lv.11"],
+        "requirements": [
+          "City Hall Level 11"
+        ],
         "cost": [
           "food160.0K",
           "wood160.0K",
@@ -7395,7 +8064,9 @@
         "figures": [
           "18,000"
         ],
-        "requirements": ["City Hall Lv.12"],
+        "requirements": [
+          "City Hall Level 12"
+        ],
         "cost": [
           "food240.0K",
           "wood240.0K",
@@ -7411,7 +8082,9 @@
         "figures": [
           "20,000"
         ],
-        "requirements": ["City Hall Lv.13"],
+        "requirements": [
+          "City Hall Level 13"
+        ],
         "cost": [
           "food360.0K",
           "wood360.0K",
@@ -7427,7 +8100,9 @@
         "figures": [
           "22,000"
         ],
-        "requirements": ["City Hall Lv.14"],
+        "requirements": [
+          "City Hall Level 14"
+        ],
         "cost": [
           "food540.0K",
           "wood540.0K",
@@ -7443,7 +8118,9 @@
         "figures": [
           "24,000"
         ],
-        "requirements": ["City Hall Lv.15"],
+        "requirements": [
+          "City Hall Level 15"
+        ],
         "cost": [
           "food810.0K",
           "wood810.0K",
@@ -7459,7 +8136,9 @@
         "figures": [
           "28,000"
         ],
-        "requirements": ["Barracks Lv. 16"],
+        "requirements": [
+          "Barracks Level 16"
+        ],
         "cost": [
           "food1.2M",
           "wood1.2M",
@@ -7475,7 +8154,9 @@
         "figures": [
           "32,00"
         ],
-        "requirements": ["City Hall Lv.17"],
+        "requirements": [
+          "City Hall Level 17"
+        ],
         "cost": [
           "food1.8M",
           "wood1.8M",
@@ -7491,7 +8172,9 @@
         "figures": [
           "36,000"
         ],
-        "requirements": ["City Hall Lv.18"],
+        "requirements": [
+          "City Hall Level 18"
+        ],
         "cost": [
           "food2.8M",
           "wood2.8M",
@@ -7507,7 +8190,9 @@
         "figures": [
           "40,000"
         ],
-        "requirements": ["City Hall Lv.19"],
+        "requirements": [
+          "City Hall Level 19"
+        ],
         "cost": [
           "food4.1M",
           "wood4.1M",
@@ -7523,7 +8208,9 @@
         "figures": [
           "44,000"
         ],
-        "requirements": ["City Hall Lv.20"],
+        "requirements": [
+          "City Hall Level 20"
+        ],
         "cost": [
           "food6.2M",
           "wood6.2M",
@@ -7539,7 +8226,9 @@
         "figures": [
           "48,000"
         ],
-        "requirements": ["Archery Range Lv. 21"],
+        "requirements": [
+          "Archery Range Level 21"
+        ],
         "cost": [
           "food9.3M",
           "wood9.3M",
@@ -7555,7 +8244,9 @@
         "figures": [
           "53,000"
         ],
-        "requirements": ["City Hall Lv.22"],
+        "requirements": [
+          "City Hall Level 22"
+        ],
         "cost": [
           "food14.0M",
           "wood14.0M",
@@ -7571,7 +8262,9 @@
         "figures": [
           "58,000"
         ],
-        "requirements": ["City Hall Lv.23"],
+        "requirements": [
+          "City Hall Level 23"
+        ],
         "cost": [
           "food20.9M",
           "wood20.9M",
@@ -7587,7 +8280,9 @@
         "figures": [
           "65,000"
         ],
-        "requirements": ["City Hall Lv.24"],
+        "requirements": [
+          "City Hall Level 24"
+        ],
         "cost": [
           "food31.5M",
           "wood31.5M",
@@ -7603,13 +8298,15 @@
         "figures": [
           "75,000"
         ],
-        "requirements": ["Castle 25"],
-        "cost": {
-          "0": "food47.2M",
-          "1": "wood47.2M",
-          "2": "stone24.0M",
-          "4": "Master's Blueprint"
-        },
+        "requirements": [
+          "Castle 25"
+        ],
+        "cost": [
+          "food47.2M",
+          "wood47.2M",
+          "stone24.0M",
+          "Master's Blueprint"
+        ],
         "time": "0",
         "power": "881,480",
         "contentId": 200018,
@@ -7617,12 +8314,14 @@
       },
       {
         "level": "1",
-        "requirements": ["City Hall Lv. 8"],
+        "requirements": [
+          "City Hall Level 8"
+        ],
         "cost": [
           "wood1.0K"
         ],
         "time": "2s",
-        "power": "None",
+        "power": null,
         "contentId": 200019,
         "id": 100524,
         "figures": [
@@ -7668,7 +8367,7 @@
         "reward": [
           "500 Gems x1",
           "Golden Key x1",
-          "(Unlock) Lv.1 Barbarian Fort"
+          "(Unlock) Level 1 Barbarian Fort"
         ],
         "contentId": 200019,
         "id": 100526
@@ -7702,7 +8401,7 @@
         "reward": [
           "1,000 Gems x1",
           "Golden Key x1",
-          "(Unlock) Lv.2 Barbarian Fort"
+          "(Unlock) Level 2 Barbarian Fort"
         ],
         "contentId": 200019,
         "id": 100528
@@ -7711,7 +8410,7 @@
         "figures": [
           "Horn of Counterattack",
           [
-            "Goal: Your alliance defeats 40 Lv.1 or above Barbarian Forts",
+            "Goal: Your alliance defeats 40 Level 1 or above Barbarian Forts",
             "Time allowed: ?",
             "Who benefits: Some alliances"
           ]
@@ -7719,7 +8418,7 @@
         "reward": [
           "500 Gems x3",
           "Golden Key x3",
-          "(Unlock) Lv.5? Barbarian Camp"
+          "(Unlock) Level 5? Barbarian Camp"
         ],
         "contentId": 200019,
         "id": 100529
@@ -7770,7 +8469,7 @@
         "reward": [
           "2,000 Gems x1",
           "Universal Speedup (60m) x20",
-          "(Unlock) Lv.1 Pass"
+          "(Unlock) Level 1 Pass"
         ],
         "contentId": 200019,
         "id": 100532
@@ -7787,7 +8486,7 @@
         "reward": [
           "500 Gems x1",
           "Golden Key x1",
-          "(Unlock) Lv.3 Barbarian Fort"
+          "(Unlock) Level 3 Barbarian Fort"
         ],
         "contentId": 200019,
         "id": 100533
@@ -7796,7 +8495,7 @@
         "figures": [
           "Pillage and Plunder",
           [
-            "Goal: Your alliance defeats 100 Lv.2 or above Barbarian Forts",
+            "Goal: Your alliance defeats 100 Level 2 or above Barbarian Forts",
             "Time allowed: 5 Days",
             "Who benefits: Some alliances"
           ]
@@ -7804,7 +8503,7 @@
         "reward": [
           "500 Gems x3",
           "Golden Key x3",
-          "(Unlock) Lv.10 Barbarian Camp"
+          "(Unlock) Level 10 Barbarian Camp"
         ],
         "contentId": 200019,
         "id": 100534
@@ -7821,7 +8520,7 @@
         "reward": [
           "100 Gems x20",
           "Universal Speedup (60m) x20",
-          "(Unlock) Lv.2 Pass"
+          "(Unlock) Level 2 Pass"
         ],
         "contentId": 200019,
         "id": 100535
@@ -7830,7 +8529,7 @@
         "figures": [
           "Pandora's Box",
           [
-            "Goal: Your Alliance controlled a Lv.2 Passes at the end of the Countdown",
+            "Goal: Your Alliance controlled a Level 2 Passes at the end of the Countdown",
             "Time allowed: 5 Days",
             "Who benefits: Some alliances"
           ]
@@ -7838,7 +8537,7 @@
         "reward": [
           "1,000 Gems x2",
           "Golden Key x3",
-          "(Unlock) Lv.15 Barbarian Camp"
+          "(Unlock) Level 15 Barbarian Camp"
         ],
         "contentId": 200019,
         "id": 100536
@@ -7847,7 +8546,7 @@
         "figures": [
           "Rules of Survival",
           [
-            "Goal: All governors defeat 40,000 Lv.18+ Barbarians together",
+            "Goal: All governors defeat 40,000 Level 18+ Barbarians together",
             "Time allowed: 5 Days",
             "Who benefits: Entire kingdom"
           ]
@@ -7855,7 +8554,7 @@
         "reward": [
           "500 Gems x1",
           "Golden Key x3",
-          "(Unlock) Lv.4 Barbarian Fort"
+          "(Unlock) Level 4 Barbarian Fort"
         ],
         "contentId": 200019,
         "id": 100537
@@ -7864,7 +8563,7 @@
         "figures": [
           "Vanishing Threats",
           [
-            "Goal: Your alliance defeats 100 Lv.3 or above Barbarian Forts",
+            "Goal: Your alliance defeats 100 Level 3 or above Barbarian Forts",
             "Time allowed: 4 Days",
             "Who benefits: Some alliances"
           ]
@@ -7889,7 +8588,7 @@
         "reward": [
           "2,000 Gems x1",
           "Golden Key x3",
-          "(Unlock) Lv.3 Pass"
+          "(Unlock) Level 3 Pass"
         ],
         "contentId": 200019,
         "id": 100539
@@ -7906,7 +8605,7 @@
         "reward": [
           "500 Gems x1",
           "Golden Key x1",
-          "(Unlock) Lv.5 Barbarian Fort"
+          "(Unlock) Level 5 Barbarian Fort"
         ],
         "contentId": 200019,
         "id": 100540
@@ -7915,7 +8614,7 @@
         "figures": [
           "Deterrent",
           [
-            "Goal: Your alliance defeats 50 Lv.4 or above Barbarian Forts",
+            "Goal: Your alliance defeats 50 Level 4 or above Barbarian Forts",
             "Time allowed: 4 days",
             "Who benefits: Some alliances"
           ]
@@ -7923,7 +8622,7 @@
         "reward": [
           "500 Gems x3",
           "Golden Key x3",
-          "(Unlock) Lv.20 Barbarian Camp"
+          "(Unlock) Level 20 Barbarian Camp"
         ],
         "contentId": 200019,
         "id": 100541
@@ -7974,14 +8673,16 @@
         "reward": [
           "2,000 Gems x1",
           "Universal Speedup (60m) x20",
-          "Golden Key x5|}|}|}|}|}|}|}|}|}|}"
+          "Golden Key x5"
         ],
         "contentId": 200019,
         "id": 100544
       },
       {
         "level": "1",
-        "requirements": ["Alliance Center Lv.1"],
+        "requirements": [
+          "Alliance Center Level 1"
+        ],
         "figures": [
           "25,000"
         ],
@@ -7996,7 +8697,9 @@
       },
       {
         "level": "2",
-        "requirements": ["Alliance Center Lv.2"],
+        "requirements": [
+          "Alliance Center Level 2"
+        ],
         "figures": [
           "40,000"
         ],
@@ -8012,7 +8715,9 @@
       },
       {
         "level": "3",
-        "requirements": ["Alliance Center Lv.3"],
+        "requirements": [
+          "Alliance Center Level 3"
+        ],
         "figures": [
           "60,000"
         ],
@@ -8028,7 +8733,9 @@
       },
       {
         "level": "4",
-        "requirements": ["Alliance Center Lv.4"],
+        "requirements": [
+          "Alliance Center Level 4"
+        ],
         "figures": [
           "100,000"
         ],
@@ -8044,7 +8751,9 @@
       },
       {
         "level": "5",
-        "requirements": ["Alliance Center Lv.5"],
+        "requirements": [
+          "Alliance Center Level 5"
+        ],
         "figures": [
           "150,000"
         ],
@@ -8060,7 +8769,9 @@
       },
       {
         "level": "6",
-        "requirements": ["Alliance Center Lv.6"],
+        "requirements": [
+          "Alliance Center Level 6"
+        ],
         "figures": [
           "200,000"
         ],
@@ -8077,7 +8788,9 @@
       },
       {
         "level": "7",
-        "requirements": ["Alliance Center Lv.7"],
+        "requirements": [
+          "Alliance Center Level 7"
+        ],
         "figures": [
           "250,000"
         ],
@@ -8094,7 +8807,9 @@
       },
       {
         "level": "8",
-        "requirements": ["Alliance Center Lv.8"],
+        "requirements": [
+          "Alliance Center Level 8"
+        ],
         "figures": [
           "300,000"
         ],
@@ -8111,7 +8826,9 @@
       },
       {
         "level": "9",
-        "requirements": ["Alliance Center Lv.9"],
+        "requirements": [
+          "Alliance Center Level 9"
+        ],
         "figures": [
           "350,000"
         ],
@@ -8128,7 +8845,9 @@
       },
       {
         "level": "10",
-        "requirements": ["Alliance Center Lv.10"],
+        "requirements": [
+          "Alliance Center Level 10"
+        ],
         "figures": [
           "400,000"
         ],
@@ -8145,7 +8864,9 @@
       },
       {
         "level": "11",
-        "requirements": ["Alliance Center Lv.11"],
+        "requirements": [
+          "Alliance Center Level 11"
+        ],
         "figures": [
           "475,000"
         ],
@@ -8162,7 +8883,9 @@
       },
       {
         "level": "12",
-        "requirements": ["Alliance Center Lv.12"],
+        "requirements": [
+          "Alliance Center Level 12"
+        ],
         "figures": [
           "550,000"
         ],
@@ -8179,7 +8902,9 @@
       },
       {
         "level": "13",
-        "requirements": ["Alliance Center Lv.13"],
+        "requirements": [
+          "Alliance Center Level 13"
+        ],
         "figures": [
           "625,000"
         ],
@@ -8196,7 +8921,9 @@
       },
       {
         "level": "14",
-        "requirements": ["Alliance Center Lv.14"],
+        "requirements": [
+          "Alliance Center Level 14"
+        ],
         "figures": [
           "700,000"
         ],
@@ -8213,7 +8940,9 @@
       },
       {
         "level": "15",
-        "requirements": ["Alliance Center Lv.15"],
+        "requirements": [
+          "Alliance Center Level 15"
+        ],
         "figures": [
           "775,000"
         ],
@@ -8230,7 +8959,9 @@
       },
       {
         "level": "16",
-        "requirements": ["Alliance Center Lv.16"],
+        "requirements": [
+          "Alliance Center Level 16"
+        ],
         "figures": [
           "850,000"
         ],
@@ -8247,7 +8978,9 @@
       },
       {
         "level": "17",
-        "requirements": ["Alliance Center Lv.17"],
+        "requirements": [
+          "Alliance Center Level 17"
+        ],
         "figures": [
           "925,000"
         ],
@@ -8264,7 +8997,9 @@
       },
       {
         "level": "18",
-        "requirements": ["Alliance Center Lv.18"],
+        "requirements": [
+          "Alliance Center Level 18"
+        ],
         "figures": [
           "1,000,000"
         ],
@@ -8281,7 +9016,9 @@
       },
       {
         "level": "19",
-        "requirements": ["Alliance Center Lv.19"],
+        "requirements": [
+          "Alliance Center Level 19"
+        ],
         "figures": [
           "1,100,000"
         ],
@@ -8298,7 +9035,9 @@
       },
       {
         "level": "20",
-        "requirements": ["Alliance Center Lv.20"],
+        "requirements": [
+          "Alliance Center Level 20"
+        ],
         "figures": [
           "1,200,000"
         ],
@@ -8315,7 +9054,9 @@
       },
       {
         "level": "21",
-        "requirements": ["Alliance Center Lv.21"],
+        "requirements": [
+          "Alliance Center Level 21"
+        ],
         "figures": [
           "1,300,000"
         ],
@@ -8332,7 +9073,9 @@
       },
       {
         "level": "22",
-        "requirements": ["Alliance Center Lv.22"],
+        "requirements": [
+          "Alliance Center Level 22"
+        ],
         "figures": [
           "1,400,000"
         ],
@@ -8349,7 +9092,9 @@
       },
       {
         "level": "23",
-        "requirements": ["Alliance Center Lv.23"],
+        "requirements": [
+          "Alliance Center Level 23"
+        ],
         "figures": [
           "1,500,000"
         ],
@@ -8366,7 +9111,9 @@
       },
       {
         "level": "24",
-        "requirements": ["Alliance Center Lv.24"],
+        "requirements": [
+          "Alliance Center Level 24"
+        ],
         "figures": [
           "1,600,000"
         ],
@@ -8383,7 +9130,10 @@
       },
       {
         "level": "25",
-        "requirements": ["Siege Workshop 25","Alliance Center 25"],
+        "requirements": [
+          "Siege Workshop 25",
+          "Alliance Center 25"
+        ],
         "figures": [
           "2,000,000"
         ],
@@ -8400,25 +9150,29 @@
       },
       {
         "level": "1",
-        "requirements": ["City Hall Lv.16"],
+        "requirements": [
+          "City Hall Level 16"
+        ],
         "cost": [
           "food1000",
           "wood1000",
           "stone1000"
         ],
         "time": "11s",
-        "power": "???",
+        "power": null,
         "contentId": 200021,
         "id": 100570
       },
       {
         "level": "1",
-        "requirements": ["City Hall Lv.5?"],
+        "requirements": [
+          "City Hall Level 5"
+        ],
         "cost": [
           "wood1.0K"
         ],
         "time": "2s",
-        "power": "None",
+        "power": null,
         "contentId": 200022,
         "id": 100571
       },
@@ -8429,26 +9183,26 @@
           null
         ],
         "requirements": null,
-        "cost": "",
+        "cost": null,
         "time": "",
         "power": "",
         "contentId": 200023,
         "id": 100602,
-        "reward": ""
+        "reward": null
       },
       {
         "level": "1",
         "figures": [
-          "None",
+          null,
           "2,000"
         ],
         "requirements": null,
-        "cost": "None",
-        "time": "None",
+        "cost": null,
+        "time": null,
         "power": "7",
         "contentId": 200023,
         "id": 100603,
-        "reward": "N\/A"
+        "reward": null
       },
       {
         "level": "2",
@@ -8483,7 +9237,9 @@
           ],
           "4,000"
         ],
-        "requirements": ["Wall Lv.2"],
+        "requirements": [
+          "Wall Level 2"
+        ],
         "cost": [
           "food6.5K",
           "wood6.5K"
@@ -8504,7 +9260,7 @@
           null
         ],
         "requirements": null,
-        "cost": "",
+        "cost": null,
         "time": "",
         "power": "",
         "contentId": 200023,
@@ -8525,7 +9281,9 @@
           ],
           "5,000"
         ],
-        "requirements": ["Wall Lv.3"],
+        "requirements": [
+          "Wall Level 3"
+        ],
         "cost": [
           "food11.8K",
           "wood11.8K"
@@ -8552,8 +9310,8 @@
           "7,000"
         ],
         "requirements": [
-          "Wall Lv.4",
-          "Hospital Lv.4"
+          "Wall Level 4",
+          "Hospital Level 4"
         ],
         "cost": [
           "food21.3K",
@@ -8579,8 +9337,8 @@
           "9,000"
         ],
         "requirements": [
-          "Wall Lv.5",
-          "Scout Camp Lv.5"
+          "Wall Level 5",
+          "Scout Camp Level 5"
         ],
         "cost": [
           "food36.3K",
@@ -8607,8 +9365,8 @@
           "12,000"
         ],
         "requirements": [
-          "Wall Lv.6",
-          "Storehouse Lv.6"
+          "Wall Level 6",
+          "Storehouse Level 6"
         ],
         "cost": [
           "food54.4K",
@@ -8636,8 +9394,8 @@
           "15,000"
         ],
         "requirements": [
-          "Wall Lv.7",
-          "Barracks Lv.7"
+          "Wall Level 7",
+          "Barracks Level 7"
         ],
         "cost": [
           "food81.8K",
@@ -8664,8 +9422,8 @@
           "19,000"
         ],
         "requirements": [
-          "Wall Lv.8",
-          "Alliance Center Lv.8"
+          "Wall Level 8",
+          "Alliance Center Level 8"
         ],
         "cost": [
           "food122.8K",
@@ -8690,7 +9448,7 @@
           null
         ],
         "requirements": null,
-        "cost": "",
+        "cost": null,
         "time": "",
         "power": "",
         "contentId": 200023,
@@ -8711,8 +9469,8 @@
           "23,000"
         ],
         "requirements": [
-          "Wall Lv.9",
-          "Academy Lv.9"
+          "Wall Level 9",
+          "Academy Level 9"
         ],
         "cost": [
           "food184.3K",
@@ -8738,8 +9496,8 @@
           "28,000"
         ],
         "requirements": [
-          "Wall Lv.10",
-          "Hospital Lv.10"
+          "Wall Level 10",
+          "Hospital Level 10"
         ],
         "cost": [
           "food277.5K",
@@ -8762,8 +9520,8 @@
           "33,000"
         ],
         "requirements": [
-          "Wall Lv.11",
-          "Storehouse Lv.11"
+          "Wall Level 11",
+          "Storehouse Level 11"
         ],
         "cost": [
           "food417.5K",
@@ -8786,8 +9544,8 @@
           "38,000"
         ],
         "requirements": [
-          "Wall Lv.12",
-          "Archery Range Lv.12"
+          "Wall Level 12",
+          "Archery Range Level 12"
         ],
         "cost": [
           "food627.5K",
@@ -8810,9 +9568,9 @@
           "44,000"
         ],
         "requirements": [
-          "Wall Lv.13",
-          "Alliance Center Lv.13",
-          "Trading Post Lv.13"
+          "Wall Level 13",
+          "Alliance Center Level 13",
+          "Trading Post Level 13"
         ],
         "cost": [
           "food942.5K",
@@ -8835,8 +9593,8 @@
           "50,000"
         ],
         "requirements": [
-          "Wall Lv.14",
-          "Scout Camp Lv.14"
+          "Wall Level 14",
+          "Scout Camp Level 14"
         ],
         "cost": [
           "food1.4M",
@@ -8859,7 +9617,7 @@
           null
         ],
         "requirements": null,
-        "cost": "",
+        "cost": null,
         "time": "",
         "power": "",
         "contentId": 200023,
@@ -8879,8 +9637,8 @@
           "57,000"
         ],
         "requirements": [
-          "Wall Lv.15",
-          "Academy Lv.15"
+          "Wall Level 15",
+          "Academy Level 15"
         ],
         "cost": [
           "food2.1M",
@@ -8903,8 +9661,8 @@
           "64,000"
         ],
         "requirements": [
-          "Wall Lv.16",
-          "Hospital Lv.16"
+          "Wall Level 16",
+          "Hospital Level 16"
         ],
         "cost": [
           "food3.2M",
@@ -8923,12 +9681,12 @@
       {
         "level": "21",
         "figures": [
-          "None",
+          null,
           "72,000"
         ],
         "requirements": [
-          "Wall Lv.17",
-          "Storehouse Lv.17"
+          "Wall Level 17",
+          "Storehouse Level 17"
         ],
         "cost": [
           "food4.8M",
@@ -8949,12 +9707,12 @@
       {
         "level": "23",
         "figures": [
-          "None",
+          null,
           "80,000"
         ],
         "requirements": [
-          "Wall Lv.18",
-          "Stable Lv.18"
+          "Wall Level 18",
+          "Stable Level 18"
         ],
         "cost": [
           "food7.2M",
@@ -8973,12 +9731,12 @@
       {
         "level": "24",
         "figures": [
-          "None",
+          null,
           "90,000"
         ],
         "requirements": [
-          "Wall Lv.19",
-          "Alliance Center Lv.19"
+          "Wall Level 19",
+          "Alliance Center Level 19"
         ],
         "cost": [
           "food10.8M",
@@ -9001,7 +9759,7 @@
           null
         ],
         "requirements": null,
-        "cost": "",
+        "cost": null,
         "time": "",
         "power": "",
         "contentId": 200023,
@@ -9018,8 +9776,8 @@
           "100,000"
         ],
         "requirements": [
-          "Wall Lv.20",
-          "Academy Lv.20"
+          "Wall Level 20",
+          "Academy Level 20"
         ],
         "cost": [
           "food16.2M",
@@ -9038,8 +9796,8 @@
           "110,000"
         ],
         "requirements": [
-          "Wall Lv.21",
-          "Hospital Lv.21"
+          "Wall Level 21",
+          "Hospital Level 21"
         ],
         "cost": [
           "food24.3M",
@@ -9054,12 +9812,12 @@
       {
         "level": "23",
         "figures": [
-          "?",
+          null,
           "120,000"
         ],
         "requirements": [
-          "Wall Lv.22",
-          "Storehouse Lv.22"
+          "Wall Level 22",
+          "Storehouse Level 22"
         ],
         "cost": [
           "food36.5M",
@@ -9074,12 +9832,12 @@
       {
         "level": "24",
         "figures": [
-          "?",
+          null,
           "130,000"
         ],
         "requirements": [
-          "Wall Lv.23",
-          "Siege Workshop Lv.23"
+          "Wall Level 23",
+          "Siege Workshop Level 23"
         ],
         "cost": [
           "food54.8M",
@@ -9098,8 +9856,8 @@
           "150,000"
         ],
         "requirements": [
-          "Wall Lv.24",
-          "Trading Post Lv.24"
+          "Wall Level 24",
+          "Trading Post Level 24"
         ],
         "cost": [
           "food82.2M",
@@ -9115,12 +9873,12 @@
       {
         "level": "1",
         "figures": [
-          "None",
+          null,
           "15,000"
         ],
         "requirements": null,
-        "cost": "None",
-        "time": "None",
+        "cost": null,
+        "time": null,
         "power": "5",
         "contentId": 200024,
         "id": 100627
@@ -9128,7 +9886,7 @@
       {
         "level": "2",
         "figures": [
-          "Watchtower Lv.2",
+          "Watchtower Level 2",
           "15,500"
         ],
         "requirements": null,
@@ -9145,12 +9903,14 @@
         "level": "3",
         "figures": [
           [
-            "City Hall Lv.4",
-            "Watchtower Lv.3"
+            "City Hall Level 4",
+            "Watchtower Level 3"
           ],
           "16,000"
         ],
-        "requirements": ["City Hall Lv.3"],
+        "requirements": [
+          "City Hall Level 3"
+        ],
         "cost": [
           "food4.3K",
           "wood5.0K"
@@ -9164,12 +9924,14 @@
         "level": "4",
         "figures": [
           [
-            "City Hall Lv.5",
-            "Watchtower Lv.4"
+            "City Hall Level 5",
+            "Watchtower Level 4"
           ],
           "16,500"
         ],
-        "requirements": ["City Hall Lv.4"],
+        "requirements": [
+          "City Hall Level 4"
+        ],
         "cost": [
           "food7.8K",
           "wood9.0K"
@@ -9183,12 +9945,14 @@
         "level": "5",
         "figures": [
           [
-            "City Hall Lv.6",
-            "Watchtower Lv.5"
+            "City Hall Level 6",
+            "Watchtower Level 5"
           ],
           "17,000"
         ],
-        "requirements": ["Tavern Lv.5"],
+        "requirements": [
+          "Tavern Level 5"
+        ],
         "cost": [
           "food14.0K",
           "wood16.3K"
@@ -9202,12 +9966,14 @@
         "level": "6",
         "figures": [
           [
-            "City Hall Lv.7",
-            "Watchtower Lv.6"
+            "City Hall Level 7",
+            "Watchtower Level 6"
           ],
           "17,500"
         ],
-        "requirements": ["Tavern Lv.6"],
+        "requirements": [
+          "Tavern Level 6"
+        ],
         "cost": [
           "food18.0K",
           "wood21.0K",
@@ -9222,12 +9988,14 @@
         "level": "7",
         "figures": [
           [
-            "City Hall Lv.8",
-            "Watchtower Lv.7"
+            "City Hall Level 8",
+            "Watchtower Level 7"
           ],
           "18,250"
         ],
-        "requirements": ["Tavern Lv.7"],
+        "requirements": [
+          "Tavern Level 7"
+        ],
         "cost": [
           "food27.0K",
           "wood32.0K",
@@ -9242,12 +10010,14 @@
         "level": "8",
         "figures": [
           [
-            "City Hall Lv.9",
-            "Watchtower Lv.8"
+            "City Hall Level 9",
+            "Watchtower Level 8"
           ],
           "19,000"
         ],
-        "requirements": ["Tavern Lv.8"],
+        "requirements": [
+          "Tavern Level 8"
+        ],
         "cost": [
           "food41.0K",
           "wood47.0K",
@@ -9262,12 +10032,14 @@
         "level": "9",
         "figures": [
           [
-            "City Hall Lv.10",
-            "Watchtower Lv.9"
+            "City Hall Level 10",
+            "Watchtower Level 9"
           ],
           "19,750"
         ],
-        "requirements": ["Tavern Lv.9"],
+        "requirements": [
+          "Tavern Level 9"
+        ],
         "cost": [
           "food61.0K",
           "wood71.0K",
@@ -9282,12 +10054,14 @@
         "level": "10",
         "figures": [
           [
-            "City Hall Lv.11",
-            "Watchtower Lv.10"
+            "City Hall Level 11",
+            "Watchtower Level 10"
           ],
           "20,500"
         ],
-        "requirements": ["Tavern Lv.10"],
+        "requirements": [
+          "Tavern Level 10"
+        ],
         "cost": [
           "food92.0K",
           "wood106.0K",
@@ -9302,12 +10076,14 @@
         "level": "11",
         "figures": [
           [
-            "City Hall Lv.12",
-            "Watchtower Lv.11"
+            "City Hall Level 12",
+            "Watchtower Level 11"
           ],
           "21,250"
         ],
-        "requirements": ["Tavern Lv.11"],
+        "requirements": [
+          "Tavern Level 11"
+        ],
         "cost": [
           "food137.0K",
           "wood160.0K",
@@ -9322,12 +10098,14 @@
         "level": "12",
         "figures": [
           [
-            "City Hall Lv.13",
-            "Watchtower Lv.12"
+            "City Hall Level 13",
+            "Watchtower Level 12"
           ],
           "22,000"
         ],
-        "requirements": ["Tavern Lv.12"],
+        "requirements": [
+          "Tavern Level 12"
+        ],
         "cost": [
           "food207.0K",
           "wood240.0K",
@@ -9342,12 +10120,14 @@
         "level": "13",
         "figures": [
           [
-            "City Hall Lv.14",
-            "Watchtower Lv.13"
+            "City Hall Level 14",
+            "Watchtower Level 13"
           ],
           "22,750"
         ],
-        "requirements": ["Tavern Lv.13"],
+        "requirements": [
+          "Tavern Level 13"
+        ],
         "cost": [
           "food310.0K",
           "wood360.0K",
@@ -9362,12 +10142,14 @@
         "level": "14",
         "figures": [
           [
-            "City Hall Lv.15",
-            "Watchtower Lv.14"
+            "City Hall Level 15",
+            "Watchtower Level 14"
           ],
           "23,500"
         ],
-        "requirements": ["Tavern Lv.14"],
+        "requirements": [
+          "Tavern Level 14"
+        ],
         "cost": [
           "food465.0K",
           "wood540.0K",
@@ -9382,12 +10164,14 @@
         "level": "15",
         "figures": [
           [
-            "City Hall Lv.16",
-            "Watchtower Lv.15"
+            "City Hall Level 16",
+            "Watchtower Level 15"
           ],
           "24,250"
         ],
-        "requirements": ["Tavern Lv.15"],
+        "requirements": [
+          "Tavern Level 15"
+        ],
         "cost": [
           "food698.0K",
           "wood810.0K",
@@ -9402,12 +10186,14 @@
         "level": "16",
         "figures": [
           [
-            "City Hall Lv.17",
-            "Watchtower Lv.16"
+            "City Hall Level 17",
+            "Watchtower Level 16"
           ],
           "25,000"
         ],
-        "requirements": ["Tavern Lv.16"],
+        "requirements": [
+          "Tavern Level 16"
+        ],
         "cost": [
           "food1.0M",
           "wood1.2M",
@@ -9422,12 +10208,14 @@
         "level": "17",
         "figures": [
           [
-            "City Hall Lv.18",
-            "Watchtower Lv.17"
+            "City Hall Level 18",
+            "Watchtower Level 17"
           ],
           "26,000"
         ],
-        "requirements": ["Tavern Lv.17"],
+        "requirements": [
+          "Tavern Level 17"
+        ],
         "cost": [
           "food1.6M",
           "wood1.8M",
@@ -9442,12 +10230,14 @@
         "level": "18",
         "figures": [
           [
-            "City Hall Lv.19",
-            "Watchtower Lv.18"
+            "City Hall Level 19",
+            "Watchtower Level 18"
           ],
           "27,000"
         ],
-        "requirements": ["Tavern Lv.18"],
+        "requirements": [
+          "Tavern Level 18"
+        ],
         "cost": [
           "food2.4M",
           "wood2.7M",
@@ -9462,12 +10252,14 @@
         "level": "19",
         "figures": [
           [
-            "City Hall Lv.20",
-            "Watchtower Lv.19"
+            "City Hall Level 20",
+            "Watchtower Level 19"
           ],
           "28,000"
         ],
-        "requirements": ["Tavern Lv.19"],
+        "requirements": [
+          "Tavern Level 19"
+        ],
         "cost": [
           "food3.5M",
           "wood4.1M",
@@ -9482,12 +10274,14 @@
         "level": "20",
         "figures": [
           [
-            "City Hall Lv.21",
-            "Watchtower Lv.20"
+            "City Hall Level 21",
+            "Watchtower Level 20"
           ],
           "29,000"
         ],
-        "requirements": ["Tavern Lv.20"],
+        "requirements": [
+          "Tavern Level 20"
+        ],
         "cost": [
           "food5.3M",
           "wood6.2M",
@@ -9502,12 +10296,14 @@
         "level": "21",
         "figures": [
           [
-            "City Hall Lv.22",
-            "Watchtower Lv.21"
+            "City Hall Level 22",
+            "Watchtower Level 21"
           ],
           "30,000"
         ],
-        "requirements": ["Tavern Lv.21"],
+        "requirements": [
+          "Tavern Level 21"
+        ],
         "cost": [
           "food8.0M",
           "wood9.3M",
@@ -9522,12 +10318,14 @@
         "level": "22",
         "figures": [
           [
-            "City Hall Lv.23",
-            "Watchtower Lv.22"
+            "City Hall Level 23",
+            "Watchtower Level 22"
           ],
           "31,000"
         ],
-        "requirements": ["Tavern Lv.22"],
+        "requirements": [
+          "Tavern Level 22"
+        ],
         "cost": [
           "food12.0M",
           "wood13.9M",
@@ -9542,12 +10340,14 @@
         "level": "23",
         "figures": [
           [
-            "City Hall Lv.24",
-            "Watchtower Lv.23"
+            "City Hall Level 24",
+            "Watchtower Level 23"
           ],
           "32,000"
         ],
-        "requirements": ["Tavern Lv.23"],
+        "requirements": [
+          "Tavern Level 23"
+        ],
         "cost": [
           "food18.0M",
           "wood20.9M",
@@ -9562,12 +10362,14 @@
         "level": "24",
         "figures": [
           [
-            "City Hall Lv.25",
-            "Watchtower Lv.24"
+            "City Hall Level 25",
+            "Watchtower Level 24"
           ],
           "33,000"
         ],
-        "requirements": ["Tavern Lv.24"],
+        "requirements": [
+          "Tavern Level 24"
+        ],
         "cost": [
           "food27.0M",
           "wood31.3M",
@@ -9581,10 +10383,12 @@
       {
         "level": "25",
         "figures": [
-          "Watchtower Lv.25",
+          "Watchtower Level 25",
           "40,000"
         ],
-        "requirements": ["Tavern Lv.25"],
+        "requirements": [
+          "Tavern Level 25"
+        ],
         "cost": [
           "food40.5M",
           "wood47.1M",
@@ -9602,16 +10406,18 @@
         "figures": [
           "1,000",
           "1,000",
-          "None"
+          null
         ],
-        "time": "None",
+        "time": null,
         "power": "5",
         "contentId": 200025,
         "id": 100652
       },
       {
         "level": "2",
-        "requirements": ["Wall Lv.2"],
+        "requirements": [
+          "Wall Level 2"
+        ],
         "figures": [
           "1,500",
           "1,500",
@@ -9628,7 +10434,9 @@
       },
       {
         "level": "3",
-        "requirements": ["Wall Lv.3"],
+        "requirements": [
+          "Wall Level 3"
+        ],
         "figures": [
           "2,000",
           "2,000",
@@ -9645,7 +10453,9 @@
       },
       {
         "level": "4",
-        "requirements": ["Wall Lv.4"],
+        "requirements": [
+          "Wall Level 4"
+        ],
         "figures": [
           "3,000",
           "3,000",
@@ -9662,7 +10472,9 @@
       },
       {
         "level": "5",
-        "requirements": ["Wall Lv.5"],
+        "requirements": [
+          "Wall Level 5"
+        ],
         "figures": [
           "4,000",
           "4,000",
@@ -9679,7 +10491,9 @@
       },
       {
         "level": "6",
-        "requirements": ["Wall Lv.6"],
+        "requirements": [
+          "Wall Level 6"
+        ],
         "figures": [
           "5,000",
           "5,000",
@@ -9697,7 +10511,9 @@
       },
       {
         "level": "7",
-        "requirements": ["Wall Lv.7"],
+        "requirements": [
+          "Wall Level 7"
+        ],
         "figures": [
           "6,000",
           "6,000",
@@ -9715,7 +10531,9 @@
       },
       {
         "level": "8",
-        "requirements": ["Wall Lv.8"],
+        "requirements": [
+          "Wall Level 8"
+        ],
         "figures": [
           "16,000",
           "8,000",
@@ -9733,7 +10551,9 @@
       },
       {
         "level": "9",
-        "requirements": ["Wall Lv.9"],
+        "requirements": [
+          "Wall Level 9"
+        ],
         "figures": [
           "20,000",
           "10,000",
@@ -9751,7 +10571,9 @@
       },
       {
         "level": "10",
-        "requirements": ["Wall Lv.10"],
+        "requirements": [
+          "Wall Level 10"
+        ],
         "figures": [
           "24,000",
           "12,000",
@@ -9769,7 +10591,9 @@
       },
       {
         "level": "11",
-        "requirements": ["Wall Lv.11"],
+        "requirements": [
+          "Wall Level 11"
+        ],
         "figures": [
           "28,000",
           "14,000",
@@ -9787,7 +10611,9 @@
       },
       {
         "level": "12",
-        "requirements": ["Wall Lv.12"],
+        "requirements": [
+          "Wall Level 12"
+        ],
         "figures": [
           "32,000",
           "16,000",
@@ -9805,7 +10631,9 @@
       },
       {
         "level": "13",
-        "requirements": ["Wall Lv.13"],
+        "requirements": [
+          "Wall Level 13"
+        ],
         "figures": [
           "36,000",
           "18,000",
@@ -9823,7 +10651,9 @@
       },
       {
         "level": "14",
-        "requirements": ["Wall Lv.14"],
+        "requirements": [
+          "Wall Level 14"
+        ],
         "figures": [
           "40,000",
           "20,000",
@@ -9841,7 +10671,9 @@
       },
       {
         "level": "15",
-        "requirements": ["Wall Lv.15"],
+        "requirements": [
+          "Wall Level 15"
+        ],
         "figures": [
           "66,000",
           "22,000",
@@ -9859,7 +10691,9 @@
       },
       {
         "level": "16",
-        "requirements": ["Wall Lv.16"],
+        "requirements": [
+          "Wall Level 16"
+        ],
         "figures": [
           "72,000",
           "24,000",
@@ -9877,7 +10711,9 @@
       },
       {
         "level": "17",
-        "requirements": ["Wall Lv.17"],
+        "requirements": [
+          "Wall Level 17"
+        ],
         "figures": [
           "78,000",
           "26,000",
@@ -9895,7 +10731,9 @@
       },
       {
         "level": "18",
-        "requirements": ["Wall Lv.18"],
+        "requirements": [
+          "Wall Level 18"
+        ],
         "figures": [
           "84,000",
           "28,000",
@@ -9913,7 +10751,9 @@
       },
       {
         "level": "19",
-        "requirements": ["Wall Lv.19"],
+        "requirements": [
+          "Wall Level 19"
+        ],
         "figures": [
           "90,000",
           "30,000",
@@ -9931,7 +10771,9 @@
       },
       {
         "level": "20",
-        "requirements": ["Wall Lv.20"],
+        "requirements": [
+          "Wall Level 20"
+        ],
         "figures": [
           "96,000",
           "32,000",
@@ -9949,7 +10791,9 @@
       },
       {
         "level": "21",
-        "requirements": ["Wall Lv.21"],
+        "requirements": [
+          "Wall Level 21"
+        ],
         "figures": [
           "136,000",
           "34,000",
@@ -9967,7 +10811,9 @@
       },
       {
         "level": "22",
-        "requirements": ["Wall Lv.22"],
+        "requirements": [
+          "Wall Level 22"
+        ],
         "figures": [
           "144,000",
           "36,000",
@@ -9985,7 +10831,9 @@
       },
       {
         "level": "23",
-        "requirements": ["Wall Lv.23"],
+        "requirements": [
+          "Wall Level 23"
+        ],
         "figures": [
           "152,000",
           "38,000",
@@ -10003,7 +10851,9 @@
       },
       {
         "level": "24",
-        "requirements": ["Wall Lv.24"],
+        "requirements": [
+          "Wall Level 24"
+        ],
         "figures": [
           "160,000",
           "40,000",
@@ -10021,7 +10871,10 @@
       },
       {
         "level": "25",
-        "requirements": ["Storehouse 25","Wall 25"],
+        "requirements": [
+          "Storehouse 25",
+          "Wall 25"
+        ],
         "figures": [
           "500,000",
           "50,000",
@@ -10047,11 +10900,11 @@
       {
         "id": 200000,
         "nameEng": "Farm",
-        "name": "",
+        "name": "농장",
         "category": "economic",
         "categoryKor": "경제",
         "facts": [
-          "wood\/hr",
+          "food\/hr",
           "capacity",
           "roi days"
         ]
@@ -10059,7 +10912,7 @@
       {
         "id": 200001,
         "nameEng": "Lumber_Mill",
-        "name": "",
+        "name": "제재소",
         "category": "economic",
         "categoryKor": "경제",
         "facts": [
@@ -10071,7 +10924,7 @@
       {
         "id": 200002,
         "nameEng": "Quarry",
-        "name": "",
+        "name": "채석장",
         "category": "economic",
         "categoryKor": "경제",
         "facts": [
@@ -10083,7 +10936,7 @@
       {
         "id": 200003,
         "nameEng": "Goldmine",
-        "name": "",
+        "name": "금광",
         "category": "economic",
         "categoryKor": "경제",
         "facts": [
@@ -10095,11 +10948,10 @@
       {
         "id": 200004,
         "nameEng": "Academy",
-        "name": "",
+        "name": "아카데미",
         "category": "economic",
         "categoryKor": "경제",
         "facts": [
-          "lvl",
           "researchspeedboost",
           "academnylevel",
           "technology unlocks"
@@ -10108,7 +10960,7 @@
       {
         "id": 200005,
         "nameEng": "Storehouse",
-        "name": "",
+        "name": "창고",
         "category": "economic",
         "categoryKor": "경제",
         "facts": [
@@ -10118,7 +10970,7 @@
       {
         "id": 200006,
         "nameEng": "Alliance_Center",
-        "name": "",
+        "name": "연맹 센터",
         "category": "economic",
         "categoryKor": "경제",
         "facts": [
@@ -10133,7 +10985,7 @@
       {
         "id": 200007,
         "nameEng": "Builder's_Hut",
-        "name": "",
+        "name": "장인의 집",
         "category": "economic",
         "categoryKor": "경제",
         "facts": [
@@ -10143,7 +10995,7 @@
       {
         "id": 200008,
         "nameEng": "Shop",
-        "name": "",
+        "name": "상점",
         "category": "economic",
         "categoryKor": "경제",
         "facts": [
@@ -10160,7 +11012,7 @@
       {
         "id": 200009,
         "nameEng": "Trading_Post",
-        "name": "",
+        "name": "교역소",
         "category": "economic",
         "categoryKor": "경제",
         "facts": [
@@ -10171,7 +11023,7 @@
       {
         "id": 200010,
         "nameEng": "Lyceum_of_Wisdom",
-        "name": "",
+        "name": "지식 광장",
         "category": "economic",
         "categoryKor": "경제",
         "facts": []
@@ -10179,7 +11031,7 @@
       {
         "id": 200011,
         "nameEng": "Courier_Station",
-        "name": "",
+        "name": "역참",
         "category": "economic",
         "categoryKor": "경제",
         "facts": [
@@ -10192,7 +11044,7 @@
       {
         "id": 200012,
         "nameEng": "Tavern",
-        "name": "",
+        "name": "선술집",
         "category": "military",
         "categoryKor": "군사",
         "facts": [
@@ -10204,7 +11056,7 @@
       {
         "id": 200013,
         "nameEng": "Scout_Camp",
-        "name": "",
+        "name": "정찰병 주둔지",
         "category": "military",
         "categoryKor": "군사",
         "facts": [
@@ -10216,7 +11068,7 @@
       {
         "id": 200014,
         "nameEng": "Barracks",
-        "name": "",
+        "name": "군영",
         "category": "military",
         "categoryKor": "군사",
         "facts": [
@@ -10228,7 +11080,7 @@
       {
         "id": 200015,
         "nameEng": "Archery_Range",
-        "name": "",
+        "name": "사격장",
         "category": "military",
         "categoryKor": "군사",
         "facts": [
@@ -10240,7 +11092,7 @@
       {
         "id": 200016,
         "nameEng": "Stable",
-        "name": "",
+        "name": "마구간",
         "category": "military",
         "categoryKor": "군사",
         "facts": [
@@ -10252,7 +11104,7 @@
       {
         "id": 200017,
         "nameEng": "Siege_Workshop",
-        "name": "",
+        "name": "공성무기 공장",
         "category": "military",
         "categoryKor": "군사",
         "facts": [
@@ -10262,7 +11114,7 @@
       {
         "id": 200018,
         "nameEng": "Hospital",
-        "name": "",
+        "name": "병원",
         "category": "military",
         "categoryKor": "군사",
         "facts": [
@@ -10272,7 +11124,7 @@
       {
         "id": 200019,
         "nameEng": "Monument",
-        "name": "",
+        "name": "기념비",
         "category": "military",
         "categoryKor": "군사",
         "facts": [
@@ -10301,7 +11153,7 @@
       {
         "id": 200022,
         "nameEng": "Bulletin_Board",
-        "name": "",
+        "name": "공지사항",
         "category": "military",
         "categoryKor": "군사",
         "facts": []

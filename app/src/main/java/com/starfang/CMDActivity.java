@@ -47,7 +47,6 @@ import io.realm.Sort;
 
 public class CMDActivity extends AppCompatActivity {
     private final static String TAG = "FANG_ACT_CMD";
-    private final static String systemName = "시스템";
 
     public static final String ACTION_CMD_ADDED = "addCMD";
 
@@ -98,9 +97,9 @@ public class CMDActivity extends AppCompatActivity {
         RealmResults<Cmd> cmdTalks = realm.where(Cmd.class).findAll().sort(Cmd.FIELD_WHEN, Sort.ASCENDING);
 
         if (cmdTalks.size() == 0) {
-            Cmd welcomeCmd = new Cmd();
-            welcomeCmd.setName(systemName);
-            welcomeCmd.setText("안녕");
+            Cmd welcomeCmd = new Cmd( false );
+            welcomeCmd.setName("멍멍이");
+            welcomeCmd.setText("연결 -> 알림 -> 시작 순서로 입력 하라멍");
             realm.beginTransaction();
             realm.copyToRealm(welcomeCmd);
             realm.commitTransaction();
@@ -115,6 +114,10 @@ public class CMDActivity extends AppCompatActivity {
         final AppCompatEditText text_conversation = findViewById(R.id.text_conversation);
         final AppCompatImageButton button_clear_talk = findViewById(R.id.button_clear_talk);
         final FloatingActionButton button_send_talk = findViewById(R.id.button_send_talk);
+
+        final AppCompatImageButton button_to_bottom = findViewById(R.id.button_to_bottom);
+        button_to_bottom.setOnClickListener( v-> scrollToBottom());
+
 
         text_conversation.addTextChangedListener(
                 new TextWatcher() {
@@ -172,8 +175,7 @@ public class CMDActivity extends AppCompatActivity {
 
                 realm.executeTransactionAsync(bgRealm -> {
                     Cmd talk = new Cmd();
-                    talk.setName("얼간이");
-                    talk.setWhen(System.currentTimeMillis());
+                    //talk.setName("얼간이");
                     talk.setText(content);
                     bgRealm.copyToRealm(talk);
                     //forum.addConversation(conversation);
@@ -261,7 +263,7 @@ public class CMDActivity extends AppCompatActivity {
                 if (talk != null) {
 
                     if (VersionUtils.isJellyBeanMR1()) {
-                        if (!talk.getName().equals(systemName)) {
+                        if (talk.isUser()) {
                             this.itemView.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
                         } else {
                             this.itemView.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);

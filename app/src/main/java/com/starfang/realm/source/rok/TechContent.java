@@ -6,6 +6,7 @@ import com.starfang.realm.source.Source;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
 public class TechContent extends RealmObject implements Source, SearchNameWithoutBlank {
@@ -16,15 +17,19 @@ public class TechContent extends RealmObject implements Source, SearchNameWithou
     public static final String FIELD_NAME = "name";
     public static final String FIELD_TIER = "tier";
     public static final String FIELD_FACTS = "facts";
+    public static final String FIELD_DESCRIPTION = "description";
 
     @PrimaryKey
     private int id;
 
     private String category; // economic or military
     private String nameEng;
+
+    @Index
     private String name;
     private int tier;
     private RealmList<RealmString> facts;
+    private String description;
 
     // runtime fields
     private String nameWithoutBlank;
@@ -57,6 +62,8 @@ public class TechContent extends RealmObject implements Source, SearchNameWithou
                 return category;
             case FIELD_CATEGORY_KOR:
                 return categoryKor;
+            case FIELD_DESCRIPTION:
+                return description;
             default:
                 return null;
         }

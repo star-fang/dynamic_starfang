@@ -7,7 +7,7 @@ import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 import io.realm.exceptions.RealmPrimaryKeyConstraintException;
 
-public class Conversations extends RealmObject {
+public class Conversation extends RealmObject {
 
     public static final String FIELD_ID = "id";
     public static final String FIELD_SEND_CAT = "sendCat";
@@ -32,13 +32,13 @@ public class Conversations extends RealmObject {
 
     public long getId() {return id;}
 
-    public Conversations() throws RealmPrimaryKeyConstraintException {
+    public Conversation() throws RealmPrimaryKeyConstraintException {
         this.id = UUID.randomUUID().getMostSignificantBits();
         this.isMe = false;
 
     }
 
-    public Conversations(long id) throws RealmPrimaryKeyConstraintException {
+    public Conversation(long id) throws RealmPrimaryKeyConstraintException {
         this.id = id;
         this.isMe = false;
     }

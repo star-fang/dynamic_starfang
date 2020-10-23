@@ -6,6 +6,7 @@ import com.starfang.realm.source.Source;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
 public class BuildContent extends RealmObject implements Source, SearchNameWithoutBlank {
@@ -21,6 +22,8 @@ public class BuildContent extends RealmObject implements Source, SearchNameWitho
 
     private String category; // economic or military or other
     private String nameEng;
+
+    @Index
     private String name;
     private RealmList<RealmString> facts;
 

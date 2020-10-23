@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.starfang.CMDActivity;
 import com.starfang.realm.Cmd;
+import com.starfang.realm.notifications.Forum;
 import com.starfang.utilities.reply.ReplyAction;
 
 
@@ -25,14 +26,18 @@ public class FangcatNlp extends AsyncTask<String, String, Void> {
     private static final String MASTER_CMD_DOG = "멍";
     private WeakReference<Context> contextWeakReference;
     private WeakReference<ReplyAction> replyActionWeakReference;
+    private String sendCat;
+    private long forumId;
 
-    public FangcatNlp(Context context, ReplyAction replyAction) {
+    public FangcatNlp(Context context, ReplyAction replyAction, String sendCat, long forumId ) {
         this.contextWeakReference = new WeakReference<>(context);
         if( replyAction != null ) {
             this.replyActionWeakReference = new WeakReference<>(replyAction);
         } else {
             this.replyActionWeakReference = null;
         }
+        this.sendCat = sendCat;
+        this.forumId = forumId;
     }
 
     private void observeCat(@Nonnull String text) {
@@ -46,7 +51,9 @@ public class FangcatNlp extends AsyncTask<String, String, Void> {
             default:
                 try {
                     try (Realm realm = Realm.getDefaultInstance()) {
-                        List<String> messages = RokLambda.processReq(text.substring(0, text.length() - 1), realm);
+                        List<String> messages = RokLambda.processReq(
+                                text.substring(0, text.length() - 1), realm
+                        , sendCat, forumId);
                         for (String message : messages) {
                             publishProgress(message);
                         }
@@ -76,10 +83,9 @@ public class FangcatNlp extends AsyncTask<String, String, Void> {
             } else {
                 try (Realm realm = Realm.getDefaultInstance()) {
                     for (String message : values) {
-                        Cmd cmd = new Cmd();
-                        cmd.setName("시스템");
+                        Cmd cmd = new Cmd( false );
+                        cmd.setName("냥이");
                         cmd.setText(message);
-                        cmd.setWhen(System.currentTimeMillis());
                         realm.beginTransaction();
                         realm.copyToRealm(cmd);
                         realm.commitTransaction();

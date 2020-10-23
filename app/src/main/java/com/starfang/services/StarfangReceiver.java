@@ -12,8 +12,8 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.RemoteInput;
 
 import com.starfang.StarfangConstants;
-import com.starfang.realm.notifications.Conversations;
-import com.starfang.realm.notifications.Forums;
+import com.starfang.realm.notifications.Conversation;
+import com.starfang.realm.notifications.Forum;
 
 import org.apache.http.util.TextUtils;
 
@@ -40,12 +40,12 @@ public class StarfangReceiver extends BroadcastReceiver {
                     try (Realm realm = Realm.getDefaultInstance()) {
                         realm.executeTransactionAsync(bgRealm -> {
 
-                            Forums forum = bgRealm.where(Forums.class)
-                                    .equalTo(Forums.FIELD_ID, forumId)
+                            Forum forum = bgRealm.where(Forum.class)
+                                    .equalTo(Forum.FIELD_ID, forumId)
                                     .findFirst();
 
                             if( forum != null ) {
-                                Conversations conversation = bgRealm.createObject(Conversations.class);
+                                Conversation conversation = bgRealm.createObject(Conversation.class);
                                 conversation.setContent(msgChars.toString());
                                 conversation.setWhen(System.currentTimeMillis());
                                 conversation.setSendCat(sendCat);

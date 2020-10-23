@@ -5,6 +5,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
+import com.starfang.realm.primitive.RealmDouble;
 import com.starfang.realm.primitive.RealmInteger;
 import com.starfang.realm.primitive.RealmString;
 
@@ -34,7 +35,16 @@ public class RealmSyncUtils {
         }
 
         private String getNullAsEmptyString(JsonElement jsonElement) {
-            return jsonElement.isJsonNull() ? "" : jsonElement.getAsString();
+            if(  jsonElement.isJsonNull() ) {
+                return "";
+            }
+
+            try {
+                return jsonElement.getAsString();
+            } catch (IllegalStateException e ) {
+                return jsonElement.toString();
+            }
+
         }
     }
 
@@ -59,6 +69,29 @@ public class RealmSyncUtils {
         private int getNullAsZeroInt(JsonElement jsonElement) {
             String valueStr = jsonElement.isJsonNull() ? "" : jsonElement.getAsString();
             return NumberUtils.toInt(valueStr, 0);
+        }
+    }
+
+    public static class RealmDoubleDeserializer implements
+            JsonDeserializer<RealmList<RealmDouble>> {
+
+        @Override
+        public RealmList<RealmDouble> deserialize(JsonElement json, Type typeOfT,
+                                                   JsonDeserializationContext context) throws JsonParseException {
+
+            RealmList<RealmDouble> realmDoubles = new RealmList<>();
+            JsonArray stringList = json.getAsJsonArray();
+
+            for (JsonElement doubleElement : stringList) {
+                realmDoubles.add(new RealmDouble(getNullAsZeroDouble(doubleElement)));
+            }
+
+            return realmDoubles;
+        }
+
+        private double getNullAsZeroDouble(JsonElement jsonElement) {
+            String valueStr = jsonElement.isJsonNull() ? "" : jsonElement.getAsString();
+            return NumberUtils.toDouble(valueStr, 0d);
         }
     }
 

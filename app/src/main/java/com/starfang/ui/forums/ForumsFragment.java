@@ -25,7 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.starfang.TalkActivity;
 import com.starfang.R;
 import com.starfang.StarfangConstants;
-import com.starfang.realm.notifications.Forums;
+import com.starfang.realm.notifications.Forum;
 import com.starfang.services.StarfangService;
 
 import org.jetbrains.annotations.NotNull;
@@ -94,8 +94,8 @@ public class ForumsFragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.recycler_forums);
         mLayoutManager = new LinearLayoutManager(mContext);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        OrderedRealmCollection<Forums> collection =
-                realm.where(Forums.class).findAll().sort(Forums.FIELD_LAST_MODIFIED, Sort.DESCENDING);
+        OrderedRealmCollection<Forum> collection =
+                realm.where(Forum.class).findAll().sort(Forum.FIELD_LAST_MODIFIED, Sort.DESCENDING);
         Log.d(TAG, collection.size() + "record(s) found");
         mAdapter = new ForumAdapter(collection, false, mContext);
         mRecyclerView.setAdapter(mAdapter);
@@ -131,11 +131,11 @@ public class ForumsFragment extends Fragment {
         Log.d(TAG, "onDetach");
     }
 
-    private static class ForumAdapter extends RealmRecyclerViewAdapter<Forums, RecyclerView.ViewHolder> {
+    private static class ForumAdapter extends RealmRecyclerViewAdapter<Forum, RecyclerView.ViewHolder> {
 
         private WeakReference<Context> contextWeakReference;
 
-        ForumAdapter(@Nullable OrderedRealmCollection<Forums> data, boolean autoUpdate, Context context) {
+        ForumAdapter(@Nullable OrderedRealmCollection<Forum> data, boolean autoUpdate, Context context) {
             super(data, autoUpdate);
             contextWeakReference = new WeakReference<>(context);
         }
@@ -149,7 +149,7 @@ public class ForumsFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-            Forums forum = getItem(position);
+            Forum forum = getItem(position);
             ForumViewHolder viewHolder = (ForumViewHolder) holder;
             viewHolder.bind(forum);
         }
@@ -168,7 +168,7 @@ public class ForumsFragment extends Fragment {
                 text_forum_count_non_read = itemView.findViewById(R.id.text_forum_count_non_read);
             }
 
-            void bind(final Forums forum) {
+            void bind(final Forum forum) {
                 if (forum != null) {
                     text_forum_name.setText(forum.getName());
                     text_forum_last_conversation.setText(forum.getLastSimpleConversation());

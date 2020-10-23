@@ -19,8 +19,8 @@ import androidx.annotation.RequiresApi;
 
 import com.starfang.StarfangConstants;
 import com.starfang.nlp.FangcatNlp;
-import com.starfang.realm.notifications.Conversations;
-import com.starfang.realm.notifications.Forums;
+import com.starfang.realm.notifications.Conversation;
+import com.starfang.realm.notifications.Forum;
 import com.starfang.realm.notifications.Notifications;
 import com.starfang.utilities.VersionUtils;
 import com.starfang.utilities.reply.ReplyAction;
@@ -264,8 +264,13 @@ public class StarfangService extends NotificationListenerService {
                 //        StarfangConstants.BOT_NAME_KEY,
                 //        getResources().getString(R.string.bot_name_default)
                 //);
-
-                new FangcatNlp(this, replyAction).execute(replyAction.getContentText());
+                for( String key : sbnNotification.extras.keySet() ) {
+                    Object extraObj = sbnNotification.extras.get(key);
+                    if( extraObj != null )
+                    Log.d(TAG, key + ": " + extraObj );
+                }
+                Log.d(TAG, "---------------------------"  );
+                new FangcatNlp(this, replyAction, replyAction.getSendCat(), 0L).execute(replyAction.getContentText());
                 //new FangcatHandler(this, from, room, sbn, isLocalRequest, botName, record).execute(text);
 
 
@@ -291,21 +296,21 @@ public class StarfangService extends NotificationListenerService {
                                 final String sendCat = replyAction.getSendCat();
                                 final String forumName = replyAction.getForumName();
                                 final long lastModified = sbnNotification.when;
-                                Conversations conversation = new Conversations();
+                                Conversation conversation = new Conversation();
                                 conversation.setContent(replyAction.getContentText());
                                 conversation.setWhen(lastModified);
                                 conversation.setSendCat(sendCat);
                                 conversation = bgRealm.copyToRealm(conversation);
                                 notificationLog.activate();
                                 conversation.setNotification(notificationLog);
-                                RealmResults<Forums> forums = bgRealm.where(Forums.class).equalTo(Forums.FIELD_TAG, sbnTag).findAll();
-                                Forums forum;
+                                RealmResults<Forum> forums = bgRealm.where(Forum.class).equalTo(Forum.FIELD_TAG, sbnTag).findAll();
+                                Forum forum;
                                 final boolean isGroupChat = forumName != null;
                                 final String refinedForumName = isGroupChat ? forumName : sendCat;
                                 Log.d(TAG, sbn.getPackageName() + ">> from: " + sendCat + ", forum: " + refinedForumName);
                                 switch (forums.size()) {
                                     case 0:
-                                        forum = new Forums(sbnTag);
+                                        forum = new Forum(sbnTag);
                                         forum.setPackageName(sbnPackageName);
                                         forum.setGroupChatOption(isGroupChat);
                                         forum.setName(refinedForumName);
@@ -315,7 +320,7 @@ public class StarfangService extends NotificationListenerService {
                                         forum = forums.first();
                                         break;
                                     default:
-                                        forum = forums.where().equalTo(Forums.FIELD_PACKAGE_NAME, sbnTag).findFirst();
+                                        forum = forums.where().equalTo(Forum.FIELD_PACKAGE_NAME, sbnTag).findFirst();
                                 }
 
                                 if (forum != null) {
@@ -353,12 +358,12 @@ public class StarfangService extends NotificationListenerService {
     public void onNotificationRemoved(StatusBarNotification sbn) {
         try (Realm realm = Realm.getDefaultInstance()) {
             realm.executeTransactionAsync(bgRealm -> {
-                RealmResults<Conversations> talks = bgRealm.where(Conversations.class)
-                        .isNotNull(Conversations.FIELD_NOTIFICATION)
-                        .equalTo(Conversations.FIELD_NOTIFICATION + "." + Notifications.FIELD_IS_ACTIVE, true)
-                        .equalTo(Conversations.FIELD_NOTIFICATION + "." + Notifications.FIELD_SBN_ID, sbn.getId())
-                        .equalTo(Conversations.FIELD_NOTIFICATION + "." + Notifications.FIELD_PACKAGE, sbn.getPackageName()).findAll();
-                for (Conversations talk : talks) {
+                RealmResults<Conversation> talks = bgRealm.where(Conversation.class)
+                        .isNotNull(Conversation.FIELD_NOTIFICATION)
+                        .equalTo(Conversation.FIELD_NOTIFICATION + "." + Notifications.FIELD_IS_ACTIVE, true)
+                        .equalTo(Conversation.FIELD_NOTIFICATION + "." + Notifications.FIELD_SBN_ID, sbn.getId())
+                        .equalTo(Conversation.FIELD_NOTIFICATION + "." + Notifications.FIELD_PACKAGE, sbn.getPackageName()).findAll();
+                for (Conversation talk : talks) {
                     Notifications log = talk.getNotification();
                     if (log != null) {
                         log.deactivate();

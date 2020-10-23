@@ -18,10 +18,10 @@
         "power": "56",
         "contentId": 900000,
         "id": 300000,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -40,10 +40,10 @@
         "power": "184",
         "contentId": 900001,
         "id": 300001,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -153,10 +153,10 @@
         "power": "184",
         "contentId": 900002,
         "id": 300006,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -490,10 +490,10 @@
         "power": "2,690",
         "contentId": 900005,
         "id": 300021,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -510,10 +510,10 @@
         "power": "2,690",
         "contentId": 900006,
         "id": 300022,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -530,10 +530,10 @@
         "power": "2,690",
         "contentId": 900007,
         "id": 300023,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -643,10 +643,10 @@
         "power": "3,450",
         "contentId": 900009,
         "id": 300028,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -666,10 +666,10 @@
         "power": "6,056",
         "contentId": 900009,
         "id": 300029,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -713,10 +713,10 @@
         "power": "971",
         "contentId": 900010,
         "id": 300031,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -736,10 +736,10 @@
         "power": "1,910",
         "contentId": 900010,
         "id": 300032,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -759,10 +759,10 @@
         "power": "3,450",
         "contentId": 900010,
         "id": 300033,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -782,10 +782,10 @@
         "power": "6,056",
         "contentId": 900010,
         "id": 300034,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -806,10 +806,10 @@
         "power": "1,214",
         "contentId": 900011,
         "id": 300035,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -830,10 +830,10 @@
         "power": "3,123",
         "contentId": 900011,
         "id": 300036,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -854,10 +854,10 @@
         "power": "6,216",
         "contentId": 900011,
         "id": 300037,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -878,10 +878,10 @@
         "power": "11,386",
         "contentId": 900011,
         "id": 300038,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -902,10 +902,10 @@
         "power": "20,305",
         "contentId": 900011,
         "id": 300039,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -926,10 +926,10 @@
         "power": "1,214",
         "contentId": 900012,
         "id": 300040,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -950,10 +950,10 @@
         "power": "3,123",
         "contentId": 900012,
         "id": 300041,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -974,10 +974,10 @@
         "power": "6,216",
         "contentId": 900012,
         "id": 300042,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -998,10 +998,10 @@
         "power": "11,386",
         "contentId": 900012,
         "id": 300043,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -1022,10 +1022,10 @@
         "power": "20,305",
         "contentId": 900012,
         "id": 300044,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -1046,10 +1046,10 @@
         "power": "1,214",
         "contentId": 900013,
         "id": 300045,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -1070,10 +1070,10 @@
         "power": "3,123",
         "contentId": 900013,
         "id": 300046,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -1094,10 +1094,10 @@
         "power": "6,216",
         "contentId": 900013,
         "id": 300047,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -1118,10 +1118,10 @@
         "power": "11,386",
         "contentId": 900013,
         "id": 300048,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -1142,10 +1142,10 @@
         "power": "20,305",
         "contentId": 900013,
         "id": 300049,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -1166,10 +1166,10 @@
         "power": "1,214",
         "contentId": 900014,
         "id": 300050,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -1190,10 +1190,10 @@
         "power": "3,123",
         "contentId": 900014,
         "id": 300051,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -1214,10 +1214,10 @@
         "power": "6,216",
         "contentId": 900014,
         "id": 300052,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -1238,10 +1238,10 @@
         "power": "11,386",
         "contentId": 900014,
         "id": 300053,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -1262,10 +1262,10 @@
         "power": "20,305",
         "contentId": 900014,
         "id": 300054,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -1306,10 +1306,10 @@
         "power": "27,243",
         "contentId": 900016,
         "id": 300056,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -1327,15 +1327,15 @@
         "power": "27,243",
         "contentId": 900017,
         "id": 300057,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
         "requirements": [
-          "Enhanced Axle 3",
+          "Enhanced Axle Level 3",
           "Academy Level 16"
         ],
         "costs": [
@@ -1348,10 +1348,10 @@
         "power": "32,427",
         "contentId": 900018,
         "id": 300058,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -1359,10 +1359,10 @@
           "Able to detect the level, star level, and skill level of target's commanders"
         ],
         "requirements": [
-          "Spearman Level ?",
-          "Composite Bowman Level ?",
-          "Heavy Cavalry Level ?",
-          "Mangonel Level ?",
+          "Spearman Level 1",
+          "Composite Bowman Level 1",
+          "Heavy Cavalry Level 1",
+          "Mangonel Level 1",
           "Academy Level 16"
         ],
         "costs": [
@@ -1375,10 +1375,10 @@
         "power": "4,220",
         "contentId": 900019,
         "id": 300059,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -1495,10 +1495,10 @@
         "power": "5,671",
         "contentId": 900020,
         "id": 300064,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -1519,10 +1519,10 @@
         "power": "14,827",
         "contentId": 900020,
         "id": 300065,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -1616,10 +1616,10 @@
         "power": "177,222",
         "contentId": 900020,
         "id": 300069,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "7",
@@ -1640,10 +1640,10 @@
         "power": "312,936",
         "contentId": 900020,
         "id": 300070,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -1664,10 +1664,10 @@
         "power": "557,994",
         "contentId": 900020,
         "id": 300071,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -1688,10 +1688,10 @@
         "power": "1,008,570",
         "contentId": 900020,
         "id": 300072,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -1712,10 +1712,10 @@
         "power": "1,850,342",
         "contentId": 900020,
         "id": 300073,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -1736,10 +1736,10 @@
         "power": "5,671",
         "contentId": 900021,
         "id": 300074,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -1760,10 +1760,10 @@
         "power": "14,827",
         "contentId": 900021,
         "id": 300075,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -1784,10 +1784,10 @@
         "power": "30,421",
         "contentId": 900021,
         "id": 300076,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -1808,10 +1808,10 @@
         "power": "56,408",
         "contentId": 900021,
         "id": 300077,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -1857,10 +1857,10 @@
         "power": "177,222",
         "contentId": 900021,
         "id": 300079,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "7",
@@ -1881,10 +1881,10 @@
         "power": "312,936",
         "contentId": 900021,
         "id": 300080,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -1905,10 +1905,10 @@
         "power": "557,994",
         "contentId": 900021,
         "id": 300081,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -1929,10 +1929,10 @@
         "power": "1,008,570",
         "contentId": 900021,
         "id": 300082,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -1953,10 +1953,10 @@
         "power": "1,850,342",
         "contentId": 900021,
         "id": 300083,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -1977,10 +1977,10 @@
         "power": "5,671",
         "contentId": 900022,
         "id": 300084,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -2025,10 +2025,10 @@
         "power": "30,421",
         "contentId": 900022,
         "id": 300086,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -2049,10 +2049,10 @@
         "power": "56,408",
         "contentId": 900022,
         "id": 300087,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -2098,10 +2098,10 @@
         "power": "177,222",
         "contentId": 900022,
         "id": 300089,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "7",
@@ -2122,10 +2122,10 @@
         "power": "312,936",
         "contentId": 900022,
         "id": 300090,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -2146,10 +2146,10 @@
         "power": "557,994",
         "contentId": 900022,
         "id": 300091,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -2170,10 +2170,10 @@
         "power": "1,008,570",
         "contentId": 900022,
         "id": 300092,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -2194,10 +2194,10 @@
         "power": "1,850,342",
         "contentId": 900022,
         "id": 300093,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -2220,10 +2220,10 @@
         "power": "8,877",
         "contentId": 900023,
         "id": 300094,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -2244,10 +2244,10 @@
         "power": "22,198",
         "contentId": 900023,
         "id": 300095,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -2269,10 +2269,10 @@
         "power": "43,136",
         "contentId": 900023,
         "id": 300096,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -2296,10 +2296,10 @@
         "power": "74,543",
         "contentId": 900023,
         "id": 300097,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -2307,7 +2307,8 @@
           "+15.0%"
         ],
         "requirements": [
-          "Cartography Level 4Combat Tactics Level 10",
+          "Cartography Level 4",
+          "Combat Tactics Level 10",
           "Defensive Formation Level 10",
           "Herbal Medicine Level 10",
           "Academy Level 20"
@@ -2322,10 +2323,10 @@
         "power": "121,648",
         "contentId": 900023,
         "id": 300098,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -2343,10 +2344,10 @@
         "power": "159,930",
         "contentId": 900024,
         "id": 300099,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -2364,10 +2365,10 @@
         "power": "159,930",
         "contentId": 900025,
         "id": 300100,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -2385,10 +2386,10 @@
         "power": "159,930",
         "contentId": 900026,
         "id": 300101,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -2406,10 +2407,10 @@
         "power": "211,770",
         "contentId": 900027,
         "id": 300102,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -2427,10 +2428,10 @@
         "power": "159,930",
         "contentId": 900028,
         "id": 300103,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -2448,10 +2449,10 @@
         "power": "159,930",
         "contentId": 900029,
         "id": 300104,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -2469,10 +2470,10 @@
         "power": "159,930",
         "contentId": 900030,
         "id": 300105,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -2490,10 +2491,10 @@
         "power": "159,930",
         "contentId": 900031,
         "id": 300106,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -2511,10 +2512,10 @@
         "power": "159,930",
         "contentId": 900032,
         "id": 300107,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -2532,10 +2533,10 @@
         "power": "159,930",
         "contentId": 900033,
         "id": 300108,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -2553,10 +2554,10 @@
         "power": "159,930",
         "contentId": 900034,
         "id": 300109,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -2574,10 +2575,10 @@
         "power": "159,930",
         "contentId": 900035,
         "id": 300110,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -2670,10 +2671,10 @@
         "power": "38,805",
         "contentId": 900036,
         "id": 300114,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -2694,10 +2695,10 @@
         "power": "67,589",
         "contentId": 900036,
         "id": 300115,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "6",
@@ -2718,10 +2719,10 @@
         "power": "116,294",
         "contentId": 900036,
         "id": 300116,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "7",
@@ -2742,10 +2743,10 @@
         "power": "202,693",
         "contentId": 900036,
         "id": 300117,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -2766,10 +2767,10 @@
         "power": "354,410",
         "contentId": 900036,
         "id": 300118,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -2790,10 +2791,10 @@
         "power": "626,223",
         "contentId": 900036,
         "id": 300119,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -2814,10 +2815,10 @@
         "power": "1,122,415",
         "contentId": 900036,
         "id": 300120,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -2910,10 +2911,10 @@
         "power": "38,805",
         "contentId": 900037,
         "id": 300124,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -2934,10 +2935,10 @@
         "power": "67,589",
         "contentId": 900037,
         "id": 300125,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "6",
@@ -2958,10 +2959,10 @@
         "power": "116,294",
         "contentId": 900037,
         "id": 300126,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "7",
@@ -2982,10 +2983,10 @@
         "power": "202,693",
         "contentId": 900037,
         "id": 300127,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -3006,10 +3007,10 @@
         "power": "354,410",
         "contentId": 900037,
         "id": 300128,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -3030,10 +3031,10 @@
         "power": "626,223",
         "contentId": 900037,
         "id": 300129,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -3042,7 +3043,7 @@
         ],
         "requirements": [
           "Bodkin Arrows Level 9",
-          "Academy Level 24?"
+          "Academy Level 24"
         ],
         "costs": [
           "food15.375M",
@@ -3054,10 +3055,10 @@
         "power": "1,122,415",
         "contentId": 900037,
         "id": 300130,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -3246,10 +3247,10 @@
         "power": "354,410",
         "contentId": 900038,
         "id": 300138,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -3366,10 +3367,10 @@
         "power": "23,881",
         "contentId": 900039,
         "id": 300143,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -3390,10 +3391,10 @@
         "power": "43,989",
         "contentId": 900039,
         "id": 300144,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -3414,10 +3415,10 @@
         "power": "78,302",
         "contentId": 900039,
         "id": 300145,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "6",
@@ -3438,10 +3439,10 @@
         "power": "138,066",
         "contentId": 900039,
         "id": 300146,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "7",
@@ -3462,10 +3463,10 @@
         "power": "246,584",
         "contentId": 900039,
         "id": 300147,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -3486,10 +3487,10 @@
         "power": "442,538",
         "contentId": 900039,
         "id": 300148,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -3510,10 +3511,10 @@
         "power": "802,824",
         "contentId": 900039,
         "id": 300149,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -3522,7 +3523,7 @@
         ],
         "requirements": [
           "Ballistics Level 9",
-          "Academy Level 24?"
+          "Academy Level 24"
         ],
         "costs": [
           "food15.375M",
@@ -3530,14 +3531,14 @@
           "stone11.55M",
           "gold9.225M"
         ],
-        "time": "?",
+        "time": "153d 23h",
         "power": "1,475,963",
         "contentId": 900039,
         "id": 300150,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -3630,10 +3631,10 @@
         "power": "43,989",
         "contentId": 900040,
         "id": 300154,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -3654,10 +3655,10 @@
         "power": "78,302",
         "contentId": 900040,
         "id": 300155,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "6",
@@ -3678,10 +3679,10 @@
         "power": "138,066",
         "contentId": 900040,
         "id": 300156,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "7",
@@ -3702,10 +3703,10 @@
         "power": "246,584",
         "contentId": 900040,
         "id": 300157,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -3726,10 +3727,10 @@
         "power": "442,538",
         "contentId": 900040,
         "id": 300158,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -3750,19 +3751,20 @@
         "power": "802,824",
         "contentId": 900040,
         "id": 300159,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
-        "level": "",
+        "level": "10",
         "figures": [
           "+20.0%"
         ],
         "requirements": [
-          "Wootz Steel Level 10Scutum Level 9",
-          "Academy Level 24?"
+          "Wootz Steel Level 10",
+          "Scutum Level 9",
+          "Academy Level 24"
         ],
         "costs": [
           "food15.38M",
@@ -3770,14 +3772,14 @@
           "stone11.54M",
           "gold9.23M"
         ],
-        "time": "?",
+        "time": "153d 23h",
         "power": "1,475,963",
         "contentId": 900040,
         "id": 300160,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -3785,7 +3787,7 @@
           "+1.0%"
         ],
         "requirements": [
-          "Bodkin Arrows Level ?",
+          "Bodkin Arrows Level 1",
           "Academy Level 23"
         ],
         "costs": [
@@ -3870,10 +3872,10 @@
         "power": "43,989",
         "contentId": 900041,
         "id": 300164,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -3894,10 +3896,10 @@
         "power": "78,302",
         "contentId": 900041,
         "id": 300165,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "6",
@@ -3918,10 +3920,10 @@
         "power": "138,066",
         "contentId": 900041,
         "id": 300166,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "7",
@@ -3942,10 +3944,10 @@
         "power": "246,584",
         "contentId": 900041,
         "id": 300167,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -3966,10 +3968,10 @@
         "power": "442,538",
         "contentId": 900041,
         "id": 300168,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -3990,10 +3992,10 @@
         "power": "802,824",
         "contentId": 900041,
         "id": 300169,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -4002,7 +4004,7 @@
         ],
         "requirements": [
           "Pavise Level 9",
-          "Academy Level 24?"
+          "Academy Level 24"
         ],
         "costs": [
           "food ?",
@@ -4010,14 +4012,14 @@
           "stone ?",
           "gold ?"
         ],
-        "time": "?",
+        "time": "153d 23h",
         "power": "1,475,963",
         "contentId": 900041,
         "id": 300170,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -4025,7 +4027,7 @@
           "+1.0%"
         ],
         "requirements": [
-          "Stirrups Level ?",
+          "Stirrups Level 1",
           "Academy Level 23"
         ],
         "costs": [
@@ -4110,10 +4112,10 @@
         "power": "43,989",
         "contentId": 900042,
         "id": 300174,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -4134,10 +4136,10 @@
         "power": "78,302",
         "contentId": 900042,
         "id": 300175,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "6",
@@ -4158,10 +4160,10 @@
         "power": "138,066",
         "contentId": 900042,
         "id": 300176,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "7",
@@ -4182,10 +4184,10 @@
         "power": "246,584",
         "contentId": 900042,
         "id": 300177,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -4206,10 +4208,10 @@
         "power": "442,538",
         "contentId": 900042,
         "id": 300178,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -4247,7 +4249,7 @@
           "stone11.5M",
           "gold9.2M"
         ],
-        "time": "?",
+        "time": "153d 23h",
         "power": "1,475,963",
         "contentId": 900042,
         "id": 300180,
@@ -4262,7 +4264,7 @@
           "+1.0%"
         ],
         "requirements": [
-          "Ballistics Level ?",
+          "Ballistics Level 1",
           "Academy Level 23"
         ],
         "costs": [
@@ -4299,10 +4301,10 @@
         "power": "13,415",
         "contentId": 900043,
         "id": 300182,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -4323,10 +4325,10 @@
         "power": "27,510",
         "contentId": 900043,
         "id": 300183,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -4347,10 +4349,10 @@
         "power": "51,765",
         "contentId": 900043,
         "id": 300184,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -4371,10 +4373,10 @@
         "power": "94,373",
         "contentId": 900043,
         "id": 300185,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "6",
@@ -4395,10 +4397,10 @@
         "power": "170,726",
         "contentId": 900043,
         "id": 300186,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "7",
@@ -4419,10 +4421,10 @@
         "power": "312,421",
         "contentId": 900043,
         "id": 300187,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -4443,10 +4445,10 @@
         "power": "574,730",
         "contentId": 900043,
         "id": 300188,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -4467,10 +4469,10 @@
         "power": "1,067,727",
         "contentId": 900043,
         "id": 300189,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -4479,7 +4481,7 @@
         ],
         "requirements": [
           "Heavy Frame Level 9",
-          "Academy Level 24?"
+          "Academy Level 24"
         ],
         "costs": [
           "food ?",
@@ -4487,14 +4489,14 @@
           "stone ?",
           "gold ?"
         ],
-        "time": "?",
+        "time": null,
         "power": "2,006,287",
         "contentId": 900043,
         "id": 300190,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -4542,10 +4544,10 @@
         "power": "15,604",
         "contentId": 900044,
         "id": 300192,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -4566,10 +4568,10 @@
         "power": "31,674",
         "contentId": 900044,
         "id": 300193,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -4590,10 +4592,10 @@
         "power": "58,891",
         "contentId": 900044,
         "id": 300194,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -4602,8 +4604,8 @@
         ],
         "requirements": [
           "Medical Corps Level 4",
-          "Combined Arms 5",
-          "Encampment 5",
+          "Combined Arms Level 5",
+          "Encampment Level 5",
           "Academy Level 24"
         ],
         "costs": [
@@ -4616,10 +4618,10 @@
         "power": "105,938",
         "contentId": 900044,
         "id": 300195,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "6",
@@ -4640,10 +4642,10 @@
         "power": "188,950",
         "contentId": 900044,
         "id": 300196,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "7",
@@ -4688,10 +4690,10 @@
         "power": "619,354",
         "contentId": 900044,
         "id": 300198,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -4712,10 +4714,10 @@
         "power": "1,136,111",
         "contentId": 900044,
         "id": 300199,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -4738,10 +4740,10 @@
         "power": "2,110,314",
         "contentId": 900044,
         "id": 300200,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -4762,10 +4764,10 @@
         "power": "5,930",
         "contentId": 900045,
         "id": 300201,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -4846,7 +4848,8 @@
         ],
         "requirements": [
           "Combined Arms Level 4",
-          "Academy Level 24Camouflage Level 5"
+          "Academy Level 24",
+          "Camouflage Level 5"
         ],
         "costs": [
           "food2.53M",
@@ -4858,10 +4861,10 @@
         "power": "105,938",
         "contentId": 900045,
         "id": 300205,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "6",
@@ -4882,10 +4885,10 @@
         "power": "188,950",
         "contentId": 900045,
         "id": 300206,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "7",
@@ -4906,10 +4909,10 @@
         "power": "341,205",
         "contentId": 900045,
         "id": 300207,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -4954,10 +4957,10 @@
         "power": "1,136,111",
         "contentId": 900045,
         "id": 300209,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -4965,7 +4968,9 @@
           "+25.0%"
         ],
         "requirements": [
-          "Combined Arms Level 9Carriage Level 10Cutting & Polishing Level 10",
+          "Combined Arms Level 9",
+          "Carriage Level 10",
+          "Cutting & Polishing Level 10",
           "Academy Level 25"
         ],
         "costs": [
@@ -4978,10 +4983,10 @@
         "power": "2,110,314",
         "contentId": 900045,
         "id": 300210,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -5002,10 +5007,10 @@
         "power": "5,930",
         "contentId": 900046,
         "id": 300211,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -5026,10 +5031,10 @@
         "power": "15,604",
         "contentId": 900046,
         "id": 300212,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -5050,10 +5055,10 @@
         "power": "31,674",
         "contentId": 900046,
         "id": 300213,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -5074,10 +5079,10 @@
         "power": "58,891",
         "contentId": 900046,
         "id": 300214,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -5085,7 +5090,8 @@
           "+5.0%"
         ],
         "requirements": [
-          "Encampment Level 4Cartography Level 5",
+          "Encampment Level 4",
+          "Cartography Level 5",
           "Academy Level 24"
         ],
         "costs": [
@@ -5170,10 +5176,10 @@
         "power": "619,354",
         "contentId": 900046,
         "id": 300218,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -5206,7 +5212,7 @@
         ],
         "requirements": [
           "Encampment Level 9",
-          "Academy Level 24?"
+          "Academy Level 24"
         ],
         "costs": [
           "food19.2M",
@@ -5937,7 +5943,7 @@
         "food": "17,900",
         "wood": "18,000",
         "stone": "18,100",
-        "gold": "?"
+        "gold": null
       },
       {
         "level": "5",
@@ -6092,10 +6098,10 @@
         "power": "384",
         "contentId": 900065,
         "id": 300259,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -6116,10 +6122,10 @@
         "power": "406",
         "contentId": 900066,
         "id": 300260,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -6140,10 +6146,10 @@
         "power": "1,147",
         "contentId": 900066,
         "id": 300261,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -6164,10 +6170,10 @@
         "power": "2,485",
         "contentId": 900066,
         "id": 300262,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -6188,10 +6194,10 @@
         "power": "5,161",
         "contentId": 900066,
         "id": 300263,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -6212,10 +6218,10 @@
         "power": "10,513",
         "contentId": 900066,
         "id": 300264,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -6236,10 +6242,10 @@
         "power": "725",
         "contentId": 900067,
         "id": 300265,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -6260,10 +6266,10 @@
         "power": "2,176",
         "contentId": 900067,
         "id": 300266,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -6284,10 +6290,10 @@
         "power": "5,078",
         "contentId": 900067,
         "id": 300267,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -6308,10 +6314,10 @@
         "power": "10,882",
         "contentId": 900067,
         "id": 300268,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -6332,10 +6338,10 @@
         "power": "22,490",
         "contentId": 900067,
         "id": 300269,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -6356,10 +6362,10 @@
         "power": "406",
         "contentId": 900068,
         "id": 300270,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -6380,10 +6386,10 @@
         "power": "1,147",
         "contentId": 900068,
         "id": 300271,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -6404,10 +6410,10 @@
         "power": "2,485",
         "contentId": 900068,
         "id": 300272,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -6428,10 +6434,10 @@
         "power": "5,161",
         "contentId": 900068,
         "id": 300273,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -6452,10 +6458,10 @@
         "power": "10,513",
         "contentId": 900068,
         "id": 300274,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -6463,7 +6469,7 @@
           "+1.0%"
         ],
         "requirements": [
-          "Chisel Level ?",
+          "Chisel Level 1",
           "Academy Level 12"
         ],
         "costs": [
@@ -6476,10 +6482,10 @@
         "power": "581",
         "contentId": 900069,
         "id": 300275,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -6500,10 +6506,10 @@
         "power": "1,672",
         "contentId": 900069,
         "id": 300276,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -6524,10 +6530,10 @@
         "power": "3,710",
         "contentId": 900069,
         "id": 300277,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -6548,10 +6554,10 @@
         "power": "7,786",
         "contentId": 900069,
         "id": 300278,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -6572,10 +6578,10 @@
         "power": "15,938",
         "contentId": 900069,
         "id": 300279,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -6583,7 +6589,7 @@
           "+1.0%"
         ],
         "requirements": [
-          "Writing Level ?",
+          "Writing Level 1",
           "Academy Level 12"
         ],
         "costs": [
@@ -6596,10 +6602,10 @@
         "power": "494",
         "contentId": 900070,
         "id": 300280,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -6620,10 +6626,10 @@
         "power": "1,482",
         "contentId": 900070,
         "id": 300281,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -6644,10 +6650,10 @@
         "power": "3,458",
         "contentId": 900070,
         "id": 300282,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -6668,10 +6674,10 @@
         "power": "7,410",
         "contentId": 900070,
         "id": 300283,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -6692,10 +6698,10 @@
         "power": "15,314",
         "contentId": 900070,
         "id": 300284,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -6703,7 +6709,7 @@
           "+1.0%"
         ],
         "requirements": [
-          "Metalworking Level ?",
+          "Metalworking Level 1",
           "Academy Level 12"
         ],
         "costs": [
@@ -6716,10 +6722,10 @@
         "power": "581",
         "contentId": 900071,
         "id": 300285,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -6740,10 +6746,10 @@
         "power": "1,672",
         "contentId": 900071,
         "id": 300286,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -6764,10 +6770,10 @@
         "power": "3,710",
         "contentId": 900071,
         "id": 300287,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -6788,10 +6794,10 @@
         "power": "7,786",
         "contentId": 900071,
         "id": 300288,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -6812,10 +6818,10 @@
         "power": "15,938",
         "contentId": 900071,
         "id": 300289,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -6823,7 +6829,7 @@
           "+1.0%"
         ],
         "requirements": [
-          "Multilayer Structure Level ?",
+          "Multilayer Structure Level 1",
           "Academy Level 13"
         ],
         "costs": [
@@ -6836,10 +6842,10 @@
         "power": "669",
         "contentId": 900072,
         "id": 300290,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -6860,10 +6866,10 @@
         "power": "2,007",
         "contentId": 900072,
         "id": 300291,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -6884,10 +6890,10 @@
         "power": "4,683",
         "contentId": 900072,
         "id": 300292,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -6908,10 +6914,10 @@
         "power": "10,035",
         "contentId": 900072,
         "id": 300293,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -6940,7 +6946,7 @@
       {
         "level": "1",
         "requirements": [
-          "Multilayer Structure Level ?",
+          "Multilayer Structure Level 1",
           "Academy Level 16"
         ],
         "costs": [
@@ -6953,10 +6959,10 @@
         "power": "9,182",
         "contentId": 900073,
         "id": 300295,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -6977,10 +6983,10 @@
         "power": "2,027",
         "contentId": 900074,
         "id": 300296,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -7001,10 +7007,10 @@
         "power": "4,953",
         "contentId": 900074,
         "id": 300297,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -7025,10 +7031,10 @@
         "power": "9,185",
         "contentId": 900074,
         "id": 300298,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -7049,10 +7055,10 @@
         "power": "15,313",
         "contentId": 900074,
         "id": 300299,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -7073,10 +7079,10 @@
         "power": "24,190",
         "contentId": 900074,
         "id": 300300,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "6",
@@ -7097,10 +7103,10 @@
         "power": "37,069",
         "contentId": 900074,
         "id": 300301,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "7",
@@ -7121,10 +7127,10 @@
         "power": "55,775",
         "contentId": 900074,
         "id": 300302,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -7145,10 +7151,10 @@
         "power": "82,970",
         "contentId": 900074,
         "id": 300303,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -7169,10 +7175,10 @@
         "power": "122,555",
         "contentId": 900074,
         "id": 300304,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -7193,10 +7199,10 @@
         "power": "180,236",
         "contentId": 900074,
         "id": 300305,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -7217,10 +7223,10 @@
         "power": "2,027",
         "contentId": 900075,
         "id": 300306,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -7241,10 +7247,10 @@
         "power": "4,953",
         "contentId": 900075,
         "id": 300307,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -7265,10 +7271,10 @@
         "power": "9,185",
         "contentId": 900075,
         "id": 300308,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -7313,10 +7319,10 @@
         "power": "24,190",
         "contentId": 900075,
         "id": 300310,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "6",
@@ -7337,10 +7343,10 @@
         "power": "37,069",
         "contentId": 900075,
         "id": 300311,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "7",
@@ -7361,10 +7367,10 @@
         "power": "55,775",
         "contentId": 900075,
         "id": 300312,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -7385,10 +7391,10 @@
         "power": "82,970",
         "contentId": 900075,
         "id": 300313,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -7409,10 +7415,10 @@
         "power": "122,555",
         "contentId": 900075,
         "id": 300314,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -7433,10 +7439,10 @@
         "power": "180,236",
         "contentId": 900075,
         "id": 300315,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -7444,7 +7450,7 @@
           "+1.0%"
         ],
         "requirements": [
-          "Plow Level ?",
+          "Plow Level 1",
           "Academy Level 17"
         ],
         "costs": [
@@ -7457,10 +7463,10 @@
         "power": "3,190",
         "contentId": 900076,
         "id": 300316,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -7481,10 +7487,10 @@
         "power": "7,831",
         "contentId": 900076,
         "id": 300317,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -7505,10 +7511,10 @@
         "power": "14,592",
         "contentId": 900076,
         "id": 300318,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -7529,10 +7535,10 @@
         "power": "24,454",
         "contentId": 900076,
         "id": 300319,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -7577,10 +7583,10 @@
         "power": "59,910",
         "contentId": 900076,
         "id": 300321,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "7",
@@ -7601,10 +7607,10 @@
         "power": "90,721",
         "contentId": 900076,
         "id": 300322,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -7625,10 +7631,10 @@
         "power": "135,855",
         "contentId": 900076,
         "id": 300323,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -7649,10 +7655,10 @@
         "power": "202,041",
         "contentId": 900076,
         "id": 300324,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -7673,10 +7679,10 @@
         "power": "299,196",
         "contentId": 900076,
         "id": 300325,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -7842,10 +7848,10 @@
         "power": "111,786",
         "contentId": 900077,
         "id": 300332,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -7866,10 +7872,10 @@
         "power": "167,500",
         "contentId": 900077,
         "id": 300333,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -7890,10 +7896,10 @@
         "power": "249,252",
         "contentId": 900077,
         "id": 300334,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -7914,10 +7920,10 @@
         "power": "369,332",
         "contentId": 900077,
         "id": 300335,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -7925,7 +7931,7 @@
           "+1.0%"
         ],
         "requirements": [
-          "Sawmill Level ?",
+          "Sawmill Level 1",
           "Academy Level 17"
         ],
         "costs": [
@@ -7938,10 +7944,10 @@
         "power": "3,190",
         "contentId": 900078,
         "id": 300336,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -7962,10 +7968,10 @@
         "power": "7,831",
         "contentId": 900078,
         "id": 300337,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -7986,10 +7992,10 @@
         "power": "14,592",
         "contentId": 900078,
         "id": 300338,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -8010,10 +8016,10 @@
         "power": "24,454",
         "contentId": 900078,
         "id": 300339,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -8034,10 +8040,10 @@
         "power": "38,855",
         "contentId": 900078,
         "id": 300340,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "6",
@@ -8106,10 +8112,10 @@
         "power": "135,855",
         "contentId": 900078,
         "id": 300343,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -8130,10 +8136,10 @@
         "power": "202,041",
         "contentId": 900078,
         "id": 300344,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -8154,10 +8160,10 @@
         "power": "299,196",
         "contentId": 900078,
         "id": 300345,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -8202,10 +8208,10 @@
         "power": "9,620",
         "contentId": 900079,
         "id": 300347,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -8250,10 +8256,10 @@
         "power": "30,078",
         "contentId": 900079,
         "id": 300349,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -8394,10 +8400,10 @@
         "power": "369,332",
         "contentId": 900079,
         "id": 300355,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -8405,7 +8411,7 @@
           "+1.0%"
         ],
         "requirements": [
-          "Mathematics Level ?",
+          "Mathematics Level 1",
           "Academy Level 19"
         ],
         "costs": [
@@ -8490,10 +8496,10 @@
         "power": "24,454",
         "contentId": 900080,
         "id": 300359,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -8514,10 +8520,10 @@
         "power": "38,855",
         "contentId": 900080,
         "id": 300360,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "6",
@@ -8538,10 +8544,10 @@
         "power": "59,910",
         "contentId": 900080,
         "id": 300361,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "7",
@@ -8562,10 +8568,10 @@
         "power": "90,721",
         "contentId": 900080,
         "id": 300362,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -8586,10 +8592,10 @@
         "power": "135,855",
         "contentId": 900080,
         "id": 300363,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -8610,10 +8616,10 @@
         "power": "202,041",
         "contentId": 900080,
         "id": 300364,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -8634,10 +8640,10 @@
         "power": "299,196",
         "contentId": 900080,
         "id": 300365,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -8645,7 +8651,7 @@
           "+1.0%"
         ],
         "requirements": [
-          "Mathematics Level ?",
+          "Mathematics Level 1",
           "Academy Level 19"
         ],
         "costs": [
@@ -8658,10 +8664,10 @@
         "power": "3,190",
         "contentId": 900081,
         "id": 300366,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -8706,10 +8712,10 @@
         "power": "14,592",
         "contentId": 900081,
         "id": 300368,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -8730,10 +8736,10 @@
         "power": "24,454",
         "contentId": 900081,
         "id": 300369,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -8754,10 +8760,10 @@
         "power": "38,855",
         "contentId": 900081,
         "id": 300370,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "6",
@@ -8778,10 +8784,10 @@
         "power": "59,910",
         "contentId": 900081,
         "id": 300371,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "7",
@@ -8802,10 +8808,10 @@
         "power": "90,721",
         "contentId": 900081,
         "id": 300372,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -8826,10 +8832,10 @@
         "power": "135,855",
         "contentId": 900081,
         "id": 300373,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -8850,10 +8856,10 @@
         "power": "202,041",
         "contentId": 900081,
         "id": 300374,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -8874,10 +8880,10 @@
         "power": "299,196",
         "contentId": 900081,
         "id": 300375,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -8898,10 +8904,10 @@
         "power": "4,065",
         "contentId": 900082,
         "id": 300376,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -9042,10 +9048,10 @@
         "power": "118,926",
         "contentId": 900082,
         "id": 300382,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -9066,10 +9072,10 @@
         "power": "179,040",
         "contentId": 900082,
         "id": 300383,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -9090,10 +9096,10 @@
         "power": "267,695",
         "contentId": 900082,
         "id": 300384,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -9110,14 +9116,14 @@
           "stone8.7M",
           "gold5.8M"
         ],
-        "time": "?",
+        "time": null,
         "power": "398,558",
         "contentId": 900082,
         "id": 300385,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -9125,7 +9131,7 @@
           "+1.0%"
         ],
         "requirements": [
-          "Mathematics Level ?",
+          "Mathematics Level 1",
           "Academy Level 20"
         ],
         "costs": [
@@ -9162,10 +9168,10 @@
         "power": "11,210",
         "contentId": 900083,
         "id": 300387,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -9210,10 +9216,10 @@
         "power": "35,453",
         "contentId": 900083,
         "id": 300389,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -9306,10 +9312,10 @@
         "power": "202,560",
         "contentId": 900083,
         "id": 300393,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -9332,10 +9338,10 @@
         "power": "303,458",
         "contentId": 900083,
         "id": 300394,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -9343,7 +9349,9 @@
           "+25.0%"
         ],
         "requirements": [
-          "Machinery Level 9Stone Saw Level 10Shaft Mining Level 10",
+          "Machinery Level 9",
+          "Stone Saw Level 10",
+          "Shaft Mining Level 10",
           "Academy Level 25"
         ],
         "costs": [
@@ -9352,14 +9360,14 @@
           "stone10.6M",
           "gold6.8M"
         ],
-        "time": "?",
+        "time": null,
         "power": "452,681",
         "contentId": 900083,
         "id": 300395,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -9380,10 +9388,10 @@
         "power": "4,065",
         "contentId": 900084,
         "id": 300396,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -9404,10 +9412,10 @@
         "power": "10,020",
         "contentId": 900084,
         "id": 300397,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -9500,10 +9508,10 @@
         "power": "78,129",
         "contentId": 900084,
         "id": 300401,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "7",
@@ -9524,10 +9532,10 @@
         "power": "118,926",
         "contentId": 900084,
         "id": 300402,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -9548,10 +9556,10 @@
         "power": "179,040",
         "contentId": 900084,
         "id": 300403,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -9572,10 +9580,10 @@
         "power": "267,695",
         "contentId": 900084,
         "id": 300404,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -9592,14 +9600,14 @@
           "stone8.7",
           "gold5.8"
         ],
-        "time": "?",
+        "time": null,
         "power": "398,558",
         "contentId": 900084,
         "id": 300405,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -9607,7 +9615,7 @@
           "+1.0%"
         ],
         "requirements": [
-          "Machinery Level ?",
+          "Machinery Level 1",
           "Academy Level 20"
         ],
         "costs": [
@@ -9620,10 +9628,10 @@
         "power": "5,420",
         "contentId": 900085,
         "id": 300406,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "2",
@@ -9692,10 +9700,10 @@
         "power": "44,039",
         "contentId": 900085,
         "id": 300409,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -9716,10 +9724,10 @@
         "power": "71,484",
         "contentId": 900085,
         "id": 300410,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "6",
@@ -9740,10 +9748,10 @@
         "power": "112,656",
         "contentId": 900085,
         "id": 300411,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "7",
@@ -9764,10 +9772,10 @@
         "power": "174,414",
         "contentId": 900085,
         "id": 300412,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -9814,10 +9822,10 @@
         "power": "406,011",
         "contentId": 900085,
         "id": 300414,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -9840,10 +9848,10 @@
         "power": "614,450",
         "contentId": 900085,
         "id": 300415,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "1",
@@ -9851,7 +9859,7 @@
           "+1.0%"
         ],
         "requirements": [
-          "Machinery Level ?",
+          "Machinery Level 1",
           "Academy Level 20"
         ],
         "costs": [
@@ -9888,10 +9896,10 @@
         "power": "13,358",
         "contentId": 900086,
         "id": 300417,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "3",
@@ -9912,10 +9920,10 @@
         "power": "24,996",
         "contentId": 900086,
         "id": 300418,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "4",
@@ -9936,10 +9944,10 @@
         "power": "42,078",
         "contentId": 900086,
         "id": 300419,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "5",
@@ -9960,10 +9968,10 @@
         "power": "67,178",
         "contentId": 900086,
         "id": 300420,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "6",
@@ -9984,10 +9992,10 @@
         "power": "104,096",
         "contentId": 900086,
         "id": 300421,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "7",
@@ -10008,10 +10016,10 @@
         "power": "158,440",
         "contentId": 900086,
         "id": 300422,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "8",
@@ -10032,10 +10040,10 @@
         "power": "238,513",
         "contentId": 900086,
         "id": 300423,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "9",
@@ -10056,10 +10064,10 @@
         "power": "356,599",
         "contentId": 900086,
         "id": 300424,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       },
       {
         "level": "10",
@@ -10081,10 +10089,10 @@
         "power": "576,232",
         "contentId": 900086,
         "id": 300425,
-        "food": "?",
-        "wood": "?",
-        "stone": "?",
-        "gold": "?"
+        "food": null,
+        "wood": null,
+        "stone": null,
+        "gold": null
       }
     ]
   },

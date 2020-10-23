@@ -23,6 +23,7 @@ public class Technology extends RealmObject implements Source {
     public static final String FIELD_GOLD = "gold";
 
     public static final String FIELD_LEVEL_VAL = "levelVal";
+    public static final String FIELD_LEVEL = "level";
     public static final String FIELD_REQ_TECHS = "requiredTechList";
     public static final String FIELD_COST_FOOD = "foodCost";
     public static final String FIELD_COST_WOOD = "woodCost";
@@ -54,8 +55,10 @@ public class Technology extends RealmObject implements Source {
 
 
     //runtime fields
-    private RealmList<Technology> preTechList;
-    private RealmList<Building> preBuildList;
+    private RealmList<Technology> reqTechs;
+    private RealmList<Technology> preTechs;
+    private RealmList<Building> reqBuildings;
+    private RealmList<Building> preBuildings;
     private TechContent content;
 
     private RealmList<RealmString> figures;
@@ -79,120 +82,24 @@ public class Technology extends RealmObject implements Source {
         return figures;
     }
 
-    public void setPreTechList(RealmList<Technology> preTechList) {
-        this.preTechList = preTechList;
+    public void setReqTechs(RealmList<Technology> reqTechs) {
+        this.reqTechs = reqTechs;
     }
 
-    public void setPreBuildList(RealmList<Building> preBuildList) {
-        this.preBuildList = preBuildList;
+    public void setReqBuildings(RealmList<Building> reqBuildings) {
+        this.reqBuildings = reqBuildings;
     }
 
-    public RealmList<Building> getPreBuildList() {
-        return preBuildList;
+    public RealmList<Building> getReqBuildings() {
+        return reqBuildings;
     }
 
-    public RealmList<Technology> getPreTechList() {
-        return preTechList;
+    public RealmList<Technology> getReqTechs() {
+        return reqTechs;
     }
 
     public RealmList<RealmString> getRequirements() {
         return requirements;
-    }
-
-    private int siValue(String character, double quantity ) {
-        int unit;
-        switch (character.toUpperCase()) {
-            case "K":
-                unit = 1000;
-                break;
-            case "M":
-                unit = 1000*1000;
-                break;
-            case "B":
-                unit = 1000*1000*1000;
-                break;
-            default:
-                unit = 1;
-        }
-        return (int)(quantity * (double)unit);
-    }
-
-    public static String quantityToString( int quantity ) {
-        StringBuilder quantityBuilder = new StringBuilder();
-        if( quantity >= 100000000 ) {
-            quantityBuilder.append( quantity / 100000000 ).append("억 ");
-            quantity %= 100000000;
-        }
-
-        if( quantity >= 10000 ) {
-            quantityBuilder.append( quantity / 10000 ).append("만 ");
-            quantity %= 10000;
-        }
-
-        if( quantity > 0 ) {
-            quantityBuilder.append( quantity );
-        }
-
-        return quantityBuilder.toString().trim();
-    }
-
-    public static String secondsToString( int seconds ) {
-        StringBuilder timeBuilder = new StringBuilder();
-        if( seconds >= 24 * 60 * 60 ) {
-            timeBuilder.append( seconds / (24 * 60 * 60) ).append("일 ");
-            seconds %= 24 * 60 * 60;
-        }
-
-        if( seconds >= 60 * 60 ) {
-            timeBuilder.append( seconds / (60 * 60) ).append("시간 ");
-            seconds %= 60 * 60;
-        }
-
-        if( seconds >= 60 ) {
-            timeBuilder.append( seconds / 60 ).append("분 ");
-            seconds %= 60;
-        }
-
-        if( seconds > 0 ) {
-            timeBuilder.append( seconds ).append("초 ");
-        }
-
-        return  timeBuilder.toString().trim();
-    }
-
-    private int stringToSeconds( String time ) {
-        String[] timeWords = time.split("\\s+");
-        StringBuilder timeKorBuilder = new StringBuilder();
-        int sum = 0;
-        for( String timeWord : timeWords ) {
-            int value = NumberUtils.toInt(timeWord.replaceAll("[^0-9]","").trim(),0);
-            String timeUnitKor;
-            switch(timeWord.replaceAll("[0-9]","").trim().toLowerCase()) {
-                case "d":
-                    sum += value * 24 * 60 * 60;
-                    timeUnitKor = "일";
-                    break;
-                case "h":
-                    sum += value * 60 * 60;
-                    timeUnitKor = "시간";
-                    break;
-                case "m":
-                    sum += value * 60;
-                    timeUnitKor = "분";
-                    break;
-                case "s":
-                    sum += value;
-                    timeUnitKor = "초";
-                    break;
-                default:
-                    timeUnitKor = null;
-            } // switch
-            if( value > 0 && timeUnitKor != null ) {
-                timeKorBuilder.append(value).append(timeUnitKor).append(" ");
-            }
-        } // for
-        timeKor = timeKorBuilder.toString();
-        return sum;
     }
 
     public void updateIntValues() {
@@ -203,16 +110,16 @@ public class Technology extends RealmObject implements Source {
             double quantity = NumberUtils.toDouble(costStr.replaceAll("[^0-9.]", ""),0.0);
             switch (rssCategory.toLowerCase()) {
                 case FIELD_FOOD:
-                    foodCost = siValue(siUnit, quantity);
+                    foodCost = RokCalcUtils.siValue(siUnit, quantity);
                     break;
                 case FIELD_WOOD:
-                    woodCost = siValue(siUnit, quantity);
+                    woodCost = RokCalcUtils.siValue(siUnit, quantity);
                     break;
                 case FIELD_STONE:
-                    stoneCost = siValue(siUnit, quantity);
+                    stoneCost = RokCalcUtils.siValue(siUnit, quantity);
                     break;
                 case FIELD_GOLD:
-                    goldCost = siValue(siUnit, quantity);
+                    goldCost = RokCalcUtils.siValue(siUnit, quantity);
                     break;
                 default:
             }
@@ -222,7 +129,8 @@ public class Technology extends RealmObject implements Source {
         this.woodReward = NumberUtils.toInt(wood,0);
         this.stoneReward = NumberUtils.toInt(stone,0);
         this.goldReward = NumberUtils.toInt(gold,0);
-        this.seconds = stringToSeconds(this.time);
+        this.seconds = RokCalcUtils.stringToSeconds(this.time);
+        this.timeKor = RokCalcUtils.secondsToString(this.seconds);
         this.powerVal = NumberUtils.toInt(power,0);
     }
 
@@ -250,6 +158,8 @@ public class Technology extends RealmObject implements Source {
                 }
             case FIELD_TIME:
                 return timeKor;
+            case FIELD_LEVEL:
+                return level;
         }
         return null;
     }
@@ -287,4 +197,29 @@ public class Technology extends RealmObject implements Source {
                 return 0;
         }
     }
+
+    public RealmList<Technology> getPreTechs() {
+        return preTechs;
+    }
+
+    public void setPreTechs(RealmList<Technology> preTechs) {
+        this.preTechs = preTechs;
+    }
+
+    public RealmList<Building> getPreBuildings() {
+        return preBuildings;
+    }
+
+    public void setPreBuildings(RealmList<Building> preBuildings) {
+        this.preBuildings = preBuildings;
+    }
+
+    public boolean containsPreTech( Technology preTech ) {
+        return preTechs != null && preTechs.contains(preTech);
+    }
+
+    public boolean containsPreBuilding( Building preBuilding ) {
+        return preBuildings != null && preBuildings.contains(preBuilding);
+    }
+
 }

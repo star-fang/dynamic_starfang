@@ -20,20 +20,25 @@ public class Cmd extends RealmObject {
     @Index
     private String name;
     private String text;
+
+    private boolean isUser;
     @Index
     private long when;
 
     public long getId() {return id;}
 
     public Cmd() throws RealmPrimaryKeyConstraintException {
-        this.id = UUID.randomUUID().getMostSignificantBits();;
-
+        this.id = UUID.randomUUID().getMostSignificantBits();
+        this.isUser = true;
+        this.when = System.currentTimeMillis();
     }
 
-    public Cmd(long id) throws RealmPrimaryKeyConstraintException {
-        this.id = id;
-    }
 
+    public Cmd( boolean isUser ) throws RealmPrimaryKeyConstraintException {
+        this.id = UUID.randomUUID().getMostSignificantBits();
+        this.isUser = isUser;
+        this.when = System.currentTimeMillis();
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -41,10 +46,6 @@ public class Cmd extends RealmObject {
 
     public String getName() {
         return name;
-    }
-
-    public void setWhen(long when) {
-        this.when = when;
     }
 
     public long getWhen() {
@@ -57,6 +58,10 @@ public class Cmd extends RealmObject {
 
     public String getText() {
         return text;
+    }
+
+    public boolean isUser() {
+        return isUser;
     }
 
 }

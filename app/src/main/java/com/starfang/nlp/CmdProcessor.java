@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.provider.Settings;
 
 import com.starfang.CMDActivity;
@@ -18,17 +19,21 @@ import java.lang.ref.WeakReference;
 
 import io.realm.Realm;
 
-public class CmdProcessor extends AsyncTask<String, String, Void> {
+public class CmdProcessor extends AsyncTask<String, String, Bundle> {
 
     protected interface CmdMods {
         //int DEFAULT = 0;
-        //int SYNC = 1;
-        //int FANGCAT = 2;
-        String CMD_NOTIFICATION = "알람";
-        String CMD_SYNC = "동기화";
+        int SYNC = 1;
+        int FANGCAT = 2;
+        String CMD_NOTIFICATION = "알림";
+        String CMD_SYNC = "연결";
         String CMD_START = "시작";
         String CMD_STOP = "정지";
+
+        String POST_KEY = "postKey";
+        String POST_VALUE = "postValue";
     }
+
 
     private WeakReference<Context> contextWeakReference;
 
@@ -43,10 +48,9 @@ public class CmdProcessor extends AsyncTask<String, String, Void> {
         if (values != null) {
             try (Realm realm = Realm.getDefaultInstance()) {
                 for (String message : values) {
-                    Cmd cmd = new Cmd();
-                    cmd.setName("시스템");
+                    Cmd cmd = new Cmd(false);
+                    cmd.setName("멍멍이");
                     cmd.setText(message);
-                    cmd.setWhen(System.currentTimeMillis());
                     realm.beginTransaction();
                     realm.copyToRealm(cmd);
                     realm.commitTransaction();
@@ -58,8 +62,28 @@ public class CmdProcessor extends AsyncTask<String, String, Void> {
     }
 
     @Override
-    protected Void doInBackground(String... strings) {
+    protected void onPostExecute(Bundle bundle) {
+        super.onPostExecute(bundle);
+        if( bundle != null ) {
+            Context context = contextWeakReference.get();
+            switch (bundle.getInt(CmdMods.POST_KEY)) {
+                case CmdMods.SYNC:
+                    ReadJsonFileTask task = new ReadJsonFileTask(context);
+                    task.execute(bundle.getStringArray(CmdMods.POST_VALUE));
+                    break;
+                case CmdMods.FANGCAT:
+                    FangcatNlp fangcatNlp = new FangcatNlp(context,null, "얼간이", 0);
+                    fangcatNlp.execute(bundle.getString(CmdMods.POST_VALUE));
+                    break;
+                default:
+            }
+        }
+    }
+
+    @Override
+    protected Bundle doInBackground(String... strings) {
         String text = strings[0];
+        Bundle result;
         if( text != null ) {
             Context context = contextWeakReference.get();
             SharedPreferences sharedPref = context.getSharedPreferences(StarfangConstants.SHARED_PREF_STORE,Context.MODE_PRIVATE);
@@ -71,9 +95,10 @@ public class CmdProcessor extends AsyncTask<String, String, Void> {
                     context.startActivity(intent);
                     break;
                 case CmdMods.CMD_SYNC:
-                    ReadJsonFileTask task = new ReadJsonFileTask(context);
-                    task.execute("rok.json");
-                    break;
+                    result = new Bundle();
+                    result.putInt(CmdMods.POST_KEY, CmdMods.SYNC);
+                    result.putStringArray(CmdMods.POST_VALUE, new String[]{"rok.json", "rok_technology.json", "rok_building.json"});
+                    return result;
                 case CmdMods.CMD_START:
                     if (!ServiceUtils.isServiceExist(context, StarfangService.class, false)) {
                         publishProgress("'알림'을 입력하여 권한을 얻으세요.");
@@ -86,16 +111,15 @@ public class CmdProcessor extends AsyncTask<String, String, Void> {
                                     StarfangConstants.BOT_STATUS_KEY,
                                     StarfangConstants.BOT_STATUS_START);
                             context.startService(intent);
-                            publishProgress("냥봇 시작");
+                            publishProgress("냥봇 시작이다멍");
                         } else {
-                            publishProgress("냥봇 시작 실패");
+                            publishProgress("냥봇 시작 실패다멍");
                         }
 
 
                     }
                     break;
                 case CmdMods.CMD_STOP:
-
                     if (sharedPref.edit().putInt(
                             StarfangConstants.BOT_STATUS_KEY,
                             StarfangConstants.BOT_STATUS_STOP).commit()) {
@@ -104,15 +128,17 @@ public class CmdProcessor extends AsyncTask<String, String, Void> {
                                 StarfangConstants.BOT_STATUS_KEY,
                                 StarfangConstants.BOT_STATUS_STOP);
                         context.startService(intent);
-                        publishProgress("냥봇 정지");
+                        publishProgress("냥봇 정지다멍");
                     } else {
-                        publishProgress("냥봇 정지 실패");
+                        publishProgress("냥봇 정지 실패다멍");
                     }
 
                     break;
                 default:
-                    FangcatNlp fangcatNlp = new FangcatNlp(context,null);
-                    fangcatNlp.execute(text);
+                    result = new Bundle();
+                    result.putInt(CmdMods.POST_KEY, CmdMods.FANGCAT);
+                    result.putString(CmdMods.POST_VALUE, text);
+                    return result;
             }
         }
         return null;
