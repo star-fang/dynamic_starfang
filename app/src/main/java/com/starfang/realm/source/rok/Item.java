@@ -22,10 +22,11 @@ public class Item extends RealmObject implements Source, SearchNameWithoutBlank 
     public static final String FIELD_MATERIAL_COUNTS = "materialCounts";
     public static final String FIELD_GOLD = "gold";
     public static final String FIELD_DESCRIPTION = "description";
-    public static final String FIELD_SET_ID = "setID";
+    public static final String FIELD_SET_ID = "setId";
     public static final String FIELD_ITEM_SET = "itemSet";
     public static final String FIELD_ATTRS = "attrs";
     public static final String FIELD_MATERIALS = "materials";
+    public static final String FIELD_CATEGORY = "category";
 
     @PrimaryKey
     private int id;
@@ -162,6 +163,8 @@ public class Item extends RealmObject implements Source, SearchNameWithoutBlank 
                 return nameEng;
             case FIELD_DESCRIPTION:
                 return description;
+            case FIELD_CATEGORY:
+                return category == null ? null : category.getString(Source.FIELD_NAME);
             case FIELD_RARITY:
                 return rarity == null ? null : rarity.getString(Source.FIELD_NAME);
             case FIELD_ITEM_SET:

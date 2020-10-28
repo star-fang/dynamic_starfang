@@ -9,7 +9,7 @@ import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
-public class Attribute extends RealmObject implements Source, SearchNameWithoutBlank {
+public class Attribute extends RealmObject implements Source, SearchNameWithoutBlank, Comparable<Attribute> {
 
     private static final String FIELD_FORM = "form";
 
@@ -54,5 +54,10 @@ public class Attribute extends RealmObject implements Source, SearchNameWithoutB
     @Override
     public void setNameWithoutBlank() {
         this.nameWithoutBlank = name.replaceAll("\\s+", "").trim();
+    }
+
+    @Override
+    public int compareTo(Attribute attribute) {
+        return this.name.compareTo(attribute.name);
     }
 }

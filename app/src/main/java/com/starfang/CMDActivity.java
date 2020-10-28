@@ -27,7 +27,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.starfang.nlp.CmdProcessor;
-import com.starfang.nlp.FangcatNlp;
 import com.starfang.realm.Cmd;
 import com.starfang.utilities.VersionUtils;
 
@@ -48,14 +47,27 @@ import io.realm.Sort;
 public class CMDActivity extends AppCompatActivity {
     private final static String TAG = "FANG_ACT_CMD";
 
-    public static final String ACTION_CMD_ADDED = "addCMD";
+    public static final String ACTION_CMD_ADDED = "CMD_ADDED";
+    public static final String ACTION_DISABLE_ET= "DISABLE_EDIT_TEXT";
+    public static final String ACTION_ENABLE_ET= "ENABLE_EDIT_TEXT";
 
     private Realm realm;
-    private RecyclerView mRecyclerView;
-    private LinearLayoutManager mLayoutManager;
-    private CMDAdapter mAdapter;
-    private NotifyReceiver mReceiver;
+    private static RecyclerView mRecyclerView;
+    private static LinearLayoutManager mLayoutManager;
+    private static CMDAdapter mAdapter;
+    private static AppCompatEditText text_conversation;
+    private static FloatingActionButton button_send_talk;
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        NotifyReceiver mReceiver = new NotifyReceiver();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(ACTION_CMD_ADDED);
+        intentFilter.addAction(ACTION_ENABLE_ET);
+        intentFilter.addAction(ACTION_DISABLE_ET);
+        registerReceiver(mReceiver, intentFilter);
+    }
 
     @Override
     public void onDestroy() {
@@ -111,13 +123,12 @@ public class CMDActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
         scrollToBottom();
-        final AppCompatEditText text_conversation = findViewById(R.id.text_conversation);
+        text_conversation = findViewById(R.id.text_conversation);
         final AppCompatImageButton button_clear_talk = findViewById(R.id.button_clear_talk);
-        final FloatingActionButton button_send_talk = findViewById(R.id.button_send_talk);
+        button_send_talk = findViewById(R.id.button_send_talk);
 
         final AppCompatImageButton button_to_bottom = findViewById(R.id.button_to_bottom);
         button_to_bottom.setOnClickListener( v-> scrollToBottom());
-
 
         text_conversation.addTextChangedListener(
                 new TextWatcher() {
@@ -175,7 +186,6 @@ public class CMDActivity extends AppCompatActivity {
 
                 realm.executeTransactionAsync(bgRealm -> {
                     Cmd talk = new Cmd();
-                    //talk.setName("얼간이");
                     talk.setText(content);
                     bgRealm.copyToRealm(talk);
                     //forum.addConversation(conversation);
@@ -191,36 +201,52 @@ public class CMDActivity extends AppCompatActivity {
 
             }
         });
-
-        this.mReceiver = new NotifyReceiver();
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(ACTION_CMD_ADDED);
-        registerReceiver(mReceiver, intentFilter);
-
     }
 
+    private static void notifyAdapter() {
+        if (mAdapter != null) {
+            Log.d(TAG, "notify : change ui");
+            mAdapter.notifyDataSetChanged();
 
-    public class NotifyReceiver extends BroadcastReceiver {
+            int itemPosition = mLayoutManager.findLastVisibleItemPosition();
+            int itemLastPosition = (mAdapter.getItemCount() - 1);
 
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (mAdapter != null) {
-                Log.d(TAG, "notify : change ui");
-                mAdapter.notifyDataSetChanged();
-
-                int itemPosition = mLayoutManager.findLastVisibleItemPosition();
-                int itemLastPosition = (mAdapter.getItemCount() - 1);
-
-                if (mRecyclerView != null
-                        && itemLastPosition >= 0
-                        && itemPosition > itemLastPosition - 4) {
-                    mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
-                }
-
-
+            if (mRecyclerView != null
+                    && itemLastPosition >= 0
+                    && itemPosition > itemLastPosition - 4) {
+                mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
             }
         }
     }
+
+    public static class NotifyReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.d(TAG,"broadcast received");
+            switch( intent.getAction() ) {
+                case ACTION_DISABLE_ET:
+                    button_send_talk.setEnabled(false);
+                    setAbleET( text_conversation, false );
+                    notifyAdapter();
+                    Log.d(TAG,"disable et");
+                    break;
+                case ACTION_ENABLE_ET:
+                    button_send_talk.setEnabled(true);
+                    setAbleET( text_conversation, true );
+                    notifyAdapter();
+                    Log.d(TAG,"enable et");
+                    break;
+                case ACTION_CMD_ADDED:
+                    notifyAdapter();
+                    Log.d(TAG,"cmd added");
+                default:
+            }
+
+
+        }
+    }
+
+
 
 
     static class CMDAdapter extends RealmRecyclerViewAdapter<Cmd, RecyclerView.ViewHolder> {
@@ -248,9 +274,9 @@ public class CMDActivity extends AppCompatActivity {
 
         static class TalkViewHolder extends RecyclerView.ViewHolder {
 
-            private AppCompatTextView text_talk_sendCat;
-            private AppCompatTextView text_talk_content;
-            private AppCompatTextView text_talk_timestamp;
+            private final AppCompatTextView text_talk_sendCat;
+            private final AppCompatTextView text_talk_content;
+            private final AppCompatTextView text_talk_timestamp;
 
             TalkViewHolder(View itemView) {
                 super(itemView);
@@ -282,6 +308,13 @@ public class CMDActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    private static void setAbleET(AppCompatEditText et, boolean able ) {
+        et.setEnabled(able);
+        et.setClickable(able);
+        et.setFocusable(able);
+        et.setFocusableInTouchMode(able);
     }
 
 }

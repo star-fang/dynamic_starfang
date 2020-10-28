@@ -4605,7 +4605,6 @@
         "requirements": [
           "Medical Corps Level 4",
           "Combined Arms Level 5",
-          "Encampment Level 5",
           "Academy Level 24"
         ],
         "costs": [
@@ -4630,6 +4629,7 @@
         ],
         "requirements": [
           "Medical Corps Level 5",
+          "Encampment Level 5",
           "Academy Level 24"
         ],
         "costs": [

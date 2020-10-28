@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,12 +11,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_cmd"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="2dp"
+        android:layout_height= "wrap_content"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toTopOf="@id/layout_bottom"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_above="@id/layout_bottom"
         tools:itemCount="5"
         tools:listitem="@layout/activity_cmd_list_row" />
 
@@ -25,8 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_alignParentBottom="true"
         android:background="#88000000"
         >
 
@@ -102,7 +98,6 @@
             android:id="@+id/button_send_talk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="3dp"
             android:rotation="-50"
             android:visibility="invisible"
             android:layout_alignParentEnd="true"
@@ -124,4 +119,4 @@
 
 
     </RelativeLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

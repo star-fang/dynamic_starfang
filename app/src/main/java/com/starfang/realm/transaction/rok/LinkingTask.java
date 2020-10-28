@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.starfang.CMDActivity;
 import com.starfang.realm.Cmd;
+import com.starfang.realm.primitive.RealmInteger;
 import com.starfang.realm.primitive.RealmString;
 import com.starfang.realm.source.Source;
 import com.starfang.realm.source.rok.Attribute;
@@ -27,10 +28,13 @@ import com.starfang.realm.source.rok.Technology;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 import io.realm.Case;
 import io.realm.Realm;
 import io.realm.RealmList;
+import io.realm.RealmObject;
 import io.realm.RealmResults;
 
 public class LinkingTask extends AsyncTask<Void, Void, Void> {
@@ -42,7 +46,7 @@ public class LinkingTask extends AsyncTask<Void, Void, Void> {
 
     private static final String TAG = "FANG_LINKING";
 
-    private WeakReference<Context> contextWeakReference;
+    private final WeakReference<Context> contextWeakReference;
 
     LinkingTask(Context context) {
         this.contextWeakReference = new WeakReference<>(context);
@@ -57,8 +61,25 @@ public class LinkingTask extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void v) {
         super.onPostExecute(v);
         Log.d(TAG, "ROK Linking complete");
-        Intent broadcastIntent = new Intent(CMDActivity.ACTION_CMD_ADDED);
-        contextWeakReference.get().sendBroadcast(broadcastIntent);
+    }
+
+
+    private static class OrderedList<T extends RealmObject> {
+
+        private final Class<T> clazz;
+
+        OrderedList(Class<T> clazz) {
+            this.clazz = clazz;
+        }
+
+        List<T> getList(Realm realm, List<RealmInteger> idArr) {
+            List<T> list = new ArrayList<>();
+            for (RealmInteger value : idArr) {
+                T a = value == null ? null : realm.where(clazz).equalTo(Source.FIELD_ID, value.getValue()).findFirst();
+                list.add(a);
+            }
+            return list;
+        }
     }
 
     @Override
@@ -69,45 +90,38 @@ public class LinkingTask extends AsyncTask<Void, Void, Void> {
 
             realm.beginTransaction();
 
-            for( Civilization civilization : realm.where(Civilization.class).findAll() ) {
-                civilization.setAttrs(realm.where(Attribute.class).in(Source.FIELD_ID, com.starfang.realm.transaction.LinkingTask.toIntArray(
-                        civilization.getAttrIds()
-                )).findAll());
+            OrderedList<Attribute> attrOrderedList = new OrderedList<>(Attribute.class);
+            OrderedList<ItemMaterial> materialOrderedList = new OrderedList<>(ItemMaterial.class);
+            OrderedList<Skill> skillOrderedList = new OrderedList<>(Skill.class);
+            OrderedList<Specification> specificationOrderedList = new OrderedList<>(Specification.class);
+
+            for (Civilization civilization : realm.where(Civilization.class).findAll()) {
+                civilization.setAttrs(attrOrderedList.getList(realm, civilization.getAttrIds()));
             } // for civilizations
 
             for (Commander commander : realm.where(Commander.class).findAll()) {
 
                 commander.setCivilization(realm.where(Civilization.class).equalTo(Source.FIELD_ID, commander.getInt(Commander.FIELD_CIVIL)).findFirst());
-                commander.setSpecifications(realm.where(Specification.class).in(Source.FIELD_ID, com.starfang.realm.transaction.LinkingTask.toIntArray(
-                        commander.getSpecIds()
-                )).findAll());
-                commander.setSkills(realm.where(Skill.class).in(Source.FIELD_ID, com.starfang.realm.transaction.LinkingTask.toIntArray(
-                        commander.getSkillIds()
-                )).findAll());
+                commander.setSpecifications(specificationOrderedList.getList(realm, commander.getSpecIds()));
+                commander.setSkills(skillOrderedList.getList(realm, commander.getSkillIds()));
 
                 commander.setRarity(realm.where(Rarity.class).equalTo(Source.FIELD_ID, commander.getInt(Commander.FIELD_RARITY_ID)).findFirst());
             } // for commanders
 
-            for(ItemSet itemSet : realm.where(ItemSet.class).findAll()) {
-                itemSet.setAttrs(realm.where(Attribute.class).in(Source.FIELD_ID, com.starfang.realm.transaction.LinkingTask.toIntArray(
-                        itemSet.getAttrIds()
-                )).findAll());
+            for (ItemSet itemSet : realm.where(ItemSet.class).findAll()) {
+                itemSet.setAttrs(attrOrderedList.getList(realm, itemSet.getAttrIds()));
             } // for item sets
 
-            for( ItemMaterial material : realm.where(ItemMaterial.class).findAll()) {
+            for (ItemMaterial material : realm.where(ItemMaterial.class).findAll()) {
                 material.setRarity(realm.where(Rarity.class).equalTo(Source.FIELD_ID, material.getInt(ItemMaterial.FIELD_RARITY_ID)).findFirst());
             } // for item materials
 
-            for(Item item : realm.where(Item.class).findAll()) {
+            for (Item item : realm.where(Item.class).findAll()) {
                 item.setCategory(realm.where(ItemCategory.class).equalTo(Source.FIELD_ID, item.getInt(Item.FIELD_CATEGORY_ID)).findFirst());
                 item.setRarity(realm.where(Rarity.class).equalTo(Source.FIELD_ID, item.getInt(Item.FIELD_RARITY_ID)).findFirst());
                 item.setItemSet(realm.where(ItemSet.class).equalTo(Source.FIELD_ID, item.getInt(Item.FIELD_SET_ID)).findFirst());
-                item.setAttrs(realm.where(Attribute.class).in(Source.FIELD_ID, com.starfang.realm.transaction.LinkingTask.toIntArray(
-                        item.getAttrIds()
-                )).findAll());
-                item.setMaterials(realm.where(ItemMaterial.class).in(Source.FIELD_ID, com.starfang.realm.transaction.LinkingTask.toIntArray(
-                        item.getMaterialIds()
-                )).findAll());
+                item.setAttrs(attrOrderedList.getList(realm, item.getAttrIds()));
+                item.setMaterials(materialOrderedList.getList(realm, item.getMaterialIds()));
             } // for items
 
 
@@ -176,10 +190,10 @@ public class LinkingTask extends AsyncTask<Void, Void, Void> {
                             boolean isValid = false;
                             String check = "";
                             if (reqContent != null) {
-                                check += reqContent.getString(Source.FIELD_NAME)+ " Lv.";
+                                check += reqContent.getString(Source.FIELD_NAME) + " Lv.";
                                 Technology reqTech = realm.where(Technology.class)
                                         .equalTo(Technology.FIELD_CONTENT_ID, reqContent.getId())
-                                        .and().equalTo(Technology.FIELD_LEVEL, reqLv +"").findFirst();
+                                        .and().equalTo(Technology.FIELD_LEVEL, reqLv + "").findFirst();
                                 if (reqTech != null) {
                                     check += reqTech.getString(Technology.FIELD_LEVEL);
                                     if (!reqTechs.contains(reqTech))
@@ -206,7 +220,7 @@ public class LinkingTask extends AsyncTask<Void, Void, Void> {
                             }
 
                             if (!isValid) {
-                               Log.d(TAG, content.getString(TechContent.FIELD_NAME)
+                                Log.d(TAG, content.getString(TechContent.FIELD_NAME)
                                         + ": " + requirement.toString() + " [invalid] " + check);
                             }
                         } // if requirement != null
@@ -234,11 +248,14 @@ public class LinkingTask extends AsyncTask<Void, Void, Void> {
             cmd.setName("멍멍이");
             cmd.setText("데이터 연결 완료다멍");
             realm.copyToRealm(cmd);
-
             realm.commitTransaction();
         } catch (RuntimeException e) {
             Log.e(TAG, Log.getStackTraceString(e));
         }
+
+        Intent broadcastIntent = new Intent(CMDActivity.ACTION_ENABLE_ET);
+        contextWeakReference.get().sendBroadcast(broadcastIntent);
+
         return null;
     }
 

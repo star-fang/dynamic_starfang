@@ -61,7 +61,17 @@
 
         <receiver android:name=".services.RestartAlarmReceiver" />
         <receiver android:name=".services.StarfangReceiver" />
-        <receiver android:name=".CMDActivity$NotifyReceiver" />
+        <receiver
+            android:enabled="true"
+            android:name=".CMDActivity$NotifyReceiver"
+            android:exported="false"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name=".CMDActivity.ACTION_CMD_ADDED"/>
+                <action android:name=".CMDActivity.ACTION_DISABLE_ET"/>
+                <action android:name=".CMDActivity.ACTION_ENABLE_ET"/>
+            </intent-filter>
+        </receiver>
         <receiver android:name=".TalkActivity$NotifyReceiver" />
         <receiver android:name=".ui.notifications.NotificationsFragment$NotifyReceiver" />
         <receiver android:name=".ui.forums.ForumsFragment$NotifyReceiver" />

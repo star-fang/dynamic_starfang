@@ -29,6 +29,7 @@ public class Building extends RealmObject implements Source {
     public static final String FIELD_COST_WOOD = "woodCost";
     public static final String FIELD_COST_STONE = "stoneCost";
     public static final String FIELD_COST_GOLD = "goldCost";
+    public static final String FIELD_COST_BP = "blueprintCost";
     public static final String FIELD_SECONDS = "seconds";
     public static final String FIELD_POWER_VAL = "powerVal";
     public static final String FIELD_RW_FOOD = "foodReward";
@@ -159,6 +160,12 @@ public class Building extends RealmObject implements Source {
     @Override
     public String getString(String field) {
         switch (field) {
+            case FIELD_NAME:
+                if( content != null ) {
+                    return content.getString(Source.FIELD_NAME);
+                } else {
+                    return  null;
+                }
             case FIELD_FIGURES:
                 if( figures != null ) {
                     return TextUtils.join(",", figures);
@@ -180,6 +187,7 @@ public class Building extends RealmObject implements Source {
                 return id;
             case FIELD_CONTENT_ID:
                 return contentId;
+            case FIELD_LEVEL:
             case FIELD_LEVEL_VAL:
                 return levelVal;
             case FIELD_COST_FOOD:

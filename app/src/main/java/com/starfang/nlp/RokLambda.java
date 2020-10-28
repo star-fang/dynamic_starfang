@@ -3,11 +3,13 @@ package com.starfang.nlp;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.starfang.realm.Memo;
 import com.starfang.realm.primitive.RealmDouble;
 import com.starfang.realm.primitive.RealmInteger;
 import com.starfang.realm.primitive.RealmString;
 import com.starfang.realm.source.Source;
 import com.starfang.realm.source.rok.Attribute;
+import com.starfang.realm.source.rok.BuildContent;
 import com.starfang.realm.source.rok.Building;
 import com.starfang.realm.source.rok.Civilization;
 import com.starfang.realm.source.rok.Commander;
@@ -22,13 +24,18 @@ import com.starfang.realm.source.rok.Skill;
 import com.starfang.realm.source.rok.TechContent;
 import com.starfang.realm.source.rok.Technology;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.mozilla.javascript.Scriptable;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import io.realm.Realm;
@@ -42,9 +49,18 @@ class RokLambda {
 
     private static final String TAG = "FANG_MOD_CAT";
 
-    private enum CMD_ENUM {CMD_DESC, CMD_COMMANDER, CMD_SKILL, CMD_SPEC, CMD_CIVIL, CMD_ITEM, CMD_CALC, CMD_WIKI, CMD_TECH, CMD_RESEARCH, CMD_BUILD, CMD_COMMIT, CMD_DEFAULT}
+    private enum CMD_ENUM {
+        CMD_DESC, CMD_COMMANDER, CMD_SKILL, CMD_SPEC, CMD_CIVIL, CMD_ITEM, CMD_CALC, CMD_WIKI, CMD_TECH, CMD_RESEARCH, CMD_BUILD, CMD_COMMIT, CMD_MEMO, CMD_DEFAULT
+    }
 
-    private static final String[] CMD_CERTAIN = {"설명", "사령관", "스킬", "특성", "문명", "아이템", "계산", "위키", "기술", "연구", "건설", "완료", "냥"};
+    private static final String[] CMD_CERTAIN = {
+            "설명", "사령관"
+            , "스킬", "특성"
+            , "문명", "장비"
+            , "계산", "위키"
+            , "기술", "연구"
+            , "건설", "완료"
+            , "메모", "냥"};
 
     private static final String ROK_WIKI = "http://rok.wiki/";
     private static final String ROK_WIKI_HERO_DIR = "bbs/board.php?bo_table=hero&wr_id=";
@@ -112,7 +128,7 @@ class RokLambda {
             }
         };
 
-        PlayWithCat techByName = ((l, q) -> {
+        PlayWithCat techAndBuildByName = ((l, q) -> {
             if (q == null) {
                 return;
             }
@@ -149,7 +165,7 @@ class RokLambda {
                         for (int i = 0; i < facts.size(); i++) {
                             RealmString fact = facts.get(i);
                             if (fact != null) {
-                                contentBuilder.append("\r\n - ").append(fact);
+                                contentBuilder.append("\r\n * ").append(fact);
                                 RealmString figure = figures.get(i);
                                 if (figure != null) {
                                     contentBuilder.append(" ").append(figure);
@@ -209,7 +225,7 @@ class RokLambda {
 
                     }
                 } else {
-                    contentBuilder.append("\r\n - ").append(content.getString(TechContent.FIELD_DESCRIPTION));
+                    contentBuilder.append("\r\n * ").append(content.getString(TechContent.FIELD_DESCRIPTION));
                     for (Technology technology : technologies) {
                         int seconds = technology.getInt(Technology.FIELD_SECONDS);
                         contentBuilder.append("\r\n").append(" - level").append(technology.getInt(Technology.FIELD_LEVEL_VAL)).append(": ");
@@ -223,6 +239,95 @@ class RokLambda {
                 }
                 l.add(contentBuilder.toString());
             }
+
+            q = q.replaceAll("\\s+", "");
+            BuildContent buildContent = realm.where(BuildContent.class)
+                    .equalTo(BuildContent.FIELD_NAME_WITHOUT_BLANK, q).findFirst();
+
+            if (buildContent != null) {
+                RealmQuery<Building> buildingRealmQuery = realm.where(Building.class)
+                        .equalTo(Building.FIELD_CONTENT_ID, buildContent.getId());
+
+                if (level > 0) {
+                    buildingRealmQuery.equalTo(Building.FIELD_LEVEL_VAL, level);
+                }
+
+                RealmResults<Building> buildings = buildingRealmQuery.findAll();
+
+                if (buildings.size() > 0) {
+                    RealmList<RealmString> facts = buildContent.getFacts();
+                    StringBuilder buildingInfoBuilder = new StringBuilder();
+                    buildingInfoBuilder.append("[").append(buildContent.getString(BuildContent.FIELD_CATEGORY_KOR))
+                            .append(" 건물]").append(buildContent.getString(Source.FIELD_NAME));
+                    if (buildings.size() == 1) {
+                        Building building = buildings.first();
+                        if (building != null) {
+                            buildingInfoBuilder.append(" lv.").append(level);
+                            RealmList<RealmString> figures = building.getFigures();
+                            for (int i = 0; i < facts.size(); i++) {
+                                RealmString fact = facts.get(i);
+                                RealmString figure = figures.get(i);
+                                if (fact != null)
+                                    buildingInfoBuilder.append("\r\n * ")
+                                            .append(fact.toString()).append(figure != null ? ": " + figure.toString() : "");
+                            }
+                            buildingInfoBuilder.append("\r\n - 건설 시간: ")
+                                    .append(RokCalcUtils.secondsToString(building.getInt(Building.FIELD_SECONDS)));
+
+
+                            RealmList<Building> reqBuildings = building.getReqBuildings();
+                            for (int i = 0, num = 1; i < reqBuildings.size(); i++) {
+                                Building reqBuilding = reqBuildings.get(i);
+                                if (reqBuilding != null)
+                                    buildingInfoBuilder.append("\r\n - 요구 건물").append(reqBuildings.size() > 1 ? num++ : "")
+                                            .append(": ").append(reqBuilding.getString(Source.FIELD_NAME)).append(" lv.")
+                                            .append(reqBuilding.getInt(Building.FIELD_LEVEL));
+                            }
+
+                            int foodCost = building.getInt(Building.FIELD_COST_FOOD);
+                            int woodCost = building.getInt(Building.FIELD_COST_WOOD);
+                            int stoneCost = building.getInt(Building.FIELD_COST_STONE);
+                            int goldCost = building.getInt(Building.FIELD_COST_GOLD);
+                            int bpCost = building.getInt(Building.FIELD_COST_BP);
+
+                            if (foodCost > 0)
+                                buildingInfoBuilder.append("\r\n - 식량: ").append(RokCalcUtils.quantityToString(foodCost));
+                            if (woodCost > 0)
+                                buildingInfoBuilder.append("\r\n - 목재: ").append(RokCalcUtils.quantityToString(woodCost));
+                            if (stoneCost > 0)
+                                buildingInfoBuilder.append("\r\n - 석제: ").append(RokCalcUtils.quantityToString(stoneCost));
+                            if (goldCost > 0)
+                                buildingInfoBuilder.append("\r\n - 금화: ").append(RokCalcUtils.quantityToString(goldCost));
+                            if (bpCost > 0)
+                                buildingInfoBuilder.append("\r\n - 청사진: ").append(bpCost).append("장");
+
+
+                        }
+                    } else if (buildings.size() > 1) {
+
+                        for (RealmString fact : facts) {
+                            buildingInfoBuilder.append("\r\n * ").append(fact.toString());
+                        }
+
+                        for (Building building : buildings) {
+                            RealmList<RealmString> figures = building.getFigures();
+                            String[] figureArr = new String[figures.size()];
+                            for (int i = 0; i < figureArr.length; i++) {
+                                RealmString figureObj = figures.get(i);
+                                figureArr[i] = figureObj == null ? null : figureObj.toString();
+                            }
+                            buildingInfoBuilder.append("\r\n - level").append(building.getInt(Building.FIELD_LEVEL)).append(": ")
+                                    .append(TextUtils.join(", ", figureArr)).append(", ").append(RokCalcUtils.secondsToString(
+                                    building.getInt(Building.FIELD_SECONDS)
+                            ));
+
+                        }
+                    }
+                    l.add(buildingInfoBuilder.toString());
+                } // if buildings size > 0
+            }
+
+
         });
 
         Command searchTech = ((l, q, w) -> {
@@ -367,11 +472,12 @@ class RokLambda {
         Command searchCommanders = ((l, q, w) -> {
             String header = "";
             RealmResults<Commander> commanders;
+            Log.d(TAG, "searchCommanders Activated");
             if (q == null) {
-                commanders = realm.where(Commander.class).findAll().sort(Commander.FIELD_RARITY);
+                commanders = realm.where(Commander.class).findAll().sort(Commander.FIELD_RARITY_ID);
             } else {
                 q = q.trim();
-                commanders = realm.where(Commander.class).equalTo(Commander.FIELD_RARITY, q).findAll();
+                commanders = realm.where(Commander.class).equalTo(Commander.FIELD_RARITY + "." + Rarity.FIELD_NAME, q).findAll();
                 if (commanders.size() > 0) {
                     header = "희귀도 \"" + q + "\"";
                 } else {
@@ -522,7 +628,8 @@ class RokLambda {
                     StringBuilder skill_info = new StringBuilder();
                     Commander commander = realm.where(Commander.class).equalTo(Commander.FIELD_SKILLS + "." + Source.FIELD_ID, skill.getId()).findFirst();
                     if (commander != null) {
-                        skill_info.append(commander.getString(Source.FIELD_NAME)).append(" 스킬\r\n");
+                        skill_info.append(commander.getString(Source.FIELD_NAME)).append(" > ")
+                                .append(commander.getNumberOfSkill(skill.getId())).append("스킬\r\n");
                     }
                     skill_info.append(skill.getString(Source.FIELD_NAME))
                             .append(" (").append(skill.getString(Skill.FIELD_PROPERTY)).append(")\r\n");
@@ -697,6 +804,18 @@ class RokLambda {
 
             q = q.trim();
 
+            if (StringUtils.isEmpty(q)) {
+                StringBuilder itemListBuilder = new StringBuilder();
+                RealmResults<Item> itemList = realm.where(Item.class).findAll()
+                        .sort(Item.FIELD_RARITY_ID, Sort.DESCENDING)
+                        .sort(Item.FIELD_SET_ID);
+                itemListBuilder.append("전체 장비: ").append(itemList.size())
+                        .append("개\r\n-----------------")
+                        .append(printItemList(itemList, null, null, null));
+                l.add(itemListBuilder.toString());
+                return;
+            }
+
             String qWithoutBlank = q.replaceAll("\\s+", "");
 
             RealmResults<Item> items = realm.where(Item.class).contains(Item.FIELD_NAME_WITHOUT_BLANK, qWithoutBlank).findAll();
@@ -715,14 +834,24 @@ class RokLambda {
                     qList.remove(qList.size() - 1);
                 }
 
+                Rarity rarity = null;
+                if( qList.size() > 0 ) {
+                    rarity = realm.where(Rarity.class).equalTo(Source.FIELD_NAME, qList.get(qList.size() - 1)).findFirst();
+                    if (rarity != null) {
+                        qList.remove(qList.size() - 1);
+                    }
+                }
+
                 if (qList.size() > 0) {
                     List<Integer> bases = new ArrayList<>();
                     List<Attribute[]> attrList = new ArrayList<>();
                     for (String attrName : qList) {
-                        Attribute[] attrs = realm.where(Attribute.class).contains(Attribute.FIELD_NAME_WITHOUT_BLANK, attrName).findAll().toArray(new Attribute[0]);
-                        if (attrs.length > 0) {
-                            bases.add(attrs.length);
-                            attrList.add(attrs);
+                        if (attrName.length() > 1) {
+                            Attribute[] attrs = realm.where(Attribute.class).contains(Attribute.FIELD_NAME_WITHOUT_BLANK, attrName).findAll().toArray(new Attribute[0]);
+                            if (attrs.length > 0) {
+                                bases.add(attrs.length);
+                                attrList.add(attrs);
+                            }
                         }
                     }
 
@@ -738,39 +867,26 @@ class RokLambda {
                                 attrNames[i] = attr.getString(Source.FIELD_NAME);
                             }
                             RealmQuery<Item> itemRealmQuery = realm.where(Item.class).alwaysTrue();
-                            if (category != null) {
+                            if (category != null)
                                 itemRealmQuery.and().equalTo(Item.FIELD_CATEGORY_ID, category.getId());
-                            }
+                            if (rarity != null)
+                                itemRealmQuery.and().equalTo(Item.FIELD_RARITY_ID, rarity.getId());
 
                             for (int attrId : attrIds) {
                                 itemRealmQuery.and().equalTo(Item.FIELD_ATTRS + "." + Source.FIELD_ID, attrId);
                             }
                             RealmResults<Item> itemsByAttr = itemRealmQuery.findAll();
                             StringBuilder itemByAttrBuilder = new StringBuilder();
-                            itemByAttrBuilder.append("아이템 속성 검색: ").append(itemsByAttr.size()).append("개\r\n");
+                            itemByAttrBuilder.append("장비 속성 검색: ").append(itemsByAttr.size()).append("개\r\n");
                             for (String attrName : attrNames) {
                                 itemByAttrBuilder.append("*").append(attrName).append("\r\n");
                             }
-                            if (category != null) {
-                                itemByAttrBuilder.append("*").append(category.getString(Source.FIELD_NAME)).append("\r\n");
-                            }
+                            if (category != null)
+                                itemByAttrBuilder.append("*분류: ").append(category.getString(Source.FIELD_NAME)).append("\r\n");
+                            if (rarity != null)
+                                itemByAttrBuilder.append("*희귀도: ").append(rarity.getString(Source.FIELD_NAME)).append("\r\n");
                             itemByAttrBuilder.append("-----------------");
-
-                            for (Item itemByAttr : itemsByAttr.sort(Item.FIELD_RARITY_ID)) {
-                                itemByAttrBuilder.append("\r\n")
-                                        .append(itemByAttr.getString(Item.FIELD_RARITY))
-                                        .append(" - ")
-                                        .append(itemByAttr.getString(Source.FIELD_NAME));
-                                if (attrIds.length > 0) {
-                                    itemByAttrBuilder.append(": ");
-                                    List<String> valList = new ArrayList<>();
-                                    for (int attrId : attrIds) {
-                                        valList.addAll(Arrays.asList(itemByAttr.getValsStrOfAttr(attrId)));
-                                    }
-                                    itemByAttrBuilder.append(TextUtils.join(", ", valList));
-                                }
-
-                            }
+                            itemByAttrBuilder.append(printItemList(itemsByAttr, rarity, category, attrIds));
 
                             if (itemsByAttr.size() > 0) {
                                 l.add(itemByAttrBuilder.toString());
@@ -779,10 +895,33 @@ class RokLambda {
                         }
                     }
 
+                } else {
+                    StringBuilder itemListBuilder = new StringBuilder();
+                    RealmQuery<Item> itemRealmQuery = realm.where(Item.class);
+
+                    if (rarity != null) {
+                        itemListBuilder.append(rarity.getString(Source.FIELD_NAME)).append(" ");
+                        itemRealmQuery.equalTo(Item.FIELD_RARITY_ID, rarity.getId());
+                    }
+                    if (category != null) {
+                        itemListBuilder.append(category.getString(Source.FIELD_NAME)).append(" ");
+                        itemRealmQuery.equalTo(Item.FIELD_CATEGORY_ID, category.getId());
+                    }
+
+                    RealmResults<Item> itemList = itemRealmQuery.findAll()
+                            .sort(Item.FIELD_RARITY_ID, Sort.DESCENDING)
+                            .sort(Item.FIELD_SET_ID);
+
+                    if (itemList.size() > 0) {
+                        itemListBuilder.append(category != null ? ": " : "장비: ").append(itemList.size())
+                                .append("개\r\n-----------------").append(printItemList(itemList, rarity, category, null));
+                        l.add(itemListBuilder.toString());
+                    }
 
                 }
                 return;
             }
+
 
             Map<ItemSet, Integer> setMap = new HashMap<>();
             Map<ItemCategory, Item> equippedMap = new HashMap<>();
@@ -801,7 +940,7 @@ class RokLambda {
                 equippedMap.put(cate, item);
 
                 itemInfoBuilder.append("[")
-                        .append(cate != null ? cate.getString(Source.FIELD_NAME) : "아이템")
+                        .append(cate != null ? cate.getString(Source.FIELD_NAME) : "장비")
                         .append("] ").append(item.getString(Source.FIELD_NAME));
                 String nameEng = item.getString(Source.FIELD_NAME_ENG);
                 if (nameEng != null) {
@@ -821,8 +960,8 @@ class RokLambda {
                     setMap.put(itemSet, setCount);
                 }
 
-                itemInfoBuilder.append("\r\n희귀도: ").append(rarity != null ? rarity.getString(Source.FIELD_NAME) : "??");
-
+                itemInfoBuilder.append("\r\n희귀도: ").append(rarity != null ? rarity.getString(Source.FIELD_NAME) : "??")
+                        .append(" (Lv.").append(item.getInt(Item.FIELD_LEVEL)).append(")");
 
                 RealmList<ItemMaterial> materials = item.getMaterials();
                 RealmList<RealmInteger> materialCounts = item.getMaterialCounts();
@@ -932,7 +1071,7 @@ class RokLambda {
 
             if (!overlappedEquipment && items.size() > 1) {
                 StringBuilder equipBuilder = new StringBuilder();
-                equipBuilder.append("*아이템 착용");
+                equipBuilder.append("*장비 착용");
                 for (ItemCategory cate : equippedMap.keySet()) {
                     Item eqItem = equippedMap.get(cate);
                     if (eqItem != null) {
@@ -941,8 +1080,12 @@ class RokLambda {
                     }
                 }
                 if (attrSumMap.size() > 0) {
-                    equipBuilder.append("\r\n-----------------\r\n*속성 총합").append(setMap.size() > 0 ? "(세트 포함)": "");
-                    for (Attribute attr : attrSumMap.keySet()) {
+
+                    ArrayList<Attribute> sortedKeys = new ArrayList<>(attrSumMap.keySet());
+                    Collections.sort(sortedKeys);
+
+                    equipBuilder.append("\r\n-----------------\r\n*속성 총합").append(setMap.size() > 0 ? "(세트 효과 포함)" : "");
+                    for (Attribute attr : sortedKeys) {
                         Double val = attrSumMap.get(attr);
                         Double rVal = rAttrSumMap.get(attr);
                         String valRange = val == null ? null : (val + (rVal != null ? ("~" + (val + rVal)) : ""));
@@ -956,30 +1099,122 @@ class RokLambda {
 
         };
 
+        PlayWithCat searchMemo = (l, r) -> {
+            if (r == null) {
+                return;
+            }
+            r = r.trim();
+            if (r.length() > 1 && r.length() < 21) {
+                r = r.replaceAll("\\s+", "");
+                RealmResults<Memo> memos = realm.where(Memo.class).contains(Memo.FIELD_NAME_WITHOUT_BLANK, r).findAll();
+                for (Memo memo : memos) {
+                    l.add(printMemo(memo));
+                }
+            }
+        };
+
+        Command memoCommand = (l, r, s) -> {
+            if (r == null) {
+                RealmResults<Memo> memos = realm.where(Memo.class).equalTo(Memo.FIELD_SEND_CAT, sendCat).findAll();
+                if (memos.size() > 1) {
+                    StringBuilder memoListBuilder = new StringBuilder();
+                    memoListBuilder.append(sendCat).append("님의 메모 목록: ")
+                            .append(memos.size()).append("개\r\n-----------------");
+                    int number = 1;
+                    Calendar calendar = Calendar.getInstance();
+                    for (Memo memo : memos.sort(Memo.FIELD_WHEN, Sort.DESCENDING)) {
+                        calendar.setTimeInMillis(memo.getWhen());
+                        memoListBuilder.append("\r\n").append(number++).append(". ").append(memo.getName()).append(" ")
+                                .append(new SimpleDateFormat("yyyy.MM.dd", Locale.KOREA).format(calendar.getTime()));
+                    }
+                    l.add(memoListBuilder.toString());
+                } else if (memos.size() == 1) {
+                    l.add(printMemo(memos.first()));
+                } else {
+                    l.add("*메모 등록 : [제목] + (줄바꿈) + [내용] + 메모 냥 \r\n" +
+                            "*메모 내용 : [제목] + 냥 (빈칸 무관)\r\n" +
+                            "*메모 삭제 : [제목] + 메모 냥 (빈칸 일치)");
+                }
+                return;
+            }
+            String readLineRegex = System.getProperty("line.separator");
+            if (readLineRegex != null) {
+                String[] lines = r.split(readLineRegex);
+                if (lines.length >= 1) {
+                    String memoName = lines[0].trim();
+                    String content = null;
+                    if (lines.length > 1) {
+                        List<String> contentList = new ArrayList<>(Arrays.asList(lines).subList(1, lines.length));
+                        content = TextUtils.join("\r\n", contentList).trim();
+                    }
+
+
+                    if (memoName.length() < 21 && memoName.length() > 1) {
+                        Memo memo = realm.where(Memo.class).equalTo(Memo.FIELD_NAME, memoName).findFirst();
+                        if (memo != null) {
+                            String editorName = memo.getSendCat();
+                            realm.beginTransaction();
+                            if (content == null) {
+                                memo.deleteFromRealm();
+                                realm.commitTransaction();
+                                l.add(editorName + "님의 메모 [" + memoName + "]: 삭제 되었습니다.");
+                            } else {
+                                memo.setSendCat(sendCat);
+                                memo.setWhen(System.currentTimeMillis());
+                                memo.setForumId(forumId);
+                                memo.setContent(content);
+                                realm.commitTransaction();
+                                l.add(editorName + "님의 메모 [" + memoName + "]: 수정 되었습니다.");
+                            }
+                        } else if (content != null) {
+                            realm.beginTransaction();
+                            realm.copyToRealmOrUpdate(new Memo(memoName, content, sendCat, forumId));
+                            realm.commitTransaction();
+                            l.add(sendCat + "님의 메모 [" + memoName + "]: 추가 완료");
+                        } else {
+                            l.add("메모 추가 실패: 내용을 입력하세요.");
+                        }
+                    } else {
+                        l.add("메모 제목 길이 제한: 2 ~ 20자 ");
+                    }
+                }
+            } else {
+                l.add("시스템 오류: 줄바꿈 지원 안됨");
+            }
+
+        };
+
 
         List<String> result = new ArrayList<>();
 
         switch (cmd) {
             case CMD_WIKI:
                 searchWiki.search(result, req, false);
+                searchMemo.play(result, req + CMD_CERTAIN[cmd.ordinal()]);
                 break;
             case CMD_ITEM:
+                req = req == null ? "" : req;
                 findItem.play(result, req);
+                searchMemo.play(result, req + CMD_CERTAIN[cmd.ordinal()]);
                 break;
             case CMD_SPEC:
                 result.add("사령관 특성: 정보 수집 중");
                 break;
             case CMD_SKILL:
                 searchSkill.search(result, req, false);
+                searchMemo.play(result, req + CMD_CERTAIN[cmd.ordinal()]);
                 break;
             case CMD_CIVIL:
                 searchCivil.search(result, req, false);
+                searchMemo.play(result, req + CMD_CERTAIN[cmd.ordinal()]);
                 break;
             case CMD_COMMANDER:
                 searchCommanders.search(result, req, false);
+                searchMemo.play(result, req + CMD_CERTAIN[cmd.ordinal()]);
                 break;
             case CMD_RESEARCH:
                 research.search(result, req, true);
+                searchMemo.play(result, req + CMD_CERTAIN[cmd.ordinal()]);
                 break;
             case CMD_BUILD:
                 result.add("건물 건설: 준비 중");
@@ -1001,16 +1236,21 @@ class RokLambda {
                 break;
             case CMD_TECH:
                 searchTech.search(result, req, false);
+                searchMemo.play(result, req + CMD_CERTAIN[cmd.ordinal()]);
                 break;
             case CMD_CALC:
                 calc.play(result, req);
+                searchMemo.play(result, req + CMD_CERTAIN[cmd.ordinal()]);
                 break;
+            case CMD_MEMO:
+                memoCommand.search(result, req, false);
             default:
                 commanderByName.play(result, req);
                 civilByName.play(result, req);
                 skillByName.play(result, req);
-                techByName.play(result, req);
+                techAndBuildByName.play(result, req);
                 findItem.play(result, req);
+                searchMemo.play(result, req);
         }
 
         return result;
@@ -1053,6 +1293,47 @@ class RokLambda {
             return contents.first();
         }
         return null;
+    }
+
+    private static String printItemList(RealmResults<Item> itemList, Rarity rarity, ItemCategory category, Integer[] attrIds) {
+        StringBuilder listBuilder = new StringBuilder();
+        for (Item itemByAttr : itemList.sort(Item.FIELD_RARITY_ID)) {
+            listBuilder.append("\r\n");
+            List<String> cateAndRarity = new ArrayList<>();
+            if (rarity == null)
+                cateAndRarity.add(itemByAttr.getString(Item.FIELD_RARITY));
+            if (category == null)
+                cateAndRarity.add(itemByAttr.getString(Item.FIELD_CATEGORY));
+            if (cateAndRarity.size() > 0) {
+                listBuilder.append(TextUtils.join("/", cateAndRarity));
+            }
+
+            listBuilder.append(" - ").append(itemByAttr.getString(Source.FIELD_NAME));
+            if (attrIds != null && attrIds.length > 0) {
+                listBuilder.append(" : ");
+                List<String> valList = new ArrayList<>();
+                for (int attrId : attrIds) {
+                    valList.addAll(Arrays.asList(itemByAttr.getValsStrOfAttr(attrId)));
+                }
+                listBuilder.append(TextUtils.join(", ", valList));
+            }
+
+        }
+        return listBuilder.toString();
+    }
+
+    private static String printMemo(Memo memo) {
+        if (memo == null) {
+            return null;
+        }
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(memo.getWhen());
+        return "[메모] " + memo.getName() +
+                "\r\n" + memo.getContent() +
+                "\r\n - " +
+                new SimpleDateFormat("yyyy년 MM월 dd일 aa hh:mm:ss", Locale.KOREA)
+                        .format(calendar.getTime()) +
+                "\r\n - " + memo.getSendCat();
     }
 
 

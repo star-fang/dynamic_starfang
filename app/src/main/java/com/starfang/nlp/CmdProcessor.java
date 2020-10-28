@@ -35,7 +35,7 @@ public class CmdProcessor extends AsyncTask<String, String, Bundle> {
     }
 
 
-    private WeakReference<Context> contextWeakReference;
+    private final WeakReference<Context> contextWeakReference;
 
     public CmdProcessor(Context context) {
         this.contextWeakReference = new WeakReference<>(context);
@@ -72,7 +72,7 @@ public class CmdProcessor extends AsyncTask<String, String, Bundle> {
                     task.execute(bundle.getStringArray(CmdMods.POST_VALUE));
                     break;
                 case CmdMods.FANGCAT:
-                    FangcatNlp fangcatNlp = new FangcatNlp(context,null, "얼간이", 0);
+                    FangcatNlp fangcatNlp = new FangcatNlp(context,null, "ㅁㅁㅁ", 0);
                     fangcatNlp.execute(bundle.getString(CmdMods.POST_VALUE));
                     break;
                 default:
@@ -95,6 +95,7 @@ public class CmdProcessor extends AsyncTask<String, String, Bundle> {
                     context.startActivity(intent);
                     break;
                 case CmdMods.CMD_SYNC:
+                    publishProgress("데이터 연결 중... 기둘");
                     result = new Bundle();
                     result.putInt(CmdMods.POST_KEY, CmdMods.SYNC);
                     result.putStringArray(CmdMods.POST_VALUE, new String[]{"rok.json", "rok_technology.json", "rok_building.json"});

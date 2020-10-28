@@ -83,6 +83,16 @@ public class Commander extends RealmObject implements Source, SearchNameWithoutB
         return skillIds;
     }
 
+    public int getNumberOfSkill( int skillId ) {
+        for( int i = 0; i < skillIds.size(); i++ ) {
+            RealmInteger skillIdObj = skillIds.get(i);
+            if( skillIdObj != null && skillId == skillIdObj.getValue() ) {
+                return (i+1);
+            }
+        }
+        return 0;
+    }
+
     @Override
     public void setNameWithoutBlank() {
         this.nameWithoutBlank = name.replaceAll("\\s+", "").trim();

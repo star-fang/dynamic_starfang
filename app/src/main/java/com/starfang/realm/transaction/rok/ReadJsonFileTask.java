@@ -1,6 +1,7 @@
 package com.starfang.realm.transaction.rok;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,7 @@ import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.starfang.CMDActivity;
 import com.starfang.StarfangConstants;
 import com.starfang.realm.primitive.RealmDouble;
 import com.starfang.realm.primitive.RealmInteger;
@@ -35,10 +37,15 @@ public class ReadJsonFileTask extends AsyncTask<String, Bundle, Void> {
 
     private static final String TAG = "FANG_READ";
 
-    private WeakReference<Context> contextWeakReference;
+    private final WeakReference<Context> contextWeakReference;
 
     public ReadJsonFileTask( Context context ) {
         this.contextWeakReference = new WeakReference<>(context);
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
     }
 
     @Override
@@ -57,6 +64,8 @@ public class ReadJsonFileTask extends AsyncTask<String, Bundle, Void> {
     @Override
     protected Void doInBackground(String... fileNames) {
 
+        Intent broadcastIntent = new Intent(CMDActivity.ACTION_DISABLE_ET);
+        contextWeakReference.get().sendBroadcast(broadcastIntent);
         final GsonBuilder gsonBuilder = new GsonBuilder()
                 .setExclusionStrategies(new ExclusionStrategy() {
                     @Override
