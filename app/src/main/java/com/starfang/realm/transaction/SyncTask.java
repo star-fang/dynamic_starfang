@@ -18,7 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.starfang.R;
 import com.starfang.StarfangConstants;
 import com.starfang.realm.TableList;
-import com.starfang.realm.Transaction;
 import com.starfang.utilities.CipherUtils;
 
 import org.json.JSONArray;

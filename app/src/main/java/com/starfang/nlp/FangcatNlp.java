@@ -8,7 +8,6 @@ import android.util.Log;
 
 import com.starfang.CMDActivity;
 import com.starfang.realm.Cmd;
-import com.starfang.realm.notifications.Forum;
 import com.starfang.utilities.reply.ReplyAction;
 
 
@@ -24,10 +23,10 @@ public class FangcatNlp extends AsyncTask<String, String, Void> {
     private static final String TAG = "fang_nlp";
     private static final String MASTER_CMD_CAT = "냥";
     private static final String MASTER_CMD_DOG = "멍";
-    private WeakReference<Context> contextWeakReference;
-    private WeakReference<ReplyAction> replyActionWeakReference;
-    private String sendCat;
-    private long forumId;
+    private final WeakReference<Context> contextWeakReference;
+    private final WeakReference<ReplyAction> replyActionWeakReference;
+    private final String sendCat;
+    private final long forumId;
 
     public FangcatNlp(Context context, ReplyAction replyAction, String sendCat, long forumId ) {
         this.contextWeakReference = new WeakReference<>(context);

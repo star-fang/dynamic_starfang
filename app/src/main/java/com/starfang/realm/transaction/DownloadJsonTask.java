@@ -1,3 +1,4 @@
+
 package com.starfang.realm.transaction;
 
 import android.content.Context;
@@ -22,28 +23,20 @@ import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 import com.starfang.R;
 import com.starfang.StarfangConstants;
-import com.starfang.realm.ProgressRequest;
 import com.starfang.realm.TableList;
-import com.starfang.realm.Transaction;
 import com.starfang.realm.primitive.RealmInteger;
 import com.starfang.realm.primitive.RealmString;
-import com.starfang.realm.source.SearchNameWithoutBlank;
 import com.starfang.realm.source.Source;
+import com.starfang.realm.transaction.caocao.LinkingTask;
 import com.starfang.ui.progress.ProgressFragment;
 import com.starfang.ui.progress.ProgressViewModel;
 import com.starfang.utilities.ArithmeticUtils;
 import com.starfang.utilities.CipherUtils;
 import com.starfang.utilities.RealmSyncUtils;
 
-import org.apache.commons.lang3.math.NumberUtils;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,7 +44,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
-import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.security.GeneralSecurityException;
 import java.text.MessageFormat;
@@ -59,7 +51,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;

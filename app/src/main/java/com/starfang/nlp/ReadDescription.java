@@ -1,6 +1,6 @@
 package com.starfang.nlp;
 
-import com.starfang.realm.source.Passives;
+import com.starfang.realm.source.caocao.Passives;
 
 import java.util.List;
 

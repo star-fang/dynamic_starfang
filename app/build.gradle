@@ -51,14 +51,14 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'com.google.android:flexbox:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
-    implementation 'androidx.navigation:navigation-fragment:2.3.0'
-    implementation 'androidx.navigation:navigation-ui:2.3.0'
+    implementation 'androidx.navigation:navigation-fragment:2.3.2'
+    implementation 'androidx.navigation:navigation-ui:2.3.2'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'androidx.security:security-crypto:1.1.0-alpha02'
+    implementation 'androidx.security:security-crypto:1.1.0-alpha03'
 
     implementation 'org.apache.commons:commons-lang3:3.10'
     //implementation 'com.android.volley:volley:1.1.1'
@@ -74,19 +74,23 @@ dependencies {
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
 
     // Google Api
-    implementation 'com.google.android.gms:play-services-auth:18.1.0'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
     implementation 'com.google.apis:google-api-services-sheets:v4-rev9-1.22.0'
     implementation 'com.google.api-client:google-api-client-android:1.30.9'
 
     // Firebase
     implementation platform('com.google.firebase:firebase-bom:25.3.0')
-    implementation 'com.google.firebase:firebase-database:19.4.0'
+    implementation 'com.google.firebase:firebase-database:19.5.1'
     implementation 'com.google.firebase:firebase-storage:19.2.0'
-    implementation 'com.google.firebase:firebase-auth:19.4.0'
-    implementation 'com.google.firebase:firebase-analytics:17.5.0'
+    implementation 'com.google.firebase:firebase-auth:20.0.1'
+    implementation 'com.google.firebase:firebase-analytics:18.0.0'
 
     // Firebase UI
     implementation 'com.firebaseui:firebase-ui-database:6.2.1'
+    implementation 'com.firebaseui:firebase-ui-auth:7.1.1'
+
+    // Firestore
+    implementation 'com.google.firebase:firebase-firestore:22.0.0'
 
     // Test
     testImplementation 'junit:junit:4.13'

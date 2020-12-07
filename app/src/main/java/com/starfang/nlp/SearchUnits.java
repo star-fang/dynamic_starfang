@@ -4,15 +4,15 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.starfang.realm.source.Source;
-import com.starfang.realm.source.Banners;
-import com.starfang.realm.source.Friendships;
-import com.starfang.realm.source.PassiveList;
-import com.starfang.realm.source.Passives;
-import com.starfang.realm.source.Personality;
-import com.starfang.realm.source.PrefectSkills;
-import com.starfang.realm.source.UnitTypes;
-import com.starfang.realm.source.Units;
-import com.starfang.realm.source.WarlordSkills;
+import com.starfang.realm.source.caocao.Banners;
+import com.starfang.realm.source.caocao.Friendships;
+import com.starfang.realm.source.caocao.PassiveList;
+import com.starfang.realm.source.caocao.Passives;
+import com.starfang.realm.source.caocao.Personality;
+import com.starfang.realm.source.caocao.PrefectSkills;
+import com.starfang.realm.source.caocao.UnitTypes;
+import com.starfang.realm.source.caocao.Units;
+import com.starfang.realm.source.caocao.WarlordSkills;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;

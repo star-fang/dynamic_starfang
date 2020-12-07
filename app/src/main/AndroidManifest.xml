@@ -6,7 +6,6 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
@@ -49,6 +48,8 @@
         -->
 
         <service
+            android:name=".services.FirestoreService" />
+        <service
             android:name=".services.StarfangService"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
             <intent-filter>
@@ -72,11 +73,15 @@
                 <action android:name=".CMDActivity.ACTION_ENABLE_ET"/>
             </intent-filter>
         </receiver>
-        <receiver android:name=".TalkActivity$NotifyReceiver" />
-        <receiver android:name=".ui.notifications.NotificationsFragment$NotifyReceiver" />
-        <receiver android:name=".ui.forums.ForumsFragment$NotifyReceiver" />
+        <receiver android:name=".TalkActivity$NotifyReceiver"
+            tools:ignore="Instantiatable" />
+        <receiver android:name=".ui.notifications.NotificationsFragment$NotifyReceiver"
+            tools:ignore="Instantiatable" />
+        <receiver android:name=".ui.forums.ForumsFragment$NotifyReceiver"
+            tools:ignore="Instantiatable" />
 
         <meta-data
+            tools:replace="android:value"
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 

@@ -11,6 +11,7 @@ import com.starfang.CMDActivity;
 import com.starfang.StarfangConstants;
 import com.starfang.realm.Cmd;
 import com.starfang.realm.transaction.rok.ReadJsonFileTask;
+import com.starfang.services.FirestoreService;
 import com.starfang.services.StarfangService;
 import com.starfang.utilities.ServiceUtils;
 
@@ -29,6 +30,7 @@ public class CmdProcessor extends AsyncTask<String, String, Bundle> {
         String CMD_SYNC = "연결";
         String CMD_START = "시작";
         String CMD_STOP = "정지";
+        String CMD_FS_START = "동기화";
 
         String POST_KEY = "postKey";
         String POST_VALUE = "postValue";
@@ -98,8 +100,13 @@ public class CmdProcessor extends AsyncTask<String, String, Bundle> {
                     publishProgress("데이터 연결 중... 기둘");
                     result = new Bundle();
                     result.putInt(CmdMods.POST_KEY, CmdMods.SYNC);
-                    result.putStringArray(CmdMods.POST_VALUE, new String[]{"rok.json", "rok_technology.json", "rok_building.json"});
+                    result.putStringArray(CmdMods.POST_VALUE, new String[]{"rok2.json", "rok_technology.json", "rok_building.json", "vertex.json"});
                     return result;
+                case CmdMods.CMD_FS_START:
+                    Intent fsIntent = new Intent(context, FirestoreService.class );
+                    fsIntent.putExtra(FirestoreService.FS_MESSAGE,"동기화 중...");
+                    context.startService(fsIntent);
+                    break;
                 case CmdMods.CMD_START:
                     if (!ServiceUtils.isServiceExist(context, StarfangService.class, false)) {
                         publishProgress("'알림'을 입력하여 권한을 얻으세요.");

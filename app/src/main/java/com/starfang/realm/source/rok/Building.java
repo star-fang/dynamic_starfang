@@ -17,10 +17,6 @@ public class Building extends RealmObject implements Source {
     public static final String FIELD_CONTENT = "content";
     public static final String FIELD_TIME = "time";
     public static final String FIELD_FIGURES = "figures";
-    public static final String FIELD_FOOD = "food";
-    public static final String FIELD_WOOD = "wood";
-    public static final String FIELD_STONE = "stone";
-    public static final String FIELD_GOLD = "gold";
 
     public static final String FIELD_LEVEL_VAL = "levelVal";
     public static final String FIELD_LEVEL = "level";
@@ -30,6 +26,8 @@ public class Building extends RealmObject implements Source {
     public static final String FIELD_COST_STONE = "stoneCost";
     public static final String FIELD_COST_GOLD = "goldCost";
     public static final String FIELD_COST_BP = "blueprintCost";
+    public static final String FIELD_COST_BOOK = "bookCost";
+    public static final String FIELD_COST_ARROW = "arrowCost";
     public static final String FIELD_SECONDS = "seconds";
     public static final String FIELD_POWER_VAL = "powerVal";
     public static final String FIELD_RW_FOOD = "foodReward";
@@ -63,6 +61,8 @@ public class Building extends RealmObject implements Source {
     private int stoneCost;
     private int goldCost;
     private int blueprintCost;
+    private int bookCost; // 계약의 서
+    private int arrowCost; // 저항의 화살
 
     private int seconds;
     private String timeKor;
@@ -97,17 +97,26 @@ public class Building extends RealmObject implements Source {
             String siUnit = costStr.substring(costStr.length() - 1);
             double quantity = NumberUtils.toDouble(costStr.replaceAll("[^0-9.]", ""),0.0);
             switch (rssCategory.toLowerCase()) {
-                case FIELD_FOOD:
+                case "food":
                     foodCost = RokCalcUtils.siValue(siUnit, quantity);
                     break;
-                case FIELD_WOOD:
+                case "wood":
                     woodCost = RokCalcUtils.siValue(siUnit, quantity);
                     break;
-                case FIELD_STONE:
+                case "stone":
                     stoneCost = RokCalcUtils.siValue(siUnit, quantity);
                     break;
-                case FIELD_GOLD:
+                case "gold":
                     goldCost = RokCalcUtils.siValue(siUnit, quantity);
+                    break;
+                case "Arrow of Resistance x":
+                    arrowCost = (int)quantity;
+                    break;
+                case "Book of Covenant x":
+                    bookCost = (int)quantity;
+                    break;
+                case "x Master's Blueprint":
+                    blueprintCost = (int)quantity;
                     break;
                 default:
                     if( costStr.toLowerCase().contains("blueprint")) {
@@ -123,16 +132,16 @@ public class Building extends RealmObject implements Source {
             String siUnit = rwStr.substring(rwStr.length() - 1);
             double quantity = NumberUtils.toDouble(rwStr.replaceAll("[^0-9.]", ""),0.0);
             switch (rssCategory.toLowerCase()) {
-                case FIELD_FOOD:
+                case "food":
                     foodReward = RokCalcUtils.siValue(siUnit, quantity);
                     break;
-                case FIELD_WOOD:
+                case "wood":
                     woodReward = RokCalcUtils.siValue(siUnit, quantity);
                     break;
-                case FIELD_STONE:
+                case "stone":
                     stoneReward = RokCalcUtils.siValue(siUnit, quantity);
                     break;
-                case FIELD_GOLD:
+                case "gold":
                     goldReward = RokCalcUtils.siValue(siUnit, quantity);
                     break;
                 default:
@@ -180,6 +189,27 @@ public class Building extends RealmObject implements Source {
         return null;
     }
 
+    public String getCostInfo() {
+
+        StringBuilder costInfoBuilder = new StringBuilder();
+        if (foodCost > 0)
+            costInfoBuilder.append("\r\n - 식량: ").append(RokCalcUtils.quantityToString(foodCost));
+        if (woodCost > 0)
+            costInfoBuilder.append("\r\n - 목재: ").append(RokCalcUtils.quantityToString(woodCost));
+        if (stoneCost > 0)
+            costInfoBuilder.append("\r\n - 석제: ").append(RokCalcUtils.quantityToString(stoneCost));
+        if (goldCost > 0)
+            costInfoBuilder.append("\r\n - 금화: ").append(RokCalcUtils.quantityToString(goldCost));
+        if (blueprintCost > 0)
+            costInfoBuilder.append("\r\n - 청사진: ").append(blueprintCost).append("장");
+        if (bookCost > 0)
+            costInfoBuilder.append("\r\n - 계약의 서: ").append(bookCost).append("권");
+        if (arrowCost > 0)
+            costInfoBuilder.append("\r\n - 저항의 화살: ").append(arrowCost).append("개");
+
+        return  costInfoBuilder.toString();
+    }
+
     @Override
     public int getInt(String field) {
         switch (field) {
@@ -198,6 +228,12 @@ public class Building extends RealmObject implements Source {
                 return stoneCost;
             case FIELD_COST_GOLD:
                 return goldCost;
+            case FIELD_COST_BP:
+                return blueprintCost;
+            case FIELD_COST_BOOK:
+                return bookCost;
+            case FIELD_COST_ARROW:
+                return arrowCost;
             case FIELD_RW_FOOD:
                 return foodReward;
             case FIELD_RW_WOOD:

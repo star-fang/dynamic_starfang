@@ -129,6 +129,7 @@ public class ReadJsonFileTask extends AsyncTask<String, Bundle, Void> {
 
                         try (Realm realm = Realm.getDefaultInstance()) {
                             realm.beginTransaction();
+                            realm.delete(realmObjectClass);
                             for (int j = 0; j < tuples.length(); j++) {
                                 JSONObject tuple = tuples.getJSONObject(j);
                                 String tupleStr = tuple.toString();

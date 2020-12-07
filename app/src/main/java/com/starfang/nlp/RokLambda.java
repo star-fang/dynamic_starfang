@@ -283,24 +283,7 @@ class RokLambda {
                                             .append(": ").append(reqBuilding.getString(Source.FIELD_NAME)).append(" lv.")
                                             .append(reqBuilding.getInt(Building.FIELD_LEVEL));
                             }
-
-                            int foodCost = building.getInt(Building.FIELD_COST_FOOD);
-                            int woodCost = building.getInt(Building.FIELD_COST_WOOD);
-                            int stoneCost = building.getInt(Building.FIELD_COST_STONE);
-                            int goldCost = building.getInt(Building.FIELD_COST_GOLD);
-                            int bpCost = building.getInt(Building.FIELD_COST_BP);
-
-                            if (foodCost > 0)
-                                buildingInfoBuilder.append("\r\n - 식량: ").append(RokCalcUtils.quantityToString(foodCost));
-                            if (woodCost > 0)
-                                buildingInfoBuilder.append("\r\n - 목재: ").append(RokCalcUtils.quantityToString(woodCost));
-                            if (stoneCost > 0)
-                                buildingInfoBuilder.append("\r\n - 석제: ").append(RokCalcUtils.quantityToString(stoneCost));
-                            if (goldCost > 0)
-                                buildingInfoBuilder.append("\r\n - 금화: ").append(RokCalcUtils.quantityToString(goldCost));
-                            if (bpCost > 0)
-                                buildingInfoBuilder.append("\r\n - 청사진: ").append(bpCost).append("장");
-
+                            buildingInfoBuilder.append(building.getCostInfo());
 
                         }
                     } else if (buildings.size() > 1) {

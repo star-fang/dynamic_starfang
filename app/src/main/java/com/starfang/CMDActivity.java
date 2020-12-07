@@ -22,19 +22,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.auth.AuthUI;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.starfang.nlp.CmdProcessor;
 import com.starfang.realm.Cmd;
 import com.starfang.utilities.VersionUtils;
+import com.starfang.viewmodel.CMDActivityViewModel;
 
 import org.apache.http.util.TextUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Locale;
 
@@ -50,8 +56,12 @@ public class CMDActivity extends AppCompatActivity {
     public static final String ACTION_CMD_ADDED = "CMD_ADDED";
     public static final String ACTION_DISABLE_ET= "DISABLE_EDIT_TEXT";
     public static final String ACTION_ENABLE_ET= "ENABLE_EDIT_TEXT";
+    public static final String ACTION_SYNC_FIRESTORE= "SYNC_FIRESTORE";
+    private static final int RC_SIGN_IN = 9001;
 
     private Realm realm;
+    private CMDActivityViewModel mViewModel;
+    private FirebaseFirestore mFirestore;
     private static RecyclerView mRecyclerView;
     private static LinearLayoutManager mLayoutManager;
     private static CMDAdapter mAdapter;
@@ -105,6 +115,11 @@ public class CMDActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cmd);
         Log.d(TAG, "onCreate");
+
+        mViewModel = new ViewModelProvider(this).get(CMDActivityViewModel.class);
+        FirebaseFirestore.setLoggingEnabled(true);
+        initFireStore();
+
         this.realm = Realm.getDefaultInstance();
         RealmResults<Cmd> cmdTalks = realm.where(Cmd.class).findAll().sort(Cmd.FIELD_WHEN, Sort.ASCENDING);
 
@@ -201,6 +216,22 @@ public class CMDActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // Start sign in if necessary
+       // if (shouldStartSignIn()) {
+       //     startSignIn();
+       //     return;
+       // }
+
+        // Apply filters
+        //onFilter(mViewModel.getFilters());
+
     }
 
     private static void notifyAdapter() {
@@ -315,6 +346,38 @@ public class CMDActivity extends AppCompatActivity {
         et.setClickable(able);
         et.setFocusable(able);
         et.setFocusableInTouchMode(able);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN) {
+            mViewModel.setIsSigningIn(false);
+
+            if (resultCode != RESULT_OK && shouldStartSignIn()) {
+                startSignIn();
+            }
+        }
+    }
+
+    private void initFireStore() {
+        mFirestore = FirebaseFirestore.getInstance();
+    }
+
+    private void startSignIn() {
+        // Sign in with FirebaseUI
+        Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
+                .setAvailableProviders(Collections.singletonList(
+                        new AuthUI.IdpConfig.EmailBuilder().build()))
+                .setIsSmartLockEnabled(false)
+                .build();
+
+        startActivityForResult(intent, RC_SIGN_IN);
+        mViewModel.setIsSigningIn(true);
+    }
+
+    private boolean shouldStartSignIn() {
+        return (!mViewModel.getIsSigningIn() && FirebaseAuth.getInstance().getCurrentUser() == null);
     }
 
 }

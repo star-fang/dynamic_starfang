@@ -26,9 +26,10 @@ public class StarfangApp extends Application {
         Realm.init(this);
         try {
             RealmConfiguration migrationConfig = new RealmConfiguration.Builder().
-                    name("realm.starfang").schemaVersion(0)
+                    name("realm.starfang").schemaVersion(1)
                     .migration(new DynamicMigrations())
-                    .deleteRealmIfMigrationNeeded().build();
+                    //.deleteRealmIfMigrationNeeded()
+                    .build();
             Realm.setDefaultConfiguration(migrationConfig);
         } catch (IllegalStateException e) {
             Log.e("FANG_APP", Log.getStackTraceString(e));

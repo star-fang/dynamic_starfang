@@ -22,9 +22,8 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.starfang.R;
 import com.starfang.realm.simulator.UnitSim;
-import com.starfang.realm.source.Units;
+import com.starfang.realm.source.caocao.Units;
 import com.starfang.ui.dynamic.DynamicDialog;
-import com.starfang.utilities.ScreenUtils;
 
 public class UnitSimManagementDialog extends DynamicDialog {
 
