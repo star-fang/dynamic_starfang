@@ -1924,8 +1924,16 @@
         "level": "1",
         "figures": [
           "0.5%",
-          null,
-          null
+          [
+            "Quarrying Level 1",
+            "Irrigation Level 1",
+            "Handsaw Level 1",
+            "Military Discipline Level 1",
+"Iron Working Level 1",
+"Improved Fletching Level 1",
+"Horsemanship Level 1",
+"Flaming Projectile Level 1"
+          ]
         ],
         "requirements": [
           "City Hall Level 4"
@@ -1943,11 +1951,9 @@
         "level": "2",
         "figures": [
           "1.0%",
-          "1",
           [
-            "Quarrying Level 1",
-            "Irrigation Level 1",
-            "Handsaw Level 1"
+            "Irrigation Level 2",
+            "Handsaw Level 2"
           ]
         ],
         "requirements": [
@@ -1966,10 +1972,13 @@
         "level": "3",
         "figures": [
           "1.5%",
-          "2",
           [
-            "Irrigation Level 2",
-            "Handsaw Level 2"
+            "Irrigation Level 3",
+            "Handsaw Level 3",
+            "Iron Working Level 2",
+            "Improved Fletching Level 2",
+            "Horsemanship Level 2",
+            "Flaming Projectile Level 2"
           ]
         ],
         "requirements": [
@@ -1988,10 +1997,9 @@
         "level": "4",
         "figures": [
           "2.0%",
-          "3",
           [
-            "Irrigation Level 3",
-            "Handsaw Level 3"
+            "Irrigation Level 4",
+            "Handsaw Level 4"
           ]
         ],
         "requirements": [
@@ -2011,10 +2019,16 @@
         "level": "5",
         "figures": [
           "2.5%",
-          "4",
           [
-            "Irrigation Level 4",
-            "Handsaw Level 4"
+            "Irrigation Level 5",
+            "Handsaw Level 5",
+            "Sickle Level 1",
+            "Masonry Level 1",
+            "Handaxe Level 1",
+            "Iron Working Level 3",
+            "Improved Fletching Level 3",
+            "Horsemanship Level 3",
+            "Flaming Projectile Level 3"
           ]
         ],
         "requirements": [
@@ -2034,13 +2048,10 @@
         "level": "6",
         "figures": [
           "3.0%",
-          "5",
           [
-            "Irrigation Level 5",
-            "Handsaw Level 5",
-            "Sickle Level 1",
-            "Masonry Level 1",
-            "Handaxe Level 1"
+            "Sickle Level 2",
+            "Masonry Level 2",
+            "Handaxe Level 2"
           ]
         ],
         "requirements": [
@@ -2060,11 +2071,14 @@
         "level": "7",
         "figures": [
           "3.5%",
-          "6",
           [
-            "Sickle Level 2",
-            "Masonry Level 2",
-            "Handaxe Level 2"
+            "Sickle Level 3",
+            "Masonry Level 3",
+            "Handaxe Level 3",
+            "Iron Working Level 4",
+            "Improved Fletching Level 4",
+            "Horsemanship Level 4",
+            "Flaming Projectile Level 4"
           ]
         ],
         "requirements": [
@@ -2084,11 +2098,16 @@
         "level": "8",
         "figures": [
           "4.0%",
-          "7",
           [
-            "Sickle Level 3",
-            "Masonry Level 3",
-            "Handaxe Level 3"
+            "Sickle Level 4",
+            "Masonry Level 4",
+            "Handaxe Level 4",
+            "Swordsman",
+            "Bowman",
+            "Light Cavalry",
+            "Arcuballista",
+            "Tracking Level 1",
+            "Pathfinding Level 1"
           ]
         ],
         "requirements": [
@@ -2108,11 +2127,16 @@
         "level": "9",
         "figures": [
           "4.5%",
-          "8",
           [
-            "Sickle Level 4",
-            "Masonry Level 4",
-            "Handaxe Level 4"
+            "Sickle Level 5",
+            "Masonry Level 5",
+            "Handaxe Level 5",
+            "Iron Working Level 5",
+            "Improved Fletching Level 5",
+            "Horsemanship Level 5",
+            "Flaming Projectile Level 5",
+            "Tracking Level 2",
+            "Pathfinding Level 2"
           ]
         ],
         "requirements": [
@@ -2132,11 +2156,13 @@
         "level": "10",
         "figures": [
           "5.0%",
-          "9",
           [
-            "Sickle Level 5",
-            "Masonry Level 5",
-            "Handaxe Level 5"
+            "Metallurgy Level 1",
+            "Chisel Level 1-2",
+            "Writing Level 1-2",
+            "Metalworking Level 1-2",
+            "Tracking Level 3",
+            "Pathfinding Level 3"
           ]
         ],
         "requirements": [
@@ -2156,12 +2182,16 @@
         "level": "11",
         "figures": [
           "5.5%",
-          "10",
           [
-            "Metallurgy Level 1",
-            "Chisel Level 1-2",
-            "Writing Level 1-2",
-            "Metalworking Level 1-2"
+            "Chisel Level 3",
+            "Writing Level 3",
+            "Metalworking Level 3",
+            "Tracking Level 4",
+            "Pathfinding Level 4",
+            "Buckler Level 1",
+            "Leather Armor Level 1",
+            "Scale Armor Level 1",
+            "Enhanced Axle Level 1"
           ]
         ],
         "requirements": [
@@ -2181,11 +2211,19 @@
         "level": "12",
         "figures": [
           "6.0%",
-          "11",
           [
-            "Chisel Level 3",
-            "Writing Level 3",
-            "Metalworking Level 3"
+            "Chisel Level 4",
+            "Writing Level 4",
+            "Metalworking Level 4",
+            "Multilayer Structure Level 1-2",
+            "Handcart Level 1-2",
+            "Placer Mining Level 1-2",
+            "Tracking Level 5",
+            "Pathfinding Level 5",
+            "Buckler Level 2",
+            "Leather Armor Level 2",
+            "Scale Armor Level 2",
+            "Enhanced Axle Level 2"
           ]
         ],
         "requirements": [
@@ -2205,14 +2243,18 @@
         "level": "13",
         "figures": [
           "6.5%",
-          "12",
           [
-            "Chisel Level 4",
-            "Writing Level 4",
-            "Metalworking Level 4",
-            "Multilayer Structure Level 1-2",
-            "Handcart Level 1-2",
-            "Placer Mining Level 1-2"
+            "Chisel Level 5",
+            "Writing Level 5",
+            "Metalworking Level 5",
+            "Multilayer Structure Level 3",
+            "Handcart Level 3",
+            "Placer Mining Level 3",
+            "Wheel Level 1-2",
+            "Buckler Level 3",
+            "Leather Armor Level 3",
+            "Scale Armor Level 3",
+            "Enhanced Axle Level 3"
           ]
         ],
         "requirements": [
@@ -2232,15 +2274,15 @@
         "level": "14",
         "figures": [
           "7.0%",
-          "13",
           [
-            "Chisel Level 5",
-            "Writing Level 5",
-            "Metalworking Level 5",
-            "Multilayer Structure Level 3",
-            "Handcart Level 3",
-            "Placer Mining Level 3",
-            "Wheel Level 1-2"
+            "Multilayer Structure Level 4",
+            "Handcart Level 4",
+            "Placer Mining Level 4",
+            "Wheel Level 3-4",
+            "Buckler Level 4",
+            "Leather Armor Level 4",
+            "Scale Armor Level 4",
+            "Enhanced Axle Level 4"
           ]
         ],
         "requirements": [
@@ -2260,13 +2302,15 @@
         "level": "15",
         "figures": [
           "7.5%",
-          "14",
           [
-            "Multilayer Structure Level 4",
-            "Handcart Level 4",
-            "Placer Mining Level 4",
-            "Wheel Level 3-4",
-            "Buckler Level 4"
+            "Multilayer Structure Level 5",
+            "Handcart Level 5",
+            "Placer Mining Level 5",
+            "Wheel Level 5",
+            "Buckler Level 5",
+            "Leather Armor Level 5",
+            "Scale Armor Level 5",
+            "Enhanced Axle Level 5"
           ]
         ],
         "requirements": [
@@ -2286,12 +2330,19 @@
         "level": "16",
         "figures": [
           "8.0%",
-          "15",
           [
-            "Multilayer Structure Level 5",
-            "Handcart Level 5",
-            "Placer Mining Level 5",
-            "Wheel Level 5"
+            "Jewelry Level 1",
+            "Plow Level 1-3",
+            "Sawmill Level 1-3",
+            "Spearman",
+            "Composite Bowman",
+            "Heavy Cavalry",
+            "Mangonel",
+            "Camouflage Level 1-2",
+            "Combat Tactics Level 1-4",
+            "Defensive Formation Level 1-4",
+            "Herbal Medicine Level 1-4",
+            "Cartography Level 1"
           ]
         ],
         "requirements": [
@@ -2311,11 +2362,14 @@
         "level": "17",
         "figures": [
           "8.5%",
-          "16",
           [
-            "Jewelry Level 1",
-            "Plow Level 1-3",
-            "Sawmill Level 1-3"
+            "Plow Level 4-6",
+            "Sawmill Level 4-6",
+            "Scythe Level 1-4",
+            "Whipsaw Level 1-4",
+            "Engineering Level 1-4",
+            "Camouflage Level 3",
+            "Cartography Level 2"
           ]
         ],
         "requirements": [
@@ -2335,13 +2389,18 @@
         "level": "18",
         "figures": [
           "9.0%",
-          "17",
           [
-            "Plow Level 4-6",
-            "Sawmill Level 4-6",
-            "Scythe Level 1-4",
-            "Whipsaw Level 1-4",
-            "Engineering Level 1-4"
+            "Plow Level 7-9",
+            "Sawmill Level 7-9",
+            "Scythe Level 5-9",
+            "Whipsaw Level 5-9",
+            "Engineering Level 5-9",
+            "Mathematics Level 1-4",
+            "Camouflage Level 4",
+            "Combat Tactics Level 5-9",
+            "Defensive Formation Level 5-9",
+            "Herbal Medicine Level 5-9",
+            "Cartography Level 3"
           ]
         ],
         "requirements": [
@@ -2361,14 +2420,14 @@
         "level": "19",
         "figures": [
           "9.5%",
-          "18",
           [
-            "Plow Level 7-9",
-            "Sawmill Level 7-9",
-            "Scythe Level 5-9",
-            "Whipsaw Level 5-9",
-            "Engineering Level 5-9",
-            "Mathematics Level 1-4"
+            "Plow Level 10",
+            "Sawmill Level 10",
+            "Mathematics Level 5-9",
+            "Open-pit Quarry Level 1-4",
+            "Coinage Level 1-4",
+            "Camouflage Level 5",
+            "Cartography Level 4"
           ]
         ],
         "requirements": [
@@ -2388,13 +2447,19 @@
         "level": "20",
         "figures": [
           "10.0%",
-          "19",
           [
-            "Plow Level 10",
-            "Sawmill Level 10",
-            "Mathematics Level 5-9",
-            "Open-pit Quarry Level 1-4",
-            "Coinage Level 1-4"
+            "Scythe Level 10",
+            "Whipsaw Level 10",
+            "Engineering Level 10",
+            "Stone Saw Level 1-4",
+            "Shaft Mining Level 1-4",
+            "Machinery Level 1-4",
+            "Carriage Level 1-4",
+            "Cutting & Polishing Level 1-2",
+            "Combat Tactics Level 10",
+            "Defensive Formation Level 10",
+            "Herbal Medicine Level 10",
+            "Cartography Level 5"
           ]
         ],
         "requirements": [
@@ -2414,16 +2479,15 @@
         "level": "21",
         "figures": [
           "12.0%",
-          "20",
           [
-            "Scythe Level 10",
-            "Whipsaw Level 10",
-            "Engineering Level 10",
-            "Stone Saw Level 1-4",
-            "Shaft Mining Level 1-4",
-            "Machinery Level 1-4",
-            "Carriage Level 1-4",
-            "Cutting & Polishing Level 1-2"
+            "Mathematics Level 10",
+            "Open-pit Quarry Level 5-9",
+            "Coinage Level 5-9",
+            "Cutting & Polishing Level 3-4",
+            "Long Swordsman",
+            "Crossbowman",
+            "Knight",
+            "Ballista"
           ]
         ],
         "requirements": [
@@ -2443,12 +2507,12 @@
         "level": "22",
         "figures": [
           "14.0%",
-          "21",
           [
-            "Mathematics Level 10",
-            "Open-pit Quarry Level 5-9",
-            "Coinage Level 5-9",
-            "Cutting & Polishing Level 3-4"
+            "Stone Saw Level 5-9",
+            "Shaft Mining Level 5-9",
+            "Machinery Level 5-9",
+            "Carriage Level 5-9",
+            "Cutting & Polishing Level 5-6"
           ]
         ],
         "requirements": [
@@ -2468,13 +2532,19 @@
         "level": "23",
         "figures": [
           "16.0%",
-          "22",
           [
-            "Stone Saw Level 5-9",
-            "Shaft Mining Level 5-9",
-            "Machinery Level 5-9",
-            "Carriage Level 5-9",
-            "Cutting & Polishing Level 5-6"
+            "Cutting & Polishing Level 7-8",
+            "Wootz Steel Level 1-4",
+            "Bodkin Arrows Level 1-4",
+            "Stirrups Level 1-4",
+            "Ballistics Level 1-4",
+            "Scutum Level 1-4",
+            "Pavise Level 1-4",
+            "Plate Armor Level 1-4",
+            "Heavy Frame Level 1-4",
+            "Medical Corps Level 1-4",
+            "Combined Arms Level 1-4",
+            "Encampment Level 1-4"
           ]
         ],
         "requirements": [
@@ -2494,8 +2564,19 @@
         "level": "24",
         "figures": [
           "18.0%",
-          "23",
-          "Cutting & Polishing Level 7-8"
+          [
+            "Open-pit Quarry Level 10",
+            "Coinage Level 10",
+            "Cutting & Polishing Level 9",
+            "Wootz Steel Level 5-9",
+            "Bodkin Arrows Level 5-9",
+            "Stirrups Level 5-9",
+            "Ballistics Level 5-9",
+            "Scutum Level 5-9",
+            "Plate Armor Level 5-9",
+            "Medical Corps Level 5-9",
+            "Encampment Level 5-9"
+          ]
         ],
         "requirements": [
           "City Hall Level 24"
@@ -2514,11 +2595,16 @@
         "level": "25",
         "figures": [
           "25.0%",
-          "24",
           [
-            "Open-pit Quarry Level 10",
-            "Coinage Level 10",
-            "Cutting & Polishing Level 9"
+            "Cutting & Polishing Level 10",
+            "Stone Saw Level 10",
+            "Shaft Mining Level 10",
+            "Machinery Level 10",
+            "Carriage Level 10",
+            "Royal Guard",
+            "Royal Crossbowman",
+            "Royal Knight",
+            "Trebuchet"
           ]
         ],
         "requirements": [
@@ -2536,19 +2622,6 @@
         "power": "783,449",
         "contentId": 200004,
         "id": 100149
-      },
-      {
-        "figures": [
-          "25",
-          [
-            "Cutting & Polishing Level 10Stone Saw Level 10",
-            "Shaft Mining Level 10",
-            "Machinery Level 10",
-            "Carriage Level 10"
-          ]
-        ],
-        "contentId": 200004,
-        "id": 100150
       },
       {
         "level": "1",
@@ -8307,7 +8380,7 @@
           "stone24.0M",
           "Master's Blueprint"
         ],
-        "time": "0",
+        "time": "13d 6h",
         "power": "881,480",
         "contentId": 200018,
         "id": 100522
@@ -9143,7 +9216,7 @@
           "stone9.5M",
           "Book of Covenant x5000"
         ],
-        "time": "23d 5h",
+        "time": "42d",
         "power": "552,999",
         "contentId": 200020,
         "id": 100569
@@ -9177,24 +9250,11 @@
         "id": 100571
       },
       {
-        "level": "",
-        "figures": [
-          null,
-          null
-        ],
-        "requirements": null,
-        "cost": null,
-        "time": "",
-        "power": "",
-        "contentId": 200023,
-        "id": 100602,
-        "reward": null
-      },
-      {
         "level": "1",
         "figures": [
-          null,
-          "2,000"
+          ["Stone Age"],
+          "2,000",
+          1
         ],
         "requirements": null,
         "cost": null,
@@ -9212,7 +9272,8 @@
             "Archery Range",
             "Scout Camp"
           ],
-          "3,000"
+          "3,000",
+          1
         ],
         "requirements": null,
         "cost": [
@@ -9235,7 +9296,8 @@
             "Farm (2nd)",
             "Alliance Center"
           ],
-          "4,000"
+          "4,000",
+          1
         ],
         "requirements": [
           "Wall Level 2"
@@ -9256,30 +9318,15 @@
       {
         "level": "4",
         "figures": [
-          null,
-          null
-        ],
-        "requirements": null,
-        "cost": null,
-        "time": "",
-        "power": "",
-        "contentId": 200023,
-        "id": 100606,
-        "reward": [
-          "food30.0K",
-          "wood30.0K"
-        ]
-      },
-      {
-        "level": "5",
-        "figures": [
           [
             "Quarry (1st)",
             "Academy",
             "Stable",
-            "Hospital (2nd)"
+            "Hospital (2nd)",
+            "Bronze Age"
           ],
-          "5,000"
+          "5,000",
+          1
         ],
         "requirements": [
           "Wall Level 3"
@@ -9293,13 +9340,12 @@
         "contentId": 200023,
         "id": 100607,
         "reward": [
-          "food40.0K",
-          "wood40.0K",
-          "stone40.0K"
+          "food30.0K",
+          "wood30.0K"
         ]
       },
       {
-        "level": "6",
+        "level": "5",
         "figures": [
           [
             "Lumber Mill (2nd)",
@@ -9307,7 +9353,8 @@
             "Siege Workshop",
             "2nd march queue"
           ],
-          "7,000"
+          "7,000",
+          2
         ],
         "requirements": [
           "Wall Level 4",
@@ -9322,19 +9369,20 @@
         "contentId": 200023,
         "id": 100608,
         "reward": [
-          "food50.0K",
-          "wood50.0K",
-          "stone50.0K"
+          "food40.0K",
+          "wood40.0K",
+          "stone40.0K"
         ]
       },
       {
-        "level": "7",
+        "level": "6",
         "figures": [
           [
             "Farm (3rd)",
             "Courier Station"
           ],
-          "9,000"
+          "9,000",
+          2
         ],
         "requirements": [
           "Wall Level 5",
@@ -9356,13 +9404,14 @@
         ]
       },
       {
-        "level": "8",
+        "level": "7",
         "figures": [
           [
             "Quarry (2nd)",
             "Castle"
           ],
-          "12,000"
+          "12,000",
+          2
         ],
         "requirements": [
           "Wall Level 6",
@@ -9384,14 +9433,15 @@
         ]
       },
       {
-        "level": "9",
+        "level": "8",
         "figures": [
           [
             "Lumber Mill (3rd)",
             "Monument",
             "Tier 2 troops"
           ],
-          "15,000"
+          "15,000",
+          2
         ],
         "requirements": [
           "Wall Level 7",
@@ -9413,13 +9463,14 @@
         ]
       },
       {
-        "level": "10",
+        "level": "9",
         "figures": [
           [
             "Hospital (3rd)",
             "Farm (3rd)"
           ],
-          "19,000"
+          "19,000",
+          2
         ],
         "requirements": [
           "Wall Level 8",
@@ -9437,36 +9488,20 @@
         "reward": [
           "food50.0K",
           "wood50.0K",
-          "stone50.0K",
-          "gold10.0K"
+          "stone50.0K"
         ]
       },
       {
-        "level": "11",
-        "figures": [
-          null,
-          null
-        ],
-        "requirements": null,
-        "cost": null,
-        "time": "",
-        "power": "",
-        "contentId": 200023,
-        "id": 100613,
-        "reward": [
-          "food50.0K",
-          "wood50.0K"
-        ]
-      },
-      {
-        "level": "12",
+        "level": "10",
         "figures": [
           [
             "Quarry (3rd)",
             "Goldmine (1st)Lyceum of Wisdom",
-            "Trading Post"
+            "Trading Post",
+            "Iron Age"
           ],
-          "23,000"
+          "23,000",
+          2
         ],
         "requirements": [
           "Wall Level 9",
@@ -9482,18 +9517,21 @@
         "contentId": 200023,
         "id": 100614,
         "reward": [
-          "food100.0K",
-          "wood100.0K"
+          "food50.0K",
+          "wood50.0K",
+          "stone50.0K",
+          "gold10.0K"
         ]
       },
       {
-        "level": "13",
+        "level": "11",
         "figures": [
           [
             "Lumber Mill (4th)",
             "3rd march queue"
           ],
-          "28,000"
+          "28,000",
+          3
         ],
         "requirements": [
           "Wall Level 10",
@@ -9509,15 +9547,16 @@
         "contentId": 200023,
         "id": 100615,
         "reward": [
-          "food100.0K",
-          "wood100.0K"
+          "food50.0K",
+          "wood50.0K"
         ]
       },
       {
-        "level": "14",
+        "level": "12",
         "figures": [
           "Goldmine (2nd)",
-          "33,000"
+          "33,000",
+          3
         ],
         "requirements": [
           "Wall Level 11",
@@ -9533,15 +9572,16 @@
         "contentId": 200023,
         "id": 100616,
         "reward": [
-          "stone100.0K",
-          "gold20.0K"
+          "food100.0K",
+          "wood100.0K"
         ]
       },
       {
-        "level": "15",
+        "level": "13",
         "figures": [
           "Quarry (4th)",
-          "38,000"
+          "38,000",
+          3
         ],
         "requirements": [
           "Wall Level 12",
@@ -9562,10 +9602,11 @@
         ]
       },
       {
-        "level": "16",
+        "level": "14",
         "figures": [
           "Goldmine (3rd)",
-          "44,000"
+          "44,000",
+          3
         ],
         "requirements": [
           "Wall Level 13",
@@ -9587,10 +9628,11 @@
         ]
       },
       {
-        "level": "17",
+        "level": "15",
         "figures": [
           "Hospital (4th)",
-          "50,000"
+          "50,000",
+          3
         ],
         "requirements": [
           "Wall Level 14",
@@ -9611,30 +9653,15 @@
         ]
       },
       {
-        "level": "18",
-        "figures": [
-          null,
-          null
-        ],
-        "requirements": null,
-        "cost": null,
-        "time": "",
-        "power": "",
-        "contentId": 200023,
-        "id": 100620,
-        "reward": [
-          "stone100.0K",
-          "gold20.0K"
-        ]
-      },
-      {
-        "level": "19",
+        "level": "16",
         "figures": [
           [
             "Goldmine (4th)",
-            "Tier 3 troops"
+            "Tier 3 troops",
+            "Dark Age"
           ],
-          "57,000"
+          "57,000",
+          3
         ],
         "requirements": [
           "Wall Level 15",
@@ -9650,15 +9677,16 @@
         "contentId": 200023,
         "id": 100621,
         "reward": [
-          "food100.0K",
-          "wood100.0K"
+          "stone100.0K",
+          "gold20.0K"
         ]
       },
       {
-        "level": "20",
+        "level": "17",
         "figures": [
           "4th march queue",
-          "64,000"
+          "64,000",
+          4
         ],
         "requirements": [
           "Wall Level 16",
@@ -9674,15 +9702,16 @@
         "contentId": 200023,
         "id": 100622,
         "reward": [
-          "stone100.0K",
-          "gold20.0K"
+          "food100.0K",
+          "wood100.0K"
         ]
       },
       {
-        "level": "21",
+        "level": "18",
         "figures": [
           null,
-          "72,000"
+          "72,000",
+          4
         ],
         "requirements": [
           "Wall Level 17",
@@ -9698,17 +9727,16 @@
         "contentId": 200023,
         "id": 100623,
         "reward": [
-          "food ?",
-          "wood ?",
-          "stone ?",
-          "gold ?"
+          "stone100.0K",
+          "gold20.0K"
         ]
       },
       {
-        "level": "23",
+        "level": "19",
         "figures": [
           null,
-          "80,000"
+          "80,000",
+          4
         ],
         "requirements": [
           "Wall Level 18",
@@ -9724,15 +9752,16 @@
         "contentId": 200023,
         "id": 100624,
         "reward": [
-          "food150.0K",
-          "wood150.0K"
+          "food100.0K",
+          "wood100.0K"
         ]
       },
       {
-        "level": "24",
+        "level": "20",
         "figures": [
           null,
-          "90,000"
+          "90,000",
+          4
         ],
         "requirements": [
           "Wall Level 19",
@@ -9748,32 +9777,16 @@
         "contentId": 200023,
         "id": 100625,
         "reward": [
-          "stone150.0K",
-          "gold30.0K"
-        ]
-      },
-      {
-        "level": "25",
-        "figures": [
-          null,
-          null
-        ],
-        "requirements": null,
-        "cost": null,
-        "time": "",
-        "power": "",
-        "contentId": 200023,
-        "id": 100626,
-        "reward": [
-          "stone200.0K",
-          "gold50.0K"
+          "stone100.0K",
+          "gold20.0K"
         ]
       },
       {
         "level": "21",
         "figures": [
-          "Tier 4 troops",
-          "100,000"
+          ["Tier 4 troops","Feudal Age"],
+          "100,000",
+          4
         ],
         "requirements": [
           "Wall Level 20",
@@ -9793,7 +9806,8 @@
         "level": "22",
         "figures": [
           "5th march queue",
-          "110,000"
+          "110,000",
+          5
         ],
         "requirements": [
           "Wall Level 21",
@@ -9813,7 +9827,8 @@
         "level": "23",
         "figures": [
           null,
-          "120,000"
+          "120,000",
+          5
         ],
         "requirements": [
           "Wall Level 22",
@@ -9833,7 +9848,8 @@
         "level": "24",
         "figures": [
           null,
-          "130,000"
+          "130,000",
+          5
         ],
         "requirements": [
           "Wall Level 23",
@@ -9853,7 +9869,8 @@
         "level": "25",
         "figures": [
           "Tier 5 troops",
-          "150,000"
+          "150,000",
+          5
         ],
         "requirements": [
           "Wall Level 24",
@@ -10405,9 +10422,9 @@
         "requirements": null,
         "figures": [
           "1,000",
-          "1,000",
-          null
+          "1,000"
         ],
+        "cost": null,
         "time": null,
         "power": "5",
         "contentId": 200025,
@@ -10420,12 +10437,12 @@
         ],
         "figures": [
           "1,500",
-          "1,500",
-          [
-            "food800",
-            "wood800",
-            "Arrow of Resistance"
-          ]
+          "1,500"
+        ],
+        "cost": [
+          "food800",
+          "wood800",
+          "Arrow of Resistance x"
         ],
         "time": "30s",
         "power": "11",
@@ -10439,12 +10456,12 @@
         ],
         "figures": [
           "2,000",
-          "2,000",
-          [
-            "food1.5K",
-            "wood1.5K",
-            "Arrow of Resistance x5"
-          ]
+          "2,000"
+        ],
+        "cost": [
+        "food1.5K",
+        "wood1.5K",
+        "Arrow of Resistance x5"
         ],
         "time": "1m 40s",
         "power": "21",
@@ -10458,12 +10475,12 @@
         ],
         "figures": [
           "3,000",
-          "3,000",
-          [
-            "food2.8K",
-            "wood2.8K",
-            "Arrow of Resistance x8"
-          ]
+          "3,000"
+        ],
+        "cost": [
+          "food2.8K",
+          "wood2.8K",
+          "Arrow of Resistance x8"
         ],
         "time": "5m",
         "power": "44",
@@ -10477,12 +10494,12 @@
         ],
         "figures": [
           "4,000",
-          "4,000",
-          [
-            "food5.0K",
-            "wood5.0K",
-            "Arrow of Resistance x15"
-          ]
+          "4,000"
+        ],
+        "cost": [
+          "food5.0K",
+          "wood5.0K",
+          "Arrow of Resistance x15"
         ],
         "time": "15m",
         "power": "100",
@@ -10496,13 +10513,13 @@
         ],
         "figures": [
           "5,000",
-          "5,000",
-          [
-            "food8.5K",
-            "wood8.5K",
-            "stone1.3K",
-            "Arrow of Resistance x?"
-          ]
+          "5,000"
+        ],
+        "cost": [
+          "food8.5K",
+          "wood8.5K",
+          "stone1.3K",
+          "Arrow of Resistance x20"
         ],
         "time": "35m",
         "power": "221",
@@ -10516,13 +10533,13 @@
         ],
         "figures": [
           "6,000",
-          "6,000",
-          [
-            "food12.8K",
-            "wood12.8K",
-            "stone2.0K",
-            "Arrow of Resistance x30"
-          ]
+          "6,000"
+        ],
+        "cost": [
+          "food12.8K",
+          "wood12.8K",
+          "stone2.0K",
+          "Arrow of Resistance x30"
         ],
         "time": "1h 10m",
         "power": "446",
@@ -10536,13 +10553,13 @@
         ],
         "figures": [
           "16,000",
-          "8,000",
-          [
-            "food19.3K",
-            "wood19.3K",
-            "stone3.2K",
-            "Arrow of Resistance x40"
-          ]
+          "8,000"
+        ],
+        "cost": [
+          "food19.3K",
+          "wood19.3K",
+          "stone3.2K",
+          "Arrow of Resistance x40"
         ],
         "time": "2h 20m",
         "power": "868",
@@ -10556,13 +10573,13 @@
         ],
         "figures": [
           "20,000",
-          "10,000",
-          [
-            "food29.0K",
-            "wood29.0K",
-            "stone5.2K",
-            "Arrow of Resistance x50"
-          ]
+          "10,000"
+        ],
+        "cost": [
+          "food29.0K",
+          "wood29.0K",
+          "stone5.2K",
+          "Arrow of Resistance x50"
         ],
         "time": "4h 40m",
         "power": "1,671",
@@ -10576,13 +10593,13 @@
         ],
         "figures": [
           "24,000",
-          "12,000",
-          [
-            "food43.5K",
-            "wood43.5K",
-            "stone8.2K",
-            "Arrow of Resistance x?"
-          ]
+          "12,000"
+        ],
+        "cost": [
+          "food43.5K",
+          "wood43.5K",
+          "stone8.2K",
+          "Arrow of Resistance x70"
         ],
         "time": "9h 20m",
         "power": "3,213",
@@ -10596,13 +10613,13 @@
         ],
         "figures": [
           "28,000",
-          "14,000",
-          [
-            "food67.5K",
-            "wood67.5K",
-            "stone12.5K",
-            "Arrow of Resistance x80"
-          ]
+          "14,000"
+        ],
+        "cost": [
+          "food67.5K",
+          "wood67.5K",
+          "stone12.5K",
+          "Arrow of Resistance x80"
         ],
         "time": "11h 12m",
         "power": "5,133",
@@ -10616,13 +10633,13 @@
         ],
         "figures": [
           "32,000",
-          "16,000",
-          [
-            "food102.5K",
-            "wood102.5K",
-            "stone20.0K",
-            "Arrow of Resistance x100"
-          ]
+          "16,000"
+        ],
+        "cost": [
+          "food102.5K",
+          "wood102.5K",
+          "stone20.0K",
+          "Arrow of Resistance x100"
         ],
         "time": "13h 26m",
         "power": "7,538",
@@ -10636,13 +10653,13 @@
         ],
         "figures": [
           "36,000",
-          "18,000",
-          [
-            "food155.0K",
-            "wood155.0K",
-            "stone30.0K",
-            "Arrow of Resistance x125"
-          ]
+          "18,000"
+        ],
+        "cost": [
+          "food155.0K",
+          "wood155.0K",
+          "stone30.0K",
+          "Arrow of Resistance x125"
         ],
         "time": "16h 8m",
         "power": "10,570",
@@ -10656,13 +10673,13 @@
         ],
         "figures": [
           "40,000",
-          "20,000",
-          [
-            "food232.5K",
-            "wood232.5K",
-            "stone45.0K",
-            "Arrow of Resistance x150"
-          ]
+          "20,000"
+        ],
+        "cost": [
+          "food232.5K",
+          "wood232.5K",
+          "stone45.0K",
+          "Arrow of Resistance x150"
         ],
         "time": "19h 21m",
         "power": "14,421",
@@ -10676,13 +10693,13 @@
         ],
         "figures": [
           "66,000",
-          "22,000",
-          [
-            "food350.0K",
-            "wood350.0K",
-            "stone67.5K",
-            "Arrow of Resistance x300"
-          ]
+          "22,000"
+        ],
+        "cost": [
+          "food350.0K",
+          "wood350.0K",
+          "stone67.5K",
+          "Arrow of Resistance x300"
         ],
         "time": "23h 13m",
         "power": "19,367",
@@ -10696,13 +10713,13 @@
         ],
         "figures": [
           "72,000",
-          "24,000",
-          [
-            "food525.0K",
-            "wood525.0K",
-            "stone102.5K",
-            "Arrow of Resistance x500"
-          ]
+          "24,000"
+        ],
+        "cost": [
+          "food525.0K",
+          "wood525.0K",
+          "stone102.5K",
+          "Arrow of Resistance x500"
         ],
         "time": "1d 4h",
         "power": "25,787",
@@ -10716,13 +10733,13 @@
         ],
         "figures": [
           "78,000",
-          "26,000",
-          [
-            "food787.5K",
-            "wood787.5K",
-            "stone155.0K",
-            "Arrow of Resistance x700"
-          ]
+          "26,000"
+        ],
+        "cost": [
+          "food787.5K",
+          "wood787.5K",
+          "stone155.0K",
+          "Arrow of Resistance x700"
         ],
         "time": "1d 9h",
         "power": "34,217",
@@ -10736,13 +10753,13 @@
         ],
         "figures": [
           "84,000",
-          "28,000",
-          [
-            "food1.2M",
-            "wood1.2M",
-            "stone250.0K",
-            "Arrow of Resistance x900"
-          ]
+          "28,000"
+        ],
+        "cost": [
+          "food1.2M",
+          "wood1.2M",
+          "stone250.0K",
+          "Arrow of Resistance x900"
         ],
         "time": "1d 16h",
         "power": "45,545",
@@ -10756,13 +10773,13 @@
         ],
         "figures": [
           "90,000",
-          "30,000",
-          [
-            "food1.8M",
-            "wood1.8M",
-            "stone375.0K",
-            "Arrow of Resistance x1200"
-          ]
+          "30,000"
+        ],
+        "cost": [
+          "food1.8M",
+          "wood1.8M",
+          "stone375.0K",
+          "Arrow of Resistance x1200"
         ],
         "time": "2d",
         "power": "60,804",
@@ -10776,13 +10793,13 @@
         ],
         "figures": [
           "96,000",
-          "32,000",
-          [
-            "food2.7M",
-            "wood2.7M",
-            "stone575.0K",
-            "Arrow of Resistance x1500"
-          ]
+          "32,000"
+        ],
+        "cost": [
+          "food2.7M",
+          "wood2.7M",
+          "stone575.0K",
+          "Arrow of Resistance x1500"
         ],
         "time": "2d 10h",
         "power": "81 650",
@@ -10796,13 +10813,13 @@
         ],
         "figures": [
           "136,000",
-          "34,000",
-          [
-            "food4.1M",
-            "wood4.1M",
-            "stone875.0K",
-            "Arrow of Resistance x1800"
-          ]
+          "34,000"
+        ],
+        "cost": [
+          "food4.1M",
+          "wood4.1M",
+          "stone875.0K",
+          "Arrow of Resistance x1800"
         ],
         "time": "2d 21h",
         "power": "110 460",
@@ -10816,13 +10833,13 @@
         ],
         "figures": [
           "144,000",
-          "36,000",
-          [
-            "food6.1M",
-            "wood6.1M",
-            "stone1.3M",
-            "Arrow of Resistance x2000"
-          ]
+          "36,000"
+        ],
+        "cost": [
+          "food6.1M",
+          "wood6.1M",
+          "stone1.3M",
+          "Arrow of Resistance x2000"
         ],
         "time": "3d 18h",
         "power": "151,716",
@@ -10836,13 +10853,13 @@
         ],
         "figures": [
           "152,000",
-          "38,000",
-          [
-            "food9.1M",
-            "wood9.1M",
-            "stone2.0M",
-            "Arrow of Resistance x2500"
-          ]
+          "38,000"
+        ],
+        "cost": [
+          "food9.1M",
+          "wood9.1M",
+          "stone2.0M",
+          "Arrow of Resistance x2500"
         ],
         "time": "5d 6h",
         "power": "212,389",
@@ -10856,13 +10873,13 @@
         ],
         "figures": [
           "160,000",
-          "40,000",
-          [
-            "food13.8M",
-            "wood13.8M",
-            "stone3.0M",
-            "Arrow of Resistance x3000"
-          ]
+          "40,000"
+        ],
+        "cost": [
+          "food13.8M",
+          "wood13.8M",
+          "stone3.0M",
+          "Arrow of Resistance x3000"
         ],
         "time": "7d 21h",
         "power": "303,649",
@@ -10877,13 +10894,13 @@
         ],
         "figures": [
           "500,000",
-          "50,000",
-          [
-            "food20.8M",
-            "wood20.8M",
-            "stone4.5M",
-            "Arrow of Resistance x5000"
-          ]
+          "50,000"
+        ],
+        "cost": [
+          "food20.8M",
+          "wood20.8M",
+          "stone4.5M",
+          "Arrow of Resistance x5000"
         ],
         "time": "14d 7h",
         "power": "495 562",
@@ -10904,8 +10921,8 @@
         "category": "economic",
         "categoryKor": "경제",
         "facts": [
-          "food\/hr",
-          "capacity",
+          "시간당 식량 생산",
+          "최대 수집량",
           "roi days"
         ]
       },
@@ -10916,8 +10933,8 @@
         "category": "economic",
         "categoryKor": "경제",
         "facts": [
-          "wood\/hr",
-          "capacity",
+          "시간당 목재 생산",
+          "최대 수집량",
           "roi days"
         ]
       },
@@ -10928,8 +10945,8 @@
         "category": "economic",
         "categoryKor": "경제",
         "facts": [
-          "stone\/hr",
-          "capacity",
+          "시간당 석재 생산",
+          "최대 수집량",
           "roi days"
         ]
       },
@@ -10940,8 +10957,8 @@
         "category": "economic",
         "categoryKor": "경제",
         "facts": [
-          "gold\/hr",
-          "capacity",
+          "시간당 금화 생산",
+          "최대 수집량",
           "roi days"
         ]
       },
@@ -10952,9 +10969,8 @@
         "category": "economic",
         "categoryKor": "경제",
         "facts": [
-          "researchspeedboost",
-          "academnylevel",
-          "technology unlocks"
+          "연구 속도 향상",
+          "unlocks"
         ]
       },
       {
@@ -10964,7 +10980,7 @@
         "category": "economic",
         "categoryKor": "경제",
         "facts": [
-          "protection capacity"
+          "보호량"
         ]
       },
       {
@@ -10978,8 +10994,8 @@
           "alliancecenterlevel",
           "togetherwe riselevel",
           "time saved",
-          "reinforcementtroopcapacity",
-          "timesyoucanbehelped"
+          "지원 부대 인원",
+          "지원받을 수 있는 횟수"
         ]
       },
       {
@@ -11016,8 +11032,8 @@
         "category": "economic",
         "categoryKor": "경제",
         "facts": [
-          "transportationcapacity",
-          "tax rate"
+          "운송량",
+          "세율"
         ]
       },
       {
@@ -11044,13 +11060,13 @@
       {
         "id": 200012,
         "nameEng": "Tavern",
-        "name": "선술집",
+        "name": "주점",
         "category": "military",
         "categoryKor": "군사",
         "facts": [
           "unlocks",
-          "freegoldenchest(interval)",
-          "dailyfreesilverchests"
+          "황금상자 주기",
+          "일일 백은상자"
         ]
       },
       {
@@ -11060,9 +11076,9 @@
         "category": "military",
         "categoryKor": "군사",
         "facts": [
-          "scoutmarchspeedbonus",
-          "explorationrange",
-          "numberof scouts"
+          "정찰병 행군 속도 보너스",
+          "탐색 범위",
+          "정찰병 인원"
         ]
       },
       {
@@ -11072,9 +11088,9 @@
         "category": "military",
         "categoryKor": "군사",
         "facts": [
-          "unlocks building",
-          "trainingcapacity",
-          "troopattackbonus"
+          "unlocks",
+          "훈련 인원",
+          "부대 공격력 향상"
         ]
       },
       {
@@ -11084,9 +11100,9 @@
         "category": "military",
         "categoryKor": "군사",
         "facts": [
-          "unlocks building",
-          "archertrainingcapacity",
-          "troophealthbonus"
+          "unlocks",
+          "훈련 인원",
+          "부대 생명력 향상"
         ]
       },
       {
@@ -11097,8 +11113,8 @@
         "categoryKor": "군사",
         "facts": [
           "unlocks",
-          "cavalrytrainingcapacity",
-          "troopdefensebonus"
+          "훈련 인원",
+          "부대 방어력 향상"
         ]
       },
       {
@@ -11108,7 +11124,7 @@
         "category": "military",
         "categoryKor": "군사",
         "facts": [
-          "siegetrainingcapacity"
+          "훈련 인원"
         ]
       },
       {
@@ -11118,7 +11134,7 @@
         "category": "military",
         "categoryKor": "군사",
         "facts": [
-          "hospitalcapacity"
+          "병원 수용 인원"
         ]
       },
       {
@@ -11139,7 +11155,7 @@
         "category": "military",
         "categoryKor": "군사",
         "facts": [
-          "ralliedarmycapacity"
+          "연맹 집결 부대 인원"
         ]
       },
       {
@@ -11166,7 +11182,7 @@
         "categoryKor": "기타",
         "facts": [
           "unlocks",
-          "troopcapacity"
+          "부대 인원"
         ]
       },
       {
@@ -11177,7 +11193,7 @@
         "categoryKor": "기타",
         "facts": [
           "unlocks",
-          "maxwalldurability"
+          "내구력"
         ]
       },
       {
@@ -11187,9 +11203,8 @@
         "category": "other",
         "categoryKor": "기타",
         "facts": [
-          "attack",
-          "health",
-          "resources"
+          "공격력",
+          "생명력"
         ]
       }
     ]

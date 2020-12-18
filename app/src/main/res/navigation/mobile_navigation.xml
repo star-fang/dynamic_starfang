@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.starfang.ui.home.HomeFragment"
+        android:name="com.starfang.fragments.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.starfang.ui.forums.ForumsFragment"
+        android:name="com.starfang.fragments.forums.ForumsFragment"
         android:label="@string/title_conversation"
         tools:layout="@layout/fragment_forums" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.starfang.ui.notifications.NotificationsFragment"
+        android:name="com.starfang.fragments.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

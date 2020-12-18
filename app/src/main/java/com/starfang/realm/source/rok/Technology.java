@@ -37,7 +37,6 @@ public class Technology extends RealmObject implements Source {
     public static final String FIELD_RW_GOLD = "goldReward";
 
 
-
     @PrimaryKey
     private int id;
     private int contentId;
@@ -103,11 +102,11 @@ public class Technology extends RealmObject implements Source {
     }
 
     public void updateIntValues() {
-        for( RealmString cost : costs) {
+        for (RealmString cost : costs) {
             String costStr = cost.toString();
             String rssCategory = costStr.replaceAll("[0-9]{1,3}.[0-9]{1,3}[a-zA-Z]", "").trim();
             String siUnit = costStr.substring(costStr.length() - 1);
-            double quantity = NumberUtils.toDouble(costStr.replaceAll("[^0-9.]", ""),0.0);
+            double quantity = NumberUtils.toDouble(costStr.replaceAll("[^0-9.]", ""), 0.0);
             switch (rssCategory.toLowerCase()) {
                 case FIELD_FOOD:
                     foodCost = RokCalcUtils.siValue(siUnit, quantity);
@@ -124,14 +123,14 @@ public class Technology extends RealmObject implements Source {
                 default:
             }
         }
-        this.levelVal = NumberUtils.toInt(level,0);
-        this.foodReward = NumberUtils.toInt(food,0);
-        this.woodReward = NumberUtils.toInt(wood,0);
-        this.stoneReward = NumberUtils.toInt(stone,0);
-        this.goldReward = NumberUtils.toInt(gold,0);
+        this.levelVal = NumberUtils.toInt(level, 0);
+        this.foodReward = NumberUtils.toInt(food, 0);
+        this.woodReward = NumberUtils.toInt(wood, 0);
+        this.stoneReward = NumberUtils.toInt(stone, 0);
+        this.goldReward = NumberUtils.toInt(gold, 0);
         this.seconds = RokCalcUtils.stringToSeconds(this.time);
         this.timeKor = RokCalcUtils.secondsToString(this.seconds);
-        this.powerVal = NumberUtils.toInt(power,0);
+        this.powerVal = NumberUtils.toInt(power.replaceAll("[^0-9]",""), 0);
     }
 
     @Override
@@ -151,7 +150,7 @@ public class Technology extends RealmObject implements Source {
     public String getString(String field) {
         switch (field) {
             case FIELD_FIGURES:
-                if( figures != null ) {
+                if (figures != null) {
                     return TextUtils.join(",", figures);
                 } else {
                     return null;
@@ -214,12 +213,99 @@ public class Technology extends RealmObject implements Source {
         this.preBuildings = preBuildings;
     }
 
-    public boolean containsPreTech( Technology preTech ) {
+    public boolean containsPreTech(Technology preTech) {
         return preTechs != null && preTechs.contains(preTech);
     }
 
-    public boolean containsPreBuilding( Building preBuilding ) {
+    public boolean containsPreBuilding(Building preBuilding) {
         return preBuildings != null && preBuildings.contains(preBuilding);
+    }
+
+    public String getInfo(boolean detail) {
+        if (content != null) {
+            StringBuilder infoBuilder = new StringBuilder();
+            if (detail) {
+                if (levelVal > 0) {
+                    infoBuilder.append(" lv.").append(levelVal);
+                }
+                RealmList<RealmString> facts = content.getFacts();
+
+                if (facts != null && figures != null) {
+                    for (int i = 0; i < facts.size(); i++) {
+                        RealmString fact = facts.get(i);
+                        if (fact != null) {
+                            infoBuilder.append("\r\n * ").append(fact);
+                            RealmString figure = figures.get(i);
+                            if (figure != null) {
+                                infoBuilder.append(" ").append(figure);
+                            }
+                        }
+                    }
+                }
+
+                infoBuilder.append("\r\n - 연구 시간: ").append(RokCalcUtils.secondsToString(seconds))
+                        .append(" (").append(seconds).append("초)");
+
+                if(powerVal > 0 ) {
+                    infoBuilder.append("\r\n - 전투력: ")
+                            .append(RokCalcUtils.quantityToString(powerVal));
+                }
+
+                if (reqTechs != null) {
+                    int reqTechsSize = reqTechs.size();
+                    if (reqTechsSize > 0) {
+                        for (int i = 0; i < reqTechsSize; i++) {
+                            Technology reqTech = reqTechs.get(i);
+                            if (reqTech != null) {
+                                infoBuilder.append("\r\n").append(" - 요구 기술");
+                                if (reqTechsSize > 1) {
+                                    infoBuilder.append((i + 1));
+                                }
+                                infoBuilder.append(": ")
+                                        .append(reqTech.getContent().getString(Source.FIELD_NAME))
+                                        .append(" Lv.").append(reqTech.getInt(Technology.FIELD_LEVEL_VAL));
+                            }
+                        }
+                    }
+                }
+
+                if (reqBuildings != null) {
+                    int reqBuildSize = reqBuildings.size();
+                    if (reqBuildSize > 0) {
+                        for (int i = 0; i < reqBuildSize; i++) {
+                            Building reqBuild = reqBuildings.get(i);
+                            if (reqBuild != null) {
+                                infoBuilder.append("\r\n").append(" - 요구 건물");
+                                if (reqBuildSize > 1) {
+                                    infoBuilder.append((i + 1));
+                                }
+                                infoBuilder.append(": ")
+                                        .append(reqBuild.getContent().getString(Source.FIELD_NAME))
+                                        .append(" Lv.").append(reqBuild.getInt(Building.FIELD_LEVEL_VAL));
+                            }
+                        }
+                    }
+                }
+
+                if (foodCost > 0)
+                    infoBuilder.append("\r\n").append(" - 식량: ").append(RokCalcUtils.quantityToString(foodCost));
+                if (woodCost > 0)
+                    infoBuilder.append("\r\n").append(" - 목재: ").append(RokCalcUtils.quantityToString(woodCost));
+                if (stoneCost > 0)
+                    infoBuilder.append("\r\n").append(" - 석재: ").append(RokCalcUtils.quantityToString(stoneCost));
+                if (goldCost > 0)
+                    infoBuilder.append("\r\n").append(" - 금화: ").append(RokCalcUtils.quantityToString(goldCost));
+            } else {
+                infoBuilder.append("\r\n").append(" - Lv.").append(levelVal).append(": ");
+                if (figures != null) {
+                    infoBuilder.append(TextUtils.join(", ", figures)).append(", ");
+                }
+                infoBuilder.append(RokCalcUtils.secondsToString(seconds));
+                //.append(" (").append(seconds).append("초)\r\n");
+            }
+            return infoBuilder.toString();
+        }
+        return null;
     }
 
 }

@@ -7,18 +7,17 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
 
-import com.starfang.CMDActivity;
+import androidx.lifecycle.ViewModel;
+
+import com.starfang.activities.CMDActivity;
 import com.starfang.StarfangConstants;
-import com.starfang.realm.Cmd;
-import com.starfang.realm.transaction.rok.ReadJsonFileTask;
+import com.starfang.realm.transaction.ReadJsonFileTask;
 import com.starfang.services.FirestoreService;
 import com.starfang.services.StarfangService;
+import com.starfang.utilities.ScreenUtils;
 import com.starfang.utilities.ServiceUtils;
 
 import java.lang.ref.WeakReference;
-
-
-import io.realm.Realm;
 
 public class CmdProcessor extends AsyncTask<String, String, Bundle> {
 
@@ -38,9 +37,11 @@ public class CmdProcessor extends AsyncTask<String, String, Bundle> {
 
 
     private final WeakReference<Context> contextWeakReference;
+    private final WeakReference<ViewModel> mViewModelRef;
 
-    public CmdProcessor(Context context) {
+    public CmdProcessor(Context context, WeakReference<ViewModel> viewModelRef) {
         this.contextWeakReference = new WeakReference<>(context);
+        this.mViewModelRef = viewModelRef;
     }
 
 
@@ -48,17 +49,9 @@ public class CmdProcessor extends AsyncTask<String, String, Bundle> {
     protected void onProgressUpdate(String... values) {
         super.onProgressUpdate(values);
         if (values != null) {
-            try (Realm realm = Realm.getDefaultInstance()) {
-                for (String message : values) {
-                    Cmd cmd = new Cmd(false);
-                    cmd.setName("멍멍이");
-                    cmd.setText(message);
-                    realm.beginTransaction();
-                    realm.copyToRealm(cmd);
-                    realm.commitTransaction();
-                    Intent intent = new Intent(CMDActivity.ACTION_CMD_ADDED);
-                    contextWeakReference.get().sendBroadcast(intent);
-                }
+            for (String message : values) {
+                SystemMessage.insertMessage(message,
+                        contextWeakReference.get(), CMDActivity.ACTION_NOTIFY);
             }
         }
     }
@@ -66,15 +59,28 @@ public class CmdProcessor extends AsyncTask<String, String, Bundle> {
     @Override
     protected void onPostExecute(Bundle bundle) {
         super.onPostExecute(bundle);
-        if( bundle != null ) {
+        if (bundle != null) {
             Context context = contextWeakReference.get();
             switch (bundle.getInt(CmdMods.POST_KEY)) {
                 case CmdMods.SYNC:
-                    ReadJsonFileTask task = new ReadJsonFileTask(context);
-                    task.execute(bundle.getStringArray(CmdMods.POST_VALUE));
+
+                    ReadJsonFileTask readRok = new ReadJsonFileTask(
+                            context
+                            , StarfangConstants.REALM_MODEL_SOURCE_ROK
+                            , "라오킹"
+                            , ScreenUtils.dip2pix(context, 100)
+                            , mViewModelRef);
+                    ReadJsonFileTask readCat = new ReadJsonFileTask(
+                            context
+                            , StarfangConstants.REALM_MODEL_SOURCE_CAT
+                            , "조조전"
+                            , ScreenUtils.dip2pix(context, 200)
+                            , mViewModelRef);
+                    readRok.execute("rok2.json", "rok_technology.json", "rok_building.json", "vertex.json");
+                    readCat.execute("cat.json");
                     break;
                 case CmdMods.FANGCAT:
-                    FangcatNlp fangcatNlp = new FangcatNlp(context,null, "ㅁㅁㅁ", 0);
+                    FangcatNlp fangcatNlp = new FangcatNlp(context, null, "ㅁㅁㅁ", 0);
                     fangcatNlp.execute(bundle.getString(CmdMods.POST_VALUE));
                     break;
                 default:
@@ -86,9 +92,9 @@ public class CmdProcessor extends AsyncTask<String, String, Bundle> {
     protected Bundle doInBackground(String... strings) {
         String text = strings[0];
         Bundle result;
-        if( text != null ) {
+        if (text != null) {
             Context context = contextWeakReference.get();
-            SharedPreferences sharedPref = context.getSharedPreferences(StarfangConstants.SHARED_PREF_STORE,Context.MODE_PRIVATE);
+            SharedPreferences sharedPref = context.getSharedPreferences(StarfangConstants.SHARED_PREF_STORE, Context.MODE_PRIVATE);
             Intent intent;
             switch (text) {
                 case CmdMods.CMD_NOTIFICATION:
@@ -97,14 +103,13 @@ public class CmdProcessor extends AsyncTask<String, String, Bundle> {
                     context.startActivity(intent);
                     break;
                 case CmdMods.CMD_SYNC:
-                    publishProgress("데이터 연결 중... 기둘");
+                    publishProgress("데이터 연결 중...");
                     result = new Bundle();
                     result.putInt(CmdMods.POST_KEY, CmdMods.SYNC);
-                    result.putStringArray(CmdMods.POST_VALUE, new String[]{"rok2.json", "rok_technology.json", "rok_building.json", "vertex.json"});
                     return result;
                 case CmdMods.CMD_FS_START:
-                    Intent fsIntent = new Intent(context, FirestoreService.class );
-                    fsIntent.putExtra(FirestoreService.FS_MESSAGE,"동기화 중...");
+                    Intent fsIntent = new Intent(context, FirestoreService.class);
+                    fsIntent.putExtra(FirestoreService.FS_MESSAGE, "동기화 중...");
                     context.startService(fsIntent);
                     break;
                 case CmdMods.CMD_START:

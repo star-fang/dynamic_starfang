@@ -26,7 +26,7 @@ public class StarfangApp extends Application {
         Realm.init(this);
         try {
             RealmConfiguration migrationConfig = new RealmConfiguration.Builder().
-                    name("realm.starfang").schemaVersion(1)
+                    name("realm.starfang").schemaVersion(3)
                     .migration(new DynamicMigrations())
                     //.deleteRealmIfMigrationNeeded()
                     .build();

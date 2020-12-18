@@ -4489,7 +4489,7 @@
           "stone ?",
           "gold ?"
         ],
-        "time": null,
+        "time": "231d 14h",
         "power": "2,006,287",
         "contentId": 900043,
         "id": 300190,
@@ -9116,7 +9116,7 @@
           "stone8.7M",
           "gold5.8M"
         ],
-        "time": null,
+        "time": "8d 15h",
         "power": "398,558",
         "contentId": 900082,
         "id": 300385,
@@ -9360,7 +9360,7 @@
           "stone10.6M",
           "gold6.8M"
         ],
-        "time": null,
+        "time": "8d 15h",
         "power": "452,681",
         "contentId": 900083,
         "id": 300395,
@@ -9600,7 +9600,7 @@
           "stone8.7",
           "gold5.8"
         ],
-        "time": null,
+        "time": "8d 15h",
         "power": "398,558",
         "contentId": 900084,
         "id": 300405,

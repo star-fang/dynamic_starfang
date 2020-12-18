@@ -2,35 +2,29 @@ package com.starfang.nlp;
 
 import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.util.Log;
 
-import com.starfang.CMDActivity;
-import com.starfang.realm.Cmd;
+import com.starfang.activities.CMDActivity;
+import com.starfang.nlp.lambda.LambdaCat;
+import com.starfang.nlp.lambda.LambdaRok;
 import com.starfang.utilities.reply.ReplyAction;
 
 
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-import javax.annotation.Nonnull;
-
-import io.realm.Realm;
-
 public class FangcatNlp extends AsyncTask<String, String, Void> {
 
     private static final String TAG = "fang_nlp";
     private static final String MASTER_CMD_CAT = "냥";
-    private static final String MASTER_CMD_DOG = "멍";
     private final WeakReference<Context> contextWeakReference;
     private final WeakReference<ReplyAction> replyActionWeakReference;
     private final String sendCat;
     private final long forumId;
 
-    public FangcatNlp(Context context, ReplyAction replyAction, String sendCat, long forumId ) {
+    public FangcatNlp(Context context, ReplyAction replyAction, String sendCat, long forumId) {
         this.contextWeakReference = new WeakReference<>(context);
-        if( replyAction != null ) {
+        if (replyAction != null) {
             this.replyActionWeakReference = new WeakReference<>(replyAction);
         } else {
             this.replyActionWeakReference = null;
@@ -39,59 +33,28 @@ public class FangcatNlp extends AsyncTask<String, String, Void> {
         this.forumId = forumId;
     }
 
-    private void observeCat(@Nonnull String text) {
-        switch (text.length()) {
-            case 1:
-                publishProgress("뭐");
-                break;
-            case 2:
-                publishProgress(text);
-                break;
-            default:
-                try {
-                    try (Realm realm = Realm.getDefaultInstance()) {
-                        List<String> messages = RokLambda.processReq(
-                                text.substring(0, text.length() - 1), realm
-                        , sendCat, forumId);
-                        for (String message : messages) {
-                            publishProgress(message);
-                        }
-                    }
-
-                } catch (Exception e) {
-                    Log.e(TAG, Log.getStackTraceString(e));
-                }
-        }
-
-    }
 
     @Override
     protected void onProgressUpdate(String... values) {
         super.onProgressUpdate(values);
         if (values != null) {
-            if( replyActionWeakReference != null ) {
+            Context context = contextWeakReference.get();
+            if (replyActionWeakReference != null) {
                 ReplyAction replyAction = replyActionWeakReference.get();
-                Context context = contextWeakReference.get();
-                for (String message : values) {
-                    try {
-                        replyAction.sendReply(context, message);
-                    } catch (PendingIntent.CanceledException e) {
-                        e.printStackTrace();
+                if( values.length < 100 ) { // todo: 메세지가 너무많을 경우 처리
+                    for (String message : values) {
+                        try {
+                            replyAction.sendReply(context, message);
+                        } catch (PendingIntent.CanceledException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             } else {
-                try (Realm realm = Realm.getDefaultInstance()) {
-                    for (String message : values) {
-                        Cmd cmd = new Cmd( false );
-                        cmd.setName("냥이");
-                        cmd.setText(message);
-                        realm.beginTransaction();
-                        realm.copyToRealm(cmd);
-                        realm.commitTransaction();
-                        Intent intent = new Intent(CMDActivity.ACTION_CMD_ADDED);
-                        contextWeakReference.get().sendBroadcast(intent);
-                    }
+                for (String message : values) {
+                    SystemMessage.insertMessage(message, context, CMDActivity.ACTION_NOTIFY);
                 }
+
             }
         }
     }
@@ -101,14 +64,23 @@ public class FangcatNlp extends AsyncTask<String, String, Void> {
         String text = strings[0];
         if (text != null) {
             text = text.trim();
-            if (text.length() > 1) {
-                switch (text.substring(text.length() - 1)) {
-                    case MASTER_CMD_CAT:
-                        observeCat(text);
-                        break;
-                    case MASTER_CMD_DOG:
-                        break;
-                    default:
+            if (text.length() > 2) {
+                List<String> messages = null;
+                if (text.startsWith(MASTER_CMD_CAT)) {
+                    text = text.substring(1);
+                    messages = LambdaCat.processReq(
+                            text);
+                }
+                if (text.endsWith(MASTER_CMD_CAT)) {
+                    messages = LambdaRok.processReq(
+                            text.substring(0, text.length() - 1)
+                            , sendCat, forumId);
+                }
+
+                if (messages != null) {
+                    for (String message : messages) {
+                        publishProgress(message);
+                    }
                 }
             }
         }

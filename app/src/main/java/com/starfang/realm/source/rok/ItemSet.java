@@ -5,8 +5,6 @@ import com.starfang.realm.primitive.RealmInteger;
 import com.starfang.realm.source.SearchNameWithoutBlank;
 import com.starfang.realm.source.Source;
 
-import java.util.List;
-
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.Index;
@@ -30,9 +28,8 @@ public class ItemSet extends RealmObject implements Source, SearchNameWithoutBla
 
     private RealmList<Attribute> attrs;
 
-    public void setAttrs(List<Attribute> attrs) {
-        this.attrs = new RealmList<>();
-        this.attrs.addAll(attrs);
+    public void setAttrs(RealmList<Attribute> attrs) {
+        this.attrs = attrs;
     }
 
     public RealmList<Attribute> getAttrs() {

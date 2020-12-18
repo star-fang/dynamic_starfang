@@ -4,9 +4,6 @@ import com.starfang.realm.primitive.RealmDouble;
 import com.starfang.realm.primitive.RealmInteger;
 import com.starfang.realm.source.Source;
 
-import java.text.MessageFormat;
-import java.util.List;
-
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -41,24 +38,20 @@ public class Civilization extends RealmObject implements Source {
     private String specialUnit;
 
     private RealmList<Attribute> attrs;
+    private Commander initCommander;
 
-
-    public void setAttrs(List<Attribute> attrs) {
-        this.attrs = new RealmList<>();
-        this.attrs.addAll(attrs);
+    public void setInitCommander(Commander initCommander) {
+        this.initCommander = initCommander;
     }
 
-    public RealmList<Attribute> getAttrs() {
-        return attrs;
+    public void setAttrs(RealmList<Attribute> attrs) {
+        this.attrs = attrs;
     }
 
     public RealmList<RealmInteger> getAttrIds() {
         return attrIds;
     }
 
-    public RealmList<RealmDouble> getAttrVals() {
-        return attrVals;
-    }
 
     @Override
     public int getId() {
@@ -95,5 +88,32 @@ public class Civilization extends RealmObject implements Source {
             default:
                 return 0;
         }
+    }
+
+    public String getInfo() {
+        StringBuilder civil_info = new StringBuilder();
+
+        civil_info
+                .append(name).append("\r\n")
+                .append("\"").append(comment).append("\"").append("\r\n\r\n");
+
+        if (initCommander != null) {
+            civil_info.append("초기 사령관: ").append(initCommander.getString(Source.FIELD_NAME)).append("\r\n");
+        }
+
+        if( attrs != null ) {
+            for (int i = 0, number = 1; i < attrs.size(); i++) {
+                Attribute attr = attrs.get(i);
+                if (attr != null) {
+                    RealmDouble valObj = attrVals == null ? null : attrVals.get(i);
+                    civil_info.append("보너스").append(number).append(": ")
+                            .append(attr.getFormWithValue(valObj == null ? null : valObj.getValue())).append("\r\n");
+                    number++;
+                }
+            }
+        }
+
+        civil_info.append("특수 유닛: ").append(specialUnit);
+        return civil_info.toString();
     }
 }

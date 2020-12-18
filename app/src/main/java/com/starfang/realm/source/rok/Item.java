@@ -5,8 +5,6 @@ import com.starfang.realm.primitive.RealmInteger;
 import com.starfang.realm.source.SearchNameWithoutBlank;
 import com.starfang.realm.source.Source;
 
-import java.util.List;
-
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -89,18 +87,16 @@ public class Item extends RealmObject implements Source, SearchNameWithoutBlank 
         this.nameWithoutBlank = name.replaceAll("\\s+", "").trim();
     }
 
-    public void setAttrs(List<Attribute> attrs) {
-        this.attrs = new RealmList<>();
-        this.attrs.addAll(attrs);
+    public void setAttrs(RealmList<Attribute> attrs) {
+        this.attrs = attrs;
     }
 
     public RealmList<Attribute> getAttrs() {
         return attrs;
     }
 
-    public void setMaterials(List<ItemMaterial> materials) {
-        this.materials = new RealmList<>();
-        this.materials.addAll(materials);
+    public void setMaterials(RealmList<ItemMaterial> materials) {
+        this.materials = materials;
     }
 
     public RealmList<ItemMaterial> getMaterials() {

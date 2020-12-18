@@ -1,10 +1,10 @@
 package com.starfang.realm.source.rok;
 
+import android.text.TextUtils;
+
 import com.starfang.realm.primitive.RealmInteger;
 import com.starfang.realm.source.SearchNameWithoutBlank;
 import com.starfang.realm.source.Source;
-
-import java.util.List;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
@@ -53,14 +53,12 @@ public class Commander extends RealmObject implements Source, SearchNameWithoutB
         this.civilization = civilization;
     }
 
-    public void setSpecifications(List<Specification> specifications) {
-        this.specifications = new RealmList<>();
-        this.specifications.addAll(specifications);
+    public void setSpecifications(RealmList<Specification> specifications) {
+        this.specifications = specifications;
     }
 
-    public void setSkills(List<Skill> skills) {
-        this.skills = new RealmList<>();
-        this.skills.addAll(skills);
+    public void setSkills(RealmList<Skill> skills) {
+        this.skills = skills;
     }
 
     public void setRarity(Rarity rarity) {
@@ -167,5 +165,44 @@ public class Commander extends RealmObject implements Source, SearchNameWithoutB
                 return availableDays;
         }
         return 0;
+    }
+
+    public String getInfo() {
+        StringBuilder commander_info = new StringBuilder();
+
+        commander_info
+                .append("[사령관] ")
+                .append(name).append("\r\n");
+        commander_info.append(nameEng).append(". ")
+                .append(nicknameEng).append("\r\n");
+        commander_info.append("희귀도: ").append(rarity.getString(Source.FIELD_NAME)).append("\r\n");
+        commander_info.append("별명: ").append(nickname)
+                .append("\r\n");
+
+        if (civilization != null) {
+            commander_info.append("문명: ").append(civilization.getString(Source.FIELD_NAME)).append("\r\n");
+        }
+
+        commander_info
+                .append(getString(Commander.FIELD_SPECS))
+                .append(getString(Commander.FIELD_SKILLS));
+
+        String[] gain_split = getString(Commander.FIELD_GAIN).split(",");
+
+        for (int i = 0; i < gain_split.length; i++) {
+            gain_split[i] = gain_split[i].trim();
+        }
+        commander_info.append("획득: ").append(TextUtils.join(", ", gain_split));
+
+        if (gainDays > 0) {
+            commander_info.append("(").append(gainDays).append("일)");
+        }
+
+
+        if (availableDays > 0) {
+            commander_info.append("\r\n사용 가능: ").append(availableDays).append("일");
+        }
+
+        return commander_info.toString();
     }
 }

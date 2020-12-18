@@ -23,7 +23,7 @@
         tools:targetApi="n">
 
         <activity
-            android:name=".CMDActivity"
+            android:name=".activities.CMDActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
             >
@@ -64,7 +64,7 @@
         <receiver android:name=".services.StarfangReceiver" />
         <receiver
             android:enabled="true"
-            android:name=".CMDActivity$NotifyReceiver"
+            android:name=".activities.CMDActivity$NotifyReceiver"
             android:exported="false"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
@@ -73,11 +73,11 @@
                 <action android:name=".CMDActivity.ACTION_ENABLE_ET"/>
             </intent-filter>
         </receiver>
-        <receiver android:name=".TalkActivity$NotifyReceiver"
+        <receiver android:name=".activities.TalkActivity$NotifyReceiver"
             tools:ignore="Instantiatable" />
-        <receiver android:name=".ui.notifications.NotificationsFragment$NotifyReceiver"
+        <receiver android:name=".fragments.notifications.NotificationsFragment$NotifyReceiver"
             tools:ignore="Instantiatable" />
-        <receiver android:name=".ui.forums.ForumsFragment$NotifyReceiver"
+        <receiver android:name=".fragments.forums.ForumsFragment$NotifyReceiver"
             tools:ignore="Instantiatable" />
 
         <meta-data
@@ -100,7 +100,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecureActivity" />
+        <activity android:name=".activities.SecureActivity" />
 
     </application>
 

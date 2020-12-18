@@ -1,6 +1,6 @@
 package com.starfang;
 
-import com.starfang.nlp.MultiBaseNotation;
+import com.starfang.nlp.lambda.MultiBaseNotation;
 
 import org.junit.Test;
 

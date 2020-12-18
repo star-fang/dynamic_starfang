@@ -7,6 +7,9 @@ import com.starfang.realm.source.Source;
 
 import org.apache.commons.lang3.math.NumberUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -36,7 +39,6 @@ public class Building extends RealmObject implements Source {
     public static final String FIELD_RW_GOLD = "goldReward";
 
 
-
     @PrimaryKey
     private int id;
     private int contentId;
@@ -51,6 +53,8 @@ public class Building extends RealmObject implements Source {
     private RealmList<RealmString> figures;
 
     //runtime fields
+    private RealmList<RealmString> unlocksList;
+
     private RealmList<Building> reqBuildings;
     private RealmList<Building> preBuildings;
     private BuildContent content;
@@ -73,6 +77,10 @@ public class Building extends RealmObject implements Source {
     private int stoneReward;
     private int goldReward;
 
+    public void setUnlocksList(RealmList<RealmString> unlocksList) {
+        this.unlocksList = unlocksList;
+    }
+
     public RealmList<RealmString> getFigures() {
         return figures;
     }
@@ -91,11 +99,11 @@ public class Building extends RealmObject implements Source {
 
     public void updateIntValues() {
 
-        for( RealmString co : cost) {
+        for (RealmString co : cost) {
             String costStr = co.toString();
-            String rssCategory = costStr.replaceAll("[0-9]{1,3}.[0-9]{1,3}[a-zA-Z]", "").trim();
+            String rssCategory = costStr.replaceAll("[0-9]{1,4}|[0-9]{1,3}.[0-9]{1,3}[a-zA-Z]", "").trim();
             String siUnit = costStr.substring(costStr.length() - 1);
-            double quantity = NumberUtils.toDouble(costStr.replaceAll("[^0-9.]", ""),0.0);
+            double quantity = NumberUtils.toDouble(costStr.replaceAll("[^0-9.]", ""), 0.0);
             switch (rssCategory.toLowerCase()) {
                 case "food":
                     foodCost = RokCalcUtils.siValue(siUnit, quantity);
@@ -109,28 +117,28 @@ public class Building extends RealmObject implements Source {
                 case "gold":
                     goldCost = RokCalcUtils.siValue(siUnit, quantity);
                     break;
-                case "Arrow of Resistance x":
-                    arrowCost = (int)quantity;
+                case "arrow of resistance x":
+                    arrowCost = (int) quantity;
                     break;
-                case "Book of Covenant x":
-                    bookCost = (int)quantity;
+                case "book of covenant x":
+                    bookCost = (int) quantity;
                     break;
-                case "x Master's Blueprint":
-                    blueprintCost = (int)quantity;
+                case "x master's blueprint":
+                    blueprintCost = (int) quantity;
                     break;
                 default:
-                    if( costStr.toLowerCase().contains("blueprint")) {
-                        blueprintCost = (int)quantity;
+                    if (costStr.toLowerCase().contains("blueprint")) {
+                        blueprintCost = (int) quantity;
                     }
             }
         }
 
 
-        for( RealmString rw : reward) {
+        for (RealmString rw : reward) {
             String rwStr = rw.toString();
             String rssCategory = rwStr.replaceAll("[0-9]{1,3}.[0-9]{1,3}[a-zA-Z]", "").trim();
             String siUnit = rwStr.substring(rwStr.length() - 1);
-            double quantity = NumberUtils.toDouble(rwStr.replaceAll("[^0-9.]", ""),0.0);
+            double quantity = NumberUtils.toDouble(rwStr.replaceAll("[^0-9.]", ""), 0.0);
             switch (rssCategory.toLowerCase()) {
                 case "food":
                     foodReward = RokCalcUtils.siValue(siUnit, quantity);
@@ -147,10 +155,12 @@ public class Building extends RealmObject implements Source {
                 default:
             }
         }
-        this.levelVal = NumberUtils.toInt(level,0);
+        this.levelVal = NumberUtils.toInt(level, 0);
         this.seconds = RokCalcUtils.stringToSeconds(this.time);
         this.timeKor = RokCalcUtils.secondsToString(this.seconds);
-        this.powerVal = NumberUtils.toInt(power,0);
+        if( power != null ) {
+            this.powerVal = NumberUtils.toInt(power.replaceAll("[^0-9]", ""), 0);
+        }
     }
 
     @Override
@@ -170,13 +180,13 @@ public class Building extends RealmObject implements Source {
     public String getString(String field) {
         switch (field) {
             case FIELD_NAME:
-                if( content != null ) {
+                if (content != null) {
                     return content.getString(Source.FIELD_NAME);
                 } else {
-                    return  null;
+                    return null;
                 }
             case FIELD_FIGURES:
-                if( figures != null ) {
+                if (figures != null) {
                     return TextUtils.join(",", figures);
                 } else {
                     return null;
@@ -187,27 +197,6 @@ public class Building extends RealmObject implements Source {
                 return level;
         }
         return null;
-    }
-
-    public String getCostInfo() {
-
-        StringBuilder costInfoBuilder = new StringBuilder();
-        if (foodCost > 0)
-            costInfoBuilder.append("\r\n - 식량: ").append(RokCalcUtils.quantityToString(foodCost));
-        if (woodCost > 0)
-            costInfoBuilder.append("\r\n - 목재: ").append(RokCalcUtils.quantityToString(woodCost));
-        if (stoneCost > 0)
-            costInfoBuilder.append("\r\n - 석제: ").append(RokCalcUtils.quantityToString(stoneCost));
-        if (goldCost > 0)
-            costInfoBuilder.append("\r\n - 금화: ").append(RokCalcUtils.quantityToString(goldCost));
-        if (blueprintCost > 0)
-            costInfoBuilder.append("\r\n - 청사진: ").append(blueprintCost).append("장");
-        if (bookCost > 0)
-            costInfoBuilder.append("\r\n - 계약의 서: ").append(bookCost).append("권");
-        if (arrowCost > 0)
-            costInfoBuilder.append("\r\n - 저항의 화살: ").append(arrowCost).append("개");
-
-        return  costInfoBuilder.toString();
     }
 
     @Override
@@ -257,5 +246,116 @@ public class Building extends RealmObject implements Source {
 
     public void setPreBuildings(RealmList<Building> preBuildings) {
         this.preBuildings = preBuildings;
+    }
+
+    public String getInfo(boolean detail) {
+        if (content != null) {
+            StringBuilder infoBuilder = new StringBuilder();
+
+            if (!detail) {
+                infoBuilder.append("\r\n - Lv.").append(level).append(": ");
+                if (figures != null) {
+                    for (RealmString figureObj : figures) {
+                        if (figureObj != null) {
+                            String figure = figureObj.toString().replace(",", "");
+                            if (NumberUtils.isDigits(figure)) {
+                                figure = RokCalcUtils.quantityToString(NumberUtils.toInt(figure));
+                            }
+                            infoBuilder.append(figure).append(", ");
+                        }
+                    } // foreach figures
+                } // if figure != null
+                infoBuilder.append(seconds > 0 ? RokCalcUtils.secondsToString(seconds) : "?");
+            } // if !detail
+            else {
+                if (levelVal > 0) {
+                    infoBuilder.append(" lv.").append(levelVal);
+                }
+
+                RealmList<RealmString> facts = content.getFacts();
+                if (facts != null) {
+                    for (int i = 0; i < facts.size(); i++) {
+                        RealmString fact = facts.get(i);
+                        RealmString figure = figures.get(i);
+                        if (fact != null)
+                            infoBuilder.append("\r\n * ")
+                                    .append(fact.toString()).append(figure != null ? ": " + figure.toString() : "");
+                    }
+                } // if facts != null
+
+                if( seconds > 0 ) {
+                    infoBuilder.append("\r\n * 건설 시간: ")
+                            .append(RokCalcUtils.secondsToString(seconds));
+                }
+
+
+                if(powerVal > 0 ) {
+                    infoBuilder.append("\r\n - 전투력: ")
+                            .append(RokCalcUtils.quantityToString(powerVal));
+                }
+
+                if (unlocksList != null && unlocksList.size() > 0) {
+                    infoBuilder.append("\r\n - 잠금 해제: ");
+                    for (RealmString unlocksObj : unlocksList) {
+                        if (unlocksObj != null) {
+                            if (unlocksList.size() > 1) {
+                                infoBuilder.append("\r\n        ");
+                            }
+                            infoBuilder.append(unlocksObj.toString());
+                        }
+                    }
+                }
+
+                if (reqBuildings != null && reqBuildings.size() > 0) {
+                    infoBuilder.append("\r\n - 요구 건물: ");
+
+                    for (Building reqBuilding : reqBuildings) {
+                        if( reqBuildings.size() > 1 ) {
+                            infoBuilder.append("\r\n        ");
+                        }
+                        infoBuilder.append(reqBuilding.getString(Source.FIELD_NAME)).append(" lv.")
+                                .append(reqBuilding.getInt(Building.FIELD_LEVEL));
+                    }
+                }
+
+                List<String> rssList = makeRssList();
+                if( rssList != null && rssList.size() > 0) {
+                    infoBuilder.append("\r\n - 자원: ");
+                    for( String rss : rssList ) {
+                        if( rssList.size() > 1 ) {
+                            infoBuilder.append("\r\n        ");
+                        }
+                        infoBuilder.append(rss);
+                    }
+                }
+
+            } // if detail
+            return infoBuilder.toString();
+        }
+        return null;
+    }
+
+    private List<String> makeRssList() {
+        List<String> rssList = new ArrayList<>();
+        if (foodCost > 0)
+            rssList.add("식량 " + RokCalcUtils.quantityToString(foodCost));
+        if (woodCost > 0)
+            rssList.add("목재 " + RokCalcUtils.quantityToString(woodCost));
+        if (stoneCost > 0)
+            rssList.add("석재 " + RokCalcUtils.quantityToString(stoneCost));
+        if (goldCost > 0)
+            rssList.add("금화 " + RokCalcUtils.quantityToString(goldCost));
+        if (blueprintCost > 0)
+            rssList.add("청사진 " + blueprintCost + "장");
+        if (bookCost > 0)
+            rssList.add("계약의 서 " + bookCost + "권");
+        if (arrowCost > 0)
+            rssList.add("저항의 화살 " + arrowCost + "개");
+
+        if( rssList.size() > 0 ) {
+            return rssList;
+        }
+
+        return null;
     }
 }

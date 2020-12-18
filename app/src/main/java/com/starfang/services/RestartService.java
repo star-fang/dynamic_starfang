@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
-import com.starfang.MainActivity;
+import com.starfang.activities.MainActivity;
 import com.starfang.R;
 import com.starfang.StarfangConstants;
 import com.starfang.utilities.VersionUtils;

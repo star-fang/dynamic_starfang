@@ -3,13 +3,18 @@ package com.starfang.realm;
 import android.util.Log;
 
 import com.starfang.realm.primitive.RealmInteger;
-import com.starfang.realm.source.rok.Vertex;
+import com.starfang.realm.primitive.RealmString;
+import com.starfang.realm.source.cat.Passives;
+import com.starfang.realm.source.cat.UnitTypes;
+import com.starfang.realm.source.cat.Units;
+import com.starfang.realm.source.rok.Building;
 
 import java.util.Locale;
 
 import io.realm.DynamicRealm;
 import io.realm.RealmList;
 import io.realm.RealmMigration;
+import io.realm.RealmObject;
 import io.realm.RealmObjectSchema;
 import io.realm.RealmSchema;
 
@@ -20,7 +25,6 @@ public class DynamicMigrations implements RealmMigration {
     @Override
     public void migrate(DynamicRealm realm, long oldVersion, long newVersion) {
         final RealmSchema schema = realm.getSchema();
-
 
         if (oldVersion == 0) {
             /*migrate from v0 to v1
@@ -36,26 +40,122 @@ public class DynamicMigrations implements RealmMigration {
                 buildingSchema.addField("arrowCost", int.class);
             }
 
-            schema.create("Vertex")
+            final RealmObjectSchema vertexSchema = schema.create("Vertex")
                     .addField("id", int.class)
                     .addPrimaryKey("id")
                     .addField("x", int.class)
                     .addField("y", int.class)
                     .addField("vc", int.class);
 
-            schema.create("BarbarianCamp")
-                    .addField("summonTime", long.class)
-                    .addRealmListField("allowedAllyIds", schema.get("RealmInteger"))
-                    .addRealmObjectField("vertex", schema.get("Vertex"));
+            final RealmObjectSchema realmIntegerSchema = schema.get("RealmInteger");
+            if (realmIntegerSchema != null && vertexSchema != null) {
+                schema.create("BarbarianCamp")
+                        .addField("summonTime", long.class)
+                        .addRealmListField("allowedAllyIds", realmIntegerSchema)
+                        .addRealmObjectField("vertex", vertexSchema);
 
-            schema.create("BarbarianKeep")
-                    .addRealmObjectField("vertex", schema.get("Vertex"));
-            Log.d(TAG, "realm migration v" + oldVersion + "to v" + (oldVersion+1));
+                schema.create("BarbarianKeep")
+                        .addRealmObjectField("vertex", vertexSchema);
+            }
+            Log.d(TAG, "realm migration v" + oldVersion + "to v" + (oldVersion + 1));
             oldVersion++;
         }
 
         if (oldVersion == 1) {
-            // migrate from v1 to v2
+            /*migrate from v1 to v2
+             - Class 'Artifacts' has been added.
+             - Class 'ArtifactsCate' has been added.
+             - Class 'Reinforcement' has been added.
+             - Property 'Units.namesakeCount' has been added
+             - Property 'Units.typeAndName' has been added
+            */
+
+            final RealmObjectSchema realmIntegerSchema = schema.get("RealmInteger");
+            final RealmObjectSchema realmStringSchema = schema.get("RealmString");
+            final RealmObjectSchema passivesSchema = schema.get("Passives");
+            final RealmObjectSchema unitTypesSchema = schema.get("UnitTypes");
+            final RealmObjectSchema unitsSchema = schema.get("Units");
+
+            if (realmIntegerSchema != null
+                    && unitTypesSchema != null
+                    && unitsSchema != null
+                    && passivesSchema != null
+                    && realmStringSchema != null) {
+                unitsSchema
+                        .addField("namesakeCount", int.class)
+                        .addField("typeAndName", String.class)
+                        .addIndex("typeAndName");
+
+                final RealmObjectSchema artifactsCateSchema = schema.create("ArtifactsCate")
+                        .addField("id", int.class)
+                        .addPrimaryKey("id")
+                        .addField("subCate", String.class)
+                        .addField("mainCate", String.class)
+                        .addField("atkType", String.class)
+                        .addField("wisType", String.class)
+                        .addField("defType", String.class)
+                        .addField("agiType", String.class)
+                        .addField("mrlType", String.class)
+                        .addRealmListField("unitTypeIds", realmIntegerSchema)
+                        .addRealmListField("unitTypes", unitTypesSchema);
+
+                if (artifactsCateSchema != null) {
+                    schema.create("Artifacts")
+                            .addField("id", int.class)
+                            .addPrimaryKey("id")
+                            .addField("name", String.class)
+                            .addIndex("name")
+                            .addField("grade", String.class)
+                            .addField("categoryId", int.class)
+                            .addField("atk", int.class)
+                            .addField("wis", int.class)
+                            .addField("def", int.class)
+                            .addField("agi", int.class)
+                            .addField("mrl", int.class)
+                            .addField("mov", int.class)
+                            .addRealmListField("passiveIds", realmIntegerSchema)
+                            .addRealmListField("passiveVals", realmStringSchema)
+                            .addField("description", String.class)
+                            .addRealmListField("unitId", realmIntegerSchema)
+                            .addRealmListField("unitTypeIds", realmIntegerSchema)
+                            .addRealmObjectField("category", artifactsCateSchema)
+                            .addField("nameWithoutBlank", String.class)
+                            .addIndex("nameWithoutBlank")
+                            .addRealmListField("passives", passivesSchema)
+                            .addRealmObjectField("unit", unitsSchema)
+                            .addRealmListField("unitTypes", unitTypesSchema);
+                }
+
+                schema.create("Reinforcement")
+                        .addField("grade", int.class)
+                        .addField("type", String.class)
+                        .addRealmListField("vals", realmIntegerSchema);
+
+            }
+
+
+            Log.d(TAG, "realm migration v" + oldVersion + "to v" + (oldVersion + 1));
+            oldVersion++;
+        }
+
+        if( oldVersion == 2) {
+            /*migrate from v2 to v3
+            - Property 'Building.unlocksList' has been added.
+             */
+
+            final RealmObjectSchema buildingSchema = schema.get("Building");
+            final RealmObjectSchema realmStringSchema = schema.get("RealmString");
+            if (buildingSchema != null && realmStringSchema != null ) {
+                buildingSchema.addRealmListField("unlocksList", realmStringSchema);
+            }
+
+            final RealmObjectSchema civilSchema = schema.get("Civilization");
+            final RealmObjectSchema commanderSchema = schema.get("Commander");
+            if( civilSchema != null && commanderSchema != null) {
+                civilSchema.addRealmObjectField("initCommander", commanderSchema );
+            }
+
+            Log.d(TAG, "realm migration v" + oldVersion + "to v" + (oldVersion + 1));
             oldVersion++;
         }
 
