@@ -5,21 +5,21 @@ import org.apache.commons.lang3.math.NumberUtils;
 public class RokCalcUtils {
 
     public static int siValue(String character, double quantity ) {
-        int unit;
+        double unit;
         switch (character.toUpperCase()) {
             case "K":
-                unit = 1000;
+                unit = 1000.0;
                 break;
             case "M":
-                unit = 1000*1000;
+                unit = 1000000.0;
                 break;
             case "B":
-                unit = 1000*1000*1000;
+                unit = 1000000000.0;
                 break;
             default:
-                unit = 1;
+                unit = 1.0;
         }
-        return (int)(quantity * (double)unit);
+        return (int)(quantity * unit);
     }
 
     public static String quantityToString( int quantity ) {

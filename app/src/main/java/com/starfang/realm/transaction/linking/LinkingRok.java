@@ -5,6 +5,7 @@ import android.util.Log;
 
 import androidx.lifecycle.ViewModel;
 
+import com.starfang.realm.primitive.RealmInteger;
 import com.starfang.realm.primitive.RealmString;
 import com.starfang.realm.source.Source;
 import com.starfang.realm.source.rok.Attribute;
@@ -16,11 +17,14 @@ import com.starfang.realm.source.rok.Item;
 import com.starfang.realm.source.rok.ItemCategory;
 import com.starfang.realm.source.rok.ItemMaterial;
 import com.starfang.realm.source.rok.ItemSet;
+import com.starfang.realm.source.rok.Land;
 import com.starfang.realm.source.rok.Rarity;
+import com.starfang.realm.source.rok.RokName;
 import com.starfang.realm.source.rok.Skill;
 import com.starfang.realm.source.rok.Specification;
 import com.starfang.realm.source.rok.TechContent;
 import com.starfang.realm.source.rok.Technology;
+import com.starfang.realm.source.rok.Vertex;
 
 import org.apache.commons.lang3.math.NumberUtils;
 import org.json.JSONArray;
@@ -33,6 +37,7 @@ import java.util.regex.Pattern;
 import io.realm.Case;
 import io.realm.Realm;
 import io.realm.RealmList;
+import io.realm.RealmObject;
 import io.realm.RealmResults;
 
 public class LinkingRok extends LinkingTask<Void, String, Void> {
@@ -48,6 +53,7 @@ public class LinkingRok extends LinkingTask<Void, String, Void> {
         super(title, context, model, activityVmRef);
     }
 
+
     @Override
     protected Void doInBackground(Void... v) {
 
@@ -61,52 +67,69 @@ public class LinkingRok extends LinkingTask<Void, String, Void> {
             OrderedRealmList<Skill> skillOrderedRealmList = new OrderedRealmList<>(Skill.class);
             OrderedRealmList<Specification> specificationOrderedRealmList = new OrderedRealmList<>(Specification.class);
 
-            publishProgress("Civilization", "10");
-            for (Civilization civilization : realm.where(Civilization.class).findAll()) {
+
+            RealmResults<Civilization> step1 = realm.where(Civilization.class).findAll();
+            RealmResults<Commander> step2 = realm.where(Commander.class).findAll();
+            RealmResults<ItemSet> step3 =  realm.where(ItemSet.class).findAll();
+            RealmResults<ItemMaterial> step4 = realm.where(ItemMaterial.class).findAll();
+            RealmResults<Item> step5 = realm.where(Item.class).findAll();
+            RealmResults<Building> step6x2 = realm.where(Building.class).findAll();
+            RealmResults<Technology> step7x2 = realm.where(Technology.class).findAll();
+            RealmResults<BuildContent> step8 = realm.where(BuildContent.class).findAll();
+            RealmResults<Vertex> step9 = realm.where(Vertex.class).findAll();
+            RealmResults<Land> step10 = realm.where(Land.class).findAll();
+
+            final int maxProgress = step1.size() + step2.size() + step3.size() + step4.size() + step5.size() +
+            step6x2.size() * 2 + step7x2.size() *2 + step8.size() + step9.size() + step10.size();
+
+            ProgressCounter progressCounter = new ProgressCounter(maxProgress);
+            publishProgress("Civilization");
+            for (Civilization civilization : step1) {
                 civilization.setAttrs(attrOrderedRealmList.getRealmList(realm, civilization.getAttrIds()));
                 civilization.setInitCommander(
                         realm.where(Commander.class)
                                 .equalTo(Source.FIELD_ID, civilization.getInt(
                                         Civilization.FIELD_COMMANDER_ID)).findFirst());
-                publishProgress("Civilization#" + civilization.getId() + ".attrs");
+
+                publishProgress("Civilization#" + civilization.getId() + ".attrs", progressCounter.countUp());
             } // for civilizations
 
-            publishProgress("Commander", "20");
-            for (Commander commander : realm.where(Commander.class).findAll()) {
+            publishProgress("Commander");
+            for (Commander commander : step2) {
 
                 commander.setCivilization(realm.where(Civilization.class).equalTo(Source.FIELD_ID, commander.getInt(Commander.FIELD_CIVIL)).findFirst());
                 commander.setSpecifications(specificationOrderedRealmList.getRealmList(realm, commander.getSpecIds()));
                 commander.setSkills(skillOrderedRealmList.getRealmList(realm, commander.getSkillIds()));
                 commander.setRarity(realm.where(Rarity.class).equalTo(Source.FIELD_ID, commander.getInt(Commander.FIELD_RARITY_ID)).findFirst());
 
-                publishProgress("Commander#" + commander.getId() + ".[civil,spec,skill,rarity]");
+                publishProgress("Commander#" + commander.getId() + ".[civil,spec,skill,rarity]", progressCounter.countUp());
             } // for commanders
 
-            publishProgress("ItemSet", "30");
-            for (ItemSet itemSet : realm.where(ItemSet.class).findAll()) {
+            publishProgress("ItemSet");
+            for (ItemSet itemSet : step3) {
                 itemSet.setAttrs(attrOrderedRealmList.getRealmList(realm, itemSet.getAttrIds()));
-                publishProgress("ItemSet#" + itemSet.getId() + ".attrs");
+                publishProgress("ItemSet#" + itemSet.getId() + ".attrs", progressCounter.countUp());
             } // for item sets
 
-            publishProgress("ItemMaterial", "40");
-            for (ItemMaterial material : realm.where(ItemMaterial.class).findAll()) {
+            publishProgress("ItemMaterial");
+            for (ItemMaterial material : step4) {
                 material.setRarity(realm.where(Rarity.class).equalTo(Source.FIELD_ID, material.getInt(ItemMaterial.FIELD_RARITY_ID)).findFirst());
-                publishProgress("ItemMaterial#" + material.getId() + ".rarity");
+                publishProgress("ItemMaterial#" + material.getId() + ".rarity", progressCounter.countUp());
             } // for item materials
 
-            publishProgress("Item", "50");
-            for (Item item : realm.where(Item.class).findAll()) {
+            publishProgress("Item");
+            for (Item item : step5) {
                 item.setCategory(realm.where(ItemCategory.class).equalTo(Source.FIELD_ID, item.getInt(Item.FIELD_CATEGORY_ID)).findFirst());
                 item.setRarity(realm.where(Rarity.class).equalTo(Source.FIELD_ID, item.getInt(Item.FIELD_RARITY_ID)).findFirst());
                 item.setItemSet(realm.where(ItemSet.class).equalTo(Source.FIELD_ID, item.getInt(Item.FIELD_SET_ID)).findFirst());
                 item.setAttrs(attrOrderedRealmList.getRealmList(realm, item.getAttrIds()));
                 item.setMaterials(materialOrderedRealmList.getRealmList(realm, item.getMaterialIds()));
-                publishProgress("Item#" + item.getId() + ".[cate,rarity,set,attr,material]");
+                publishProgress("Item#" + item.getId() + ".[cate,rarity,set,attr,material]", progressCounter.countUp());
             } // for items
 
-            RealmResults<Building> buildings = realm.where(Building.class).findAll();
-            publishProgress("Building", "60");
-            for (Building building : buildings) {
+
+            publishProgress("Building");
+            for (Building building : step6x2) {
                 BuildContent content = realm.where(BuildContent.class).equalTo(Source.FIELD_ID, building.getInt(Technology.FIELD_CONTENT_ID)).findFirst();
                 if (content != null) {
                     building.setContent(content);
@@ -134,27 +157,20 @@ public class LinkingRok extends LinkingTask<Void, String, Void> {
                     }
                     building.setReqBuildings(reqBuildings);
                     building.updateIntValues();
-                    publishProgress("Building#" + building.getId() + ".reqBuild");
+                    publishProgress("Building#" + building.getId() + ".reqBuild", progressCounter.countUp());
                 }
             } // for buildings
-            for (Building building : buildings) {
+            for (Building building : step6x2) {
                 RealmList<Building> preBuildings = new RealmList<>();
                 recursivePreBuildingSearch(preBuildings, building);
                 if (!preBuildings.isEmpty()) {
                     building.setPreBuildings(preBuildings);
                 }
-                publishProgress("Building#" + building.getId() + ".preBuild");
+                publishProgress("Building#" + building.getId() + ".preBuild", progressCounter.countUp());
             } // for buildings
 
-            publishProgress("deleting unnecessary techs...", "70");
-            RealmResults<TechContent> delete_contents = realm.where(TechContent.class).in(Source.FIELD_ID, DELETE_CONTENTS_ID).findAll();
-            delete_contents.deleteAllFromRealm();
-            RealmResults<Technology> delete_techs = realm.where(Technology.class).in(Technology.FIELD_CONTENT_ID, DELETE_CONTENTS_ID).findAll();
-            delete_techs.deleteAllFromRealm();
-
-            publishProgress("Technology", "80");
-            RealmResults<Technology> technologies = realm.where(Technology.class).findAll();
-            for (Technology technology : technologies) {
+            publishProgress("Technology");
+            for (Technology technology : step7x2) {
                 TechContent content = realm.where(TechContent.class).equalTo(Source.FIELD_ID, technology.getInt(Technology.FIELD_CONTENT_ID)).findFirst();
                 if (content != null) {
                     technology.setContent(content);
@@ -212,9 +228,9 @@ public class LinkingRok extends LinkingTask<Void, String, Void> {
                     technology.setReqBuildings(reqBuildings);
                     technology.updateIntValues();
                 } // if content != null
-                publishProgress("Technology#" + technology.getId() + ".[reqTech,reqBuild]");
+                publishProgress("Technology#" + technology.getId() + ".[reqTech,reqBuild]", progressCounter.countUp());
             } // for technologies
-            for (Technology technology : technologies) {
+            for (Technology technology : step7x2) {
                 RealmList<Technology> preTechs = new RealmList<>();
                 RealmList<Building> preBuildings = new RealmList<>();
                 recursivePreTechSearch(preTechs, preBuildings, technology);
@@ -224,12 +240,12 @@ public class LinkingRok extends LinkingTask<Void, String, Void> {
                 if (!preBuildings.isEmpty()) {
                     technology.setPreBuildings(preBuildings);
                 }
-                publishProgress("Technology#" + technology.getId() + ".[preTech,preBuild]");
+                publishProgress("Technology#" + technology.getId() + ".[preTech,preBuild]", progressCounter.countUp());
             } // for technologies
 
 
-            publishProgress("Tech&Build", "90");
-            for (BuildContent buildContent : realm.where(BuildContent.class).findAll()) {
+            publishProgress("Tech&Build");
+            for (BuildContent buildContent : step8) {
                 final RealmList<RealmString> facts = buildContent.getFacts();
                 if (facts != null) {
                     for (int i = 0; i < facts.size(); i++) {
@@ -251,10 +267,38 @@ public class LinkingRok extends LinkingTask<Void, String, Void> {
                         }
                     }
                 }
-
+                publishProgress("Tech&Build", progressCounter.countUp());
             }
 
-            publishProgress("done", "100");
+            publishProgress("Vertex");
+            for(Vertex vertex : step9 ) {
+                vertex.setName( realm.where(RokName.class).equalTo(Source.FIELD_ID, vertex.getInt(Vertex.FIELD_NAME_ID)).findFirst());
+                RealmList<Land> lands = new RealmList<>();
+                for(RealmInteger landIdObj : vertex.getLandIds()) {
+                    if( landIdObj != null ) {
+                        Land land = realm.where(Land.class).equalTo(Source.FIELD_ID, landIdObj.getValue()).findFirst();
+                        if( land != null ) {
+                            lands.add( land );
+                        }
+                    }
+                }
+                vertex.setLands(lands);
+                publishProgress("Vertex", progressCounter.countUp());
+            }
+
+            publishProgress("Land");
+            for( Land land : step10 ) {
+                land.setName( realm.where(RokName.class).equalTo(Source.FIELD_ID, land.getInt(Land.FIELD_NAME_ID)).findFirst());
+                publishProgress("Land", progressCounter.countUp());
+            }
+
+            publishProgress("deleting unnecessary techs...");
+            RealmResults<TechContent> delete_contents = realm.where(TechContent.class).in(Source.FIELD_ID, DELETE_CONTENTS_ID).findAll();
+            delete_contents.deleteAllFromRealm();
+            RealmResults<Technology> delete_techs = realm.where(Technology.class).in(Technology.FIELD_CONTENT_ID, DELETE_CONTENTS_ID).findAll();
+            delete_techs.deleteAllFromRealm();
+
+            publishProgress("done");
 
 
             realm.commitTransaction();

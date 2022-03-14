@@ -1,18 +1,25 @@
 package com.starfang.nlp;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.RemoteInput;
+import androidx.core.app.NotificationCompat;
 import androidx.lifecycle.ViewModel;
 
+import com.starfang.R;
 import com.starfang.activities.CMDActivity;
 import com.starfang.StarfangConstants;
 import com.starfang.realm.transaction.ReadJsonFileTask;
-import com.starfang.services.FirestoreService;
 import com.starfang.services.StarfangService;
 import com.starfang.utilities.ScreenUtils;
 import com.starfang.utilities.ServiceUtils;
@@ -22,14 +29,12 @@ import java.lang.ref.WeakReference;
 public class CmdProcessor extends AsyncTask<String, String, Bundle> {
 
     protected interface CmdMods {
-        //int DEFAULT = 0;
         int SYNC = 1;
         int FANGCAT = 2;
         String CMD_NOTIFICATION = "알림";
         String CMD_SYNC = "연결";
         String CMD_START = "시작";
         String CMD_STOP = "정지";
-        String CMD_FS_START = "동기화";
 
         String POST_KEY = "postKey";
         String POST_VALUE = "postValue";
@@ -38,24 +43,24 @@ public class CmdProcessor extends AsyncTask<String, String, Bundle> {
 
     private final WeakReference<Context> contextWeakReference;
     private final WeakReference<ViewModel> mViewModelRef;
+    private final WeakReference<NotificationManager> managerWeakReference;
 
-    public CmdProcessor(Context context, WeakReference<ViewModel> viewModelRef) {
+    public CmdProcessor(Context context, NotificationManager manager, ViewModel viewModel) {
         this.contextWeakReference = new WeakReference<>(context);
-        this.mViewModelRef = viewModelRef;
+        this.mViewModelRef = new WeakReference<>(viewModel);
+        this.managerWeakReference = new WeakReference<>(manager);
     }
 
 
     @Override
-    protected void onProgressUpdate(String... values) {
+    protected void onProgressUpdate( @NonNull String... values) {
         super.onProgressUpdate(values);
-        if (values != null) {
-            for (String message : values) {
-                SystemMessage.insertMessage(message,
-                        contextWeakReference.get(), CMDActivity.ACTION_NOTIFY);
-            }
+        for (String message : values) {
+            SystemMessage.insertMessage(message, "com.starfang", contextWeakReference.get());
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onPostExecute(Bundle bundle) {
         super.onPostExecute(bundle);
@@ -76,12 +81,64 @@ public class CmdProcessor extends AsyncTask<String, String, Bundle> {
                             , "조조전"
                             , ScreenUtils.dip2pix(context, 200)
                             , mViewModelRef);
-                    readRok.execute("rok2.json", "rok_technology.json", "rok_building.json", "vertex.json");
+                    readRok.execute("rok3.json", "rok_technology.json", "rok_building.json", "vertex1947.json");
                     readCat.execute("cat.json");
                     break;
                 case CmdMods.FANGCAT:
+                    try {
+                        Intent replyIntent = new Intent(CMDActivity.ACTION_REPLY);
+                        Bundle notificationInfo = new Bundle();
+                        notificationInfo.putString(Notification.EXTRA_TITLE, "com.starfang.reply");
+                        replyIntent.putExtra(CMDActivity.KEY_REPLY_INFO, notificationInfo);
+
+                        RemoteInput remoteInput = new RemoteInput.Builder(CMDActivity.KEY_REPLY_RESULT)
+                                .setLabel("starfang reply")
+                                .build();
+                        PendingIntent replyPendingIntent =
+                                PendingIntent.getBroadcast(context.getApplicationContext(),
+                                        0, replyIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+                        NotificationCompat.Action replyAction =
+                                new NotificationCompat.Action.Builder(R.drawable.ic_chat_bubble_black_24dp,
+                                        "starfang.reply", replyPendingIntent)
+                                        .addRemoteInput(remoteInput)
+                                        .setAllowGeneratedReplies(true)
+                                        .build();
+                        Notification notification = new NotificationCompat.Builder(context, CMDActivity.NOTIFICATION_CHANNEL_ID)
+                                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                                .setContentTitle("com.starfang")
+                                .setContentText(bundle.getString(CmdMods.POST_VALUE))
+                                .setPriority(NotificationManager.IMPORTANCE_MIN)
+                                .setCategory(Notification.CATEGORY_SERVICE)
+                                .addAction(replyAction)
+                                .build();
+                        managerWeakReference.get().notify(101, notification);
+                    } catch( Exception e ) {
+                        SystemMessage.insertMessage( e.toString(), "com.starfang.error", context );
+                    }
+
+                    /*
                     FangcatNlp fangcatNlp = new FangcatNlp(context, null, "ㅁㅁㅁ", 0);
+                    new CountDownTimer( 5000, 500){
+
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            if( fangcatNlp.isCancelled() || fangcatNlp.getStatus() == AsyncTask.Status.FINISHED )
+                                this.cancel();
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            AsyncTask.Status status = fangcatNlp.getStatus();
+                            if( status == AsyncTask.Status.PENDING || status == AsyncTask.Status.RUNNING ) {
+                                fangcatNlp.setCancelledMsg("타임아웃 에러(5초)");
+                                fangcatNlp.cancel(true);
+                            }
+
+                        }
+                    }.start();
                     fangcatNlp.execute(bundle.getString(CmdMods.POST_VALUE));
+
+                     */
                     break;
                 default:
             }
@@ -94,7 +151,6 @@ public class CmdProcessor extends AsyncTask<String, String, Bundle> {
         Bundle result;
         if (text != null) {
             Context context = contextWeakReference.get();
-            SharedPreferences sharedPref = context.getSharedPreferences(StarfangConstants.SHARED_PREF_STORE, Context.MODE_PRIVATE);
             Intent intent;
             switch (text) {
                 case CmdMods.CMD_NOTIFICATION:
@@ -107,44 +163,15 @@ public class CmdProcessor extends AsyncTask<String, String, Bundle> {
                     result = new Bundle();
                     result.putInt(CmdMods.POST_KEY, CmdMods.SYNC);
                     return result;
-                case CmdMods.CMD_FS_START:
-                    Intent fsIntent = new Intent(context, FirestoreService.class);
-                    fsIntent.putExtra(FirestoreService.FS_MESSAGE, "동기화 중...");
-                    context.startService(fsIntent);
-                    break;
                 case CmdMods.CMD_START:
                     if (!ServiceUtils.isServiceExist(context, StarfangService.class, false)) {
-                        publishProgress("'알림'을 입력하여 권한을 얻으세요.");
+                        publishProgress("'알림'을 입력하여 시작하세요.");
                     } else {
-                        if (sharedPref.edit().putInt(
-                                StarfangConstants.BOT_STATUS_KEY,
-                                StarfangConstants.BOT_STATUS_START).commit()) {
-                            intent = new Intent(context, StarfangService.class);
-                            intent.putExtra(
-                                    StarfangConstants.BOT_STATUS_KEY,
-                                    StarfangConstants.BOT_STATUS_START);
-                            context.startService(intent);
-                            publishProgress("냥봇 시작이다멍");
-                        } else {
-                            publishProgress("냥봇 시작 실패다멍");
-                        }
-
-
+                        publishProgress("이미 시작했다멍");
                     }
                     break;
                 case CmdMods.CMD_STOP:
-                    if (sharedPref.edit().putInt(
-                            StarfangConstants.BOT_STATUS_KEY,
-                            StarfangConstants.BOT_STATUS_STOP).commit()) {
-                        intent = new Intent(context, StarfangConstants.class);
-                        intent.putExtra(
-                                StarfangConstants.BOT_STATUS_KEY,
-                                StarfangConstants.BOT_STATUS_STOP);
-                        context.startService(intent);
-                        publishProgress("냥봇 정지다멍");
-                    } else {
-                        publishProgress("냥봇 정지 실패다멍");
-                    }
+                    publishProgress("정지할수 없다멍");
 
                     break;
                 default:

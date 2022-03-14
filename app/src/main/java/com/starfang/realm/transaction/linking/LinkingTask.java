@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.ViewModel;
 
-import com.starfang.activities.CMDActivity;
 import com.starfang.activities.viewmodel.CMDActivityViewModel;
 import com.starfang.fragments.progress.row.ProgressRowViewModel;
 import com.starfang.nlp.SystemMessage;
@@ -67,7 +66,8 @@ public abstract  class LinkingTask<PARAMS, PROGRESS, RESULT> extends AsyncTask<P
         }
 
         SystemMessage.insertMessage(mTitle + "데이터 연결 완료",
-                mContextRef.get(), CMDActivity.ACTION_NOTIFY);
+                "com.starfang",
+                mContextRef.get());
 
         ViewModel viewModel = mViewModelRef.get();
         if( viewModel instanceof ProgressRowViewModel) {
@@ -84,7 +84,8 @@ public abstract  class LinkingTask<PARAMS, PROGRESS, RESULT> extends AsyncTask<P
         }
 
         SystemMessage.insertMessage(mTitle + "데이터 연결 취소됨",
-                mContextRef.get(), CMDActivity.ACTION_NOTIFY);
+                "com.starfang",
+                mContextRef.get());
 
         ViewModel viewModel = mViewModelRef.get();
         if( viewModel instanceof ProgressRowViewModel ) {
@@ -97,7 +98,7 @@ public abstract  class LinkingTask<PARAMS, PROGRESS, RESULT> extends AsyncTask<P
         private final Class<T> clazz;
 
         OrderedRealmList(Class<T> clazz) {
-            this.clazz = clazz;
+            this.clazz = clazz; 
         }
 
         RealmList<T> getRealmList(Realm realm, RealmList<RealmInteger> idArr) {
@@ -107,6 +108,25 @@ public abstract  class LinkingTask<PARAMS, PROGRESS, RESULT> extends AsyncTask<P
                 realmList.add(a);
             }
             return realmList;
+        }
+    }
+    
+    protected static class ProgressCounter {
+        private final int maxProgress;
+        private int progress;
+        private int percentage;
+        ProgressCounter( int maxProgress ) {
+            this.maxProgress = maxProgress;
+            this.progress = 0;
+        }
+
+        String countUp() {
+            int percentage = (int)(this.progress++ / this.maxProgress * 100);
+            if( this.percentage != percentage ) {
+                this.percentage = percentage;
+                return String.valueOf(percentage);
+            }
+            return null;
         }
     }
 

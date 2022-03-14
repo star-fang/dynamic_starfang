@@ -3,6 +3,11 @@ package com.starfang.nlp.lambda;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.WriteBatch;
 import com.starfang.realm.Memo;
 import com.starfang.realm.primitive.RealmDouble;
 import com.starfang.realm.primitive.RealmInteger;
@@ -17,13 +22,17 @@ import com.starfang.realm.source.rok.Item;
 import com.starfang.realm.source.rok.ItemCategory;
 import com.starfang.realm.source.rok.ItemMaterial;
 import com.starfang.realm.source.rok.ItemSet;
+import com.starfang.realm.source.rok.Land;
 import com.starfang.realm.source.rok.Rarity;
 import com.starfang.realm.source.rok.RokCalcUtils;
+import com.starfang.realm.source.rok.RokName;
 import com.starfang.realm.source.rok.RokUser;
 import com.starfang.realm.source.rok.Skill;
 import com.starfang.realm.source.rok.TechContent;
 import com.starfang.realm.source.rok.Technology;
+import com.starfang.realm.source.rok.Vertex;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.mozilla.javascript.Scriptable;
 
@@ -36,6 +45,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -50,10 +62,11 @@ public class LambdaRok {
     private static final String REGEX_DIGITS = "[0-9]";
     private static final String REGEX_EXCEPT_DIGITS = "[^0-9]";
     private static final String REGEX_SPACE = "\\s+";
-
+    private static final int DEFAULT_SERVER = 1947;
 
     private enum CMD_ENUM {
-        CMD_DESC, CMD_COMMANDER, CMD_SKILL, CMD_SPEC, CMD_CIVIL, CMD_ITEM, CMD_CALC, CMD_WIKI, CMD_TECH, CMD_RESEARCH, CMD_BUILD, CMD_COMMIT, CMD_MEMO, CMD_DEFAULT
+        CMD_DESC, CMD_COMMANDER, CMD_SKILL, CMD_SPEC, CMD_CIVIL, CMD_ITEM, CMD_CALC, CMD_WIKI
+        , CMD_TECH, CMD_RESEARCH, CMD_BUILD, CMD_COMMIT, CMD_MEMO, CMD_BAULUR, CMD_KEEP, CMD_DEFAULT
     }
 
     private static final String[] CMD_CERTAIN = {
@@ -63,9 +76,9 @@ public class LambdaRok {
             , "계산", "위키"
             , "기술", "연구"
             , "건설", "완료"
-            , "메모", "냥"};
+            , "메모", "브롤", "야요", "냥"};
 
-    private static final String ROK_WIKI = "http://rok.wiki/";
+    private static final String ROK_WIKI = "https://rok.wiki/";
     private static final String ROK_WIKI_HERO_DIR = "bbs/board.php?bo_table=hero&wr_id=";
 
     private static CMD_ENUM findCMD(RealmString rString) {
@@ -136,6 +149,9 @@ public class LambdaRok {
                 int level = NumberUtils.toInt(q.replaceAll("[^0-9]", ""), 0);
                 q = q.replaceAll("[0-9]", "");
                 q = q.trim();
+                if( StringUtils.isEmpty( q )) {
+                    return;
+                }
 
                 RealmResults<TechContent> contents = realm.where(TechContent.class).equalTo(
                         Source.FIELD_NAME, q).or().contains(TechContent.FIELD_NAME_WITHOUT_BLANK, q).findAll();
@@ -148,7 +164,7 @@ public class LambdaRok {
 
                     RealmQuery<Technology> techQuery = realm.where(Technology.class).equalTo(Technology.FIELD_CONTENT_ID, content.getId());
                     if (level > 0) {
-                        techQuery.and().equalTo(Technology.FIELD_LEVEL_VAL, level);
+                        techQuery = techQuery.and().equalTo(Technology.FIELD_LEVEL_VAL, level);
                     }
                     RealmResults<Technology> technologies = techQuery.findAll().sort(Technology.FIELD_LEVEL_VAL, Sort.ASCENDING);
 
@@ -156,15 +172,17 @@ public class LambdaRok {
                         Technology tech = technologies.first();
                         if (tech != null) {
                             contentBuilder.append(tech.getInfo(true));
+                            l.add(contentBuilder.toString());
                         }
-                    } else {
+                    } else if( technologies.size() > 1 ){
                         contentBuilder.append("\r\n * ").append(content.getString(TechContent.FIELD_DESCRIPTION))
                                 .append("\r\n * ").append("연구 시간");
                         for (Technology technology : technologies) {
                             contentBuilder.append(technology.getInfo(false));
                         }
+                        l.add(contentBuilder.toString());
                     }
-                    l.add(contentBuilder.toString());
+
                 }
 
                 q = q.replaceAll("\\s+", "");
@@ -176,7 +194,7 @@ public class LambdaRok {
                             .equalTo(Building.FIELD_CONTENT_ID, buildContent.getId());
 
                     if (level > 0) {
-                        buildingRealmQuery.equalTo(Building.FIELD_LEVEL_VAL, level);
+                        buildingRealmQuery = buildingRealmQuery.equalTo(Building.FIELD_LEVEL_VAL, level);
                     }
 
                     RealmResults<Building> buildings = buildingRealmQuery.findAll();
@@ -281,15 +299,16 @@ public class LambdaRok {
                     for (Commander commander : commanders) {
                         RealmList<Skill> skills = commander.getSkills();
                         if (skills != null) {
+                            StringBuilder skillBuilder = new StringBuilder(commander.getString(Source.FIELD_NAME));
+                            boolean firstSearch = true;
                             for (int i = 0; i < skills.size(); i++) {
                                 Skill skill = skills.get(i);
                                 if (skill != null && (numberVal == -1 || numberVal == i)) {
-                                    String skillBuilder = commander.getString(Source.FIELD_NAME) + " > " + (i + 1) + "스킬\r\n" +
-                                            skill.getString(Source.FIELD_NAME) + " (" + skill.getString(Skill.FIELD_PROPERTY) + ")\r\n" +
-                                            skill.getString(Skill.FIELD_DESCRIPTION).replace("<br>", "\r\n");
-                                    l.add(skillBuilder);
+                                    skillBuilder.append( firstSearch ? "\r\n>": "\r\n\r\n>").append(i + 1).append("스킬: ").append(skill.getString(Source.FIELD_NAME)).append(" (").append(skill.getString(Skill.FIELD_PROPERTY)).append(")\r\n").append(skill.getString(Skill.FIELD_DESCRIPTION).replace("<br>", "\r\n"));
+                                    firstSearch = false;
                                 }
                             }
+                            l.add(skillBuilder.toString());
                         }
                     }
 
@@ -383,7 +402,7 @@ public class LambdaRok {
                 Log.d(TAG, "civilByName Activated");
 
                 RealmResults<Civilization> civilizations = realm.where(Civilization.class)
-                        .equalTo(Civilization.FIELD_NAME, q).findAll();
+                        .equalTo(Civilization.FIELD_NAME, q.trim()).findAll();
 
                 for (Civilization civilization : civilizations) {
                     l.add(civilization.getInfo());
@@ -780,8 +799,8 @@ public class LambdaRok {
 
                     if (secondsSum > 0) {
                         itemInfoBuilder.append("\r\n생산(재료 보급): ")
-                                .append(RokCalcUtils.secondsToString(secondsSum)).append("(")
-                                .append(RokCalcUtils.secondsToString(secondsSum / 2)).append(")");
+                                .append(RokCalcUtils.secondsToString(secondsSum * 2 / 3)).append("(")
+                                .append(RokCalcUtils.secondsToString(secondsSum * 2 / 5)).append(")");
                     }
 
 
@@ -982,6 +1001,141 @@ public class LambdaRok {
 
             };
 
+            Command baulurAction = (l, r, forBaulur) -> {
+
+                int server = r == null ? -1 : NumberUtils.toInt(r.replaceAll(REGEX_EXCEPT_DIGITS, ""), -1);
+                String landName = r == null ? "" : r.replaceAll(REGEX_DIGITS,"").trim();
+                Log.d(TAG,"baulur action (" + server + "," + landName + ")");
+                RealmQuery<Land> landQuery = realm.where(Land.class);
+                if( server >= 0 ) {
+                    landQuery = landQuery.equalTo(Land.FIELD_SERVER, server ).and();
+                }
+                RealmResults<Land> lands =  landQuery.contains(Land.FIELD_NAME + "." + RokName.FIELD_KOR, landName ).findAll();
+                if( lands.size() > 0 ) {
+                    Calendar calendar = Calendar.getInstance();
+                    final long currentTimeInSec = calendar.getTimeInMillis() / 1000;
+                    for( Land land : lands ) {
+                        RealmResults<Vertex> vertices = realm.where(Vertex.class).equalTo(Vertex.FIELD_VC, forBaulur ? Vertex.VC_BAULUR : Vertex.VC_KEEP)
+                                .and().equalTo(Vertex.FIELD_LAND_IDS +"."+RealmInteger.VALUE, land.getId() ).greaterThan(Vertex.FIELD_TIME_LIMIT, 0)
+                                .findAll().sort(Vertex.FIELD_DEADLINE, Sort.ASCENDING);
+
+                        if( vertices.size() > 0 ) {
+                            Vertex firstVertex = vertices.get(0);
+                            if (firstVertex != null) {
+                                StringBuilder vertexListBuilder = new StringBuilder();
+                                vertexListBuilder.append(land.getName().getString(RokName.FIELD_KOR))
+                                        .append(" ").append(firstVertex.getName().getString(RokName.FIELD_KOR));
+                                for (Vertex vertex : vertices) {
+                                    final long timeLeft = vertex.getDeadline() - currentTimeInSec;
+                                    String timeLeftStr = "";
+                                    if (timeLeft != 0) {
+                                        final long timeLeftAbs = Math.abs(timeLeft);
+                                        final long days = timeLeftAbs / 86400;
+                                        final long hours = timeLeftAbs % 86400 / 3600;
+                                        final long minutes = timeLeftAbs % 3600 / 60;
+                                        final long seconds = timeLeftAbs % 60;
+                                        if (days > 0) timeLeftStr += days + "일 ";
+                                        if (hours > 0) timeLeftStr += hours + "시간 ";
+                                        if (minutes > 0) timeLeftStr += minutes + "분 ";
+                                        if (timeLeft > 0) timeLeftStr += seconds + "초 ";
+                                        if (timeLeft > 0) {
+                                            timeLeftStr += "이내 소환";
+                                        } else {
+                                            timeLeftStr = "소환 (" + timeLeftStr + "경과)";
+                                        }
+                                    } else {
+                                        timeLeftStr = "소환";
+                                    }
+
+                                    vertexListBuilder.append("\r\n").append(StringUtils.leftPad(vertex.getInt(Vertex.FIELD_X)+"",4, '0')).append(",")
+                                            .append(StringUtils.leftPad(vertex.getInt(Vertex.FIELD_Y)+"",4, '0')).append(": ").append(timeLeftStr);
+
+                                }
+                                l.add(vertexListBuilder.toString());
+                            }
+                        }
+                    }
+
+                }
+
+            };
+
+            PlayWithCat countdown = (l, r)-> {
+                if( r == null ) {
+                    return;
+                }
+                long timeLimit = 1L;
+                String daysPatternStr = "[0-9]{1,3}\\s*일";
+                String hoursPatternStr = "[0-9]{1,2}\\s*시간";
+                String minutesPatternStr = "[0-9]{1,2}\\s*분";
+                String secondsPatternStr = "[0-9]{1,2}\\s*초";
+
+                timeLimit += calcTimeLimit( r, daysPatternStr, 86400L);
+                timeLimit += calcTimeLimit( r, hoursPatternStr, 3600L);
+                timeLimit += calcTimeLimit( r, minutesPatternStr, 60L);
+                timeLimit += calcTimeLimit( r, secondsPatternStr, 1L);
+                long deadline = System.currentTimeMillis() / 1000 + timeLimit;
+                r = r.replaceAll(hoursPatternStr,"")
+                .replaceAll(minutesPatternStr,"")
+                .replaceAll(secondsPatternStr, "").trim();
+                String[] locationInfo = r.split(REGEX_SPACE);
+                int server, x, y;
+                if( locationInfo.length == 3 ) {
+                    server = NumberUtils.toInt(locationInfo[0],-1);
+                    x = NumberUtils.toInt(locationInfo[1], -1);
+                    y = NumberUtils.toInt(locationInfo[2], -1);
+                } else  if(  locationInfo.length == 2) {
+                    server = DEFAULT_SERVER;
+                    x = NumberUtils.toInt(locationInfo[0], -1);
+                    y = NumberUtils.toInt(locationInfo[1], -1);
+                } else {
+                    server = -1;
+                    x = -1;
+                    y = -1;
+                }
+
+                if( server >= 0 && x >= 0 && y >= 0) {
+                    Vertex vertex = realm.where(Vertex.class).equalTo(
+                            Vertex.FIELD_SERVER, server)
+                            .and().greaterThanOrEqualTo(Vertex.FIELD_X, x - 10 )
+                            .and().lessThanOrEqualTo(Vertex.FIELD_X, x + 10)
+                            .and().greaterThanOrEqualTo(Vertex.FIELD_Y, y- 10 )
+                            .and().lessThanOrEqualTo(Vertex.FIELD_Y, y + 10).findFirst();
+                    if( vertex != null ) {
+                        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+                        Map<String, Object> updateData = new HashMap<>();
+                        updateData.put("timeLimit", timeLimit);
+                        updateData.put("deadline", deadline);
+                        updateData.put("lastEditor", sendCat);
+                        DocumentReference serverRef = firestore.collection(server + "vertex").document(String.valueOf(vertex.getId()));
+                        WriteBatch batch = firestore.batch();
+                        batch.set(serverRef, updateData);
+
+                        try {
+                            Task<Void> task = batch.commit();
+                            Tasks.await(task);
+                            StringBuilder updateMessageBuilder = new StringBuilder();
+                            updateMessageBuilder.append(vertex.getName().getString(RokName.FIELD_KOR))
+                                    .append("(#").append(server).append(" x:").append(x).append(" y:").append(y).append(")");
+                            if( task.isSuccessful() ) {
+                                Calendar calendar = Calendar.getInstance();
+                                calendar.setTimeInMillis( deadline * 1000 );
+                                updateMessageBuilder.append(") 업데이트\r\n")
+                                        .append(new SimpleDateFormat("MM월 dd일 aa hh:mm:ss", Locale.KOREA).format(calendar.getTime()))
+                                        .append("소환 (예정)");
+                            } else {
+                                updateMessageBuilder.append("시간 변경 실패");
+                            }
+                            l.add( updateMessageBuilder.toString() );
+                        } catch (ExecutionException | InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        l.add("#"+server + " " + x + "," + y +" 반경 10km 이내에 브롤 또는 야요 없음");
+                    }
+                }
+            };
+
 
             List<String> result = new ArrayList<>();
 
@@ -1042,6 +1196,12 @@ public class LambdaRok {
                 case CMD_MEMO:
                     memoCommand.search(result, req, false);
                     break;
+                case CMD_BAULUR:
+                    baulurAction.search(result, req, true);
+                    break;
+                case CMD_KEEP:
+                    baulurAction.search(result, req, false);
+                    break;
                 default:
                     commanderByName.play(result, req);
                     civilByName.play(result, req);
@@ -1049,6 +1209,7 @@ public class LambdaRok {
                     techAndBuildByName.play(result, req);
                     findItem.play(result, req);
                     searchMemo.play(result, req);
+                    countdown.play(result, req);
             }
 
             return result;
@@ -1065,7 +1226,6 @@ public class LambdaRok {
     private interface PlayWithCat {
         void play(List<String> list, String req);
     }
-
 
     private static RokUser findOrCreateUser(String sendCat, long forumId, Realm realm) {
 
@@ -1135,6 +1295,18 @@ public class LambdaRok {
                 new SimpleDateFormat("yyyy년 MM월 dd일 aa hh:mm:ss", Locale.KOREA)
                         .format(calendar.getTime()) +
                 "\r\n - " + memo.getSendCat();
+    }
+
+    private static long calcTimeLimit( String request, String timePattern, long timeUnit ) {
+        Pattern pattern = Pattern.compile(timePattern);
+        Matcher matcher = pattern.matcher(request);
+        if( matcher.find() ) {
+            String str = matcher.group(0);
+            if( str != null ) {
+                return NumberUtils.toInt(str.replaceAll(REGEX_EXCEPT_DIGITS, ""),0) * timeUnit;
+            }
+        }
+        return 0L;
     }
 
 

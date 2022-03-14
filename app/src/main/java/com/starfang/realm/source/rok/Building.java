@@ -100,36 +100,38 @@ public class Building extends RealmObject implements Source {
     public void updateIntValues() {
 
         for (RealmString co : cost) {
-            String costStr = co.toString();
-            String rssCategory = costStr.replaceAll("[0-9]{1,4}|[0-9]{1,3}.[0-9]{1,3}[a-zA-Z]", "").trim();
-            String siUnit = costStr.substring(costStr.length() - 1);
-            double quantity = NumberUtils.toDouble(costStr.replaceAll("[^0-9.]", ""), 0.0);
-            switch (rssCategory.toLowerCase()) {
-                case "food":
-                    foodCost = RokCalcUtils.siValue(siUnit, quantity);
-                    break;
-                case "wood":
-                    woodCost = RokCalcUtils.siValue(siUnit, quantity);
-                    break;
-                case "stone":
-                    stoneCost = RokCalcUtils.siValue(siUnit, quantity);
-                    break;
-                case "gold":
-                    goldCost = RokCalcUtils.siValue(siUnit, quantity);
-                    break;
-                case "arrow of resistance x":
-                    arrowCost = (int) quantity;
-                    break;
-                case "book of covenant x":
-                    bookCost = (int) quantity;
-                    break;
-                case "x master's blueprint":
-                    blueprintCost = (int) quantity;
-                    break;
-                default:
-                    if (costStr.toLowerCase().contains("blueprint")) {
+            String costStr = co.toString().trim();
+            if( costStr.length() > 4 ) {
+                String rssCategory = costStr.substring(0, 4);
+                String siUnit = costStr.substring(costStr.length() - 1);
+                double quantity = NumberUtils.toDouble(costStr.replaceAll("[^0-9.]", "").trim(), 0.0);
+                switch (rssCategory.toLowerCase()) {
+                    case "food":
+                        foodCost = RokCalcUtils.siValue(siUnit, quantity);
+                        break;
+                    case "wood":
+                        woodCost = RokCalcUtils.siValue(siUnit, quantity);
+                        break;
+                    case "ston":
+                        stoneCost = RokCalcUtils.siValue(siUnit, quantity);
+                        break;
+                    case "gold":
+                        goldCost = RokCalcUtils.siValue(siUnit, quantity);
+                        break;
+                    case "arro":
+                        arrowCost = (int) quantity;
+                        break;
+                    case "book":
+                        bookCost = (int) quantity;
+                        break;
+                    case "x ma":
                         blueprintCost = (int) quantity;
-                    }
+                        break;
+                    default:
+                        if (costStr.toLowerCase().contains("blueprint")) {
+                            blueprintCost = (int) quantity;
+                        }
+                }
             }
         }
 

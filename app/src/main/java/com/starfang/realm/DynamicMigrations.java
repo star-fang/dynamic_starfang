@@ -3,11 +3,14 @@ package com.starfang.realm;
 import android.util.Log;
 
 import com.starfang.realm.primitive.RealmInteger;
+import com.starfang.realm.primitive.RealmIntegerPair;
 import com.starfang.realm.primitive.RealmString;
 import com.starfang.realm.source.cat.Passives;
 import com.starfang.realm.source.cat.UnitTypes;
 import com.starfang.realm.source.cat.Units;
 import com.starfang.realm.source.rok.Building;
+import com.starfang.realm.source.rok.Land;
+import com.starfang.realm.source.rok.RokName;
 
 import java.util.Locale;
 
@@ -153,6 +156,47 @@ public class DynamicMigrations implements RealmMigration {
             final RealmObjectSchema commanderSchema = schema.get("Commander");
             if( civilSchema != null && commanderSchema != null) {
                 civilSchema.addRealmObjectField("initCommander", commanderSchema );
+            }
+
+            Log.d(TAG, "realm migration v" + oldVersion + "to v" + (oldVersion + 1));
+            oldVersion++;
+        }
+
+        if( oldVersion == 3) {
+            /*migrate from v3 to v4
+            - Class 'Land' has been added.
+            - Class 'RokName' has been added.
+            - Property 'Vertex.server' has been added.
+            - Property 'Vertex.landIds' has been added.
+            - Property 'Vertex.nameId' has been added.
+            - Property 'Vertex.name' has been added.
+            - Property 'Vertex.lands' has been added.
+            - Property 'Vertex.deadline' has been added.
+            - Property 'Vertex.timeLimit' has been added.
+            * */
+            final RealmObjectSchema realmIntegerPairSchema = schema.get("RealmIntegerPair");
+            final RealmObjectSchema vertexSchema = schema.get("Vertex");
+            final RealmObjectSchema realmIntegerSchema = schema.get("RealmInteger");
+            if( vertexSchema != null && realmIntegerSchema != null && realmIntegerPairSchema != null ) {
+                final RealmObjectSchema landSchema = schema.createWithPrimaryKeyField("Land", "id", int.class);
+                final RealmObjectSchema rokNameSchema = schema.createWithPrimaryKeyField("RokName","id",int.class);
+                landSchema.addField("zone", int.class);
+                landSchema.addField("nameId", int.class);
+                landSchema.addField("server", int.class);
+                landSchema.addRealmObjectField("center", realmIntegerPairSchema);
+                landSchema.addRealmListField("boundary", realmIntegerPairSchema);
+                landSchema.addRealmObjectField("name", rokNameSchema);
+
+                rokNameSchema.addField("eng", String.class);
+                rokNameSchema.addField("kor", String.class);
+
+                vertexSchema.addField( "server", int.class);
+                vertexSchema.addField( "nameId", int.class);
+                vertexSchema.addField( "deadline", long.class);
+                vertexSchema.addField( "timeLimit", long.class);
+                vertexSchema.addRealmObjectField("name", rokNameSchema );
+                vertexSchema.addRealmListField("landIds", realmIntegerSchema);
+                vertexSchema.addRealmListField("lands", landSchema);
             }
 
             Log.d(TAG, "realm migration v" + oldVersion + "to v" + (oldVersion + 1));

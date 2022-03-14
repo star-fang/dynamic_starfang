@@ -17,7 +17,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.starfang.R;
 import com.starfang.StarfangConstants;
-import com.starfang.activities.CMDActivity;
 import com.starfang.activities.viewmodel.CMDActivityViewModel;
 import com.starfang.fragments.progress.row.ProgressRowFragment;
 import com.starfang.fragments.progress.row.ProgressRowViewModel;
@@ -110,7 +109,7 @@ public class ReadJsonFileTask extends AsyncTask<String, String, Void> {
                 new LinkingCat( title, context, viewModel, mActivityViewModelRef ).execute();
                 break;
             default:
-                SystemMessage.insertMessage(title + " 연결 완료" , context, CMDActivity.ACTION_NOTIFY );
+                SystemMessage.insertMessage(title + " 연결 완료","com.starfang" , context);
                 if( viewModel instanceof ProgressRowViewModel ) {
                     ((ProgressRowViewModel) viewModel).setRemoveFragment(true);
                 }
@@ -127,7 +126,7 @@ public class ReadJsonFileTask extends AsyncTask<String, String, Void> {
         }
 
 
-        SystemMessage.insertMessage(title + " 데이터 읽기 취소" , mContextRef.get(), CMDActivity.ACTION_NOTIFY );
+        SystemMessage.insertMessage(title + " 데이터 읽기 취소" , "com.starfang", mContextRef.get() );
         ViewModel viewModel = mViewModelRef.get();
         if( viewModel instanceof ProgressRowViewModel ) {
             ((ProgressRowViewModel) viewModel).setRemoveFragment(true);
@@ -228,6 +227,12 @@ public class ReadJsonFileTask extends AsyncTask<String, String, Void> {
                         publishProgress("Parsing " + fileName + "/" + modelName );
 
                         JSONArray tuples = jsonObject.getJSONArray("data");
+                        Integer serverNo;
+                        if( jsonObject.has( "server" ) ) {
+                            serverNo = jsonObject.getInt("server");
+                        } else {
+                            serverNo = null;
+                        }
 
                         try (Realm realm = Realm.getDefaultInstance()) {
                             realm.beginTransaction();
@@ -262,6 +267,9 @@ public class ReadJsonFileTask extends AsyncTask<String, String, Void> {
                                             }
                                         }
                                     }
+                                }
+                                if( serverNo != null && !tuple.has("server") ) {
+                                    tuple.put("server", serverNo.intValue() );
                                 }
                                 String tupleStr = tuple.toString();
                                 try {

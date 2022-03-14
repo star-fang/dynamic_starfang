@@ -10,7 +10,6 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.RemoteInput;
 
-import com.starfang.services.StarfangService;
 import com.starfang.utilities.reply.ReplyAction;
 
 public class ReplyUtils {
@@ -22,7 +21,7 @@ public class ReplyUtils {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static ReplyAction getQuickReplyAction(@NonNull Notification notification) {
         NotificationCompat.Action action = null;
-        if (VersionUtils.isNougat())
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
             action = getAndroidReplyAction(notification);
         if (action == null)
             action = getWearReplyAction(notification);

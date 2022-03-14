@@ -1,5 +1,9 @@
 package com.starfang.activities;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.RemoteInput;
 import android.content.BroadcastReceiver;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -25,7 +29,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,16 +39,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.starfang.R;
 import com.starfang.nlp.CmdProcessor;
+import com.starfang.nlp.SystemMessage;
 import com.starfang.realm.Cmd;
 import com.starfang.utilities.ScreenUtils;
-import com.starfang.utilities.VersionUtils;
 import com.starfang.activities.viewmodel.CMDActivityViewModel;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.util.TextUtils;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
@@ -60,18 +62,19 @@ import io.realm.Sort;
 public class CMDActivity extends AppCompatActivity {
     private final static String TAG = "FANG_ACT_CMD";
 
-    public static final String ACTION_NOTIFY = "NOTIFY";
-    public static final String ACTION_ENABLE_ET = "ENABLE_ET";
-    public static final String ACTION_DISABLE_ET = "DISABLE_ET";
-    public static final String MESSAGE_TO_RECEIVER = "message";
-    public static final String ACTION_SYNC_FIRESTORE = "SYNC_FIRESTORE";
+    public static final String ACTION_SCROLL_TO_BOTTOM = "to_bottom";
+    public static final String ACTION_REPLY = "reply";
+    public static final String KEY_REPLY_INFO = "reply_info";
+    public static final String KEY_REPLY_RESULT = "reply_result";
     private static final int RC_SIGN_IN = 9001;
+
+    public static final String NOTIFICATION_CHANNEL_ID = "starfang_cmd";
+    public static final String channelName = "Starfang Cmd Channel";
 
     private Realm realm;
     private CMDActivityViewModel mViewModel;
-    private FirebaseFirestore mFirestore;
+    private NotificationManager mNotificationManager;
     private static RecyclerView mRecyclerView;
-    private static LinearLayoutManager mLayoutManager;
     private static CMDAdapter mAdapter;
     private static AppCompatEditText text_conversation;
     private static FloatingActionButton button_send_talk;
@@ -81,15 +84,14 @@ public class CMDActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(ACTION_DISABLE_ET);
-        intentFilter.addAction(ACTION_ENABLE_ET);
-        intentFilter.addAction(ACTION_NOTIFY);
+        intentFilter.addAction(ACTION_SCROLL_TO_BOTTOM);
+        intentFilter.addAction(ACTION_REPLY);
         registerReceiver(mReceiver, intentFilter);
     }
 
     @Override
     protected void onPause() {
-        unregisterReceiver(mReceiver);
+        //unregisterReceiver(mReceiver);
         super.onPause();
     }
 
@@ -117,9 +119,8 @@ public class CMDActivity extends AppCompatActivity {
     }
 
     private void scrollToBottom() {
-        if (mRecyclerView != null && mAdapter != null) {
+        if( mRecyclerView != null && mAdapter != null )
             mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
-        }
     }
 
 
@@ -130,6 +131,15 @@ public class CMDActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cmd);
         Log.d(TAG, "onCreate");
 
+
+        mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if( mNotificationManager != null )
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                NotificationChannel channel = new NotificationChannel(
+                        NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_NONE );
+                mNotificationManager.createNotificationChannel(channel);
+        }
+
         mViewModel = new ViewModelProvider(this).get(CMDActivityViewModel.class);
         FirebaseFirestore.setLoggingEnabled(true);
         initFireStore();
@@ -137,17 +147,8 @@ public class CMDActivity extends AppCompatActivity {
         this.realm = Realm.getDefaultInstance();
         RealmResults<Cmd> cmdTalks = realm.where(Cmd.class).findAll().sort(Cmd.FIELD_WHEN, Sort.ASCENDING);
 
-        if (cmdTalks.size() == 0) {
-            Cmd welcomeCmd = new Cmd(false);
-            welcomeCmd.setName("멍멍이");
-            welcomeCmd.setText("연결 -> 알림 -> 시작 순서로 입력 하라멍");
-            realm.beginTransaction();
-            realm.copyToRealm(welcomeCmd);
-            realm.commitTransaction();
-        }
-
-        mAdapter = new CMDAdapter(cmdTalks, false, this.getBaseContext());
-        mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new CMDAdapter(cmdTalks, false);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView = findViewById(R.id.recycler_cmd);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
@@ -249,16 +250,15 @@ public class CMDActivity extends AppCompatActivity {
 
 
                 realm.executeTransactionAsync(bgRealm -> {
-                    Cmd talk = new Cmd();
+                    Cmd talk = new Cmd( true);
                     talk.setText(content);
                     bgRealm.copyToRealm(talk);
-                    //forum.addConversation(conversation);
                 }, () -> {
                     mAdapter.notifyDataSetChanged();
                     scrollToBottom();
                 });
 
-                CmdProcessor processor = new CmdProcessor(this, new WeakReference<ViewModel>(mViewModel));
+                CmdProcessor processor = new CmdProcessor(this, mNotificationManager, mViewModel);
                 processor.execute(content);
                 Log.d(TAG, content);
 
@@ -283,19 +283,12 @@ public class CMDActivity extends AppCompatActivity {
 
     }
 
+
     private static void notifyAdapter() {
-        if (mAdapter != null) {
-            Log.d(TAG, "notify : change ui");
+        if( mAdapter != null ) {
             mAdapter.notifyDataSetChanged();
-
-            //int itemPosition = mLayoutManager.findLastVisibleItemPosition();
-            //int itemLastPosition = (mAdapter.getItemCount() - 1);
-
-            if (mRecyclerView != null ) {
-                   // && itemLastPosition >= 0
-                   // && itemPosition > itemLastPosition - 4) {
+            if( mRecyclerView != null )
                 mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
-            }
         }
     }
 
@@ -304,9 +297,26 @@ public class CMDActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             Log.d(TAG, "broadcast received");
-
-            if (intent.getAction().equals(ACTION_NOTIFY)) {
+            String action = intent.getAction();
+            if( action == null )
+                return;
+            if (action.equals(ACTION_SCROLL_TO_BOTTOM)) {
                 notifyAdapter();
+            } else if( action.equals(ACTION_REPLY)) {
+                final Bundle replyInfo = intent.getBundleExtra(KEY_REPLY_INFO);
+                final CharSequence resultChars = RemoteInput.getResultsFromIntent(intent).getCharSequence(KEY_REPLY_RESULT);
+                if( replyInfo == null || resultChars == null )
+                    return;
+                try ( Realm realm = Realm.getDefaultInstance() ) {
+                    realm.executeTransactionAsync( bgRealm-> {
+                       Cmd cmd = new Cmd( false );
+                       cmd.setName(replyInfo.getString(Notification.EXTRA_TITLE) );
+                       cmd.setText(resultChars.toString());
+                       bgRealm.copyToRealm( cmd );
+                    }, CMDActivity::notifyAdapter);
+                } catch ( RuntimeException e ) {
+                    SystemMessage.insertMessage( e.toString(), "com.starfang.error", context);
+                }
             }
 
         }
@@ -315,12 +325,10 @@ public class CMDActivity extends AppCompatActivity {
 
     static class CMDAdapter extends RealmRecyclerViewAdapter<Cmd, RecyclerView.ViewHolder> {
 
-        private WeakReference<Context> contextWeakReference;
         private static ClickListener clickListener;
 
-        CMDAdapter(@Nullable OrderedRealmCollection<Cmd> data, boolean autoUpdate, Context context) {
+        CMDAdapter(@Nullable OrderedRealmCollection<Cmd> data, boolean autoUpdate) {
             super(data, autoUpdate);
-            contextWeakReference = new WeakReference<>(context);
         }
 
         @NonNull
@@ -360,12 +368,10 @@ public class CMDActivity extends AppCompatActivity {
                     final boolean isUser = talk.isUser();
                     final long when = talk.getWhen();
 
-                    if (VersionUtils.isJellyBeanMR1()) {
-                        if (isUser) {
-                            this.itemView.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-                        } else {
-                            this.itemView.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
-                        }
+                    if (isUser) {
+                        this.itemView.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+                    } else {
+                        this.itemView.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
                     }
 
                     if (compareCard(name, when, isUser, preTalk)) {
@@ -445,7 +451,7 @@ public class CMDActivity extends AppCompatActivity {
     }
 
     private void initFireStore() {
-        mFirestore = FirebaseFirestore.getInstance();
+        FirebaseFirestore mFirestore = FirebaseFirestore.getInstance();
     }
 
     private void startSignIn() {

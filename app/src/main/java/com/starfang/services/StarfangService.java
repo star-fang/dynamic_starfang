@@ -1,88 +1,90 @@
 package com.starfang.services;
 
-import android.app.AlarmManager;
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
+import android.graphics.Color;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.IBinder;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationCompat;
 
-import com.starfang.StarfangConstants;
-import com.starfang.nlp.FangcatNlp;
-import com.starfang.realm.notifications.Conversation;
-import com.starfang.realm.notifications.Forum;
-import com.starfang.realm.notifications.Notifications;
-import com.starfang.utilities.VersionUtils;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.ListenerRegistration;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.starfang.nlp.SystemMessage;
+import com.starfang.nlp.lambda.LambdaCat;
+import com.starfang.nlp.lambda.LambdaRok;
+import com.starfang.realm.source.Source;
+import com.starfang.realm.source.rok.Vertex;
 import com.starfang.utilities.reply.ReplyAction;
 import com.starfang.utilities.ReplyUtils;
 
+import org.apache.commons.lang3.math.NumberUtils;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Calendar;
+
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import io.realm.Realm;
-import io.realm.RealmResults;
 
-@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
 public class StarfangService extends NotificationListenerService {
 
     private static final String TAG = "FANG_SERVICE_NF";
-    //private static final String KAKAO_CHAT_LOG_ID = "chatLogId";
-    public static final String ACTION_CONVERSATION_DEACTIVATE = "deactivateConversation";
-    public static final String ACTION_NOTIFICATION_ADDED = "addLog";
-    public static final String ACTION_CONVERSATION_ADDED = "addConversation";
 
-    private boolean isWorking;
-    private boolean isBound;
-    private SharedPreferences sharedPref;
-
-
+    private Query vertex47Query;
+    private ListenerRegistration vertex47LR;
     @Override
     public void onCreate() {
         super.onCreate();
-        sharedPref = getSharedPreferences(
-                StarfangConstants.SHARED_PREF_STORE,
-                Context.MODE_PRIVATE);
-        String start_count_key = StarfangConstants.BOT_START_COUNT_KEY;
-        int startCount = sharedPref.getInt(start_count_key, 0) + 1;
-        Log.d(TAG, "NotificationListenerService: " + startCount + "th(st|nd|rd) created");
-        sharedPref.edit().putInt(start_count_key, startCount).apply();
+        vertex47Query = FirebaseFirestore.getInstance().collection("1947vertex");
+        vertex47LR = null;
 
-        isWorking = false;
-        isBound = false;
-        super.stopSelf();
+        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.O )
+            startStarfangForeground();
+        else
+            startForeground(1, new Notification());
+
+        SystemMessage.insertMessage("Starfang service created", "com.starfang.debug", this);
     }
 
-    /*
-    isWorking
-    onCreate false
-    onBind
-    onStartCommand>start true
-    onStartCommand>stop false
-    onUnbind false
-    onRebind true
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void startStarfangForeground() {
+        String NOTIFICATION_CHANNEL_ID = "starfang_service";
+        String channelName = "Starfang Background Channel";
+        NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_NONE);
+        channel.setLightColor(Color.BLACK);
+        channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
 
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if( manager == null )
+            return;
+        manager.createNotificationChannel(channel);
 
-    onDestroy >> false: normal // true: abnormal
+        NotificationCompat.Builder notificationBuilder  = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID );
+        Notification notification = notificationBuilder.setOngoing(true)
+                .setContentTitle("Starfang background service is running")
+                .setPriority(NotificationManager.IMPORTANCE_MIN)
+                .setCategory(Notification.CATEGORY_SERVICE)
+                .build();
+        startForeground(33, notification);
 
-    create>bind>start>stop>unbind>destroy
-    create>bind>unbind>destroy
-    create>bind>start>unbind>...>destroy
-    create>bind>start>unbind>start>...>destroy>...
-    create>bind>start>unbind>rebind>
-    create>start>...>destroy>create>....
+    }
 
-     */
     @Override
     public void onListenerConnected() {
         super.onListenerConnected();
@@ -95,291 +97,154 @@ public class StarfangService extends NotificationListenerService {
         Log.d(TAG, "Listener disconnected");
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    private void reply(final int id, final String tag, @NonNull final String content) {
-
-        Runnable runnable = () -> {
-            for (StatusBarNotification sbn : getActiveNotifications()) {
-                Notification notification = sbn.getNotification();
-                int sbnId = sbn.getId();
-                String sbnTag = sbn.getTag();
-                //Log.d("TAG", "compare: " + sbnId + "vs" + id);
-                if (notification != null && sbnId == id) {
-                    if (tag == null || tag.equals(sbnTag)) {
-                        ReplyAction replyAction = ReplyUtils.getQuickReplyAction(notification);
-                        if (replyAction != null) {
-                            //Log.d("TAG", "active notification found: " + id);
-                            try {
-                                replyAction.sendReply(getBaseContext(), content);
-                                Log.d(TAG, "reply success");
-                            } catch (PendingIntent.CanceledException e) {
-                                Log.e(TAG, Log.getStackTraceString(e));
-                            }
-                            break;
-                        }
-                    }
-
-
-                }
-            }
-        };
-
-        AsyncTask.execute(runnable);
-    }
-
     @Override
     public int onStartCommand(@NotNull Intent intent, int flags, int startId) {
-
-        Log.d(TAG, "receive startCommand : [flags,startId] = ["
-                + flags + "," + startId + "]");
-        Bundle bundle = intent.getExtras();
-        if (bundle != null) {
-            Object replyIdObj = bundle.get("reply_id");
-            if (replyIdObj instanceof Integer && VersionUtils.isKitKat()) {
-                Integer replyId = (Integer) replyIdObj;
-                String tag = bundle.getString("reply_tag", null);
-                String content = bundle.getString("reply_content", null);
-                if (content != null) {
-                    Log.d(TAG, "command : reply to:" + replyId);
-                    reply(replyId, tag, content);
-                }
-            } else {
-                int command = bundle.getInt(
-                        StarfangConstants.BOT_STATUS_KEY,
-                        StarfangConstants.BOT_STATUS_START
-                );
-                if (command == StarfangConstants.BOT_STATUS_STOP) {
-                /*
-                *state and works
-                 : activated + bound >> notification listener service works
-                 : deactivated + bound >> it still works
-                 : activated + unbound >> non-working service will be destroyed soon
-                 : deactivated + unbound >> service destroyed immediately
-
-                 *[activated] becomes
-                          : true by onCreate(default)
-                          : true by onStartCommand by startService
-                          : false by stopSelf by onStartCommand or stopService
-                 *startService, stopService
-                          : activity or  foregroundService call
-                 *startService by backgroundService
-                          : forbidden since Oreo
-                 *stopSelf << service call
-                 */
-                    if (isWorking = !this.stopSelfResult(startId)) {
-                        Log.d(TAG, "fail to stop service");
-                    } else {
-                        Log.d(TAG, "switch off service");
-                    }
-
-                } else { // start or restart
-                    if (command == StarfangConstants.BOT_STATUS_RESTART) { // restart
-                        String restart_count_key = StarfangConstants.BOT_RESTART_COUNT_KEY;
-                        int restartCount = sharedPref.getInt(
-                                restart_count_key, 0) + 1;
-                        Log.d(TAG, "service restart: " + restartCount + "th(st|nd|rd) restart command");
-                        sharedPref.edit().putInt(restart_count_key, restartCount).apply();
-                        isWorking = true;
-                    } else if (isBound && !isWorking) {
-                        isWorking = true;
-                        Log.d(TAG, "service activated");
-                    }
-                    return super.onStartCommand(intent, flags, startId);
-                }
-            }
-        }
-        return START_NOT_STICKY;
+        SystemMessage.insertMessage("냥봇 시작: 종료->알림해제", "com.starfang", this);
+        return START_STICKY;
     }
-
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-
-        if (isWorking) {
-            Log.d(TAG, "Notification Listener destroyed abnormally");
-            final Calendar c = Calendar.getInstance();
-            c.setTimeInMillis(System.currentTimeMillis());
-            c.add(Calendar.SECOND, 3);
-            Intent intent = new Intent(StarfangService.this, RestartAlarmReceiver.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(StarfangService.this, 0, intent,
-                    PendingIntent.FLAG_CANCEL_CURRENT);
-            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-            if (alarmManager != null) {
-                alarmManager.set(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
-            }
-        } else {
-            sharedPref.edit().putInt(
-                    StarfangConstants.BOT_STATUS_KEY,
-                    StarfangConstants.BOT_STATUS_STOP
-            ).apply();
-
-            Log.d(TAG, "Notification Listener destroyed ");
-        }
+        Log.d(TAG, "Notification Listener destroyed ");
+        Intent broadcastIntent = new Intent();
+        broadcastIntent.setAction(StarfangRestarter.ACTION_RESTART);
+        broadcastIntent.setClass(this, StarfangRestarter.class);
+        this.sendBroadcast(broadcastIntent);
     }
 
     @Override
     public IBinder onBind(Intent intent) {
         Log.d(TAG, "Notification Listener bind");
-        isBound = true;
-        if (sharedPref.getInt(StarfangConstants.BOT_STATUS_KEY, StarfangConstants.BOT_STATUS_STOP) == StarfangConstants.BOT_STATUS_START) {
-            isWorking = true;
-            Log.d(TAG, "service already activated");
-        }
+        registerFirestoreSnapshotListener();
         return super.onBind(intent);
     }
 
     @Override
     public boolean onUnbind(Intent intent) {
         Log.d(TAG, "Notification Listener un-bind");
-        isWorking = false;
-        isBound = false;
+        if( vertex47LR != null ) {
+            vertex47LR.remove();
+            vertex47LR = null;
+        }
         return true; // return true : make possible to rebind
     }
 
     @Override
     public void onRebind(Intent intent) {
         Log.d(TAG, "Notification Listener re-bind");
-        isWorking = true;
-        isBound = true;
+        registerFirestoreSnapshotListener();
         super.onRebind(intent);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private void registerFirestoreSnapshotListener() {
+        if( vertex47LR != null ) {
+            vertex47LR.remove();
+        }
+        vertex47LR = vertex47Query.addSnapshotListener((snapshots, error) -> {
+            if( error != null ) {
+                Log.w(TAG, "Listen failed.", error);
+                return;
+            }
+
+            if( snapshots != null ) {
+                try (Realm realm = Realm.getDefaultInstance()) {
+                    realm.beginTransaction();
+                    for (DocumentChange docChange : snapshots.getDocumentChanges()) {
+                        QueryDocumentSnapshot doc = docChange.getDocument();
+                        int id = NumberUtils.toInt(doc.getId());
+                        Vertex vertex = realm.where(Vertex.class).equalTo(Source.FIELD_ID, id).findFirst();
+                        if( vertex != null ) {
+
+                            switch (docChange.getType()) {
+                                case ADDED:
+                                case MODIFIED:
+                                    vertex.setTimeLimit(doc.getLong("timeLimit"));
+                                    vertex.setDeadline(doc.getLong("deadline"));
+                                    Log.d(TAG, "vertex"+vertex.getId()+" updated");
+                                    break;
+                                case REMOVED:
+                                    vertex.setTimeLimit(0L);
+                                    vertex.setDeadline(0L);
+                                    Log.d(TAG, "vertex"+vertex.getId()+" unlinked");
+                                    break;
+                            }
+                        }
+                    }
+                    realm.commitTransaction();
+                }
+            }
+        });
+    }
+
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
+        if( sbn == null )
+            return;
+        final Notification sbnNotification = sbn.getNotification();
+            //final String sbnPackageName = sbn.getPackageName();
+            //final String sbnTag = sbn.getTag();
+            //final int sbnId = sbn.getId();
+            //final long sbnPostTime = sbn.getPostTime();
+        final ReplyAction replyAction = ReplyUtils.getQuickReplyAction(sbnNotification);
 
-        if (sbn != null && isWorking) {
+        if( replyAction == null )
+            return;
+        /*
+        for( String key : sbnNotification.extras.keySet() ) {
+            Object extraObj = sbnNotification.extras.get(key);
+            if( extraObj != null )
+                Log.d(TAG, key + ": " + extraObj );
+        }*/
 
-            final Notification sbnNotification = sbn.getNotification();
-            final String sbnPackageName = sbn.getPackageName();
-            final String sbnTag = sbn.getTag();
-            final int sbnId = sbn.getId();
-            final long sbnPostTime = sbn.getPostTime();
-            final ReplyAction replyAction = ReplyUtils.getQuickReplyAction(sbnNotification);
+        StarfangCallable callable = new StarfangCallable( replyAction.getContentText(), replyAction.getSendCat() );
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        Future<String[]> future = executorService.submit(callable);
 
-            if (replyAction != null) {
-
-                //String botName = sharedPref.getString(
-                //        StarfangConstants.BOT_NAME_KEY,
-                //        getResources().getString(R.string.bot_name_default)
-                //);
-                for( String key : sbnNotification.extras.keySet() ) {
-                    Object extraObj = sbnNotification.extras.get(key);
-                    if( extraObj != null )
-                    Log.d(TAG, key + ": " + extraObj );
+        try {
+            String[] answers = future.get();
+            if( answers.length <= 2 ) {
+                for (String answer : answers) {
+                    replyAction.sendReply(this, answer);
                 }
-                Log.d(TAG, "---------------------------"  );
-                new FangcatNlp(this, replyAction, replyAction.getSendCat(), 0L).execute(replyAction.getContentText());
-                //new FangcatHandler(this, from, room, sbn, isLocalRequest, botName, record).execute(text);
-
-
-
-            } // if isAvailablePackage
-
-            Runnable runnable = () -> {
-                int botRecord = sharedPref.getInt(
-                        StarfangConstants.BOT_RECORD_KEY,
-                        StarfangConstants.BOT_STATUS_START); // default : start record
-
-                if (botRecord == StarfangConstants.BOT_STATUS_START) {
-
-                    try (Realm realm = Realm.getDefaultInstance()) {
-                        realm.executeTransaction(bgRealm -> {
-                            //Log.d(TAG, "new notification: " + sbnId);
-                            Notifications notificationLog = new Notifications(sbnId);
-                            notificationLog.setTag(sbnTag);
-                            notificationLog.setAppPackage(sbnPackageName);
-                            notificationLog.setWhen(sbnPostTime);
-                            notificationLog = bgRealm.copyToRealm(notificationLog);
-                            if (replyAction != null) {
-                                final String sendCat = replyAction.getSendCat();
-                                final String forumName = replyAction.getForumName();
-                                final long lastModified = sbnNotification.when;
-                                Conversation conversation = new Conversation();
-                                conversation.setContent(replyAction.getContentText());
-                                conversation.setWhen(lastModified);
-                                conversation.setSendCat(sendCat);
-                                conversation = bgRealm.copyToRealm(conversation);
-                                notificationLog.activate();
-                                conversation.setNotification(notificationLog);
-                                RealmResults<Forum> forums = bgRealm.where(Forum.class).equalTo(Forum.FIELD_TAG, sbnTag).findAll();
-                                Forum forum;
-                                final boolean isGroupChat = forumName != null;
-                                final String refinedForumName = isGroupChat ? forumName : sendCat;
-                                Log.d(TAG, sbn.getPackageName() + ">> from: " + sendCat + ", forum: " + refinedForumName);
-                                switch (forums.size()) {
-                                    case 0:
-                                        forum = new Forum(sbnTag);
-                                        forum.setPackageName(sbnPackageName);
-                                        forum.setGroupChatOption(isGroupChat);
-                                        forum.setName(refinedForumName);
-                                        forum = bgRealm.copyToRealm(forum);
-                                        break;
-                                    case 1:
-                                        forum = forums.first();
-                                        break;
-                                    default:
-                                        forum = forums.where().equalTo(Forum.FIELD_PACKAGE_NAME, sbnTag).findFirst();
-                                }
-
-                                if (forum != null) {
-                                    if (!forum.getName().equals(refinedForumName)) {
-                                        forum.setName(refinedForumName);
-                                    }
-                                    forum.addConversation(conversation);
-                                    //forum.setLastModified(lastModified);
-                                    forum.countUpNonRead();
-                                    Intent intent = new Intent();
-                                    intent.setAction(ACTION_CONVERSATION_ADDED);
-                                    //intent.putExtra("replyAction",replyAction);
-                                    intent.putExtra(StarfangConstants.INTENT_KEY_FORUM_ID, forum.getId());
-                                    sendBroadcast(intent);
-                                }
-
-                            } // if isConversation
-
-                            Intent intent_notify = new Intent();
-                            intent_notify.setAction(ACTION_NOTIFICATION_ADDED);
-                            sendBroadcast(intent_notify);
-                        });
-                    } catch (RuntimeException e) {
-                        Log.d(TAG, Log.getStackTraceString(e));
-                    }
+            } else {
+                StringBuilder sb = new StringBuilder("---");
+                for (String answer : answers) {
+                    sb.append("\r\n").append( answer ).append("\r\n");
                 }
+                sb.append("---");
+                replyAction.sendReply(this, sb.toString());
+            }
 
-
-            };
-            AsyncTask.execute(runnable);
-        }
-    }
-
-    @Override
-    public void onNotificationRemoved(StatusBarNotification sbn) {
-        try (Realm realm = Realm.getDefaultInstance()) {
-            realm.executeTransactionAsync(bgRealm -> {
-                RealmResults<Conversation> talks = bgRealm.where(Conversation.class)
-                        .isNotNull(Conversation.FIELD_NOTIFICATION)
-                        .equalTo(Conversation.FIELD_NOTIFICATION + "." + Notifications.FIELD_IS_ACTIVE, true)
-                        .equalTo(Conversation.FIELD_NOTIFICATION + "." + Notifications.FIELD_SBN_ID, sbn.getId())
-                        .equalTo(Conversation.FIELD_NOTIFICATION + "." + Notifications.FIELD_PACKAGE, sbn.getPackageName()).findAll();
-                for (Conversation talk : talks) {
-                    Notifications log = talk.getNotification();
-                    if (log != null) {
-                        log.deactivate();
-                        Intent intent = new Intent();
-                        intent.setAction(ACTION_CONVERSATION_DEACTIVATE);
-                        intent.putExtra("id", talk.getId());
-                        sendBroadcast(intent);
-                    }
-                }
-            }, () -> Log.d(TAG, "deactivate notification"), error -> Log.e(TAG, Log.getStackTraceString(error)));
-        } catch (RuntimeException e) {
-            Log.e(TAG, Log.getStackTraceString(e));
+        } catch (ExecutionException | InterruptedException | PendingIntent.CanceledException e) {
+            SystemMessage.insertMessage(e.toString(), "com.starfang.error", this);
         }
 
 
-        //Log.d(TAG, "Notification [" + sbn.getKey() + "] Removed:\n");
+
     }
+
+    private static class StarfangCallable implements Callable<String[]> {
+        private static final String MASTER_CMD_CAT = "냥";
+        private final String sendCat;
+        private final String text;
+
+        public StarfangCallable( String text, String sendCat) {
+            this.sendCat = sendCat;
+            this.text = text.trim();
+        }
+        @Override
+        public String[] call() {
+            if (text.length() > 2) {
+                List<String> answers = text.startsWith(MASTER_CMD_CAT) ? LambdaCat.processReq(text.substring(1)) :
+                        text.endsWith(MASTER_CMD_CAT) ? LambdaRok.processReq( text.substring(0, text.length() - 1), sendCat, 0L)
+                                : null;
+                if( answers != null )
+                    return answers.toArray( new String[0] );
+            }
+            return new String[0];
+        }
+    }
+
 
 }

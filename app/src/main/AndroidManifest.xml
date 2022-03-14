@@ -33,52 +33,34 @@
             </intent-filter>
         </activity>
 
-        <!--
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".TalkActivity" />
-        <activity android:name=".SignInActivity" />
-        -->
-
-        <service
-            android:name=".services.FirestoreService" />
         <service
             android:name=".services.StarfangService"
-            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+            android:enabled="true">
             <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>
         </service>
-        <service
-            android:name=".services.RestartService"
-            android:enabled="true" />
 
-        <receiver android:name=".services.RestartAlarmReceiver" />
-        <receiver android:name=".services.StarfangReceiver" />
+        <receiver
+            android:name=".services.StarfangRestarter"
+            android:enabled="true"
+            android:exported="true"
+            tools:ignore="ExportedReceiver">
+            <intent-filter>
+                <action android:name=".services.StarfangRestarter.ACTION_RESTART"/>
+            </intent-filter>
+        </receiver>
         <receiver
             android:enabled="true"
             android:name=".activities.CMDActivity$NotifyReceiver"
             android:exported="false"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
-                <action android:name=".CMDActivity.ACTION_CMD_ADDED"/>
-                <action android:name=".CMDActivity.ACTION_DISABLE_ET"/>
-                <action android:name=".CMDActivity.ACTION_ENABLE_ET"/>
+                <action android:name=".CMDActivity.ACTION_SCROLL_TO_BOTTOM"/>
+                <action android:name=".CMDActivity.ACTION_REPLY"/>
             </intent-filter>
         </receiver>
-        <receiver android:name=".activities.TalkActivity$NotifyReceiver"
-            tools:ignore="Instantiatable" />
-        <receiver android:name=".fragments.notifications.NotificationsFragment$NotifyReceiver"
-            tools:ignore="Instantiatable" />
-        <receiver android:name=".fragments.forums.ForumsFragment$NotifyReceiver"
-            tools:ignore="Instantiatable" />
 
         <meta-data
             tools:replace="android:value"
@@ -93,7 +75,6 @@
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
             <intent-filter><action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 

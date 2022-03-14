@@ -26,7 +26,7 @@ public class StarfangApp extends Application {
         Realm.init(this);
         try {
             RealmConfiguration migrationConfig = new RealmConfiguration.Builder().
-                    name("realm.starfang").schemaVersion(3)
+                    name("realm.starfang").schemaVersion(4)
                     .migration(new DynamicMigrations())
                     //.deleteRealmIfMigrationNeeded()
                     .build();
@@ -42,10 +42,6 @@ public class StarfangApp extends Application {
         } catch (RealmMigrationNeededException e) {
             Log.e("FANG_APP", Log.getStackTraceString(e));
         }
-
-        //Stetho.initializeWithDefaults(this);
-
-        //new OkHttpClient.Builder().addNetworkInterceptor(new StethoInterceptor()).build();
 
     }
 

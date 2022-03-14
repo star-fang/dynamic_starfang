@@ -3680,7 +3680,7 @@
         "level": "1",
         "figures": [
           [
-            "2nd builder queue",
+            "second builder queue",
             "Builder Recruitment use"
           ]
         ],
@@ -4649,7 +4649,7 @@
         "contentId": 200011,
         "id": 100316,
         "figures": [
-          "1st",
+          "first",
           null,
           null,
           null
@@ -4657,7 +4657,7 @@
       },
       {
         "figures": [
-          "2nd",
+          "second",
           null,
           null,
           null
@@ -4670,7 +4670,7 @@
       },
       {
         "figures": [
-          "3rd",
+          "third",
           "1x",
           "50K Food ",
           "-"
@@ -4683,7 +4683,7 @@
       },
       {
         "figures": [
-          "4th",
+          "fourth",
           "1x",
           "50K Wood ",
           "-"
@@ -4696,7 +4696,7 @@
       },
       {
         "figures": [
-          "5th",
+          "fifth",
           "1x",
           "37.5K Stone ",
           "-"
@@ -9268,7 +9268,7 @@
         "level": "2",
         "figures": [
           [
-            "Lumber Mill (1st)",
+            "Lumber Mill (first)",
             "Archery Range",
             "Scout Camp"
           ],
@@ -9293,7 +9293,7 @@
         "level": "3",
         "figures": [
           [
-            "Farm (2nd)",
+            "Farm (second)",
             "Alliance Center"
           ],
           "4,000",
@@ -9319,10 +9319,10 @@
         "level": "4",
         "figures": [
           [
-            "Quarry (1st)",
+            "Quarry (first)",
             "Academy",
             "Stable",
-            "Hospital (2nd)",
+            "Hospital (second)",
             "Bronze Age"
           ],
           "5,000",
@@ -9348,10 +9348,10 @@
         "level": "5",
         "figures": [
           [
-            "Lumber Mill (2nd)",
+            "Lumber Mill (second)",
             "Shop",
             "Siege Workshop",
-            "2nd march queue"
+            "second march queue"
           ],
           "7,000",
           2
@@ -9378,7 +9378,7 @@
         "level": "6",
         "figures": [
           [
-            "Farm (3rd)",
+            "Farm (third)",
             "Courier Station"
           ],
           "9,000",
@@ -9407,7 +9407,7 @@
         "level": "7",
         "figures": [
           [
-            "Quarry (2nd)",
+            "Quarry (second)",
             "Castle"
           ],
           "12,000",
@@ -9436,9 +9436,9 @@
         "level": "8",
         "figures": [
           [
-            "Lumber Mill (3rd)",
+            "Lumber Mill (third)",
             "Monument",
-            "Tier 2 troops"
+            "Tier Ⅱ troops"
           ],
           "15,000",
           2
@@ -9466,8 +9466,8 @@
         "level": "9",
         "figures": [
           [
-            "Hospital (3rd)",
-            "Farm (3rd)"
+            "Hospital (third)",
+            "Farm (third)"
           ],
           "19,000",
           2
@@ -9495,8 +9495,9 @@
         "level": "10",
         "figures": [
           [
-            "Quarry (3rd)",
-            "Goldmine (1st)Lyceum of Wisdom",
+            "Quarry (third)",
+            "Goldmine (first)",
+            "Lyceum of Wisdom",
             "Trading Post",
             "Iron Age"
           ],
@@ -9527,8 +9528,8 @@
         "level": "11",
         "figures": [
           [
-            "Lumber Mill (4th)",
-            "3rd march queue"
+            "Lumber Mill (fourth)",
+            "third march queue"
           ],
           "28,000",
           3
@@ -9554,7 +9555,7 @@
       {
         "level": "12",
         "figures": [
-          "Goldmine (2nd)",
+          "Goldmine (second)",
           "33,000",
           3
         ],
@@ -9579,7 +9580,7 @@
       {
         "level": "13",
         "figures": [
-          "Quarry (4th)",
+          "Quarry (fourth)",
           "38,000",
           3
         ],
@@ -9604,7 +9605,7 @@
       {
         "level": "14",
         "figures": [
-          "Goldmine (3rd)",
+          "Goldmine (third)",
           "44,000",
           3
         ],
@@ -9630,7 +9631,7 @@
       {
         "level": "15",
         "figures": [
-          "Hospital (4th)",
+          "Hospital (fourth)",
           "50,000",
           3
         ],
@@ -9656,8 +9657,8 @@
         "level": "16",
         "figures": [
           [
-            "Goldmine (4th)",
-            "Tier 3 troops",
+            "Goldmine (fourth)",
+            "Tier Ⅲ troops",
             "Dark Age"
           ],
           "57,000",
@@ -9684,7 +9685,7 @@
       {
         "level": "17",
         "figures": [
-          "4th march queue",
+          "fourth march queue",
           "64,000",
           4
         ],
@@ -9784,7 +9785,7 @@
       {
         "level": "21",
         "figures": [
-          ["Tier 4 troops","Feudal Age"],
+          ["Tier Ⅳ troops","Feudal Age"],
           "100,000",
           4
         ],
@@ -9805,7 +9806,7 @@
       {
         "level": "22",
         "figures": [
-          "5th march queue",
+          "fifth march queue",
           "110,000",
           5
         ],
@@ -9868,7 +9869,7 @@
       {
         "level": "25",
         "figures": [
-          "Tier 5 troops",
+          "Tier Ⅴ troops",
           "150,000",
           5
         ],
